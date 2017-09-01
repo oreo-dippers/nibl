@@ -5,7 +5,10 @@ import ReactDOM from 'react-dom';
 class Header extends Component {
   render() {
     return (
-      <div>Hi from Header component</div>
+      <div>
+        This is the Header!
+        {/* <Nav /> */}
+      </div>
     )
   }
 }

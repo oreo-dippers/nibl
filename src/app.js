@@ -6,4 +6,4 @@
 //   document.getElementById('root');
 // )
 
-console.log('hi worlds!')
+console.log('hello from app.js!')

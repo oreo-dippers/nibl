@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 
-class App extends Component {
+class Template extends Component {
   render() {
     return (
-      <div className="hi">Hi from App component</div>
+      <div>Hi from Template component</div>
     )
   }
 }
 
-export default App;
+// export default Template;

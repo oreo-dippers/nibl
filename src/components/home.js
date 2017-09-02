@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 class Home extends Component {
   render() {
     return (
-      <div>Hi from Home component</div>
+      <div>welcome to Nible! (home)</div>
     )
   }
 }

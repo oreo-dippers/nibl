@@ -1,26 +1,15 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
 import Header from './header'
+import Main from './main'
 
-import Footer from './footer'
+import { Switch, Route } from 'react-router-dom'
+import Home from './home'
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <Header />
-        <br/>
-        <br/>
-        <br/>
-        Hi from Home Component
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <Footer />
-      </div>
-    )
-  }
-}
+const App = () => (
+  <div>
+    <Header />
+    <Main />
+  </div>
+)
 
-export default App;
+export default App

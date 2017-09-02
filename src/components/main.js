@@ -9,10 +9,10 @@ import Dishes from './dishes'
 // and /dishes routes will match any pathname that starts
 // with /restaurants or /dishes. The / route will only match
 // when the pathname is exactly the string "/"
-const Main = () => (
+const Main = (props) => (
   <main>
     <Switch>
-      <Route exact path='/' component={Home}/>
+      <Route exact path='/' component={() => <Home test={props.test}/>}/>
       <Route path='/restaurants' component={RoutesForRestaurants}/>
       <Route path='/dishes' component={Dishes}/>
     </Switch>

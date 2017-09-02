@@ -1,8 +1,9 @@
 import React from 'react'
 
-const Home = () => (
+const Home = (props) => (
   <div>
     <h1>Welcome to Nibl!</h1>
+    <p>{ props.test }</p>
   </div>
 )
 

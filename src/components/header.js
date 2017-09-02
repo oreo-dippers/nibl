@@ -6,9 +6,11 @@ class Header extends Component {
   render() {
     return (
       <div>
+        This is the header
         <div className="navbar">
           <Link to="/" className="nav 1">Home</Link>
           <Link to="/dishes" className="nav 2">Dishes</Link>
+          <Link to="/restaurants" className="nav 3">Restaurants</Link>
         </div>
       </div>
     )

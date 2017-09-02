@@ -1,26 +1,13 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import Header from './header';
-import Footer from './footer';
+import React from 'react'
 
-class Dishes extends Component {
-  render() {
-    return (
-      <div>
-        <Header />
+const Dishes = () => (
+  <div>
+    <ul>
+      <li>Burger Dish</li>
+      <li>Taco Dish</li>
+      <li>Pizza Deep Dish</li>
+    </ul>
+  </div>
+)
 
-        <br/>
-        <br/>
-        <br/>
-        Hi from Dishes component
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <Footer />
-      </div>
-    )
-  }
-}
-
-export default Dishes;
+export default Dishes

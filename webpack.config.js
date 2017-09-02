@@ -33,9 +33,16 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: "babel-loader"
+        loader: 'babel-loader'
       }
     ]
+  },
+  devServer: {
+    contentBase: __dirname + '/dist',
+    compress: true,
+    port: 2500,
+    stats: 'errors-only',
+    open: true
   },
   plugins: [
     new HtmlWebpackPlugin({

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Swtich, Route } from 'react-router-dom';
-import RestaurantList from './restaurantsList';
+import RestaurantList from './restaurants-list';
 import Restaurant from './restaurant';
 
-class Restaurants extends Component {
+class RestaurantsRouter extends Component {
   render() {
     return (
       <Switch>
@@ -15,4 +15,4 @@ class Restaurants extends Component {
   }
 }
 
-export default Restaurants;
+export default RestaurantsRouter;

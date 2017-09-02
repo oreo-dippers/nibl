@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './app.scss'
-import App from './components/app.js'
+import MainRouter from './components/main-router'
 import { BrowserRouter } from 'react-router-dom';
 
 
 var Router = () => {
   return (
     <BrowserRouter>
-      <App />
+      <MainRouter />
     </BrowserRouter>
   )
 }

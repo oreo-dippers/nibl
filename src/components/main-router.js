@@ -11,7 +11,7 @@ class MainRouter extends Component {
     return (
       <main>
         <Switch>
-          <Route exact path='/dist/' component={() => <App />} />
+          <Route exact path='/' component={() => <App />} />
           <Route path='/dishes' component={() => <Dishes />} />
           <Route path='/restaurants' component={() => <Restaurants />} />
         </Switch>

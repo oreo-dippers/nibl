@@ -1,20 +1,18 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-class Header extends Component {
-  render() {
-    return (
-      <div>
-        This is the header
-        <div className="navbar">
-          <Link to="/" className="nav 1">Home</Link>
-          <Link to="/dishes" className="nav 2">Dishes</Link>
-          <Link to="/restaurants" className="nav 3">Restaurants</Link>
-        </div>
-      </div>
-    )
-  }
-}
+// The Header creates links that can be used to navigate
+// between routes.
+const Header = () => (
+  <header>
+    <nav>
+      <ul>
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/restaurants'>Restaurants</Link></li>
+        <li><Link to='/dishes'>Dishes</Link></li>
+      </ul>
+    </nav>
+  </header>
+)
 
-export default Header;
+export default Header

@@ -1,8 +1,7 @@
-import React from 'react'
+import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
+import { auth, googleAuthProvider } from './firebase';
 
-// The Header creates links that can be used to navigate
-// between routes.
 const Header = () => (
   <header>
     <nav>
@@ -11,6 +10,11 @@ const Header = () => (
         <li><Link to='/restaurants'>Restaurants</Link></li>
         <li><Link to='/dishes'>Dishes</Link></li>
       </ul>
+      <div className="signIn">
+        <button onClick={() => auth.signInWithPopup(googleAuthProvider)}>
+          Sign In
+        </button>
+      </div>
     </nav>
   </header>
 )

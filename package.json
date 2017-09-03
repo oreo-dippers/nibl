@@ -11,15 +11,18 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.16.2",
+    "dotenv": "^4.0.0",
+    "firebase": "^4.3.0",
+    "firebase-admin": "~5.2.1",
+    "firebase-functions": "^0.6.3",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-router-dom": "^4.2.2",
+    "express": "^4.15.4",
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.2",
     "cors": "^2.8.4",
-    "dotenv": "^4.0.0",
-    "express": "^4.15.4",
-    "morgan": "^1.8.2",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-router-dom": "^4.2.2"
+    "morgan": "^1.8.2"
   },
   "devDependencies": {
     "babel": "^6.23.0",

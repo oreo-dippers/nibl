@@ -24,12 +24,4 @@ class App extends Component {
 }
 
 
-
-// const App = () => (
-//   <div>
-//     <Header />
-//     <Main />
-//   </div>
-// )
-
 export default App

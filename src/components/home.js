@@ -1,10 +1,10 @@
-import React from 'react'
+import React from "react";
 
-const Home = (props) => (
+const Home = props => (
   <div>
     <h1>Welcome to Nibl!</h1>
-    <p>{ props.test }</p>
+    <p>{props.test}</p>
   </div>
-)
+);
 
-export default Home
+export default Home;

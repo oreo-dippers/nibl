@@ -2,10 +2,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
+  devtool: 'source-map',
   entry: './src/index.js',
   output: {
     path: __dirname + '/dist',
     filename: 'index.bundle.js'
+  },
+  resolve: {
+    extensions: ['.js', '.scss', '.css', '.json']
   },
   module: {
     rules: [
@@ -54,6 +58,4 @@ module.exports = {
       hash: true
     })
   ]
-
-
 }

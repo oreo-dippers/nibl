@@ -6,9 +6,15 @@ const app = express();
 
 
 
-app.get("/test", (req, res) => {
-  res.send("hi from express");
+app.get('/test', (req, res) => {
+  res.send('hi from express');
 });
+
+
+app.post('/querydishes', (req, res) => {
+  console.log('hi from /querydishes')
+  res.send('hi from /querydishes')
+})
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
 //

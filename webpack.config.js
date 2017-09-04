@@ -1,5 +1,6 @@
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
@@ -9,6 +10,9 @@ module.exports = {
     filename: 'index.bundle.js'
   },
   resolve: {
+    alias: {
+      '../../theme.config$': path.join(__dirname, 'my-semantic-theme/theme.config')
+    },
     extensions: ['.js', '.scss', '.css', '.json']
   },
   module: {
@@ -38,7 +42,13 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
-      }
+      },
+      {
+        use: ExtractTextPlugin.extract({
+          use: ['css-loader','less-loader']
+        }),
+        test: /\.less$/
+      },
     ]
   },
   devServer: {
@@ -56,6 +66,9 @@ module.exports = {
         collapseWhitespace: true
       },
       hash: true
+    }),
+    new ExtractTextPlugin({
+      filename: '[name].[contenthash].css',
     })
   ]
 }

@@ -25,19 +25,19 @@ export default class Dishes extends Component {
     this.setState({dishQuery});
     console.log('dishQuery', dishQuery)
     var data = {
-      params: dishQuery
+      query: dishQuery
     }
 
-    // axios.post(`${HOST}/test`, data)
-    //   .then((res)=> {
-    //     console.log('res from /dishes', res)
-    //     console.log('res.data from /dishes', res.data)
-    //   })
-    //   .catch((err) => {
-    //     console.log('err from /dishes', err)
-    //   })
-    //
-    //
+    axios.post(`${HOST}/test`, data)
+      .then((res)=> {
+        console.log('successful post!')
+        console.log('res.data', res.data);
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+
+
 
     var request = {
       params: {
@@ -46,11 +46,11 @@ export default class Dishes extends Component {
     }
     axios.get(`${HOST}/test`, request)
       .then((res)=> {
-        console.log('get request');
+        console.log('successful get!');
         console.log('res', res);
       })
       .catch((err) => {
-        console.log('err from /dishes', err)
+        console.log( err)
       })
   }
 

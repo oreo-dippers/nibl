@@ -1,3 +1,15 @@
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+ box-sizing: border-box;
+}
+
+
 .hi {
   color: red;
   text-align: center;
@@ -6,7 +18,68 @@
 
 
 .nav {
+  overflow: hidden;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: #eee;
+  padding: 20px;
+
+
+  list-style-type: none;
+  background-color: #333;
   text-decoration: none;
-  padding: 5px 13px;
-  font-size: 15px;
 }
+#signin {
+  align-self: center;
+}
+
+.footer {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-around;
+}
+
+
+// .nav li {
+//   color: white;
+//   float:left;
+//   padding: 5px 10px;
+//   // margin: 10px;
+// }
+//
+// .signin {
+//   float: right;
+// }
+
+/*
+display: flex;
+
+
+The frogs need to get in the same order as their lilypads using flex-direction. This CSS property defines the direction items are placed in the container, and accepts the following values:
+flex-direction
+  row: Items are placed the same as the text direction.
+  row-reverse: Items are placed opposite to the text direction.
+  column: Items are placed top to bottom.
+  column-reverse: Items are placed bottom to top.
+
+justify-content
+  flex-start
+  flex-end
+  center
+  space-around
+  space-between
+
+
+align-items to get to the bottom.
+This CSS property aligns items vertically and accepts the following values:
+
+align-items
+  flex-start: Items align to the top of the container.
+  flex-end: Items align to the bottom of the container.
+  center: Items align at the vertical center of the container.
+  baseline: Items display at the baseline of the container.
+  stretch: Items are stretched to fit the container.
+*/

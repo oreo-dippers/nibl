@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Form } from 'semantic-ui-react'
 
+let ENV_MODE = 'dev'
+const PROD = `https://us-central1-oreo-nibl.cloudfunctions.net/app`
+const DEV = `http://localhost:5001/oreo-nibl/us-central1/app`
 
-const host = 'https://us-central1-oreo-nibl.cloudfunctions.net/app'
+const HOST = ENV_MODE === 'dev' ? DEV : PROD;
+
+
 export default class Dishes extends Component {
 
   constructor() {
@@ -17,37 +22,52 @@ export default class Dishes extends Component {
   submitDishQuery(e) {
     e.preventDefault();
     let dishQuery = this._dishes.value;
-    
     this.setState({dishQuery});
     console.log('dishQuery', dishQuery)
     var data = {
-      data: dishQuery
+      query: dishQuery
     }
-    axios.post('/test.json', data)
+
+    axios.post(`${HOST}/test`, data)
       .then((res)=> {
-        console.log('res from /dishes', res)
-        console.log('res.data from /dishes', res.data)
+        console.log('successful post!')
+        console.log('res.data', res.data);
       })
       .catch((err) => {
-        console.log('err from /dishes', err)
+        console.log(err)
       })
 
+
+
+    var request = {
+      params: {
+        query: dishQuery
+      }
+    }
+    axios.get(`${HOST}/test`, request)
+      .then((res)=> {
+        console.log('successful get!');
+        console.log('res', res);
+      })
+      .catch((err) => {
+        console.log( err)
+      })
   }
 
 
   render() {
     return (
       <div>
-      
+
         <Form onSubmit={this.submitDishQuery}>
           <Form.Field>
             <label>Find Dishes</label>
-            <input 
+            <input
               ref={(d)=>this._dishes = d}
             />
           </Form.Field>
         </Form>
-        
+
         You Searched for {this.state.dishQuery}
       </div>
     )

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import {Button, Container, Header, Icon} from 'semantic-ui-react'
-import GridLayout from './sample';
+
 class Footer extends Component {
   render() {
     return (

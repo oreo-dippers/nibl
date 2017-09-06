@@ -47,7 +47,7 @@ module.exports.getMenu = function(req, res) {
 };
 
 module.exports.getRecommendation = function(req, res) {
-  var url = 'https://api.foursquare.com/v2/venues/search';
+  var url = 'https://api.foursquare.com/v2/venues/explore';
   var credentials = {
     'v': '20170904'
   };
@@ -58,7 +58,9 @@ module.exports.getRecommendation = function(req, res) {
   var parameterObj = {
     'query':'pizza my heart',
     'near': 'Santa Clara, CA, United States',
-    'radius': '10000'
+    'radius': '10000',
+    'venuePhotos': '1',
+    'section': 'food'
   }
 
   var parameter = querystring.stringify(parameterObj);
@@ -71,6 +73,6 @@ module.exports.getRecommendation = function(req, res) {
     console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
     var data = JSON.parse(body);
     console.log('body:', data);
-    res.send(data.response.venues);
+    res.send(data.response.groups[0].items);
   });
 };

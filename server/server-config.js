@@ -13,5 +13,6 @@ app.get('/', function (req, res) {
 
 app.get('/venue',routeHandler.getVenue);
 app.get('/menu',routeHandler.getMenu);
+app.get('/api/restaurants/',routeHandler.getRecommendation);
 
 module.exports = app;

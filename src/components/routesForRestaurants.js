@@ -7,10 +7,10 @@ import Restaurant from './restaurant'
 
 // The RoutesForRestaurants component matches one of two different routes
 // depending on the full pathname
-const RoutesForRestaurants = () => (
+const RoutesForRestaurants = ({restaurants}) => (
   <Switch>
-    <Route exact path='/restaurants' component={RestaurantsList}/>
-    <Route path='/restaurants/:name' component={Restaurant}/>
+    <Route exact path='/restaurants' component={() => <RestaurantsList restaurants={restaurants}/>}/>
+    <Route path='/restaurants/:name' component={Restaurant }/>
   </Switch>
 )
 

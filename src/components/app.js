@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import Header from './header';
 import Main from './main';
 import Footer from './footer';
-
+import RestaurantsAPI from '../restaurants_api'
 import { Switch, Route } from 'react-router-dom'
+import VenuesByQueryAPI from '../../json-data/venues-by-query'
 import Home from './home'
 
 
@@ -11,14 +12,22 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      test: 'testing state 123'
+      restaurants: [],
     }
+    console.log('VenuesByQueryAPI', VenuesByQueryAPI)
   }
+
+  componentDidMount() {
+    var restaurants = VenuesByQueryAPI.response.venues
+    this.setState({restaurants});
+  }
+
   render() {
+    const { restaurants } = this.state;
     return (
       <div>
         <Header />
-        <Main test={this.state.test}/>
+        <Main restaurants={restaurants}/>
         <Footer />
       </div>
     )

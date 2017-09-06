@@ -3,15 +3,18 @@ const app = express()
 var bodyParser = require('body-parser')
 var logger = require('morgan')
 var routeHandler = require('./route-handler')
+var path = require('path')
 
 app.use(bodyParser.json())
 app.use(logger('dev'))
+app.use(express.static(path.join(__dirname, '../dist')));
 
 app.get('/', function (req, res) {
-  res.send('Hello World!')
+  res.render('/index');
 })
 
 app.get('/venue',routeHandler.getVenue);
 app.get('/menu',routeHandler.getMenu);
+app.get('/api/restaurants/',routeHandler.getRecommendation);
 
 module.exports = app;

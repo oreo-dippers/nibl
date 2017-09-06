@@ -7,6 +7,7 @@
     "dev": "webpack-dev-server",
     "prod": "webpack -p",
     "serve": "webpack -d --watch & firebase serve --only functions,hosting",
+    "express": "webpack -d --watch & nodemon server/server.js",
     "postinstall": "cd functions && npm install",
     "deploy": "npm run prod && firebase deploy"
   },

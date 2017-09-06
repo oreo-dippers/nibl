@@ -1,0 +1,77 @@
+[
+  {
+    "id": "4bf58dd8d48988d10f941735",
+    "name": "Brooklyn Bridge Park - Pier 2",
+    "location": {
+      "address": "Furman St",
+      "crossStreet": "Brooklyn Bridge Park Greenway",
+      "lat": 40.69957016220183,
+      "lng": -73.99793274204788,
+      "formattedAddress": [
+      "Furman St (Brooklyn Bridge Park Greenway)",
+      "Brooklyn, NY 11201"
+      ]
+    },
+    "image": "https://static.pexels.com/photos/196643/pexels-photo-196643.jpeg"
+  },
+  {
+    "id": "586d7c252bc5e206e4ba02a1",
+    "name": "Kettle'e",
+    "location": {
+      "address": "Furman St",
+      "crossStreet": "Brooklyn Bridge Park Greenway",
+      "lat": 40.69957016220183,
+      "lng": -73.99793274204788,
+      "formattedAddress": [
+      "Furman St (Brooklyn Bridge Park Greenway)",
+      "Brooklyn, NY 11201"
+      ]
+    },
+    "image": "https://static.pexels.com/photos/196643/pexels-photo-196643.jpeg"
+  },
+  {
+    "id": "54df8b94498e4e594c858943",
+    "name": "Mission City Grill",
+    "location": {
+      "address": "Furman St",
+      "crossStreet": "Brooklyn Bridge Park Greenway",
+      "lat": 40.69957016220183,
+      "lng": -73.99793274204788,
+      "formattedAddress": [
+      "Furman St (Brooklyn Bridge Park Greenway)",
+      "Brooklyn, NY 11201"
+      ]
+    },
+    "image": "https://static.pexels.com/photos/196643/pexels-photo-196643.jpeg"
+  },
+  {
+    "id": "4bb647c8ef159c74b5b375f7",
+    "name": "Dusita Thai",
+    "location": {
+      "address": "Furman St",
+      "crossStreet": "Brooklyn Bridge Park Greenway",
+      "lat": 40.69957016220183,
+      "lng": -73.99793274204788,
+      "formattedAddress": [
+      "Furman St (Brooklyn Bridge Park Greenway)",
+      "Brooklyn, NY 11201"
+      ]
+    },
+    "image": "https://static.pexels.com/photos/196643/pexels-photo-196643.jpeg"
+  },
+  {
+    "id": "4b567f20f964a520f11228e3",
+    "name": "Gooyi Gooyi",
+    "location": {
+      "address": "Furman St",
+      "crossStreet": "Brooklyn Bridge Park Greenway",
+      "lat": 40.69957016220183,
+      "lng": -73.99793274204788,
+      "formattedAddress": [
+      "Furman St (Brooklyn Bridge Park Greenway)",
+      "Brooklyn, NY 11201"
+      ]
+    },
+    "image": "https://static.pexels.com/photos/196643/pexels-photo-196643.jpeg"
+  }
+];

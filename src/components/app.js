@@ -18,7 +18,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    var restaurants = RestaurantsAPI.restaurants
+    var restaurants = VenuesByQueryAPI.response.venues
     this.setState({restaurants});
   }
 

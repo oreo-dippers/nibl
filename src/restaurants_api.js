@@ -1,5 +1,5 @@
 // A simple data API that will be used to get the data for our
-// components. 
+// components.
 const RestaurantsAPI = {
   restaurants: [
     { store_id: 1, name: "Awesome_Tacos", location: "LA" },
@@ -8,12 +8,7 @@ const RestaurantsAPI = {
     { store_id: 4, name: "Awesome_Burger", location: "Florida" },
     { store_id: 5, name: "Awesome_Donuts", location: "Irvine" },
     { store_id: 6, name: "Awesome_Pizza", location: "OC" }
-  ],
-  all: function() { return this.restaurants},
-  get: function(name) {
-    const isRestaurant = r => r.name === name
-    return this.restaurants.find(isRestaurant)
-  }
+  ]
 }
 
 export default RestaurantsAPI

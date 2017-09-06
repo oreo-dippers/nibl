@@ -27,8 +27,9 @@ export default class Nav extends Component {
   render() {
     const { activeItem, currentUser } = this.state;
     return (
-      <div>
+      <div style={{background: '#1abc9c'}}>
         <Menu pointing secondary>
+        <h1 style={{color: '#ffffff'}}>Nibl</h1>
           <Link to='/'>
             <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} />
           </Link>

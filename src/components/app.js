@@ -4,6 +4,7 @@ import Main from './main';
 import Footer from './footer';
 import RestaurantsAPI from '../restaurants_api'
 import { Switch, Route } from 'react-router-dom'
+import VenuesByQueryAPI from '../../json-data/venues-by-query'
 import Home from './home'
 
 
@@ -13,6 +14,7 @@ class App extends Component {
     this.state = {
       restaurants: [],
     }
+    console.log('VenuesByQueryAPI', VenuesByQueryAPI)
   }
 
   componentDidMount() {

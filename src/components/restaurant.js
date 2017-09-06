@@ -17,9 +17,14 @@ class Restaurant extends Component {
     return (
       <div>
         <h1>{restaurant.name}</h1>
-        <h2>Store ID: {restaurant.store_id}</h2>
-        <h2>Location: {restaurant.location}</h2>
-        <Link to='/restaurants'>Back</Link>
+        <h2>Store ID: {restaurant.id}</h2>
+        <h2>Phone: {restaurant.contact.formatedPhone}</h2>
+        <h2>Address: {restaurant.location.address}</h2>
+        <h2>City: {restaurant.location.city}</h2>
+        <h2>State: {restaurant.location.state}</h2>
+        <h2>Lat: {restaurant.location.labeledLatLngs[0].lat}</h2>
+        <h2>Lng: {restaurant.location.labeledLatLngs[0].lng}</h2>
+        <h2><Link to='/restaurants'>Back</Link></h2>
       </div>
     )
   }

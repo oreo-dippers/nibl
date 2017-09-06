@@ -32,6 +32,7 @@ results
 npm-debug.log
 node_modules
 api-config/foursquare-config.js
+package-lock.json
 
 .git
 dist

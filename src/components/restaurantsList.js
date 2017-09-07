@@ -15,10 +15,10 @@ class RestaurantsList extends Component {
         <ul>
           {
             this.props.restaurants.map(r => {
-              var store_name = dashify(r.name)
+              var store_name = dashify(r.venue.name)
 
               return (
-              <li key={r.id}>
+              <li key={r.venue.id}>
                 <Link
                   to={{
                     pathname: `/restaurants/${store_name}`,

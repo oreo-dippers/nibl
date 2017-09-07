@@ -18,7 +18,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    var restaurants = VenuesByQueryAPI.response.venues
+    var restaurants = VenuesByQueryAPI.response.groups[0].items
+    console.log('restaurants', restaurants);
     this.setState({restaurants});
   }
 

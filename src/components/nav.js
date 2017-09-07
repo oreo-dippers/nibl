@@ -69,13 +69,16 @@ export default class Nav extends Component {
 								</div>
 							</Link>
 						</div>
-
+            <Link to="/restaurants">
 						<div className="item">
 							<div className="ui icon input">
-								<input id="tallbox" type="text" placeholder="burgers, tacps..." />
+								<input id="tallbox" type="text" placeholder="burgers, tacos..." />
 								<i className="search icon" />
 							</div>
 						</div>
+          </Link>
+
+
 						<div className="item">
 							<div className="ui compact menu">
 								<div className="ui simple dropdown item">

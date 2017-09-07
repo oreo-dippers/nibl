@@ -8,7 +8,7 @@ class Restaurant extends Component {
   render() {
     const restaurant = this.props.location.state.restaurant
     const { venue } = restaurant;
-    const img = `${venue.photos.groups[0].items[0].prefix}100${venue.photos.groups[0].items[0].suffix}`
+    const img = `${venue.photos.groups[0].items[0].prefix}500${venue.photos.groups[0].items[0].suffix}`
     console.log('img', img);
 
       if (!restaurant) {

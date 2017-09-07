@@ -17,11 +17,11 @@ class RestaurantCard extends Component {
 		}
 		return (
 			<div className="ui container ">
-				<div className="ui star rating" data-rating="3" />
-				<div className="ui fluid card">
-					<div className="image">
+				<div className="ui fluid card"  >
+					<div  className="image" >
 						{
               venue.photos && <img
+								id="restimg"
                 src={img}
                 // src="http://wikitravel.org/upload/shared//1/1e/Hong_Kong_Culinary_Banner.jpg"
                 alt="bill"

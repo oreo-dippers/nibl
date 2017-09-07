@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Menu } from 'semantic-ui-react';
+import { Menu, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { auth, googleAuthProvider } from './firebase';
 
@@ -12,8 +12,6 @@ export default class Nav extends Component {
 		};
 		this.handleItemClick = this.handleItemClick.bind(this);
 	}
-
-  
 
 	componentDidMount() {
 		auth.onAuthStateChanged(currentUser => {
@@ -71,19 +69,26 @@ export default class Nav extends Component {
 								</div>
 							</Link>
 						</div>
-            <Link to="/restaurants">
+
 						<div className="item">
 							<div className="ui icon input">
 								<input
-                  ref={(q) => {this._restaurant = q}}
-                  id="tallbox"
-                  type="text"
-                  placeholder="burgers, tacos..." />
-								<i className="search icon" />
+									ref={q => {
+										this._restaurant = q;
+									}}
+									id="tallbox"
+									type="text"
+									placeholder="burgers, tacos..."
+									required
+								/>
+
+								<Link to="/restaurants">
+									<Button className="ui icon button">
+										<i className="search icon" />
+									</Button>
+								</Link>
 							</div>
 						</div>
-          </Link>
-
 
 						<div className="item">
 							<div className="ui compact menu">

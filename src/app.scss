@@ -24,7 +24,7 @@ html {
   display: flex;
   align-items: center;
   width: 100%;
-  background: #eee;
+  background: #FFFFFF;
   padding: 20px;
 
 
@@ -37,10 +37,22 @@ html {
 }
 
 .footer {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-around;
+  // display: flex;
+  // align-items: baseline;
+  // justify-content: space-around;
+  position: fixed;
+  left: 0px;
+  bottom: 25px;
+  height:30px;
+  width:100%;
+
 }
+
+.uicard {
+  width: 500px;
+  margin:0px auto;
+}
+
 
 
 // .nav li {

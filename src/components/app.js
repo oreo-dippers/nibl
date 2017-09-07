@@ -56,7 +56,7 @@ class App extends Component {
         radius: '5000'
       }
     }
-    axios.get(`${DEV}/api/restaurants`, request)
+    axios.get(`/api/restaurants`, request)
       .then((res)=> {
         console.log('successful get!');
         console.log('res', res.data);

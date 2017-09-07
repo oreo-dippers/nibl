@@ -53,15 +53,15 @@ module.exports.getRecommendation = function(req, res) {
   };
   credentials.client_id = foursquare.CLIENT_ID;
   credentials.client_secret = foursquare.CLIENT_SECRET;
-
   var qs = querystring.stringify(credentials);
   var parameterObj = {
-    'query':'pizza my heart',
-    'near': 'Santa Clara, CA, United States',
-    'radius': '10000',
     'venuePhotos': '1',
     'section': 'food'
   }
+  parameterObj.query = req.body.params.query;
+  parameterObj.near = req.body.params.near;
+  parameterObj.radius = req.body.params.radius;
+
 
   var parameter = querystring.stringify(parameterObj);
 
@@ -72,7 +72,6 @@ module.exports.getRecommendation = function(req, res) {
     console.log('error:', error); // Print the error if one occurred
     console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
     var data = JSON.parse(body);
-    console.log('body:', data);
-    res.send(data.response.groups[0].items);
+    res.send(data);
   });
 };

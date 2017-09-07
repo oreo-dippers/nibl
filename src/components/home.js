@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid, Image, Segment } from 'semantic-ui-react'
-const Home = props => (
+
+const Home = () => (
   <div>
     <h1>Welcome to Nibl!</h1>
     <Segment>

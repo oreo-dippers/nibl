@@ -25,6 +25,20 @@ class Restaurant extends Component {
         <h2>Lat: {restaurant.location.labeledLatLngs[0].lat}</h2>
         <h2>Lng: {restaurant.location.labeledLatLngs[0].lng}</h2>
         <h2><Link to='/restaurants'>Back</Link></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
       </div>
     )
   }

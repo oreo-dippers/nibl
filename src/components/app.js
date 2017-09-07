@@ -3,9 +3,9 @@ import axios from 'axios'
 import Header from './header';
 import Main from './main';
 import Footer from './footer';
-import RestaurantsAPI from '../restaurants_api'
+
 import { Switch, Route } from 'react-router-dom'
-import VenuesByQueryAPI from '../../json-data/venues-by-query'
+
 import Home from './home'
 import { Form, Button, Menu } from 'semantic-ui-react'
 
@@ -18,14 +18,13 @@ class App extends Component {
       restaurants: [],
       restaurantQuery: '',
     }
-    console.log('VenuesByQueryAPI', VenuesByQueryAPI)
     this.submitrestaurantQuery = this.submitrestaurantQuery.bind(this);
   }
 
   componentDidMount() {
-    var restaurants = VenuesByQueryAPI.response.groups[0].items
-    console.log('restaurants', restaurants);
-    this.setState({restaurants});
+    // var restaurants = VenuesByQueryAPI.response.groups[0].items
+    // console.log('restaurants', restaurants);
+    // this.setState({restaurants});
   }
 
   submitrestaurantQuery(e) {
@@ -33,10 +32,6 @@ class App extends Component {
     let restaurantQuery = this._restaurants.value;
     this.setState({restaurantQuery});
     console.log('restaurantQuery', restaurantQuery)
-
-
-
-
 
 
     // example post
@@ -61,10 +56,14 @@ class App extends Component {
         radius: '5000'
       }
     }
-    axios.get(`${DEV}/test`, request)
+    axios.get(`${DEV}/api/restaurants`, request)
       .then((res)=> {
         console.log('successful get!');
-        console.log('res', res);
+        console.log('res', res.data);
+        var restaurants = res.data.response.groups[0].items
+        console.log('restaurants', restaurants);
+        this.setState({restaurants});
+
       })
       .catch((err) => {
         console.log( err)

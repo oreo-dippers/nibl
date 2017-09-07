@@ -9,6 +9,7 @@ const dashify = (str) => {
 }
 
 class RestaurantsList extends Component {
+
   render() {
     return (
       <div>
@@ -19,6 +20,7 @@ class RestaurantsList extends Component {
 
               return (
               <li key={r.venue.id}>
+
                   <RestaurantCard restaurant={r}/>
               </li>
             )})

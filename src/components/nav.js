@@ -13,6 +13,8 @@ export default class Nav extends Component {
 		this.handleItemClick = this.handleItemClick.bind(this);
 	}
 
+  
+
 	componentDidMount() {
 		auth.onAuthStateChanged(currentUser => {
 			console.log('AUTH_CHANGE', currentUser);

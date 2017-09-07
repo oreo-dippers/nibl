@@ -58,8 +58,21 @@ export default class Dishes extends Component {
   render() {
     return (
       <div>
-
-        <Form onSubmit={this.submitDishQuery}>
+      <div className="ui container">
+      <h1> Comment History </h1>
+        <li>"Ramen Depot was delicious!"</li>
+        <li>"I love tiny tacos!"</li>
+        <li>"100% would come back to this place for their donuts"</li>
+        <li>"If you like fries, you would love these loaded tater tots"</li>
+      <h1> Liked Dishes </h1>
+        <li>Taco from @TacoBell</li>
+        <li>Burrito from @TacoBell</li>
+        <li>Sandwich from @CarlsJn</li>
+        <li>Salad from @McDonalds</li>
+        <li>Chicken from @ChickenHeaven</li>
+        <li>Steak from @SteakFactory</li>
+</div>
+        {/*<Form onSubmit={this.submitDishQuery}>
           <Form.Field>
             <label>Find Dishes</label>
             <input
@@ -67,8 +80,11 @@ export default class Dishes extends Component {
             />
           </Form.Field>
         </Form>
+        
+         You Searched for {this.state.dishQuery}
+        */}
 
-        You Searched for {this.state.dishQuery}
+       
       </div>
     )
   }

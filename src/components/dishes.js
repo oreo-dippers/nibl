@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Form } from 'semantic-ui-react'
 
-let ENV_MODE = 'dev'
+const ENV_MODE = 'dev'
 const PROD = `https://us-central1-oreo-nibl.cloudfunctions.net/app`
 const DEV = `http://localhost:5001/oreo-nibl/us-central1/app`
 

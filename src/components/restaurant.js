@@ -16,7 +16,7 @@ class Restaurant extends Component {
       }
       
     return (
-      <div>
+      <div className="ui container">
         <h1>{venue.name}</h1>
         <h2>Store ID: {venue.id}</h2>
         <h2>Phone: {venue.contact.formatedPhone}</h2>

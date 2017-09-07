@@ -116,14 +116,25 @@ export default class Nav extends Component {
 							)}
 
 							{currentUser && (
+								
 								<Menu.Menu position="right">
+								<div className="item">
+								<img className="ui avatar image" src="https://pbs.twimg.com/profile_images/855050845821427712/jyeW8XJQ_400x400.jpg" />
+								</div>
+								<div className="item">
+								
+								<h2 style={{ color: '#FFFFFF' }} >Kevin Su</h2>
+								</div>
 									<Menu.Item
 										style={{ color: '#FFFFFF' }}
 										name="logout"
 										active={activeItem === 'logout'}
 										onClick={() => auth.signOut()}
 									/>
+									
 								</Menu.Menu>
+								
+
 							)}
 						</div>
 					</div>

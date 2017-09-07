@@ -9,7 +9,7 @@ class RestaurantCard extends Component {
 
     const restaurant = this.props.restaurant
     const { venue } = restaurant;
-    const img = `${venue.photos.groups[0].items[0].prefix}100${venue.photos.groups[0].items[0].suffix}`
+    const img = `${venue.photos.groups[0].items[0].prefix}800x300${venue.photos.groups[0].items[0].suffix}`
     console.log('img', img);
 
 		if (!restaurant) {
@@ -42,7 +42,7 @@ class RestaurantCard extends Component {
 						</a>
 						<div className="meta">
 							<Rating
-								placeholderRate={3.5}
+								placeholderRate={5}
 								full={<img src="https://thumb.ibb.co/fgib4F/star_full.png" className="icon" alt="" />}
 								placeholder={
 									<img src="https://thumb.ibb.co/fgib4F/star_full.png" className="icon" alt="" />

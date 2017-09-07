@@ -30,7 +30,15 @@ class RestaurantCard extends Component {
 					</div>
 					<div className="content">
 						<a className="header">
-							<h1>{venue.name}</h1>
+              <Link to={
+                {
+                  pathname: `/restaurants/${venue.name}`,
+                  state: {restaurant}
+                }
+                }>
+                <h1>{venue.name}</h1>
+              </Link>
+							{/* <h1>{venue.name}</h1> */}
 						</a>
 						<div className="meta">
 							<Rating

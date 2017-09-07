@@ -19,14 +19,7 @@ class RestaurantsList extends Component {
 
               return (
               <li key={r.venue.id}>
-                <Link
-                  to={{
-                    pathname: `/restaurants/${store_name}`,
-                    state: { restaurant: r }
-                  }}
-                  >
                   <RestaurantCard restaurant={r}/>
-                </Link>
               </li>
             )})
           }

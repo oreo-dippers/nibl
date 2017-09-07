@@ -52,7 +52,7 @@ export default class Nav extends Component {
 									active={activeItem === 'kitchen'}
 									onClick={this.handleItemClick}
 								>
-									Kitchen
+									Restaurants
 								</div>
 							</Link>
 						</div>
@@ -72,7 +72,11 @@ export default class Nav extends Component {
             <Link to="/restaurants">
 						<div className="item">
 							<div className="ui icon input">
-								<input id="tallbox" type="text" placeholder="burgers, tacos..." />
+								<input
+                  ref={(q) => {this._restaurant = q}}
+                  id="tallbox"
+                  type="text"
+                  placeholder="burgers, tacos..." />
 								<i className="search icon" />
 							</div>
 						</div>

@@ -47,6 +47,7 @@ module.exports.getMenu = function(req, res) {
 };
 
 module.exports.getRecommendation = function(req, res) {
+  console.log('from getRecommendation req.query', req.query)
   var url = 'https://api.foursquare.com/v2/venues/explore';
   var credentials = {
     'v': '20170904'
@@ -56,11 +57,12 @@ module.exports.getRecommendation = function(req, res) {
   var qs = querystring.stringify(credentials);
   var parameterObj = {
     'venuePhotos': '1',
-    'section': 'food'
+
   }
-  parameterObj.query = req.body.params.query;
-  parameterObj.near = req.body.params.near;
-  parameterObj.radius = req.body.params.radius;
+  var myQuery = req.query
+  parameterObj.query = myQuery.query;
+  parameterObj.near = myQuery.near;
+  parameterObj.radius = myQuery.radius;
 
 
   var parameter = querystring.stringify(parameterObj);

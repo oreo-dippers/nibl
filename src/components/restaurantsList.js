@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import RestaurantCard from './restaurantCard'
 
 // The RestaurantsList iterates over all of the restaurants and creates
 // a link to their profile page.
-
-var dashify = (str) => {
+const dashify = (str) => {
   return str.toLowerCase().split(' ').join('-')
 }
 
@@ -25,7 +25,7 @@ class RestaurantsList extends Component {
                     state: { restaurant: r }
                   }}
                   >
-                  {store_name}
+                  <RestaurantCard restaurant={r}/>
                 </Link>
               </li>
             )})

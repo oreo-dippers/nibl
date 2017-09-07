@@ -4,7 +4,10 @@ var Rating = require('react-rating');
 
 class RestaurantCard extends Component {
 	render() {
-    const restaurant = this.props.location.state.restaurant
+    console.log('this', this);
+    // const restaurant = this.props.location.state.restaurant
+
+    const restaurant = this.props.restaurant
     const { venue } = restaurant;
     const img = `${venue.photos.groups[0].items[0].prefix}100${venue.photos.groups[0].items[0].suffix}`
     console.log('img', img);

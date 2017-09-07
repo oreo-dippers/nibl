@@ -6,39 +6,25 @@ import { Link } from 'react-router-dom'
 // name, then a "Restaurant not found" message is displayed.
 class Restaurant extends Component {
   render() {
-    console.log('this', this)
-    console.log('this.props.location.state', this.props.location.state);
+    const restaurant = this.props.location.state.restaurant
+    const { venue } = restaurant;
+    const img = `${venue.photos.groups[0].items[0].prefix}100${venue.photos.groups[0].items[0].suffix}`
+    console.log('img', img);
 
-      const restaurant = this.props.location.state.restaurant
-      console.log('restaurant', restaurant);
       if (!restaurant) {
         return <div>Sorry, but the restaurant was not found</div>
       }
+      
     return (
       <div>
-        <h1>{restaurant.name}</h1>
-        <h2>Store ID: {restaurant.id}</h2>
-        <h2>Phone: {restaurant.contact.formatedPhone}</h2>
-        <h2>Address: {restaurant.location.address}</h2>
-        <h2>City: {restaurant.location.city}</h2>
-        <h2>State: {restaurant.location.state}</h2>
-        <h2>Lat: {restaurant.location.labeledLatLngs[0].lat}</h2>
-        <h2>Lng: {restaurant.location.labeledLatLngs[0].lng}</h2>
+        <h1>{venue.name}</h1>
+        <h2>Store ID: {venue.id}</h2>
+        <h2>Phone: {venue.contact.formatedPhone}</h2>
+        <h2>Address: {venue.location.formattedAddress.join('\n')}</h2>
+
+        <h2>Lat: {venue.location.labeledLatLngs[0].lat}</h2>
+        <h2>Lng: {venue.location.labeledLatLngs[0].lng}</h2>
         <h2><Link to='/restaurants'>Back</Link></h2>
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
       </div>
     )
   }

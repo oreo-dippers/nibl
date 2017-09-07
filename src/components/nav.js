@@ -13,6 +13,8 @@ export default class Nav extends Component {
 		this.handleItemClick = this.handleItemClick.bind(this);
 	}
 
+  
+
 	componentDidMount() {
 		auth.onAuthStateChanged(currentUser => {
 			console.log('AUTH_CHANGE', currentUser);
@@ -52,7 +54,7 @@ export default class Nav extends Component {
 									active={activeItem === 'kitchen'}
 									onClick={this.handleItemClick}
 								>
-									Kitchen
+									Restaurants
 								</div>
 							</Link>
 						</div>
@@ -69,13 +71,20 @@ export default class Nav extends Component {
 								</div>
 							</Link>
 						</div>
-
+            <Link to="/restaurants">
 						<div className="item">
 							<div className="ui icon input">
-								<input id="tallbox" type="text" placeholder="burgers, tacps..." />
+								<input
+                  ref={(q) => {this._restaurant = q}}
+                  id="tallbox"
+                  type="text"
+                  placeholder="burgers, tacos..." />
 								<i className="search icon" />
 							</div>
 						</div>
+          </Link>
+
+
 						<div className="item">
 							<div className="ui compact menu">
 								<div className="ui simple dropdown item">

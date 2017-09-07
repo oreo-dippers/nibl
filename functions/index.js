@@ -6,6 +6,7 @@ const logger = require('morgan');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
+const VenuesByQueryAPI = require('../json-data/venues-by-query');
 
 
 app.use(cors());
@@ -23,11 +24,11 @@ app.post('/test', (req, res) => {
   res.send(req.body);
 })
 
-app.get('/querydishes', (req, res) => {
-  res.send('Hello, Functions\n');
+
+app.get('/api/restaurants', (req, res) => {
+  console.log('req.query', req.query);
+  res.json(VenuesByQueryAPI);
 })
-
-
 
 
 

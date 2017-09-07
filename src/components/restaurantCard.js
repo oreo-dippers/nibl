@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 var Rating = require('react-rating');
 
-class ResturauntCard extends Component {
+class RestaurantCard extends Component {
 	render() {
-		console.log('this', this);
-		console.log('this.props.location.state', this.props.location.state);
+    console.log('this', this);
+    // const restaurant = this.props.location.state.restaurant
 
-		const restaurant = this.props.location.state.restaurant;
-		console.log('restaurant', restaurant);
+    const restaurant = this.props.restaurant
+    const { venue } = restaurant;
+    const img = `${venue.photos.groups[0].items[0].prefix}100${venue.photos.groups[0].items[0].suffix}`
+    console.log('img', img);
+
 		if (!restaurant) {
 			return <div>Sorry, but the restaurant was not found</div>;
 		}
@@ -17,11 +20,25 @@ class ResturauntCard extends Component {
 				<div className="ui star rating" data-rating="3" />
 				<div className="ui fluid card">
 					<div className="image">
-						<img src="http://wikitravel.org/upload/shared//1/1e/Hong_Kong_Culinary_Banner.jpg" alt="bill" />
+						{
+              venue.photos && <img
+                src={img}
+                // src="http://wikitravel.org/upload/shared//1/1e/Hong_Kong_Culinary_Banner.jpg"
+                alt="bill"
+              />
+            }
 					</div>
 					<div className="content">
 						<a className="header">
-							<h1>{restaurant.name}</h1>
+              <Link to={
+                {
+                  pathname: `/restaurants/${venue.name}`,
+                  state: {restaurant}
+                }
+                }>
+                <h1>{venue.name}</h1>
+              </Link>
+							{/* <h1>{venue.name}</h1> */}
 						</a>
 						<div className="meta">
 							<Rating
@@ -43,7 +60,7 @@ class ResturauntCard extends Component {
 					<div className="extra content">
 						<a>
 							<i className="map outline icon" />
-							{restaurant.location.address}, {restaurant.location.city}, {restaurant.location.state}
+							{venue.location.formattedAddress.join(', ')}
 						</a>
 					</div>
 				</div>
@@ -53,4 +70,4 @@ class ResturauntCard extends Component {
 	}
 }
 
-export default ResturauntCard;
+export default RestaurantCard;

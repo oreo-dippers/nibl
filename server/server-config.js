@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const logger = require('morgan')
 const routeHandler = require('./route-handler')
 const path = require('path')
+const db = require('../db/db.js');
 
 app.use(bodyParser.json())
 

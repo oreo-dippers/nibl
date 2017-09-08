@@ -24,13 +24,16 @@
     "firebase-admin": "~5.2.1",
     "firebase-functions": "^0.6.3",
     "morgan": "^1.8.2",
+    "pg": "^7.3.0",
+    "pg-hstore": "^2.3.2",
     "react": "^15.6.1",
     "react-background-image-loader": "0.0.5",
     "react-dom": "^15.6.1",
     "react-rating": "^0.8.1",
     "react-router-dom": "^4.2.2",
     "request": "^2.81.0",
-    "semantic-ui-react": "^0.72.0"
+    "semantic-ui-react": "^0.72.0",
+    "sequelize": "^4.8.2"
   },
   "devDependencies": {
     "babel": "^6.23.0",

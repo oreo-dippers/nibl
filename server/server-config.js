@@ -1,9 +1,9 @@
 const express = require('express')
 const app = express()
-var bodyParser = require('body-parser')
-var logger = require('morgan')
-var routeHandler = require('./route-handler')
-var path = require('path')
+const bodyParser = require('body-parser')
+const logger = require('morgan')
+const routeHandler = require('./route-handler')
+const path = require('path')
 
 app.use(bodyParser.json())
 

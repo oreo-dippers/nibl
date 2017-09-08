@@ -1,7 +1,7 @@
 const querystring = require('querystring');
 const foursquare = require('../api-config/foursquare-config.js')
-var request = require('request')
-var bodyParser = require('body-parser')
+const request = require('request')
+const bodyParser = require('body-parser')
 
   var credentials = {
     'v': '20170904'
@@ -45,8 +45,8 @@ module.exports.getMenu = function(req, res) {
     if(response) {
       console.log('statusCode:', response && response.statusCode);
     }
-    var data = JSON.parse(body);
-    res.send(data);
+
+    res.send(JSON.parse(body));
   });
 };
 
@@ -55,13 +55,12 @@ module.exports.getRestaurants = function(req, res) {
   var myQuery = req.query;
   var parameterObj = {
     'venuePhotos': '1',
-
   }
   parameterObj.query = myQuery.query;
   parameterObj.near = myQuery.near;
   parameterObj.radius = myQuery.radius;
   var parameter = querystring.stringify(parameterObj);
-  var urlQuery = url+ '?' + parameter + '&' + qs;
+  const urlQuery = url+ '?' + parameter + '&' + qs;
 
   request(urlQuery, function (error, response, body) {
     // Print the error if one occurred
@@ -74,7 +73,6 @@ module.exports.getRestaurants = function(req, res) {
       console.log('statusCode:', response && response.statusCode);
     }
 
-    var data = JSON.parse(body);
-    res.send(data);
+    res.send(JSON.parse(body));
   });
 };

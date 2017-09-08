@@ -14,18 +14,7 @@ var qs = querystring.stringify(credentials);
 module.exports.getVenue = function(req, res) {
   var url = 'https://api.foursquare.com/v2/venues/4bf9e1445ec320a11c028bd3';
   var urlQuery = url+ '?' + qs;
-
-  request(urlQuery, function (error, response, body) {
-    // Print the error if one occurred
-    if(error) {
-      console.log('error:', error);
-    }
-
-    // Print the response status code if a response was received
-    if(response) {
-      console.log('statusCode:', response && response.statusCode);
-    }
-    var data = JSON.parse(body);
+  utils.apiCall(urlQuery, function(data) {
     res.send(data.response.venue);
   });
 

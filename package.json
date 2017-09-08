@@ -8,7 +8,7 @@
     "prod": "NODE_ENV=production webpack -p",
     "clean": "rimraf ./dist/*",
     "serve": "webpack -d --watch & firebase serve --only functions,hosting",
-    "express": "webpack -d --watch & nodemon server/server.js",
+    "express": "npm run dev & nodemon server/server.js",
     "postinstall": "cd functions && npm install",
     "deploy": "npm run prod && firebase deploy"
   },

@@ -34,22 +34,20 @@ module.exports.getVenue = function(req, res) {
 
 module.exports.getMenu = function(req, res) {
   var url = 'https://api.foursquare.com/v2/venues/40a55d80f964a52020f31ee3/menu';
-  var credentials = {
-    'v': '20170904'
-  };
-  credentials.client_id = foursquare.CLIENT_ID;
-  credentials.client_secret = foursquare.CLIENT_SECRET;
-  var qs = querystring.stringify(credentials);
   var urlQuery = url+ '?' + qs;
-  console.log('Query String : ', urlQuery);
 
   request(urlQuery, function (error, response, body) {
-    console.log('error:', error); // Print the error if one occurred
-    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+    // Print the error if one occurred
+    if(error) {
+      console.log('error:', error);
+    }
+
+    // Print the response status code if a response was received
+    if(response) {
+      console.log('statusCode:', response && response.statusCode);
+    }
     var data = JSON.parse(body);
-    // console.log('body:', data.response.menu.menus.items[0].entries);
-    console.log('body:', data.response.menu.menus);
-    res.send('Hello foursquare menu');
+    res.send(data);
   });
 };
 

@@ -62,7 +62,8 @@ module.exports = {
     port: 2500,
     stats: 'errors-only',
     open: true,
-    hot: true
+    hot: true,
+    historyApiFallback: true
   },
   plugins: [
     new HtmlWebpackPlugin({

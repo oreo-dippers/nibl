@@ -3,18 +3,19 @@ import axios from 'axios';
 import Header from './header';
 import Main from './main';
 import Footer from './footer';
-
 import { Switch, Route, Link } from 'react-router-dom';
 
 import Home from './home';
 import { Form, Button, Menu } from 'semantic-ui-react';
 
-const DEV = `http://localhost:5001/oreo-nibl/us-central1/app`;
+const FIREBASE = `http://localhost:5001/oreo-nibl/us-central1/app`;
+const EXPRESS = `http://localhost:3006`;
 
 class App extends Component {
 	constructor() {
 		super();
 		this.state = {
+      host: 'dev',
 			restaurants: [],
 			restaurantQuery: ''
 		};
@@ -22,9 +23,7 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		// var restaurants = VenuesByQueryAPI.response.groups[0].items
-		// console.log('restaurants', restaurants);
-		// this.setState({restaurants});
+
 	}
 
 	submitrestaurantQuery(e) {
@@ -56,7 +55,7 @@ class App extends Component {
 			}
 		};
 		axios
-			.get(`/api/restaurants`, request)
+			.get(`${EXPRESS}/api/restaurants`, request)
 			.then(res => {
 				console.log('successful get!');
 				console.log('res', res.data);
@@ -77,8 +76,8 @@ class App extends Component {
 				<br />
 				<br />
 
-      
-   
+
+
 
 
 
@@ -86,7 +85,7 @@ class App extends Component {
   <div className="ui container">
 				<div className="formFieldComponent">
 						<Form onSubmit={this.submitrestaurantQuery} placeholder="search here">
-					
+
 								<input ref={d => (this._restaurants = d)} />
                 <Link to="/restaurants">
 								<Button className="ui primary button" onClick={this.submitrestaurantQuery}>Search</Button>

@@ -1,36 +1,41 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
+
+const isProd = process.env.NODE_ENV === 'production';
+const cssDev = ['style-loader', 'css-loader', 'sass-loader'];
+const cssProd = ExtractTextPlugin.extract({
+  fallback: 'style-loader',
+  loader: ['css-loader', 'sass-loader'],
+  publicPath: '/dist/'
+});
+const cssConfig = isProd ? cssProd : cssDev;
 
 module.exports = {
   devtool: 'source-map',
   entry: './src/index.js',
   output: {
-    path: __dirname + '/dist',
+    path: path.resolve(__dirname, 'dist'),
     filename: 'index.bundle.js'
   },
   resolve: {
-    alias: {
-      '../../theme.config$': path.join(__dirname, 'my-semantic-theme/theme.config')
-    },
-    extensions: ['.js', '.scss', '.css', '.json']
+    extensions: ['.js', '.scss', '.css', '.json', 'jsx']
   },
   module: {
     rules: [
       {
         test: /\.scss$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'sass-loader'
-        ]
+        use: cssConfig
       },
       {
         test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000
-        }
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 10000
+          }
+        }]
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
@@ -52,11 +57,13 @@ module.exports = {
     ]
   },
   devServer: {
-    contentBase: __dirname + '/dist',
+    contentBase: path.resolve(__dirname, 'dist'),
     compress: true,
     port: 2500,
     stats: 'errors-only',
-    open: true
+    open: true,
+    hot: true,
+    historyApiFallback: true
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -69,6 +76,10 @@ module.exports = {
     }),
     new ExtractTextPlugin({
       filename: '[name].[contenthash].css',
-    })
+      disable: !isProd,
+      allChunks: true
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin()
   ]
 }

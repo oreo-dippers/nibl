@@ -25,13 +25,18 @@
     "firebase": "^4.3.0",
     "firebase-admin": "~5.2.1",
     "firebase-functions": "^0.6.3",
+<<<<<<< HEAD
     "lodash-es": "^4.17.4",
+=======
+    "lodash": "^4.17.4",
+>>>>>>> test
     "morgan": "^1.8.2",
     "pg": "^7.3.0",
     "pg-hstore": "^2.3.2",
     "react": "^15.6.1",
     "react-background-image-loader": "0.0.5",
     "react-dom": "^15.6.1",
+    "react-file-input": "^0.2.5",
     "react-rating": "^0.8.1",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",

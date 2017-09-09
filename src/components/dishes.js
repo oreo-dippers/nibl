@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import CommentCard from './CommentCard';
 import { Form } from 'semantic-ui-react'
 
 const ENV_MODE = 'dev'
@@ -59,8 +60,11 @@ export default class Dishes extends Component {
     return (
       <div>
       <div className="ui container">
+
+    
       <h1> Comment History </h1>
-        <li>"Ramen Depot was delicious!"</li>
+      <CommentCard />
+        <li>"Ramen Depot was delicissssous!"</li>
         <li>"I love tiny tacos!"</li>
         <li>"100% would come back to this place for their donuts"</li>
         <li>"If you like fries, you would love these loaded tater tots"</li>

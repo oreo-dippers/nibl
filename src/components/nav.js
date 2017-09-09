@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import { Menu, Button } from 'semantic-ui-react';
+import pick from 'lodash/pick';
+import map from 'lodash/map';
+import CommentCard from './CommentCard'
 import { Link } from 'react-router-dom';
-import { auth, googleAuthProvider } from './firebase';
+import { auth, googleAuthProvider, storage, database } from './firebase';
 
 export default class Nav extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
+		this.usersRef = null;
+		this.userRef = null;
 		this.state = {
+			users: {},
 			activeItem: 'home',
 			currentUser: null
 		};
@@ -15,8 +21,24 @@ export default class Nav extends Component {
 
 	componentDidMount() {
 		auth.onAuthStateChanged(currentUser => {
-			console.log('AUTH_CHANGE', currentUser);
-			this.setState({ currentUser });
+			console.log('The User Authentication Has Changed to: ', currentUser);
+			if (currentUser) {
+				this.setState({ currentUser });
+
+				this.usersRef = database.ref('/users');
+				this.userRef = this.usersRef.child(currentUser.uid);
+				console.log('UID: ', currentUser.uid)
+
+				this.userRef.once('value').then(snapshot => {
+					if (snapshot.val()) return;
+					const userData = pick(currentUser, ['displayName', 'photoURL', 'email']);
+					this.userRef.set(userData);
+				});
+
+				this.usersRef.on('value', snapshot => {
+					this.setState({ users: snapshot.val() });
+				});
+			}
 		});
 	}
 
@@ -25,7 +47,7 @@ export default class Nav extends Component {
 	}
 
 	render() {
-		const { activeItem, currentUser } = this.state;
+		const { activeItem, currentUser, users } = this.state;
 
 		return (
 			<div>
@@ -116,25 +138,21 @@ export default class Nav extends Component {
 							)}
 
 							{currentUser && (
-								
 								<Menu.Menu position="right">
-								<div className="item">
-								<img className="ui avatar image" src="https://pbs.twimg.com/profile_images/855050845821427712/jyeW8XJQ_400x400.jpg" />
-								</div>
-								<div className="item">
-								
-								<h2 style={{ color: '#FFFFFF' }} >Kevin Su</h2>
-								</div>
+									<div className="item">
+										<img className="ui avatar image" src={currentUser.photoURL} />
+									</div>
+									<div className="item">
+										
+										<h2 style={{ color: '#FFFFFF' }}>{currentUser.displayName}</h2>
+									</div>
 									<Menu.Item
 										style={{ color: '#FFFFFF' }}
 										name="logout"
 										// active={activeItem === 'logout'}
 										onClick={() => auth.signOut()}
 									/>
-									
 								</Menu.Menu>
-								
-
 							)}
 						</div>
 					</div>

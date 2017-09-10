@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Menu, Button } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
+import SearchBar from './searchBar'
 import { auth, googleAuthProvider } from './firebase';
 
 export default class Nav extends Component {
@@ -71,7 +72,7 @@ export default class Nav extends Component {
 						</div>
 
 						<div className="item">
-							<div className="ui icon input">
+							{/*<div className="ui icon input">
 								<input
 									ref={q => {
 										this._restaurant = q;
@@ -88,6 +89,9 @@ export default class Nav extends Component {
 									</Button>
 								</Link>
 							</div>
+
+							
+							<SearchBar />*/}
 						</div>
 
 						<div className="item">
@@ -119,11 +123,11 @@ export default class Nav extends Component {
 								
 								<Menu.Menu position="right">
 								<div className="item">
-								<img className="ui avatar image" src="https://pbs.twimg.com/profile_images/855050845821427712/jyeW8XJQ_400x400.jpg" />
+								<img className="ui avatar image" src={currentUser.photoURL} />
 								</div>
 								<div className="item">
 								
-								<h2 style={{ color: '#FFFFFF' }} >Kevin Su</h2>
+								<h2 style={{ color: '#FFFFFF' }} >{currentUser.displayName}</h2>
 								</div>
 									<Menu.Item
 										style={{ color: '#FFFFFF' }}

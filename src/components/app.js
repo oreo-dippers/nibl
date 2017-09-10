@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import { Switch, Route, Link } from 'react-router-dom';
+import { Form, Button, Menu } from 'semantic-ui-react';
+
 import axios from 'axios';
 import Header from './header';
 import Main from './main';
 import Footer from './footer';
-import { Switch, Route, Link } from 'react-router-dom';
-
+import SearchBar from './searchBar';
 import Home from './home';
-import { Form, Button, Menu } from 'semantic-ui-react';
 
 const FIREBASE = `http://localhost:5001/oreo-nibl/us-central1/app`;
 const EXPRESS = `http://localhost:3006`;
@@ -15,20 +16,18 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-      host: 'dev',
+			host: 'dev',
 			restaurants: [],
 			restaurantQuery: ''
 		};
 		this.submitrestaurantQuery = this.submitrestaurantQuery.bind(this);
 	}
 
-	componentDidMount() {
+	componentDidMount() {}
 
-	}
-
-	submitrestaurantQuery(e) {
-		e.preventDefault();
-		let restaurantQuery = this._restaurants.value;
+	submitrestaurantQuery(restaurantQuery) {
+		
+		// let restaurantQuery = this._restaurants.value;
 		this.setState({ restaurantQuery });
 		console.log('restaurantQuery', restaurantQuery);
 
@@ -75,26 +74,8 @@ class App extends Component {
 				<Header />
 				<br />
 				<br />
+				<SearchBar restaurantQuery={this.state.restaurantQuery} submitrestaurantQuery={this.submitrestaurantQuery}/>
 
-
-
-
-
-
-
-  <div className="ui container">
-				<div className="formFieldComponent">
-						<Form onSubmit={this.submitrestaurantQuery} placeholder="search here">
-
-								<input ref={d => (this._restaurants = d)} />
-                <Link to="/restaurants">
-								<Button className="ui primary button" onClick={this.submitrestaurantQuery}>Search</Button>
-                </Link>
-					      You Searched for {this.state.restaurantQuery}
-
-						</Form>
-					</div>
-          </div>
 				<Main restaurants={restaurants} />
 				<Footer />
 			</div>

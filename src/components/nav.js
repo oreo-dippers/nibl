@@ -21,7 +21,7 @@ export default class Nav extends Component {
 	}
 
 	handleItemClick(e, { name }) {
-		this.setState({ activeItem: name });
+		// this.setState({ activeItem: name });
 	}
 
 	render() {
@@ -36,7 +36,7 @@ export default class Nav extends Component {
 								<div
 									className="ui huge header"
 									style={{ color: '#FFFFFF' }}
-									active={activeItem === 'home'}
+									// active={activeItem === 'home'}
 									onClick={this.handleItemClick}
 								>
 									Nibl
@@ -49,7 +49,7 @@ export default class Nav extends Component {
 								<div
 									className="ui medium header"
 									style={{ color: '#FFFFFF' }}
-									active={activeItem === 'kitchen'}
+									// active={activeItem === 'kitchen'}
 									onClick={this.handleItemClick}
 								>
 									Restaurants
@@ -62,7 +62,7 @@ export default class Nav extends Component {
 								<div
 									className="ui medium header"
 									style={{ color: '#FFFFFF' }}
-									active={activeItem === 'reviews'}
+									// active={activeItem === 'reviews'}
 									onClick={this.handleItemClick}
 								>
 									Reviews
@@ -109,7 +109,7 @@ export default class Nav extends Component {
 									<Menu.Item
 										style={{ color: '#FFFFFF' }}
 										name="login"
-										active={activeItem === 'login'}
+										// active={activeItem === 'login'}
 										onClick={() => auth.signInWithPopup(googleAuthProvider)}
 									/>
 								</Menu.Menu>
@@ -128,7 +128,7 @@ export default class Nav extends Component {
 									<Menu.Item
 										style={{ color: '#FFFFFF' }}
 										name="logout"
-										active={activeItem === 'logout'}
+										// active={activeItem === 'logout'}
 										onClick={() => auth.signOut()}
 									/>
 									

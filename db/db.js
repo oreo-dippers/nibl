@@ -29,7 +29,7 @@ const User = db.define("user", {
 });
 
 // Table 2: Restaurant (in DB will be: restaurants)
-// This is the table of restaurants that have been 
+// This is the table of restaurants that have been
 // retrieved from the Foursquare API
 // To get avgRating, we calculate the avgRatings
 // of all the dishes a restaurant has
@@ -53,7 +53,7 @@ const Restaurant = db.define("restaurant", {
 // retrieved from the Foursquare API
 // To get avgRating, we calculate the starRatings
 // from dishReviews
-const Dish = db.define('dish', {
+const Dish = db.define("dish", {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -70,7 +70,7 @@ const Dish = db.define('dish', {
 // Table 4: DishReview (in DB will be: dishReviews)
 // This is the table of reviews for dishes
 // A user can only leave one review per dish
-const DishReview = db.define('dishReview', {
+const DishReview = db.define("dishReview", {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -83,7 +83,8 @@ const DishReview = db.define('dishReview', {
       // String length must be between 1 to 140
       len: {
         args: [1, 140],
-        msg: 'The review must be at least 1 character and up to 140 characters long'
+        msg:
+          "The review must be at least 1 character and up to 140 characters long"
       }
     }
   },
@@ -95,7 +96,7 @@ const DishReview = db.define('dishReview', {
 // Table 5: DishReviewUpvote (in DB will be: dishReviewUpvotes)
 // This is the table of upvotes for reviews of dishes
 // A user can only upvote once per dishReview
-const DishReviewUpvote = db.define('dishReviewUpvote', {
+const DishReviewUpvote = db.define("dishReviewUpvote", {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -107,26 +108,24 @@ const DishReviewUpvote = db.define('dishReviewUpvote', {
 // Table 6: UserDish (in DB will be: userDishes)
 // This is the table of all dishes that a user saves
 // that they are interested in, so that they can order next time
-// This is necessary so that the table will be 'userDishes' 
+// This is necessary so that the table will be 'userDishes'
 // instead of 'UserDish' in DB
 // This way we can refer to it like Tables 1-5
-const UserDish = db.define('userDish', {
-});
+const UserDish = db.define("userDish", {});
 
 // Table 7: UserRestaurant (in DB will be: userRestaurants)
 // This is the table of all restaurants that a user saves
 // that they are interested in, so that they can visit next time
-// This is necessary so that the table will be 'userRestaurants' 
+// This is necessary so that the table will be 'userRestaurants'
 // instead of 'UserRestaurant' in DB
 // This way we can refer to it like Tables 1-5
-const UserRestaurant = db.define('userRestaurant', {
-});
+const UserRestaurant = db.define("userRestaurant", {});
 
 // Table 8: SearchResult (in DB will be: searchResults)
 // This is the table of search queries that users make
 // In the case that the Foursquare API goes down, we can
 // give some information to the user
-const SearchResult = db.define('searchResult', {
+const SearchResult = db.define("searchResult", {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -141,17 +140,20 @@ const SearchResult = db.define('searchResult', {
 Dish.belongsTo(Restaurant);
 Restaurant.hasMany(Dish);
 // DishReview's Associations
-User.belongsToMany(Dish, {through: DishReview});
-Dish.belongsToMany(User, {through: DishReview});
+User.belongsToMany(Dish, { through: DishReview });
+Dish.belongsToMany(User, { through: DishReview });
 // DishReviewUpvote's Associations
-User.belongsToMany(DishReview, {through: DishReviewUpvote});
-DishReview.belongsToMany(User, {through: DishReviewUpvote});
+User.belongsToMany(DishReview, { through: DishReviewUpvote });
+DishReview.belongsToMany(User, { through: DishReviewUpvote });
 // UserDish's Associations
-User.belongsToMany(Dish, {through: UserDish});
-Dish.belongsToMany(User, {through: UserDish});
+User.belongsToMany(Dish, { through: UserDish });
+Dish.belongsToMany(User, { through: UserDish });
 // UserRestaurant's Associations
-User.belongsToMany(Restaurant, {through: UserRestaurant});
-Restaurant.belongsToMany(User, {through: UserRestaurant});
+User.belongsToMany(Restaurant, { through: UserRestaurant });
+Restaurant.belongsToMany(User, { through: UserRestaurant });
+// SearchResult's Associations
+SearchResult.belongsTo(User);
+User.hasMany(SearchResult);
 
 // Sync the database
 db.sync();

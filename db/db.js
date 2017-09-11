@@ -105,7 +105,8 @@ const DishReviewUpvote = db.define('dishReviewUpvote', {
 });
 
 // Table 6: UserDish (in DB will be: userDishes)
-// This is the table 
+// This is the table of all dishes that a user saves
+// that they are interested in, so that they can order next time
 // This is necessary so that the table will be 'userDishes' 
 // instead of 'UserDish' in DB
 // This way we can refer to it like Tables 1-5
@@ -113,6 +114,8 @@ const UserDish = db.define('userDish', {
 });
 
 // Table 7: UserRestaurant (in DB will be: userRestaurants)
+// This is the table of all restaurants that a user saves
+// that they are interested in, so that they can visit next time
 // This is necessary so that the table will be 'userRestaurants' 
 // instead of 'UserRestaurant' in DB
 // This way we can refer to it like Tables 1-5
@@ -132,6 +135,9 @@ DishReview.belongsToMany(User, {through: DishReviewUpvote});
 // UserDish's Associations
 User.belongsToMany(Dish, {through: UserDish});
 Dish.belongsToMany(User, {through: UserDish});
+// UserRestaurant's Associations
+User.belongsToMany(Restaurant, {through: UserRestaurant});
+Restaurant.belongsToMany(User, {through: UserRestaurant});
 
 // Sync the database
 db.sync();

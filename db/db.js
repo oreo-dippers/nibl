@@ -58,6 +58,11 @@ const Dish = db.define('dish', {
   avgRating: Sequelize.FLOAT
 });
 
+// Define Table Associations
+// Dish's Associations
+Dish.belongsTo(Restaurant);
+Restaurant.hasMany(Dish);
+
 // Sync the database
 db.sync();
 

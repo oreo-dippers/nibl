@@ -157,7 +157,9 @@ SearchResult.belongsTo(User);
 User.hasMany(SearchResult);
 
 // Sync the database
-db.sync();
+db.sync({
+  logging: console.log
+});
 
 module.exports = {
   db: db,

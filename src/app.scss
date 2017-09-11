@@ -18,7 +18,6 @@ body h1 {
   font-size: 100;
 }
 
-
 .nav {
   overflow: hidden;
   padding-top: 50px;
@@ -26,14 +25,14 @@ body h1 {
   display: flex;
   align-items: center;
   width: 100%;
-  background: #FFFFFF;
-  padding: 20px;
-
+  // background: #FFFFFF;
+  // padding: 20px;
 
   list-style-type: none;
   background-color: #333;
   text-decoration: none;
 }
+
 #signin {
   align-self: center;
 }
@@ -65,8 +64,19 @@ body h1 {
   
 }
 
+
+textarea{
+  height: 20px !important;
+  width: 455px !important;
+  }
+
+  
+
 #ourstory{
   font-family: "courier";
+  text-indent: 50px;
+  font-style: normal;
+  font-size: 20px;
 }
 
 #restimg{
@@ -80,6 +90,27 @@ body h1 {
 }
 
 
+#rcorners1 {
+  border-radius: 10px;
+  width:175px;
+  height:175px;
+}
+.bg {
+  /* The image used */
+  background-image: url(https://static.pexels.com/photos/256318/pexels-photo-256318.jpeg);
+
+  /* Full height */
+  height: 100%; 
+
+  /* Center and scale the image nicely */
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body {
+  background-color:#f1f2f6;
+}
 
 // .nav li {
 //   color: white;

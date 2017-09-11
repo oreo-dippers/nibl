@@ -9,7 +9,7 @@ class RestaurantCard extends Component {
 
     const restaurant = this.props.restaurant
     const { venue } = restaurant;
-    const img = `${venue.photos.groups[0].items[0].prefix}800x300${venue.photos.groups[0].items[0].suffix}`
+    const img = `${venue.photos.groups[0].items[0].prefix}800x200${venue.photos.groups[0].items[0].suffix}`
     console.log('img', img);
 
 		if (!restaurant) {

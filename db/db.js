@@ -43,6 +43,21 @@ const Restaurant = db.define("restaurant", {
   avgRating: Sequelize.FLOAT
 });
 
+// Table 3: Dish (in DB will be: dishes)
+const Dish = db.define('dish', {
+  id: {
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
+    primaryKey: true
+  },
+  foursquareEntryId: Sequelize.STRING,
+  name: Sequelize.STRING,
+  imageUrl: Sequelize.STRING,
+  description: Sequelize.STRING,
+  price: Sequelize.STRING,
+  avgRating: Sequelize.FLOAT
+});
+
 // Sync the database
 db.sync();
 

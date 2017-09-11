@@ -5,10 +5,10 @@ const dotenv = require('dotenv');
 dotenv.load();
 
 // Make new Sequelize instance to PG DB linked
-const sequelize = new Sequelize(process.env.POSTGRES_URL);
+const db = new Sequelize(process.env.POSTGRES_URL);
 
-// Ensure sequelize makes connection 
-sequelize
+// Ensure db makes connection 
+db
   .authenticate()
   .then(() => {
     console.log('Postgres Database connection established successfully!');
@@ -17,4 +17,4 @@ sequelize
     console.error('Postgres Database connection failed: ', err);
   });
 
-module.exports = sequelize;
+module.exports = db;

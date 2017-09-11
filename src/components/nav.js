@@ -3,6 +3,7 @@ import { Menu, Button } from 'semantic-ui-react';
 import { Switch, Route, Link } from 'react-router-dom';
 import SearchBar from './searchBar'
 import { auth, googleAuthProvider } from './firebase';
+import $ from 'jquery';
 
 export default class Nav extends Component {
 	constructor() {
@@ -140,6 +141,8 @@ export default class Nav extends Component {
 								
 
 							)}
+
+							
 						</div>
 					</div>
 				</div>

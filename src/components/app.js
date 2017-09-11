@@ -72,8 +72,7 @@ class App extends Component {
 		return (
 			<div>
 				<Header />
-				<br />
-				<br />
+				
 				<SearchBar restaurantQuery={this.state.restaurantQuery} submitrestaurantQuery={this.submitrestaurantQuery}/>
 
 				<Main restaurants={restaurants} />

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import firebase from './firebase';
+import { storage, database } from './firebase';
 import CommentCard from './CommentCard';
 import { Form } from 'semantic-ui-react'
 
@@ -55,15 +57,17 @@ export default class Dishes extends Component {
       })
   }
 
+  
 
   render() {
     return (
-      <div>
       <div className="ui container">
 
-    
+      <CommentCard /> 
+
+    {/*
       <h1> Comment History </h1>
-      <CommentCard />
+      
         <li>"Ramen Depot was delicissssous!"</li>
         <li>"I love tiny tacos!"</li>
         <li>"100% would come back to this place for their donuts"</li>
@@ -76,7 +80,7 @@ export default class Dishes extends Component {
         <li>Chicken from @ChickenHeaven</li>
         <li>Steak from @SteakFactory</li>
 </div>
-        {/*<Form onSubmit={this.submitDishQuery}>
+        <Form onSubmit={this.submitDishQuery}>
           <Form.Field>
             <label>Find Dishes</label>
             <input

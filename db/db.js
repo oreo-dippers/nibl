@@ -58,6 +58,29 @@ const Dish = db.define('dish', {
   avgRating: Sequelize.FLOAT
 });
 
+// Table 4: DishReview (in DB will be: dishReview)
+const DishReview = db.define('dishReview', {
+  id: {
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
+    primaryKey: true
+  },
+  review: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      // String length must be between 1 to 140
+      len: {
+        args: [1, 140],
+        msg: 'The review must be at least 1 character and up to 140 characters long'
+      }
+    }
+  },
+  starRating: Sequelize.INTEGER,
+  imageUrl: Sequelize.STRING,
+  upvoteTOtal: Sequelize.INTEGER
+});
+
 // Define Table Associations
 // Dish's Associations
 Dish.belongsTo(Restaurant);
@@ -69,5 +92,7 @@ db.sync();
 module.exports = {
   db: db,
   User: User,
-  Restaurant: Restaurant
+  Restaurant: Restaurant,
+  Dish: Dish,
+  DishReview: DishReview
 };

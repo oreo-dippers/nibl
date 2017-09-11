@@ -107,6 +107,9 @@ Dish.belongsToMany(User, {through: DishReview});
 // DishReviewUpvote's Associations
 User.belongsToMany(DishReview, {through: DishReviewUpvote});
 DishReview.belongsToMany(User, {through: DishReviewUpvote});
+// UserDish's Associations
+User.belongsToMany(Dish, {through: UserDish});
+Dish.belongsToMany(User, {through: UserDish});
 
 // Sync the database
 db.sync();

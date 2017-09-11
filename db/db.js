@@ -98,6 +98,9 @@ Restaurant.hasMany(Dish);
 // DishReview's Associations
 User.belongsToMany(Dish, {through: DishReview});
 Dish.belongsToMany(User, {through: DishReview});
+// DishReviewUpvote's Associations
+User.belongsToMany(DishReview, {through: DishReviewUpvote});
+DishReview.belongsToMany(User, {through: DishReviewUpvote});
 
 // Sync the database
 db.sync();

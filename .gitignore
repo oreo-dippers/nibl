@@ -40,3 +40,4 @@ dist
 .env
 firebase.js
 api-config/foursquare-config.js
+functions/.runtimeconfig.json

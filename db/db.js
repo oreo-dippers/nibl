@@ -122,6 +122,20 @@ const UserDish = db.define('userDish', {
 const UserRestaurant = db.define('userRestaurant', {
 });
 
+// Table 8: SearchResult (in DB will be: searchResults)
+// This is the table of search queries that users make
+// In the case that the Foursquare API goes down, we can
+// give some information to the user
+const SearchResult = db.define('searchResult', {
+  id: {
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
+    primaryKey: true
+  },
+  queryString: Sequelize.STRING,
+  result: Sequelize.JSON
+});
+
 // Define Table Associations
 // Dish's Associations
 Dish.belongsTo(Restaurant);
@@ -150,5 +164,6 @@ module.exports = {
   DishReview: DishReview,
   DishReviewUpvote: DishReviewUpvote,
   UserDish: UserDish,
-  UserRestaurant: UserRestaurant
+  UserRestaurant: UserRestaurant,
+  SearchResult: SearchResult
 };

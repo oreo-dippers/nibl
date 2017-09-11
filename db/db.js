@@ -91,6 +91,12 @@ const DishReviewUpvote = db.define('dishReviewUpvote', {
   upvote: Sequelize.BOOLEAN
 });
 
+// Table 6: UserDish (in DB will be: userDishes)
+// This is necessary so that the table won't be 'UserDish' in DB
+// And so that we can refer to it like the others
+const UserDish = db.define('userDish', {
+});
+
 // Define Table Associations
 // Dish's Associations
 Dish.belongsTo(Restaurant);
@@ -110,5 +116,7 @@ module.exports = {
   User: User,
   Restaurant: Restaurant,
   Dish: Dish,
-  DishReview: DishReview
+  DishReview: DishReview,
+  DishReviewUpvote: DishReviewUpvote,
+  UserDish: UserDish
 };

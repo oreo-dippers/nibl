@@ -29,6 +29,10 @@ const User = db.define('user', {
 });
 
 
+// Sync the database
+db.sync();
+
+
 module.exports = {
   db: db,
   User: User

@@ -85,6 +85,9 @@ const DishReview = db.define('dishReview', {
 // Dish's Associations
 Dish.belongsTo(Restaurant);
 Restaurant.hasMany(Dish);
+// DishReview's Associations
+User.belongsToMany(Dish, {through: DishReview});
+Dish.belongsToMany(User, {through: DishReview});
 
 // Sync the database
 db.sync();

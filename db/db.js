@@ -17,4 +17,19 @@ db
     console.error('Postgres Database connection failed: ', err);
   });
 
-module.exports = db;
+
+// Table 1: User (in DB will be: users)
+const User = db.define('user', {
+  id: {
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
+    primaryKey: true
+  },
+  firebaseUuid: Sequelize.STRING
+});
+
+
+module.exports = {
+  db: db,
+  User: User
+};

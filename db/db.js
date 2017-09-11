@@ -58,7 +58,7 @@ const Dish = db.define('dish', {
   avgRating: Sequelize.FLOAT
 });
 
-// Table 4: DishReview (in DB will be: dishReview)
+// Table 4: DishReview (in DB will be: dishReviews)
 const DishReview = db.define('dishReview', {
   id: {
     type: Sequelize.INTEGER,
@@ -79,6 +79,16 @@ const DishReview = db.define('dishReview', {
   starRating: Sequelize.INTEGER,
   imageUrl: Sequelize.STRING,
   upvoteTOtal: Sequelize.INTEGER
+});
+
+// Table 5: DishReviewUpvote (in DB will be: dishReviewUpvotes)
+const DishReviewUpvote = db.define('dishReviewUpvote', {
+  id: {
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
+    primaryKey: true
+  },
+  upvote: Sequelize.BOOLEAN
 });
 
 // Define Table Associations

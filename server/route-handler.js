@@ -49,25 +49,37 @@ module.exports.getRestaurants = function(req, res) {
 
     // Add each restaurant from response to database
     restaurantArray.forEach(function (element) {
-      db.Restaurant.create({
-        foursquareId: element.venue.id,
-        name: element.venue.name,
-        phone: element.venue.contact.formattedPhone,
-        address: JSON.stringify(element.venue.location.formattedAddress),
-        website: element.venue.url,
-        imageUrl: JSON.stringify(element.venue.featuredPhotos.items[0]),
-        avgRating: 0
+      db.Restaurant.findOrCreate({
+        where: {
+          foursquareId: element.venue.id
+        },
+        defaults: {
+          // If it is not in the Restaurant table, set these defaults:
+          foursquareId: element.venue.id,
+          name: element.venue.name,
+          phone: element.venue.contact.formattedPhone,
+          address: JSON.stringify(element.venue.location.formattedAddress),
+          website: element.venue.url,
+          imageUrl: JSON.stringify(element.venue.featuredPhotos.items[0]),
+          avgRating: 0
+        }
+      })
+      .then(function(restaurant) {
+        // console.log('************************************************\n', restaurant);
+        // This gets 1 restaurants ratings:
+        console.log('Here is this restaurants rating: ', restaurant[0].dataValues.avgRating);
+        // ^ Above should be returned to front end to render star rating
       });
     });
 
     // Info for 1st restaurant only
-    console.log('Restaurant data :', restaurantArray[0]);
-    console.log('Restaurant data foursquare -id :', restaurantArray[0].venue.id);
-    console.log('foursquare name :', restaurantArray[0].venue.name);
-    console.log('foursquare contact :', restaurantArray[0].venue.contact.formattedPhone);
-    console.log('foursquare location :', restaurantArray[0].venue.location.formattedAddress); // JSON.stringify
-    console.log('foursquare website :', restaurantArray[0].venue.url);
-    console.log('foursquare photo :', restaurantArray[0].venue.featuredPhotos.items[0]); // JSON.stringify
+    // console.log('Restaurant data :', restaurantArray[0]);
+    // console.log('Restaurant data foursquare -id :', restaurantArray[0].venue.id);
+    // console.log('foursquare name :', restaurantArray[0].venue.name);
+    // console.log('foursquare contact :', restaurantArray[0].venue.contact.formattedPhone);
+    // console.log('foursquare location :', restaurantArray[0].venue.location.formattedAddress); // JSON.stringify
+    // console.log('foursquare website :', restaurantArray[0].venue.url);
+    // console.log('foursquare photo :', restaurantArray[0].venue.featuredPhotos.items[0]); // JSON.stringify
     // res.send(data);
     res.send(data.response.groups[0].items);
   });

@@ -35,7 +35,7 @@ class App extends Component {
 			}
 		};
 		axios
-			.get(`${EXPRESS}/api/restaurants`, request)
+			.get(`${FIREBASE}/api/restaurants`, request)
 			.then(res => {
 				console.log('successful get!');
 				console.log('res', res.data);

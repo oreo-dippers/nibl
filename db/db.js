@@ -42,9 +42,9 @@ const Restaurant = db.define("restaurant", {
   foursquareId: Sequelize.STRING,
   name: Sequelize.STRING,
   phone: Sequelize.STRING,
-  address: Sequelize.STRING,
+  address: Sequelize.JSON,
   website: Sequelize.STRING,
-  imageUrl: Sequelize.STRING,
+  imageUrl: Sequelize.JSON,
   avgRating: Sequelize.FLOAT
 });
 

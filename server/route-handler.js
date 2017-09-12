@@ -33,6 +33,7 @@ module.exports.getRestaurants = function(req, res) {
   var myQuery = req.query;
   var parameterObj = {
     'venuePhotos': '1',
+    'limit': '10'
   };
   parameterObj.query = myQuery.query;
   parameterObj.near = myQuery.near;
@@ -45,14 +46,18 @@ module.exports.getRestaurants = function(req, res) {
     // Save data into Restaurant table
     //data.response.groups.items is the array of restaurants received
     var restaurantArray = data.response.groups[0].items;
-    db.Restaurant.create({
-      foursquareId: restaurantArray[0].venue.id,
-      name: restaurantArray[0].venue.name,
-      phone: restaurantArray[0].venue.contact.formattedPhone,
-      address: JSON.stringify(restaurantArray[0].venue.location.formattedAddress),
-      website: restaurantArray[0].venue.url,
-      imageUrl: JSON.stringify(restaurantArray[0].venue.featuredPhotos.items[0]),
-      avgRating: 0
+
+    // Add each restaurant from response to database
+    restaurantArray.forEach(function (element) {
+      db.Restaurant.create({
+        foursquareId: element.venue.id,
+        name: element.venue.name,
+        phone: element.venue.contact.formattedPhone,
+        address: JSON.stringify(element.venue.location.formattedAddress),
+        website: element.venue.url,
+        imageUrl: JSON.stringify(element.venue.featuredPhotos.items[0]),
+        avgRating: 0
+      });
     });
 
     // Info for 1st restaurant only

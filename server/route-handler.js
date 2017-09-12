@@ -2,6 +2,7 @@ const querystring = require('querystring')
 const foursquare = require('../api-config/foursquare-config.js')
 const bodyParser = require('body-parser')
 const utils = require('./util')
+const db = require('../db/db.js');
 
 var credentials = {
   'v': '20170904'
@@ -16,7 +17,6 @@ module.exports.getVenue = function(req, res) {
   utils.apiCall(urlQuery, function(data) {
     res.send(data.response.venue);
   });
-
 };
 
 
@@ -41,7 +41,29 @@ module.exports.getRestaurants = function(req, res) {
   const urlQuery = url+ '?' + parameter + '&' + qs;
 
   utils.apiCall(urlQuery, function(data) {
-    res.send(data);
-  });
+    //utils.restaurantTable(data);
+    // Save data into Restaurant table
+    //data.response.groups.items is the array of restaurants received
+    var restaurantArray = data.response.groups[0].items;
+    db.Restaurant.create({
+      foursquareId: restaurantArray[0].venue.id,
+      name: restaurantArray[0].venue.name,
+      phone: restaurantArray[0].venue.contact.formattedPhone,
+      address: JSON.stringify(restaurantArray[0].venue.location.formattedAddress),
+      website: restaurantArray[0].venue.url,
+      imageUrl: JSON.stringify(restaurantArray[0].venue.featuredPhotos.items[0]),
+      avgRating: 0
+    });
 
+    // Info for 1st restaurant only
+    console.log('Restaurant data :', restaurantArray[0]);
+    console.log('Restaurant data foursquare -id :', restaurantArray[0].venue.id);
+    console.log('foursquare name :', restaurantArray[0].venue.name);
+    console.log('foursquare contact :', restaurantArray[0].venue.contact.formattedPhone);
+    console.log('foursquare location :', restaurantArray[0].venue.location.formattedAddress); // JSON.stringify
+    console.log('foursquare website :', restaurantArray[0].venue.url);
+    console.log('foursquare photo :', restaurantArray[0].venue.featuredPhotos.items[0]); // JSON.stringify
+    // res.send(data);
+    res.send(data.response.groups[0].items);
+  });
 };

@@ -3,16 +3,13 @@ import { Menu, Button } from 'semantic-ui-react';
 import { Switch, Route, Link } from 'react-router-dom';
 import SearchBar from './searchBar'
 import { auth, googleAuthProvider } from './firebase';
-import $ from 'jquery';
 
 export default class Nav extends Component {
 	constructor() {
 		super();
 		this.state = {
-			activeItem: 'home',
 			currentUser: null
 		};
-		this.handleItemClick = this.handleItemClick.bind(this);
 	}
 
 	componentDidMount() {
@@ -20,10 +17,6 @@ export default class Nav extends Component {
 			console.log('AUTH_CHANGE', currentUser);
 			this.setState({ currentUser });
 		});
-	}
-
-	handleItemClick(e, { name }) {
-		// this.setState({ activeItem: name });
 	}
 
 	render() {
@@ -38,7 +31,6 @@ export default class Nav extends Component {
 								<div
 									className="ui huge header"
 									style={{ color: '#FFFFFF' }}
-									// active={activeItem === 'home'}
 									onClick={this.handleItemClick}
 								>
 									Nibl
@@ -51,7 +43,6 @@ export default class Nav extends Component {
 								<div
 									className="ui medium header"
 									style={{ color: '#FFFFFF' }}
-									// active={activeItem === 'kitchen'}
 									onClick={this.handleItemClick}
 								>
 									Restaurants
@@ -64,7 +55,6 @@ export default class Nav extends Component {
 								<div
 									className="ui medium header"
 									style={{ color: '#FFFFFF' }}
-									// active={activeItem === 'reviews'}
 									onClick={this.handleItemClick}
 								>
 									Reviews
@@ -72,28 +62,6 @@ export default class Nav extends Component {
 							</Link>
 						</div>
 
-						<div className="item">
-							{/*<div className="ui icon input">
-								<input
-									ref={q => {
-										this._restaurant = q;
-									}}
-									id="tallbox"
-									type="text"
-									placeholder="burgers, tacos..."
-									required
-								/>
-
-								<Link to="/restaurants">
-									<Button className="ui icon button">
-										<i className="search icon" />
-									</Button>
-								</Link>
-							</div>
-
-							
-							<SearchBar />*/}
-						</div>
 
 						<div className="item">
 							<div className="ui compact menu">
@@ -114,42 +82,36 @@ export default class Nav extends Component {
 									<Menu.Item
 										style={{ color: '#FFFFFF' }}
 										name="login"
-										// active={activeItem === 'login'}
 										onClick={() => auth.signInWithPopup(googleAuthProvider)}
 									/>
 								</Menu.Menu>
 							)}
 
 							{currentUser && (
-								
+
 								<Menu.Menu position="right">
 								<div className="item">
 								<img className="ui avatar image" src={currentUser.photoURL} />
 								</div>
 								<div className="item">
-								
+
 								<h2 style={{ color: '#FFFFFF' }} >{currentUser.displayName}</h2>
 								</div>
 									<Menu.Item
 										style={{ color: '#FFFFFF' }}
 										name="logout"
-										// active={activeItem === 'logout'}
 										onClick={() => auth.signOut()}
 									/>
-									
+
 								</Menu.Menu>
-								
+
 
 							)}
 
-							
+
 						</div>
 					</div>
 				</div>
-
-				{/* <Segment>
-          <img src='/assets/images/wireframe/media-paragraph.png' />
-        </Segment> */}
 			</div>
 		);
 	}

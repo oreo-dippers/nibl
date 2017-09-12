@@ -5,7 +5,7 @@ import { Form, Button, Menu } from 'semantic-ui-react';
 import axios from 'axios';
 import Header from './header';
 import Main from './main';
-import Footer from './presentational/footer';
+import Footer from './footer';
 import SearchBar from './searchBar';
 import Home from './home';
 
@@ -23,9 +23,28 @@ class App extends Component {
 		this.submitrestaurantQuery = this.submitrestaurantQuery.bind(this);
 	}
 
+	componentDidMount() {}
+
 	submitrestaurantQuery(restaurantQuery) {
+		
+		// let restaurantQuery = this._restaurants.value;
 		this.setState({ restaurantQuery });
 		console.log('restaurantQuery', restaurantQuery);
+
+		// example post
+		// const data = {
+		//   query: restaurantQuery,
+		//   near: 'Los Angeles, CA, United States',
+		//   radius: '5000'
+		// }
+		// axios.post(`${DEV}/test`, data)
+		//   .then((res)=> {
+		//     console.log('successful post!')
+		//     console.log('res.data', res.data);
+		//   })
+		//   .catch((err) => {
+		//     console.log(err)
+		//   })
 
 		var request = {
 			params: {
@@ -35,7 +54,7 @@ class App extends Component {
 			}
 		};
 		axios
-			.get(`${FIREBASE}/api/restaurants`, request)
+			.get(`${EXPRESS}/api/restaurants`, request)
 			.then(res => {
 				console.log('successful get!');
 				console.log('res', res.data);
@@ -53,7 +72,7 @@ class App extends Component {
 		return (
 			<div>
 				<Header />
-
+				
 				<SearchBar restaurantQuery={this.state.restaurantQuery} submitrestaurantQuery={this.submitrestaurantQuery}/>
 
 				<Main restaurants={restaurants} />

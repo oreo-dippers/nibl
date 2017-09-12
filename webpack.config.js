@@ -61,7 +61,7 @@ module.exports = {
     compress: true,
     port: 2500,
     stats: 'errors-only',
-    open: true,
+    open: false,
     hot: true,
     historyApiFallback: true
   },

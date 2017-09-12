@@ -36,11 +36,11 @@ class CommentCard extends Component {
 
   render() {
     return (
-      <div>
-	  <CommentBox >This is a Test From Dishes Component </CommentBox>
+      <div className="ui container">
+	      <CommentBox >This is a Test From Dishes Component </CommentBox>
         <div id="incredibleimg" />
         <form>
-          <FileInput
+          <input
             type="file"
             name="myImage"
             accept=".png, .jpg"

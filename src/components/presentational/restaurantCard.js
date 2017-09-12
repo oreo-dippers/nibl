@@ -38,7 +38,6 @@ class RestaurantCard extends Component {
                 }>
                 <h1>{venue.name}</h1>
               </Link>
-							{/* <h1>{venue.name}</h1> */}
 						</a>
 						<div className="meta">
 							<Rating

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-import RestaurantCard from './restaurantCard'
+import RestaurantCard from './presentational/restaurantCard'
 
 // The RestaurantsList iterates over all of the restaurants and creates
 // a link to their profile page.
@@ -17,10 +17,8 @@ class RestaurantsList extends Component {
           {
             this.props.restaurants.map(r => {
               var store_name = dashify(r.venue.name)
-
               return (
               <li className="listStyle" key={r.venue.id}>
-
                   <RestaurantCard restaurant={r}/>
               </li>
             )})

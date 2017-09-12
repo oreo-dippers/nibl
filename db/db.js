@@ -5,7 +5,10 @@ const dotenv = require("dotenv");
 dotenv.load();
 
 // Make new Sequelize instance to PG DB linked
-const db = new Sequelize(process.env.POSTGRES_URL);
+const db = new Sequelize(process.env.POSTGRES_URL, {
+  // Turn off Sequelize from logging SQL to server console
+  logging: false
+});
 
 // Ensure db makes connection
 db
@@ -42,9 +45,9 @@ const Restaurant = db.define("restaurant", {
   foursquareId: Sequelize.STRING,
   name: Sequelize.STRING,
   phone: Sequelize.STRING,
-  address: Sequelize.STRING,
+  address: Sequelize.JSON,
   website: Sequelize.STRING,
-  imageUrl: Sequelize.STRING,
+  imageUrl: Sequelize.JSON,
   avgRating: Sequelize.FLOAT
 });
 
@@ -158,7 +161,7 @@ User.hasMany(SearchResult);
 
 // Sync the database
 db.sync({
-  logging: console.log
+  // logging: console.log
 });
 
 module.exports = {

@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const logger = require('morgan')
 const routeHandler = require('./route-handler')
 const path = require('path')
-const db = require('../db/db.js');
+// const db = require('../db/db.js');
 const cors = require('cors');
 
 app.use(cors());
@@ -22,6 +22,7 @@ app.use(express.static(path.join(__dirname, '../dist')));
 app.get('/venue',routeHandler.getVenue);
 app.get('/menu',routeHandler.getMenu);
 app.get('/api/restaurants/',routeHandler.getRestaurants);
+
 
 
 app.get('/*', (req, res) => {

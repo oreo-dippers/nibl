@@ -14,7 +14,7 @@ class Restaurant extends Component {
       if (!restaurant) {
         return <div>Sorry, but the restaurant was not found</div>
       }
-      
+
     return (
       <div className="ui container">
         <h1>{venue.name}</h1>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-import RestaurantCard from './views/restaurantCard'
+import RestaurantCard from './restaurantCard'
 
 // The RestaurantsList iterates over all of the restaurants and creates
 // a link to their profile page.
@@ -13,6 +13,7 @@ class RestaurantsList extends Component {
   render() {
     return (
       <div>
+        <div> Restaurant View</div>
         <ul>
           {
             this.props.restaurants.map(r => {

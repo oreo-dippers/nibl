@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import { Menu, Button } from 'semantic-ui-react';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route, Link, withRouter } from 'react-router-dom';
 import SearchBar from './searchBar'
 import { auth, googleAuthProvider } from './firebase';
 
-export default class Nav extends Component {
+
+
+
+class Nav extends Component {
 	constructor() {
 		super();
 		this.state = {
 			currentUser: null
 		};
+    this.handleItemClick = this.handleItemClick.bind(this);
 	}
 
 	componentDidMount() {
@@ -18,15 +22,27 @@ export default class Nav extends Component {
 			this.setState({ currentUser });
 		});
 	}
+  handleItemClick() {
+    console.log('hi from handleItemClick')
+    console.log('withRouter', withRouter);
+    console.log('this.props', this.props);
+    // this.props.listen((loc, action) => {
+    //   // loc is an obj like window.location
+    //   console.log(action, loc.pathname, loc.state)
+    // })
+    this.props.history.push('/')
+  }
 
 	render() {
 		const { activeItem, currentUser } = this.state;
-
+    var { restaurantQuery, submitrestaurantQuery } = this.props
 		return (
 			<div>
 				<div style={{ background: '#F8F8F8' }} className="ui fluid container">
 					<div style={{ background: '#26CDA7' }} className="ui menu">
-						<div className="item">
+
+
+            <div className="item">
 							<Link to="/">
 								<div
 									className="ui huge header"
@@ -38,7 +54,9 @@ export default class Nav extends Component {
 							</Link>
 						</div>
 
-						<div className="item">
+
+            {/* restaurants */}
+						{/* <div className="item">
 							<Link to="/restaurants">
 								<div
 									className="ui medium header"
@@ -48,10 +66,28 @@ export default class Nav extends Component {
 									Restaurants
 								</div>
 							</Link>
-						</div>
+						</div> */}
 
-						<div className="item">
-							<Link to="/dishes">
+
+
+
+            {/* food */}
+						{/* <div className="item">
+							<Link to="/food">
+								<div
+									className="ui medium header"
+									style={{ color: '#FFFFFF' }}
+									onClick={this.handleItemClick}
+								>
+									Food
+								</div>
+							</Link>
+						</div> */}
+
+
+            {/* reviews */}
+						{/* <div className="item">
+							<Link to="/reviews">
 								<div
 									className="ui medium header"
 									style={{ color: '#FFFFFF' }}
@@ -60,21 +96,29 @@ export default class Nav extends Component {
 									Reviews
 								</div>
 							</Link>
-						</div>
+						</div> */}
 
+            {/* //food // restaurants
+            // Menu */}
 
-						<div className="item">
-							<div className="ui compact menu">
-								<div className="ui simple dropdown item">
-									Food
-									<i className="dropdown icon" />
-									<div className="menu">
-										<div className="item">Resturaunts</div>
-										<div className="item">Food</div>
-									</div>
-								</div>
-							</div>
-						</div>
+            <div className="item">
+              <SearchBar restaurantQuery={restaurantQuery} submitrestaurantQuery={submitrestaurantQuery}/>
+            </div>
+						{/* <div className="item">
+              <div>
+      							<div className="ui compact menu">
+      								<div className="ui simple dropdown item">
+      									Food
+      									<i className="dropdown icon" />
+      									<div className="menu">
+      										<div className="item">Resturaunts</div>
+      										<div className="item">Food</div>
+      									</div>
+      								</div>
+      							</div>
+              </div>
+						</div> */}
+            {/* <SearchBar restaurantQuery={restaurantQuery} submitrestaurantQuery={submitrestaurantQuery}/> */}
 
 						<div className="right menu">
 							{!currentUser && (
@@ -116,3 +160,6 @@ export default class Nav extends Component {
 		);
 	}
 }
+
+
+export default withRouter(Nav)

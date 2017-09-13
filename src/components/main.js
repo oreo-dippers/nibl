@@ -8,7 +8,8 @@ const Main = ({restaurants}) => (
     <Switch>
       <Route exact path='/' component={() => <Home />}/>
       <Route path='/restaurants' component={() => <RoutesForRestaurants restaurants={restaurants} />}/>
-      <Route path='/dishes' component={CommentCard}/>
+      <Route path='/food' component={CommentCard}/>
+      <Route path='/reviews' component={CommentCard}/>
     </Switch>
   </main>
 )

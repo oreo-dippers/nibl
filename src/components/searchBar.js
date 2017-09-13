@@ -13,17 +13,21 @@ class SearchBar extends Component {
 		return (
 			<center>
 		<div >
-				<div className="ui centered container">
+				{/* <div className="ui centered container"> */}
 					<Link to="/restaurants">
 						<Form onSubmit={this.passQueryToSumbitRestaurantQuery.bind(this)} placeholder="search here">
 							<div className="ui icon input">
-								<input ref={d => (this._restaurants = d)} />
+								<input
+                  ref={d => (this._restaurants = d)}
+                  placeholder="search for dishes..."
+                />
 								<i className="search icon" />
 							</div>
+              <br/>
 						</Form>
 					</Link>
-					You Searched: {this.props.restaurantQuery}
-				</div>
+					{/* You Searched: {this.props.restaurantQuery} */}
+				{/* </div> */}
 		</div>
 		</center>
 		);

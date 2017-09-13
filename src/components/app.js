@@ -60,9 +60,9 @@ class App extends Component {
 		const { restaurants } = this.props;
 		return (
 			<div>
-				<Header />
+				<Header restaurantQuery={this.state.restaurantQuery} submitrestaurantQuery={this.submitrestaurantQuery}/>
 
-				<SearchBar restaurantQuery={this.state.restaurantQuery} submitrestaurantQuery={this.submitrestaurantQuery}/>
+				{/* <SearchBar /> */}
 
 				<Main restaurants={restaurants} />
 				<Footer />

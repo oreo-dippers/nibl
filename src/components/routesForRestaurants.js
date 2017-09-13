@@ -1,7 +1,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
-import RestaurantsList from './restaurantsList'
+import RestaurantsList from './views/restaurantsList'
 
 import Restaurant from './views/restaurant'
 

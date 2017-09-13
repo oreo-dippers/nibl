@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 
 import RestaurantsList from './restaurantsList'
 
-import Restaurant from './presentational/restaurant'
+import Restaurant from './views/restaurant'
 
 
 // The RoutesForRestaurants component matches one of two different routes

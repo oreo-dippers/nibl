@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-import RestaurantCard from './presentational/restaurantCard'
+import RestaurantCard from './views/restaurantCard'
 
 // The RestaurantsList iterates over all of the restaurants and creates
 // a link to their profile page.

@@ -5,19 +5,23 @@ import { Form, Button, Menu } from 'semantic-ui-react';
 import axios from 'axios';
 import Header from './header';
 import Main from './main';
-import Footer from './presentational/footer';
+import Footer from './views/footer';
 import SearchBar from './searchBar';
 import Home from './home';
 
-const FIREBASE = `http://localhost:5001/oreo-nibl/us-central1/app`;
-const EXPRESS = `http://localhost:3006`;
+// import ajax
+import * as api from '../api/api';
+
+// import redux things
+import store from '../store';
+import { connect } from 'react-redux';
 
 class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			host: 'dev',
-			restaurants: [],
+			// host: 'dev',
+			// restaurants: [],
 			restaurantQuery: ''
 		};
 		this.submitrestaurantQuery = this.submitrestaurantQuery.bind(this);
@@ -34,22 +38,26 @@ class App extends Component {
 				radius: '5000'
 			}
 		};
-		axios
-			.get(`${FIREBASE}/api/restaurants`, request)
-			.then(res => {
-				console.log('successful get!');
-				console.log('res', res.data);
-				var restaurants = res.data.response.groups[0].items;
-				console.log('restaurants', restaurants);
-				this.setState({ restaurants });
-			})
-			.catch(err => {
-				console.log(err);
-			});
+
+    api.getRestaurants(request);
+		// axios
+		// 	.get(`${FIREBASE}/api/restaurants`, request)
+		// 	.then(res => {
+		// 		console.log('successful get!');
+		// 		console.log('res', res.data);
+		// 		var restaurants = res.data.response.groups[0].items;
+		// 		console.log('restaurants', restaurants);
+		// 		this.setState({ restaurants });
+		// 	})
+		// 	.catch(err => {
+		// 		console.log(err);
+		// 	});
 	}
 
 	render() {
-		const { restaurants } = this.state;
+    // console.log('props', props)
+    console.log('this', this)
+		const { restaurants } = this.props;
 		return (
 			<div>
 				<Header />
@@ -63,4 +71,15 @@ class App extends Component {
 	}
 }
 
-export default App;
+
+const mapStateToProps = function(store) {
+  console.log('store', store)
+  return {
+    restaurants: store.restaurantsState.restaurants
+  }
+}
+
+
+// export default App;
+
+export default connect(mapStateToProps)(App)

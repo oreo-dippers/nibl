@@ -24,6 +24,19 @@ module.exports.getMenu = function(req, res) {
   const url = 'https://api.foursquare.com/v2/venues/40a55d80f964a52020f31ee3/menu';
   const urlQuery = url+ '?' + qs;
   utils.apiCall(urlQuery, function(data) {
+    // 1 Get data that I want from API
+    // 2 Check if it is in database
+    // 2 A If not in db, save it into the database
+    // 2 B If in db, retrieve rating from db
+    // 3 Send all restaurant menu data to front end with ratings
+    // 4 *IMPORTANT* Get restaurant Id!!!
+
+    // console.log('Array 1: This is an array of possible menus a restaurant might have', data.response.menu.menus.items);
+    // console.log('This is the first element of the dinner menu array', data.response.menu.menus.items[0]);
+    // console.log('Array 2: This is an array of what is on the dinner menu', data.response.menu.menus.items[0].entries.items);
+    // console.log('This is the first element (section) in the dinner menu array', data.response.menu.menus.items[0].entries.items[0]);
+    // console.log('Array 3: This is an array of the dishes in the first section of the dinner menu array', data.response.menu.menus.items[0].entries.items[0].entries.items);
+    // console.log('This is the first dish in the first section of the dinner menu array', data.response.menu.menus.items[0].entries.items[0].entries.items[0]);
     res.send(data);
   });
 };

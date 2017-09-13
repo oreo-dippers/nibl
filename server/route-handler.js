@@ -42,11 +42,12 @@ module.exports.getRestaurants = function(req, res) {
   const urlQuery = url+ '?' + parameter + '&' + qs;
 
   utils.apiCall(urlQuery, function(data) {
-
-    utils.getRestaurantData(data, function(restaurantData){
-        // res.send(restaurantData);
+    utils.getRestaurantData(data)
+      .then(function(restaurantData){
         console.log('This this finally worked');
-    });
+        res.send(restaurantData);
+       })
+
 
 
 
@@ -90,7 +91,6 @@ module.exports.getRestaurants = function(req, res) {
     // console.log('foursquare location :', restaurantArray[0].venue.location.formattedAddress); // JSON.stringify
     // console.log('foursquare website :', restaurantArray[0].venue.url);
     // console.log('foursquare photo :', restaurantArray[0].venue.featuredPhotos.items[0]); // JSON.stringify
-    res.send(data);
     // res.send(restaurantData);
   });
 };

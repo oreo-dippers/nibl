@@ -1,21 +1,18 @@
 const request = require('request');
+var requestPromise = require('request-promise');
 const db = require('../db/db.js');
 
 module.exports.apiCall = function(url, callback) {
-    request(url, function (error, response, body) {
-    // Print the error if one occurred
-    if(error) {
-      console.log('error:', error);
+  requestPromise(url)
+    .then(function(data) {
+      callback(JSON.parse(data));
+    })
+    .catch(function (err) {
+      console.log('error:', err);
       return;
-    }
-    // Print the response status code if a response was received
-    if(response) {
-      console.log('statusCode:', response && response.statusCode);
-    }
-
-    callback(JSON.parse(body));
-  });
+    });
 };
+
 
 module.exports.getRestaurantData = function(data) {
   var promise = new Promise(function(resolve, reject){
@@ -55,7 +52,7 @@ module.exports.getRestaurantData = function(data) {
       } else {
         reject('No data');
       }
-    }, 200);
+    }, 1000);
 
   });
 

@@ -17,7 +17,9 @@ module.exports.apiCall = function(url, callback) {
   });
 };
 
-module.exports.getRestaurantData = function(data, callback) {
+module.exports.getRestaurantData = function(data) {
+  var promise = new Promise(function(resolve, reject){
+
     // Save data into Restaurant table
     //data.response.groups.items is the array of restaurants received
     var restaurantArray = data.response.groups[0].items;
@@ -41,18 +43,21 @@ module.exports.getRestaurantData = function(data, callback) {
         }
       })
       .then(function(restaurant) {
-        // console.log('************************************************\n', restaurant);
-        // This gets 1 restaurants ratings:
-        // console.log('Here is this restaurants rating: ', restaurant[0].dataValues);
         let {foursquareId, name, phone, address, imageUrl, avgRating} = restaurant[0].dataValues;
-        // console.log('Here is this restaurants rating: ', restaurant[0].dataValues.avgRating);
-
         restaurantData.push({foursquareId, name, phone, address, imageUrl, avgRating});
       });
     }); // forEach ends
 
-    // if(restaurantData.length > 0){
-    //   console.log('Callback with restaurantData running')
-    //   callback(restaurantData);
-    // }
+    setTimeout(function(){
+      if(restaurantData.length > 0){
+        console.log('This thing is working')
+        resolve(restaurantData);
+      } else {
+        reject('No data');
+      }
+    }, 200);
+
+  });
+
+  return promise;
 };

@@ -65,7 +65,7 @@ const Dish = db.define("dish", {
   foursquareEntryId: Sequelize.STRING,
   name: Sequelize.STRING,
   imageUrl: Sequelize.STRING,
-  description: Sequelize.STRING,
+  description: Sequelize.TEXT,
   price: Sequelize.STRING,
   avgRating: Sequelize.FLOAT
 });

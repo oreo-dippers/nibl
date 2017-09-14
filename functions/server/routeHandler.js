@@ -1,8 +1,10 @@
-const querystring = require('querystring')
-const foursquare = require('../../api-config/foursquare-config.js')
-const bodyParser = require('body-parser')
-const utils = require('./utils/util')
+const querystring = require('querystring');
+const foursquare = require('../../api-config/foursquare-config.js');
+const bodyParser = require('body-parser');
+const utils = require('./utils/util');
+const dishes = require('./route_handler/dishes');
 const restaurants = require('./route_handler/restaurants');
+const user = require('./route_handler/user');
 
 var credentials = {
   'v': '20170904'

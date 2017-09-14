@@ -11,14 +11,16 @@ class RestaurantsList extends Component {
 
   render() {
     console.log('\'hi from RestaurantsList\'', 'hi from RestaurantsList');
+    console.log(this.props)
     return (
       <ul>
         {
-          this.props.restaurants.map(r => {
-            var store_name = dashify(r.venue.name)
+          this.props.restaurants.map((r, i) => {
+            console.log('This is R: ' , r);
+            var store_name = dashify(r.name)
             return (
-            <li className="listStyle" key={r.venue.id}>
-                <RestaurantCard restaurant={r}/>
+            <li className="listStyle" key={r.fourSquareId}>
+                <RestaurantCard restaurant={r} key={i}/>
             </li>
           )})
         }

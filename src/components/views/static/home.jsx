@@ -12,10 +12,10 @@ const Home = () => (
 			<h1 style={{ fontSize: '4em' }} className="ui left huge header">
 				It's all about the food
 			</h1>
-			<br />
+			
 		</div>
 
-		<div className="ui container  ">
+		<div className="ui container ">
 			{' '}
 			{/* each row*/}
 			<div className="ui centered cards">

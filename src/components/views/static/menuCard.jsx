@@ -9,10 +9,10 @@ class MenuCard extends Component {
 
 					<div className="content">
 						<div className="right floated meta">14h</div>
-						<img className="ui avatar image" src="https://www.fillmurray.com/100/100" /> Bill Murray
+						<img className="ui avatar image" src="https://www.fillmurray.com/100/100" alt=""/> Bill Murray
 					</div>
 					<div className="image">
-						<img src="https://instagram.fsnc1-1.fna.fbcdn.net/t51.2885-15/e35/12751127_511734799019156_1460279120_n.jpg" />
+						<img src="https://instagram.fsnc1-1.fna.fbcdn.net/t51.2885-15/e35/12751127_511734799019156_1460279120_n.jpg" alt=""/>
 					</div>
 
 					<div className="content">
@@ -52,7 +52,7 @@ class MenuCard extends Component {
 
 					<div className="extra content">
 						<div className="ui large transparent left icon input">
-							<div className="meta"> "A warm big japanese hug in a bow..." </div>
+							<div className="meta"> A warm big japanese hug in a bow... </div>
 						</div>
 					</div>
                 </div>

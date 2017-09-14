@@ -9,18 +9,22 @@ import createHistory from 'history/createBrowserHistory';
 import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux';
 
 import store from './store';
-import App from './components/app';
+// import App from './components/app';
 import './styles/app.scss';
-
+import MainContainer from './containers/mainContainer'
 
 
 const history = createHistory();
 const middleware = routerMiddleware(history);
+export default history;
 
 const Router = () => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <App />
+      <div>
+        <MainContainer />
+        {console.log('history', history)}
+      </div>
     </ConnectedRouter>
   </Provider>
 )

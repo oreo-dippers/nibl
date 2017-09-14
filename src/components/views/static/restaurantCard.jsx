@@ -8,10 +8,12 @@ class RestaurantCard extends Component {
 		// const restaurant = this.props.location.state.restaurant
 		console.log(this.props);
     const venue = this.props.restaurant;
+    console.log('venue', venue);
+
 		// const { venue } = restaurant;
-		const {prefix, suffix} = JSON.parse(venue.imageUrl);
+		const {prefix, suffix} = venue.imageUrl;
 		const img = `${prefix}800x200${suffix}`
-		console.log(img)
+    console.log('img', img);
 		if (!venue) {
 			return <div>Sorry, but the restaurant was not found</div>;
 		}
@@ -59,9 +61,9 @@ class RestaurantCard extends Component {
 					<div className="extra content">
 						<a>
 							<i className="map outline icon" />
-						
-						
-							{	JSON.parse(venue.address).join(', ')}
+
+
+							{	venue.address.join(', ')}
 						</a>
 					</div>
 				</div>

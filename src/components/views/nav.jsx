@@ -9,8 +9,11 @@ export default class Nav extends Component {
 	constructor() {
 		super();
 		this.state = {
+      searchBy: 'dishes',
 			currentUser: null
 		};
+
+    this.setNavState = this.setNavState.bind(this);
 	}
 
 	componentDidMount() {
@@ -19,6 +22,10 @@ export default class Nav extends Component {
 			this.setState({ currentUser });
 		});
 	}
+
+  setNavState(searchBy) {
+    this.setState({ searchBy });
+  }
 
 	render() {
 		const { currentUser } = this.state;
@@ -37,35 +44,39 @@ export default class Nav extends Component {
 									onClick={this.handleItemClick}
 								>
 									Nibl
-									<br/>
 								</div>
 							</Link>
 						</div>
 
 
             <div className="item">
-              <SearchBar {...this.props}/>
-          
+              <SearchBar
+                {...this.props}
+                searchBy={this.state.searchBy}
+              />
             </div>
 
             <div className="item">
-            <CheckBox />
+            <CheckBox
+              searchBy={this.state.searchBy}
+              setNavState={this.setNavState}
+            />
             </div>
 
 
-					{/*	<div className="item">
-							<Link to="/restaurants">
+						<div className="item">
+							<Link to="/addphoto">
 								<div
 									className="ui medium header"
 									style={{ color: '#FFFFFF' }}
 									onClick={this.handleItemClick}
 								>
-									Restaurants
+									Add Photo
 								</div>
 							</Link>
 						</div>
 
-						<div className="item">
+						{/* <div className="item">
 							<Link to="/dishes">
 								<div
 									className="ui medium header"
@@ -75,7 +86,7 @@ export default class Nav extends Component {
 									Reviews
 								</div>
 							</Link>
-						</div>*/}
+						</div> */}
 
 
 						<div className="right menu">
@@ -108,6 +119,7 @@ export default class Nav extends Component {
 						</div>
 					</div>
 				</div>
+        <br/>
 			</div>
 		);
 	}

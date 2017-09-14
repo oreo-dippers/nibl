@@ -4,21 +4,30 @@ import * as api from '../../api/api';
 import history from '../../index'
 
 class SearchBar extends Component {
-	searchByRestaurant(e) {
-		e.preventDefault();
-    var restaurantQuery = this._restaurants.value
-		// console.log('restaurantQuery11', restaurantQuery);
-    var request = {
-			params: {
-				query: restaurantQuery,
-				near: 'Los Angeles, CA, United States',
-				radius: '5000'
-			}
-		};
 
-    // console.log('history', history);
-    history.push('/restaurants')
-    api.getRestaurants(request);
+
+  searchByRestaurant(e) {
+		e.preventDefault();
+    const { searchBy } = this.props;
+    const restaurantQuery = this._restaurants.value
+    const request = {
+      params: {
+        query: restaurantQuery,
+        near: 'Los Angeles, CA, United States',
+        radius: '5000'
+      }
+    };
+    if (searchBy === 'restaurants') {
+      history.push('/restaurants')
+      api.getRestaurants(request);
+    } else {
+      history.push('/dishes');
+
+    }
+
+
+
+
 	}
 	render() {
     // console.log('====================this.props')

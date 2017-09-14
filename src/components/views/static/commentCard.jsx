@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import FileInput from 'react-file-input';
-// import firebase, {storage, database} from '../firebase';
+import firebase, { storage, database } from '../../firebase';
 import CommentBox from './commentBox';
 
 

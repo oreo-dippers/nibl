@@ -1,11 +1,13 @@
 const functions = require("firebase-functions");
 const Sequelize = require("sequelize");
-// For local variable loading
-const dotenv = require("dotenv");
-dotenv.load();
+
 console.log('This is the value', functions.config().postgres.postgres_url);
+
 // Make new Sequelize instance to PG DB linked
-const db = new Sequelize(functions.config().postgres.postgres_url);
+const db = new Sequelize(functions.config().postgres.postgres_url, {
+  // Turn off Sequelize from logging SQL to server console
+  logging: false
+});
 
 // Ensure db makes connection
 db
@@ -42,9 +44,9 @@ const Restaurant = db.define("restaurant", {
   foursquareId: Sequelize.STRING,
   name: Sequelize.STRING,
   phone: Sequelize.STRING,
-  address: Sequelize.STRING,
+  address: Sequelize.JSON,
   website: Sequelize.STRING,
-  imageUrl: Sequelize.STRING,
+  imageUrl: Sequelize.JSON,
   avgRating: Sequelize.FLOAT
 });
 
@@ -62,7 +64,7 @@ const Dish = db.define("dish", {
   foursquareEntryId: Sequelize.STRING,
   name: Sequelize.STRING,
   imageUrl: Sequelize.STRING,
-  description: Sequelize.STRING,
+  description: Sequelize.TEXT,
   price: Sequelize.STRING,
   avgRating: Sequelize.FLOAT
 });
@@ -90,7 +92,7 @@ const DishReview = db.define("dishReview", {
   },
   starRating: Sequelize.INTEGER,
   imageUrl: Sequelize.STRING,
-  upvoteTOtal: Sequelize.INTEGER
+  upvoteTotal: Sequelize.INTEGER
 });
 
 // Table 5: DishReviewUpvote (in DB will be: dishReviewUpvotes)

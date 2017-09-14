@@ -1,7 +1,7 @@
-const querystring = require('querystring')
-const foursquare = require('../../../api-config/foursquare-config.js')
-const bodyParser = require('body-parser')
-const utils = require('./../utils/util')
+const querystring = require('querystring');
+const foursquare = require('../../../api-config/foursquare-config.js');
+const bodyParser = require('body-parser');
+const utils = require('./../utils/util');
 
 var credentials = {
   'v': '20170904'
@@ -26,17 +26,25 @@ module.exports.getRestaurants = function(req, res) {
 
   utils.apiCall(urlQuery, function(data) {
     utils.getRestaurantData(data)
-      .then(function(restaurantData){
-        console.log('This this finally worked');
+      .then(function(restaurantData) {
+        console.log('restaurantData sent to front end');
         res.send(restaurantData);
        });
   });
 };
 
+// Reached at localhost:3006/menu
 module.exports.getMenu = function(req, res) {
   const url = 'https://api.foursquare.com/v2/venues/40a55d80f964a52020f31ee3/menu';
+  // This is another url to play with to ensure code below works
+  // const url = 'https://api.foursquare.com/v2/venues/47a1bddbf964a5207a4d1fe3/menu';
   const urlQuery = url+ '?' + qs;
+
   utils.apiCall(urlQuery, function(data) {
-    res.send(data);
+    utils.getDishData(data)
+      .then(function(dishData) {
+        console.log('dishData sent to front end');
+        res.send(dishData);
+      });
   });
 };

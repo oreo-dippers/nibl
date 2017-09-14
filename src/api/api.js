@@ -13,10 +13,11 @@ export function getRestaurants(request) {
       .then(res => {
         console.log('successful getRestaurants!');
         console.log('res.data', res.data);
-        var restaurants = res.data.response.groups[0].items;
-        console.log('restaurants', restaurants);
+        // console.log(JSON.stringify(res.data, null, 2));
+        // var restaurants = res.data.response.groups[0].items;
+        // console.log('restaurants', restaurants);
         // this.setState({ restaurants });
-        store.dispatch(getRestaurantsSuccess(restaurants));
+        store.dispatch(getRestaurantsSuccess(res.data));
       })
       .catch(err => {
         console.log(err);

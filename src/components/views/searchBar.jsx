@@ -7,7 +7,7 @@ class SearchBar extends Component {
 	searchByRestaurant(e) {
 		e.preventDefault();
     var restaurantQuery = this._restaurants.value
-		console.log('restaurantQuery11', restaurantQuery);
+		// console.log('restaurantQuery11', restaurantQuery);
     var request = {
 			params: {
 				query: restaurantQuery,
@@ -16,15 +16,15 @@ class SearchBar extends Component {
 			}
 		};
 
-    console.log('history', history);
+    // console.log('history', history);
     history.push('/restaurants')
     api.getRestaurants(request);
 	}
 	render() {
-    console.log('====================this.props')
-    console.log('this.props', this.props)
+    // console.log('====================this.props')
+    // console.log('this.props', this.props)
 		return (
-			<div className="ui centered container">
+			<div>
 
 				<Form
           onSubmit={this.searchByRestaurant.bind(this)}

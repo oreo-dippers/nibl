@@ -5,11 +5,14 @@ import Rating from 'react-rating'
 
 class RestaurantCard extends Component {
 	render() {
-    // const restaurant = this.props.location.state.restaurant
-    const restaurant = this.props.restaurant
-    const { venue } = restaurant;
-    const img = `${venue.photos.groups[0].items[0].prefix}800x200${venue.photos.groups[0].items[0].suffix}`
-		if (!restaurant) {
+		// const restaurant = this.props.location.state.restaurant
+		console.log(this.props);
+    const venue = this.props.restaurant;
+		// const { venue } = restaurant;
+		const {prefix, suffix} = JSON.parse(venue.imageUrl);
+		const img = `${prefix}800x200${suffix}`
+		console.log(img)
+		if (!venue) {
 			return <div>Sorry, but the restaurant was not found</div>;
 		}
 		return (
@@ -17,7 +20,7 @@ class RestaurantCard extends Component {
 				<div className="ui fluid card"  >
 					<div  className="image" >
 						{
-              venue.photos && <img
+              venue.imageUrl && <img
 								id="restimg"
                 src={img}
                 // src="http://wikitravel.org/upload/shared//1/1e/Hong_Kong_Culinary_Banner.jpg"
@@ -30,7 +33,7 @@ class RestaurantCard extends Component {
               <Link to={
                 {
                   pathname: `/restaurants/${venue.name}`,
-                  state: {restaurant}
+                  state: {venue}
                 }
                 }>
                 restaurauntCard link : {' '}<h1>{venue.name}</h1>
@@ -56,7 +59,9 @@ class RestaurantCard extends Component {
 					<div className="extra content">
 						<a>
 							<i className="map outline icon" />
-							{venue.location.formattedAddress.join(', ')}
+						
+						
+							{	JSON.parse(venue.address).join(', ')}
 						</a>
 					</div>
 				</div>

@@ -37,6 +37,7 @@ export default class Nav extends Component {
 									onClick={this.handleItemClick}
 								>
 									Nibl
+									<br/>
 								</div>
 							</Link>
 						</div>
@@ -44,7 +45,7 @@ export default class Nav extends Component {
 
             <div className="item">
               <SearchBar {...this.props}/>
-              <CheckBox />
+          
             </div>
 
             <div className="item">
@@ -52,7 +53,7 @@ export default class Nav extends Component {
             </div>
 
 
-						<div className="item">
+					{/*	<div className="item">
 							<Link to="/restaurants">
 								<div
 									className="ui medium header"
@@ -74,20 +75,8 @@ export default class Nav extends Component {
 									Reviews
 								</div>
 							</Link>
-						</div>
+						</div>*/}
 
-						<div className="item">
-							<div className="ui compact menu">
-								<div className="ui simple dropdown item">
-									Food
-									<i className="dropdown icon" />
-									<div className="menu">
-										<div className="item">Resturaunts</div>
-										<div className="item">Food</div>
-									</div>
-								</div>
-							</div>
-						</div>
 
 						<div className="right menu">
 							{!currentUser && (

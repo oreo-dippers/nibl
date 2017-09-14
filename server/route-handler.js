@@ -48,8 +48,8 @@ module.exports.getMenu = function(req, res) {
     // Generate restaurantId
     // 1 Get foursquare API id, ie: 40a55d80f964a52020f31ee3
     // 2 Query Restaurant database for it
-    // 3 A If id is there, set it
-    var restaurantId = 222;  // This is a hardcoded example
+    // 3 A If id is found, set it
+    var restaurantId = 1;  // This is a hardcoded example that attaches to a seeded restaurant
     // 3 B If id is not there, add it to the Restaurant table
     // This may require a call to the FourSquare API)
 
@@ -62,6 +62,10 @@ module.exports.getMenu = function(req, res) {
         // console.log('section is: ', section);
         section.entries.items.forEach(function(dish) {
           // console.log('dish is: ', dish);
+          // console.log('dish entry Id', dish.entryId);
+          // console.log('dish name', dish.name);
+          // console.log('dish descrip', dish.description);
+          // console.log('dish price', dish.price);
 
           db.Dish.findOrCreate({
             where: {
@@ -79,15 +83,16 @@ module.exports.getMenu = function(req, res) {
             }
           })
           .then(function(dish) {
-            console.log(dish);
-            // let {foursquareId, name, phone, address, imageUrl, avgRating} = restaurant[0].dataValues;
-            // restaurantData.push({foursquareId, name, phone, address, imageUrl, avgRating});
+            // console.log('dish was added or found!');
+            // console.log(dish[0].dataValues);
+            let {foursquareEntryId, name, imageUrl, description, price, avgRating} = dish[0].dataValues;
+            dishData.push({foursquareEntryId, name, imageUrl, description, price, avgRating});
           });
         });
       });
     });
 
-    res.send(data);
+    res.send(dishData);
   });
 };
 

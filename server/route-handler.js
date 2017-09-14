@@ -44,6 +44,20 @@ module.exports.getMenu = function(req, res) {
     // Dishes array:
     // console.log('Array 3: This is an array of the dishes in the first section of the dinner menu array', data.response.menu.menus.items[0].entries.items[0].entries.items);
     // console.log('This is the first dish in the first section of the dinner menu array', data.response.menu.menus.items[0].entries.items[0].entries.items[0]);
+
+    var menus = data.response.menu.menus.items;
+    var dishData = [];
+
+    menus.forEach(function(menu) {
+      // console.log('menu is: ', menu);
+      menu.entries.items.forEach(function(section) {
+        // console.log('section is: ', section);
+        section.entries.items.forEach(function(dish) {
+          console.log('dish is: ', dish);
+        });
+      });
+    });
+
     res.send(data);
   });
 };

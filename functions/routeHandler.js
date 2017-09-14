@@ -42,5 +42,9 @@ module.exports.getRestaurants = function(req, res) {
   utils.apiCall(urlQuery, function(data) {
     res.send(data);
   });
+};
 
+
+module.exports.getDummy = function(req, res) {
+  console.log('This dummy is working')
 };

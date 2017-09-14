@@ -13,13 +13,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../dist')));
 
 app.get('/venue',routeHandler.getVenue);
-app.get('/menu',routeHandler.getMenu);
 
 //REST endpoint for searching restaurants nearby
 app.get('/api/restaurants/', routeHandler.getRestaurants);
 
 //REST endpoint for getting detail of single restaurant
-app.get('/api/restaurants/page', routeHandler.getDummy);
+app.get('/api/restaurants/page', routeHandler.getMenu);
 
 //REST endpoint for searching dishes
 app.get('/api/dishes', routeHandler.getDummy);

@@ -25,49 +25,13 @@ module.exports.getMenu = function(req, res) {
   // here is another url to play with to ensure code below works
   // const url = 'https://api.foursquare.com/v2/venues/47a1bddbf964a5207a4d1fe3/menu';
   const urlQuery = url+ '?' + qs;
+
   utils.apiCall(urlQuery, function(data) {
-
-    // Generate restaurantId
-    // 1 Get foursquare API id, ie: 40a55d80f964a52020f31ee3
-    // 2 Query Restaurant database for it
-    // 3 A If id is found, set it
-    var restaurantId = 1;  // This is a hardcoded example that attaches to a seeded restaurant
-    // 3 B If id is not there, add it to the Restaurant table
-    // This may require a call to the FourSquare API)
-
-    var menus = data.response.menu.menus.items;
-    var dishData = [];
-
-    // Add each dish from response to database
-    menus.forEach(function(menu) {
-      menu.entries.items.forEach(function(section) {
-        section.entries.items.forEach(function(dish) {
-
-          db.Dish.findOrCreate({
-            where: {
-              foursquareEntryId: dish.entryId,
-            },
-            defaults: {
-              // If it is not in the Dish table, set these defaults:
-              restaurantId: restaurantId,
-              foursquareEntryId: dish.entryId,
-              name: dish.name,
-              imageUrl: '',
-              description: dish.description,
-              price: dish.price,
-              avgRating: 0
-            }
-          })
-          .then(function(dish) {
-            // Make organized data to send to front end
-            let {foursquareEntryId, name, imageUrl, description, price, avgRating} = dish[0].dataValues;
-            dishData.push({foursquareEntryId, name, imageUrl, description, price, avgRating});
-          });
-        });
+    utils.getDishData(data)
+      .then(function(dishData) {
+        console.log('dishData sent to front end');
+        res.send(dishData);
       });
-    });
-
-    res.send(dishData);
   });
 };
 
@@ -86,9 +50,9 @@ module.exports.getRestaurants = function(req, res) {
 
   utils.apiCall(urlQuery, function(data) {
     utils.getRestaurantData(data)
-      .then(function(restaurantData){
-        console.log('This this finally worked');
+      .then(function(restaurantData) {
+        console.log('restaurantData sent to front end');
         res.send(restaurantData);
-       })
+       });
   });
 };

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Menu, Button } from 'semantic-ui-react';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Menu } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import SearchBar from './searchBar'
-import { auth, googleAuthProvider } from './firebase';
+import { auth, googleAuthProvider } from '../firebase';
+import CheckBox from './checkBox';
 
 export default class Nav extends Component {
 	constructor() {
@@ -20,13 +21,15 @@ export default class Nav extends Component {
 	}
 
 	render() {
-		const { activeItem, currentUser } = this.state;
-
+		const { currentUser } = this.state;
+    console.log('this.state', this.state);
 		return (
 			<div>
 				<div style={{ background: '#F8F8F8' }} className="ui fluid container">
 					<div style={{ background: '#26CDA7' }} className="ui menu">
-						<div className="item">
+
+
+            <div className="item">
 							<Link to="/">
 								<div
 									className="ui huge header"
@@ -37,6 +40,17 @@ export default class Nav extends Component {
 								</div>
 							</Link>
 						</div>
+
+
+            <div className="item">
+              <SearchBar {...this.props}/>
+              <CheckBox />
+            </div>
+
+            <div className="item">
+            <CheckBox />
+            </div>
+
 
 						<div className="item">
 							<Link to="/restaurants">
@@ -61,7 +75,6 @@ export default class Nav extends Component {
 								</div>
 							</Link>
 						</div>
-
 
 						<div className="item">
 							<div className="ui compact menu">
@@ -88,7 +101,6 @@ export default class Nav extends Component {
 							)}
 
 							{currentUser && (
-
 								<Menu.Menu position="right">
 								<div className="item">
 								<img className="ui avatar image" src={currentUser.photoURL} />
@@ -102,13 +114,8 @@ export default class Nav extends Component {
 										name="logout"
 										onClick={() => auth.signOut()}
 									/>
-
 								</Menu.Menu>
-
-
 							)}
-
-
 						</div>
 					</div>
 				</div>

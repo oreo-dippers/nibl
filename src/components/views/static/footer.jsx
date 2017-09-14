@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
-import {Button, Container, Header, Icon} from 'semantic-ui-react'
+import {Button, Icon} from 'semantic-ui-react'
 
 class Footer extends Component {
   render() {

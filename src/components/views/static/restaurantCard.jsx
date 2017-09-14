@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-var Rating = require('react-rating');
+import Rating from 'react-rating'
+// var Rating = require('react-rating');
 
 class RestaurantCard extends Component {
 	render() {
-    console.log('this', this);
     // const restaurant = this.props.location.state.restaurant
-
     const restaurant = this.props.restaurant
     const { venue } = restaurant;
     const img = `${venue.photos.groups[0].items[0].prefix}800x200${venue.photos.groups[0].items[0].suffix}`
-    console.log('img', img);
-
 		if (!restaurant) {
 			return <div>Sorry, but the restaurant was not found</div>;
 		}
@@ -36,7 +33,7 @@ class RestaurantCard extends Component {
                   state: {restaurant}
                 }
                 }>
-                <h1>{venue.name}</h1>
+                restaurauntCard link : {' '}<h1>{venue.name}</h1>
               </Link>
 						</a>
 						<div className="meta">

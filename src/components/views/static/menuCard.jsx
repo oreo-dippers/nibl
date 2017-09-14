@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-var Rating = require('react-rating');
+import Rating from 'react-rating';
 
 class MenuCard extends Component {
 	render() {
 		return (
-			
+
 				<div className="ui card">
 
 					<div className="content">
@@ -14,6 +14,7 @@ class MenuCard extends Component {
 					<div className="image">
 						<img src="https://instagram.fsnc1-1.fna.fbcdn.net/t51.2885-15/e35/12751127_511734799019156_1460279120_n.jpg" />
 					</div>
+
 					<div className="content">
 						<a className=" right floated meta ui label">$10.00</a>
 
@@ -48,6 +49,7 @@ class MenuCard extends Component {
 							}
 						/>
 					</div>
+
 					<div className="extra content">
 						<div className="ui large transparent left icon input">
 							<div className="meta"> "A warm big japanese hug in a bow..." </div>

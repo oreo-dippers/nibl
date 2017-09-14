@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import FileInput from 'react-file-input';
-import firebase, {storage, database} from './firebase';
-import CommentBox from './CommentBox';
+// import firebase, {storage, database} from '../firebase';
+import CommentBox from './commentBox';
 
 
 class CommentCard extends Component {
@@ -11,6 +11,7 @@ class CommentCard extends Component {
       uploadProgress: null,
     };
     // this.userRef = database.ref('users');
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(event) {
@@ -40,13 +41,13 @@ class CommentCard extends Component {
 	      <CommentBox >This is a Test From Dishes Component </CommentBox>
         <div id="incredibleimg" />
         <form>
-          <input
+          <FileInput
             type="file"
             name="myImage"
             accept=".png, .jpg"
             placeholder="Select An Image"
             className="inputClass"
-            onChange={this.handleSubmit.bind(this)}
+            onChange={this.handleSubmit}
           />
         </form>
       </div>

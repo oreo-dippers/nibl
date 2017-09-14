@@ -8,6 +8,7 @@ const EXPRESS = `http://localhost:3006`;
 
 
 export function getRestaurants(request) {
+  // console.log(request)
   return axios.get(`${FIREBASE}/api/restaurants`, request)
       .then(res => {
         console.log('successful getRestaurants!');

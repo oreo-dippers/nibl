@@ -1,20 +1,20 @@
 import React from 'react';
-import { Grid, Image, Segment } from 'semantic-ui-react';
-import MenuCard from './MenuCard';
+// import { Grid, Image, Segment } from 'semantic-ui-react';
+import MenuCard from './menuCard';
 // style={{ background: 'url(https://thumb.ibb.co/cdP7jF/backdropfoods.png)' }}
 const Home = () => (
 	<div className="bg">
 
 		<div className="ui container">
-			<h1 style={{ 'font-size': '5em' }} id="themainhead" className="ui left huge header">
+			<h1 style={{ fontSize: '5em' }} id="themainhead" className="ui left huge header">
 				nibl.it
 			</h1>
-			<h1 style={{ 'font-size': '4em' }} className="ui left huge header">
+			<h1 style={{ fontSize: '4em' }} className="ui left huge header">
 				It's all about the food
 			</h1>
 			<br />
 		</div>
-	
+
 		<div className="ui container  ">
 			{' '}
 			{/* each row*/}
@@ -26,7 +26,7 @@ const Home = () => (
 				<MenuCard />
 			</div>
 		</div>
-		
+
 		<div style={{ background: '#242424' }}>
 			<br />
 			<br />
@@ -75,7 +75,6 @@ const Home = () => (
 		<br />
 		<br />
 		<br />
-		<br /> 
 		<br />
 		<br />
 		<br />
@@ -90,7 +89,8 @@ const Home = () => (
 		<br />
 		<br />
 		<br />
-	
+		<br />
+
 	</div>
 );
 

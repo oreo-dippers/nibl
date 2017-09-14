@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import FileInput from 'react-file-input';
-import firebase, { storage, database } from './firebase';
-import $ from 'jquery';
-var Rating = require('react-rating');
+// import FileInput from 'react-file-input';
+// import firebase, { storage, database } from '../firebase';
+// import $ from 'jquery';
+// var Rating = require('react-rating');
 
 class CommentBox extends Component {
 	getInitialState() {
@@ -38,15 +38,10 @@ class CommentBox extends Component {
 		)
 	}
 	render() {
-		// if(this.state.editing){
-		// 	return this.renderForm();
-		// }else{
-		// 	return this.renderNormal();
-		// }
 		return (
 			<div className="ui container">
 			  <div> {this.props.children} </div>
-				<button onClick={this.edit}>Edita</button>
+				<button onClick={this.edit}>Edit</button>
 				<button onClick={this.remove}> Remove </button>
 			</div>
 		);

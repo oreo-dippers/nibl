@@ -4,14 +4,15 @@ import { Form, Checkbox } from 'semantic-ui-react'
 export default class CheckBox extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      value: 'dish',
-    }
+
     this.handleChange = this.handleChange.bind(this);
   }
+
   handleChange(e, { value }) {
-    this.setState({ value })
-    console.log('change change')
+    console.log('value', value)
+    console.log('this.props', this.props);
+    this.props.setNavState(value)
+
   }
 
   render() {
@@ -21,24 +22,24 @@ export default class CheckBox extends Component {
         <Form.Field>
           <Checkbox
             radio
-            label='search by dish'
+            label='search by dishes'
             name='checkbox'
-            value='dish'
-            checked={this.state.value === 'dish'}
+            value='dishes'
+            checked={this.props.searchBy === 'dishes'}
             onChange={this.handleChange}
           />
         </Form.Field>
         <Form.Field>
           <Checkbox
             radio
-            label='search by restaurant'
+            label='search by restaurants'
             name='checkbox'
-            value='restaurant'
-            checked={this.state.value === 'restaurant'}
+            value='restaurants'
+            checked={this.props.searchBy === 'restaurants'}
             onChange={this.handleChange}
           />
         </Form.Field>
-        Selected: <b>{this.state.value}</b>
+        {/* Selected: <b>{this.props.searchBy}</b> */}
       </Form>
     )
   }

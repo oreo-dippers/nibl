@@ -14,6 +14,7 @@ const Main = (props) => (
       <Route exact path='/' component={() => <Home />}/>
       <Route path='/restaurants' component={() => <RoutesForRestaurants restaurants={props.restaurants} />}/>
       <Route path='/dishes' component={CommentCard}/>
+      <Route path='/addphoto' component={CommentCard}/>
     </Switch>
   </div>
 )

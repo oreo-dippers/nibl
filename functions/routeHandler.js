@@ -32,6 +32,7 @@ module.exports.getRestaurants = function(req, res) {
   var myQuery = req.query;
   var parameterObj = {
     'venuePhotos': '1',
+    'limit': '10'
   };
   parameterObj.query = myQuery.query;
   parameterObj.near = myQuery.near;
@@ -40,7 +41,11 @@ module.exports.getRestaurants = function(req, res) {
   const urlQuery = url+ '?' + parameter + '&' + qs;
 
   utils.apiCall(urlQuery, function(data) {
-    res.send(data);
+    utils.getRestaurantData(data)
+      .then(function(restaurantData){
+        console.log('This this finally worked');
+        res.send(restaurantData);
+       });
   });
 };
 

@@ -45,6 +45,14 @@ module.exports.getMenu = function(req, res) {
     // console.log('Array 3: This is an array of the dishes in the first section of the dinner menu array', data.response.menu.menus.items[0].entries.items[0].entries.items);
     // console.log('This is the first dish in the first section of the dinner menu array', data.response.menu.menus.items[0].entries.items[0].entries.items[0]);
 
+    // Generate restaurantId
+    // 1 Get foursquare API id, ie: 40a55d80f964a52020f31ee3
+    // 2 Query Restaurant database for it
+    // 3 A If id is there, set it
+    var restaurantId = 222;  // This is a hardcoded example
+    // 3 B If id is not there, add it to the Restaurant table
+    // This may require a call to the FourSquare API)
+
     var menus = data.response.menu.menus.items;
     var dishData = [];
 
@@ -53,7 +61,28 @@ module.exports.getMenu = function(req, res) {
       menu.entries.items.forEach(function(section) {
         // console.log('section is: ', section);
         section.entries.items.forEach(function(dish) {
-          console.log('dish is: ', dish);
+          // console.log('dish is: ', dish);
+
+          db.Dish.findOrCreate({
+            where: {
+              foursquareEntryId: dish.entryId,
+            },
+            defaults: {
+              // If it is not in the Dish table, set these defaults:
+              restaurantId: restaurantId,
+              foursquareEntryId: dish.entryId,
+              name: dish.name,
+              imageUrl: '',
+              description: dish.description,
+              price: dish.price,
+              avgRating: 0
+            }
+          })
+          .then(function(dish) {
+            console.log(dish);
+            // let {foursquareId, name, phone, address, imageUrl, avgRating} = restaurant[0].dataValues;
+            // restaurantData.push({foursquareId, name, phone, address, imageUrl, avgRating});
+          });
         });
       });
     });

@@ -19,11 +19,11 @@ module.exports.getVenue = function(req, res) {
   });
 };
 
-
+// Reached at localhost:3006/menu
 module.exports.getMenu = function(req, res) {
-  // const url = 'https://api.foursquare.com/v2/venues/40a55d80f964a52020f31ee3/menu';
+  const url = 'https://api.foursquare.com/v2/venues/40a55d80f964a52020f31ee3/menu';
   // here is another url to play with to ensure code below works
-  const url = 'https://api.foursquare.com/v2/venues/47a1bddbf964a5207a4d1fe3/menu';
+  // const url = 'https://api.foursquare.com/v2/venues/47a1bddbf964a5207a4d1fe3/menu';
   const urlQuery = url+ '?' + qs;
   utils.apiCall(urlQuery, function(data) {
     // 1 Get data that I want from API
@@ -33,10 +33,15 @@ module.exports.getMenu = function(req, res) {
     // 3 Send all restaurant menu data to front end with ratings
     // 4 *IMPORTANT* Get restaurant Id!!!
 
-    console.log('Array 1: This is an array of possible menus a restaurant might have', data.response.menu.menus.items);
-    // console.log('This is the first element of the dinner menu array', data.response.menu.menus.items[0]);
-    // console.log('Array 2: This is an array of what is on the dinner menu', data.response.menu.menus.items[0].entries.items);
-    // console.log('This is the first element (section) in the dinner menu array', data.response.menu.menus.items[0].entries.items[0]);
+    // Menus array:
+    // console.log('Array 1: This is an array of different menus a restaurant might have', data.response.menu.menus.items);
+    // console.log('For example, this is the first element of the the first menu in the array', data.response.menu.menus.items[0]);
+
+    // Section array:
+    // console.log('Array 2: This is an array inside of the first element of the first menu in the array', data.response.menu.menus.items[0].entries.items);
+    // console.log('This is the first element (section) of the array inside the first element of the first menu in the array', data.response.menu.menus.items[0].entries.items[0]);
+
+    // Dishes array:
     // console.log('Array 3: This is an array of the dishes in the first section of the dinner menu array', data.response.menu.menus.items[0].entries.items[0].entries.items);
     // console.log('This is the first dish in the first section of the dinner menu array', data.response.menu.menus.items[0].entries.items[0].entries.items[0]);
     res.send(data);

@@ -20,7 +20,7 @@ module.exports = {
     filename: 'index.bundle.js'
   },
   resolve: {
-    extensions: ['.js', '.scss', '.css', '.json', 'jsx']
+    extensions: ['.js', '.scss', '.css', '.json', '.jsx']
   },
   module: {
     rules: [
@@ -44,7 +44,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
       },

@@ -26,24 +26,6 @@ module.exports.getMenu = function(req, res) {
   // const url = 'https://api.foursquare.com/v2/venues/47a1bddbf964a5207a4d1fe3/menu';
   const urlQuery = url+ '?' + qs;
   utils.apiCall(urlQuery, function(data) {
-    // 1 Get data that I want from API
-    // 2 Check if it is in database
-    // 2 A If not in db, save it into the database
-    // 2 B If in db, retrieve rating from db
-    // 3 Send all restaurant menu data to front end with ratings
-    // 4 *IMPORTANT* Get restaurant Id!!!
-
-    // Menus array:
-    // console.log('Array 1: This is an array of different menus a restaurant might have', data.response.menu.menus.items);
-    // console.log('For example, this is the first element of the the first menu in the array', data.response.menu.menus.items[0]);
-
-    // Section array:
-    // console.log('Array 2: This is an array inside of the first element of the first menu in the array', data.response.menu.menus.items[0].entries.items);
-    // console.log('This is the first element (section) of the array inside the first element of the first menu in the array', data.response.menu.menus.items[0].entries.items[0]);
-
-    // Dishes array:
-    // console.log('Array 3: This is an array of the dishes in the first section of the dinner menu array', data.response.menu.menus.items[0].entries.items[0].entries.items);
-    // console.log('This is the first dish in the first section of the dinner menu array', data.response.menu.menus.items[0].entries.items[0].entries.items[0]);
 
     // Generate restaurantId
     // 1 Get foursquare API id, ie: 40a55d80f964a52020f31ee3
@@ -56,16 +38,10 @@ module.exports.getMenu = function(req, res) {
     var menus = data.response.menu.menus.items;
     var dishData = [];
 
+    // Add each dish from response to database
     menus.forEach(function(menu) {
-      // console.log('menu is: ', menu);
       menu.entries.items.forEach(function(section) {
-        // console.log('section is: ', section);
         section.entries.items.forEach(function(dish) {
-          // console.log('dish is: ', dish);
-          // console.log('dish entry Id', dish.entryId);
-          // console.log('dish name', dish.name);
-          // console.log('dish descrip', dish.description);
-          // console.log('dish price', dish.price);
 
           db.Dish.findOrCreate({
             where: {
@@ -83,8 +59,7 @@ module.exports.getMenu = function(req, res) {
             }
           })
           .then(function(dish) {
-            // console.log('dish was added or found!');
-            // console.log(dish[0].dataValues);
+            // Make organized data to send to front end
             let {foursquareEntryId, name, imageUrl, description, price, avgRating} = dish[0].dataValues;
             dishData.push({foursquareEntryId, name, imageUrl, description, price, avgRating});
           });

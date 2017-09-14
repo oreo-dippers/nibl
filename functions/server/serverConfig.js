@@ -21,11 +21,12 @@ app.get('/api/restaurants/', routeHandler.getRestaurants);
 //REST endpoint for getting detail of single restaurant
 app.get('/api/restaurants/page', routeHandler.getDummy);
 
+//REST endpoint for searching dishes
+app.get('/api/dishes', routeHandler.getDummy);
+
 //REST endpoint for posting review of a dish
 app.post('/api/dishes/review', routeHandler.getDummy);
 
-//REST endpoint for getting user profile
-app.get('/api/user', routeHandler.getDummy);
 
 //REST endpoint for saving user profile
 app.post('/api/user', routeHandler.getDummy);

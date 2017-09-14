@@ -20,13 +20,7 @@ module.exports.getVenue = function(req, res) {
 
 };
 
-module.exports.getMenu = function(req, res) {
-  const url = 'https://api.foursquare.com/v2/venues/40a55d80f964a52020f31ee3/menu';
-  const urlQuery = url+ '?' + qs;
-  utils.apiCall(urlQuery, function(data) {
-    res.send(data);
-  });
-};
+module.exports.getMenu = restaurants.getMenu;
 
 module.exports.getRestaurants = restaurants.getRestaurants;
 

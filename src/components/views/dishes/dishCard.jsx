@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Rating from 'react-rating'
 // var Rating = require('react-rating');
 
-class RestaurantCard extends Component {
+class DishCard extends Component {
 	render() {
 		// const restaurant = this.props.location.state.restaurant
 		console.log(this.props);
@@ -73,4 +73,4 @@ class RestaurantCard extends Component {
 	}
 }
 
-export default RestaurantCard;
+export default DishCard;

@@ -7,7 +7,6 @@ class SearchBar extends Component {
   constructor() {
     super();
     this.searchByRestaurant = this.searchByRestaurant.bind(this)
-    console.log('this.props', this.props);
   }
 
   searchByRestaurant(e) {
@@ -22,7 +21,6 @@ class SearchBar extends Component {
         radius: '5000'
       }
     };
-    console.log('this', this)
     if (searchBy === 'restaurants') {
       history.push('/restaurants')
       api.getRestaurants(request, this.props.dispatch);
@@ -41,8 +39,6 @@ class SearchBar extends Component {
 
 	}
 	render() {
-    // console.log('====================this.props')
-    // console.log('this.props', this.props)
 		return (
 			<div>
 

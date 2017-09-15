@@ -3,18 +3,24 @@ import { Link } from 'react-router-dom';
 import Rating from 'react-rating'
 // var Rating = require('react-rating');
 
+// const dashify = (str) => {
+//   return str.toLowerCase().split(' ').join('-')
+// }
+// var store_name = dashify(dish.name)
+
+
 class DishCard extends Component {
 	render() {
 		// const restaurant = this.props.location.state.restaurant
-		console.log(this.props);
-    const venue = this.props.restaurant;
-    console.log('venue', venue);
-
-		// const { venue } = restaurant;
-		const {prefix, suffix} = venue.imageUrl;
+    console.log('this.props', this.props);
+    const { dish } = this.props;
+		const {prefix, suffix} = dish.imageUrl;
 		const img = `${prefix}800x200${suffix}`
     console.log('img', img);
-		if (!venue) {
+
+
+
+		if (!dish) {
 			return <div>Sorry, but the restaurant was not found</div>;
 		}
 		return (
@@ -22,7 +28,7 @@ class DishCard extends Component {
 				<div className="ui fluid card"  >
 					<div  className="image" >
 						{
-              venue.imageUrl && <img
+              dish.imageUrl && <img
 								id="restimg"
                 src={img}
                 // src="http://wikitravel.org/upload/shared//1/1e/Hong_Kong_Culinary_Banner.jpg"
@@ -34,11 +40,11 @@ class DishCard extends Component {
 						<a className="header">
               <Link to={
                 {
-                  pathname: `/restaurants/${venue.name}`,
-                  state: {venue}
+                  pathname: `/dishes/${dish.name}`,
+                  state: {dish}
                 }
                 }>
-                restaurauntCard link : {' '}<h1>{venue.name}</h1>
+                restaurauntCard link : {' '}<h1>{dish.name}</h1>
               </Link>
 						</a>
 						<div className="meta">
@@ -63,7 +69,7 @@ class DishCard extends Component {
 							<i className="map outline icon" />
 
 
-							{	venue.address.join(', ')}
+							{	dish.address && dish.address.join(', ')}
 						</a>
 					</div>
 				</div>

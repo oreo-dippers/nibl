@@ -3,10 +3,28 @@ const db = require('../../db/db.js');
 module.exports.postDishReviewData = function(data) {
   let promise = new Promise(function(resolve, reject) {
 
+    var currentUserId;
+    var currentDishId;
+    
     // Get the userId based on the firebase UUID
-    let currentUserId;
+    db.User.findOne({
+      where: { 
+        firebaseUuid: data.userId 
+      }
+    })
+    .then(function(user){
+      currentUserId = user.id;
+    });
+    
     // Get the dishId based on the foursquareEntryId
-    let currentDishId;
+    db.Dish.findOne({
+      where: {
+        foursquareEntryId: data.dishId
+      }
+    })
+    .then(function(dish) {
+      currentDishId = dish.id;
+    });
 
     db.DishReview.findOrCreate({
       where: {

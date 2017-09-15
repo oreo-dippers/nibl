@@ -14,32 +14,32 @@ app.use(express.static(path.join(__dirname, '../dist')));
 
 app.get('/venue',routeHandler.getVenue);
 
-//REST endpoint for searching restaurants nearby
+// REST endpoint for searching restaurants nearby
 app.get('/api/restaurants/', routeHandler.getRestaurants);
 
-//REST endpoint for getting detail of single restaurant
+// REST endpoint for getting detail of single restaurant
 app.get('/api/restaurants/page', routeHandler.getMenu);
 
-//REST endpoint for searching dishes
+// REST endpoint for searching dishes
 app.get('/api/dishes', routeHandler.getDummy);
 
-//REST endpoint for posting review of a dish
-app.post('/api/dishes/review', routeHandler.getDummy);
+// REST endpoint for posting review of a dish
+app.post('/api/dishes/review', routeHandler.postDishReview);
 
 
-//REST endpoint for saving user profile
+// REST endpoint for saving user profile
 app.post('/api/user', routeHandler.getDummy);
 
-//REST endpoint for getting user saved Dish
+// REST endpoint for getting user saved Dish
 app.get('/api/user/fridge', routeHandler.getDummy);
 
-//REST endpoint for saving dish user want to eat later.
+// REST endpoint for saving dish user want to eat later.
 app.post('/api/user/fridge', routeHandler.getDummy);
 
-//REST endpoint for getting user saved restaurants
+// REST endpoint for getting user saved restaurants
 app.get('/api/user/saved-restaurants', routeHandler.getDummy);
 
-//REST endpoint for saving restaurants user want to visit later.
+// REST endpoint for saving restaurants user want to visit later.
 app.post('/api/user/saved-restaurants', routeHandler.getDummy);
 
 

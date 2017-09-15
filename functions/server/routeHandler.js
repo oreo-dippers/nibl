@@ -26,6 +26,8 @@ module.exports.getMenu = restaurants.getMenu;
 
 module.exports.getRestaurants = restaurants.getRestaurants;
 
+module.exports.postDishReview = dishes.postDishReview;
+
 
 module.exports.getDummy = function(req, res) {
   console.log('This dummy is working')

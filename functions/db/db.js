@@ -91,7 +91,7 @@ const DishReview = db.define("dishReview", {
     }
   },
   starRating: Sequelize.INTEGER,
-  imageUrl: Sequelize.STRING,
+  imageUrl: Sequelize.JSON,
   upvoteTotal: Sequelize.INTEGER
 });
 

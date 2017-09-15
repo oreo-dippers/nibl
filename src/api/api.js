@@ -7,6 +7,7 @@ import {
 
 const FIREBASE = `http://localhost:5001/oreo-nibl/us-central1/app`;
 const EXPRESS = `http://localhost:3006`;
+const DEPLOY = `https://us-central1-oreo-nibl.cloudfunctions.net/app`;
 
 
 export function getRestaurants(reqData, dispatch) {

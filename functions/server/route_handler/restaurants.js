@@ -1,5 +1,5 @@
 const querystring = require('querystring');
-const foursquare = require('../../../api-config/foursquare-config.js');
+const foursquare = require('./../api-config/foursquare-config.js');
 const bodyParser = require('body-parser');
 const utils = require('./../utils/util');
 

@@ -20,9 +20,9 @@ const Main = (props) => (
           />}
         />
       <Route
-        path='/restaurants'
+        path='/dishes'
         component={() =>
-          <RoutesForDishes restaurants={props.Dishes}
+          <RoutesForDishes dishes={props.dishes}
           />}
         />
       <Route path='/addphoto' component={CommentCard}/>

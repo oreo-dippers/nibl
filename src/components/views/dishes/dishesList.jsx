@@ -10,8 +10,7 @@ const dashify = (str) => {
 class DishesList extends Component {
 
   render() {
-    console.log('\'hi from RestaurantsList\'', 'hi from RestaurantsList');
-    console.log(this.props)
+  console.log('this.props', this.props)
     return ( <div> hi from dish list</div>
       // <ul>
       //   {

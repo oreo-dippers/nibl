@@ -1,7 +1,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import RestaurantsList from '../views/restaurantsList'
-import Restaurant from '../views/restaurant'
+import RestaurantsList from '../views/restaurants/restaurantsList'
+import Restaurant from '../views/restaurants/restaurant'
 
 const RoutesForRestaurants = (props) => (
   <Switch>

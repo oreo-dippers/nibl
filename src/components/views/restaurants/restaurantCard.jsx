@@ -62,7 +62,14 @@ class RestaurantCard extends Component {
 							<i className="map outline icon" />
 
 
-							{	venue.address.join(', ')}
+							{	typeof venue.address === 'string'
+              ? `*************
+                ERROR ADDRESS IS A STRING
+                ERROR ADDRESS IS A STRING
+                ERROR ADDRESS IS A STRING
+                ERROR ADDRESS IS A STRING
+                ERROR ADDRESS IS A STRING
+                ` : venue.address.join(', ')}
 						</a>
 					</div>
 				</div>

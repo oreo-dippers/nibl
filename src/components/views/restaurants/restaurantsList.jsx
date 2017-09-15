@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import RestaurantCard from './static/restaurantCard'
+import RestaurantCard from './restaurantCard'
 
 // The RestaurantsList iterates over all of the restaurants and creates
 // a link to their profile page.

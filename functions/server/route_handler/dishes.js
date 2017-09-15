@@ -1,5 +1,5 @@
 const querystring = require('querystring');
-const foursquare = require('../../../api-config/foursquare-config.js');
+const foursquare = require('./../api-config/foursquare-config.js');
 const bodyParser = require('body-parser');
 const utils = require('./../utils/util');
 
@@ -11,11 +11,9 @@ credentials.client_secret = foursquare.CLIENT_SECRET;
 const qs = querystring.stringify(credentials);
 
 module.exports.postDishReview = function(req, res) {
-
   utils.postDishReviewData(req)
   .then(function(data) {
     console.log('dishReview Data posted successfully!');
     res.status(201).send(data);
    });
-  
 };

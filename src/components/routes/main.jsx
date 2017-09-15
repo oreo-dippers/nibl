@@ -16,10 +16,15 @@ const Main = (props) => (
       <Route
         path='/restaurants'
         component={() =>
-          <RoutesForRestaurants restaurants={props.restaurants} 
+          <RoutesForRestaurants restaurants={props.restaurants}
           />}
         />
-      <Route path='/dishes' component={RoutesForDishes}/>
+      <Route
+        path='/restaurants'
+        component={() =>
+          <RoutesForDishes restaurants={props.Dishes}
+          />}
+        />
       <Route path='/addphoto' component={CommentCard}/>
     </Switch>
   </div>

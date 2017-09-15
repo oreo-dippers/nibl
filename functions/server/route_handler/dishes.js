@@ -11,5 +11,11 @@ credentials.client_secret = foursquare.CLIENT_SECRET;
 const qs = querystring.stringify(credentials);
 
 module.exports.postDishReview = function(req, res) {
-  res.status(201).send('Success!');
+
+  utils.postDishReviewData(req)
+  .then(function(data) {
+    console.log('Dish Review posted');
+    res.status(201).send('Success!');  // To be replaced later by data
+   });
+  
 };

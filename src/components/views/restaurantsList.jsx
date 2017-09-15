@@ -20,7 +20,7 @@ class RestaurantsList extends Component {
             var store_name = dashify(r.name)
             return (
             <li className="listStyle" key={r.fourSquareId}>
-                <RestaurantCard restaurant={r} key={i}/>
+                <RestaurantCard restaurant={r} />
             </li>
           )})
         }

@@ -17,9 +17,11 @@ class SearchBar extends Component {
         radius: '5000'
       }
     };
+    console.log('this', this)
     if (searchBy === 'restaurants') {
       history.push('/restaurants')
-      api.getRestaurants(request);
+      api.getRestaurants(request, this.props.dispatch);
+
     } else {
       history.push('/dishes');
 

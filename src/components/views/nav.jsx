@@ -30,6 +30,7 @@ export default class Nav extends Component {
 	render() {
 		const { currentUser } = this.state;
     console.log('this.state', this.state);
+    console.log('this', this);
 		return (
 			<div>
 				<div style={{ background: '#F8F8F8' }} className="ui fluid container">

@@ -4,11 +4,16 @@ import * as api from '../../api/api';
 import history from '../../index'
 
 class SearchBar extends Component {
-
+  constructor() {
+    super();
+    this.searchByRestaurant = this.searchByRestaurant.bind(this)
+    console.log('this.props', this.props);
+  }
 
   searchByRestaurant(e) {
 		e.preventDefault();
     const { searchBy } = this.props;
+
     const restaurantQuery = this._restaurants.value
     const request = {
       params: {
@@ -23,7 +28,11 @@ class SearchBar extends Component {
       api.getRestaurants(request, this.props.dispatch);
 
     } else {
+
+
       history.push('/dishes');
+      api.getDishes(request, this.props.dispatch);
+
 
     }
 
@@ -38,7 +47,7 @@ class SearchBar extends Component {
 			<div>
 
 				<Form
-          onSubmit={this.searchByRestaurant.bind(this)}
+          onSubmit={this.searchByRestaurant}
           placeholder="search here"
         >
           <div className="ui icon input">

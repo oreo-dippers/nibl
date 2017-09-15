@@ -8,3 +8,9 @@ export function getRestaurantsSuccess(restaurants) {
   }
 };
 
+export function getDishesSuccess(dishes) {
+  return {
+    type: types.GET_DISHES_SUCCESS,
+    dishes
+  }
+}

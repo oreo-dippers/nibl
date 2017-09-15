@@ -9,10 +9,7 @@ export default class CheckBox extends Component {
   }
 
   handleChange(e, { value }) {
-    console.log('value', value)
-    console.log('this.props', this.props);
-    this.props.setNavState(value)
-
+    this.props.setNavState(value);
   }
 
   render() {

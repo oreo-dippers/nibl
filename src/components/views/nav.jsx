@@ -18,7 +18,7 @@ export default class Nav extends Component {
 
 	componentDidMount() {
 		auth.onAuthStateChanged(currentUser => {
-			console.log('AUTH_CHANGE', currentUser);
+			// console.log('AUTH_CHANGE', currentUser);
 			this.setState({ currentUser });
 		});
 	}
@@ -29,7 +29,6 @@ export default class Nav extends Component {
 
 	render() {
 		const { currentUser } = this.state;
-    console.log('this.state', this.state);
 		return (
 			<div>
 				<div style={{ background: '#F8F8F8' }} className="ui fluid container">

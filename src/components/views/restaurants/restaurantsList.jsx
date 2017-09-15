@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import RestaurantCard from './static/restaurantCard'
+import RestaurantCard from './restaurantCard'
 
 // The RestaurantsList iterates over all of the restaurants and creates
 // a link to their profile page.
@@ -10,17 +10,14 @@ const dashify = (str) => {
 class RestaurantsList extends Component {
 
   render() {
-    console.log('\'hi from RestaurantsList\'', 'hi from RestaurantsList');
-    console.log(this.props)
     return (
       <ul>
         {
           this.props.restaurants.map((r, i) => {
-            console.log('This is R: ' , r);
             var store_name = dashify(r.name)
             return (
             <li className="listStyle" key={r.fourSquareId}>
-                <RestaurantCard restaurant={r} key={i}/>
+                <RestaurantCard restaurant={r} />
             </li>
           )})
         }

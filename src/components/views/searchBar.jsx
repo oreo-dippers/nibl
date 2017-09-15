@@ -4,11 +4,15 @@ import * as api from '../../api/api';
 import history from '../../index'
 
 class SearchBar extends Component {
-
+  constructor() {
+    super();
+    this.searchByRestaurant = this.searchByRestaurant.bind(this)
+  }
 
   searchByRestaurant(e) {
 		e.preventDefault();
     const { searchBy } = this.props;
+
     const restaurantQuery = this._restaurants.value
     const request = {
       params: {
@@ -19,9 +23,14 @@ class SearchBar extends Component {
     };
     if (searchBy === 'restaurants') {
       history.push('/restaurants')
-      api.getRestaurants(request);
+      api.getRestaurants(request, this.props.dispatch);
+
     } else {
+
+
       history.push('/dishes');
+      api.getDishes(request, this.props.dispatch);
+
 
     }
 
@@ -30,13 +39,11 @@ class SearchBar extends Component {
 
 	}
 	render() {
-    // console.log('====================this.props')
-    // console.log('this.props', this.props)
 		return (
 			<div>
 
 				<Form
-          onSubmit={this.searchByRestaurant.bind(this)}
+          onSubmit={this.searchByRestaurant}
           placeholder="search here"
         >
           <div className="ui icon input">

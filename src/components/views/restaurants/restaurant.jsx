@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import MenuCard from './static/menuCard';
+import MenuCard from '../static/menuCard';
 
 class Restaurant extends Component {
   render() {
@@ -40,7 +40,7 @@ class Restaurant extends Component {
 
         <div className="meta"> Rating: {venue.avgRating} </div>
         <div className="ui huge header" style={{'font-size': '1em'}}>
-          Address: {JSON.parse(venue.address).join()}
+          Address: {venue.address.join()}
           <br /> Phone Number: {venue.phone}
         </div>
         <h3>

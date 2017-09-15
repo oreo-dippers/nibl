@@ -14,8 +14,8 @@ module.exports.postDishReview = function(req, res) {
 
   utils.postDishReviewData(req)
   .then(function(data) {
-    console.log('Dish Review posted');
-    res.status(201).send('Success!');  // To be replaced later by data
+    console.log('dishReview Data posted successfully!');
+    res.status(201).send(data);
    });
   
 };

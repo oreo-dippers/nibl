@@ -1,18 +1,18 @@
 const db = require('../../db/db.js');
 
-module.exports.postDishReviewData = function(data) {
-  let promise = new Promise(function(resolve, reject) {
+module.exports.postDishReviewData = (data) => {
+  const promise = new Promise((resolve, reject) => {
 
     var currentUserId;
     var currentDishId;
-    
+
     // Get the userId based on the firebase UUID
     db.User.findOne({
       where: { 
         firebaseUuid: data.userId 
       }
     })
-    .then(function(user){
+    .then((user) => {
       currentUserId = user.id;
     });
     
@@ -22,7 +22,7 @@ module.exports.postDishReviewData = function(data) {
         foursquareEntryId: data.dishId
       }
     })
-    .then(function(dish) {
+    .then((dish) => {
       currentDishId = dish.id;
     });
 
@@ -41,11 +41,11 @@ module.exports.postDishReviewData = function(data) {
         upvoteTotal: 0
       }
     })
-    .then(function(dishReview) {
+    .then((dishReview) => {
       // Make organized data to send to front end
-      let {userId, dishId, review, starRating, imageUrl, upvoteTotal} = dishReview[0].dataValues;
+      const {userId, dishId, review, starRating, imageUrl, upvoteTotal} = dishReview[0].dataValues;
 
-      let newReview = {userId, dishId, review, starRating, imageUrl, upvoteTotal};
+      const newReview = {userId, dishId, review, starRating, imageUrl, upvoteTotal};
       if(newReview) {
         console.log('Dish Review was added to database!');
         resolve(newReview);

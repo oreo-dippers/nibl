@@ -5,27 +5,29 @@ module.exports.postDishReviewData = (data) => {
   var currentDishId;
 
   const promise = new Promise((resolve, reject) => {
+    // View data to see what it is being sent
+    // console.log('Data received for postDishReviewData is: ', data.body);
 
     Promise.all([
       // Get the userId based on the firebase UUID
       db.User.findOne({
         where: { 
-          firebaseUuid: data.userId 
+          firebaseUuid: data.body.userId 
         }
       }),
       // Get the dishId based on the foursquareEntryId
       db.Dish.findOne({
         where: {
-          foursquareEntryId: data.dishId
+          foursquareEntryId: data.body.dishId
         }
       })
     ])
     .then(values => {
-      console.log(values);
-      console.log('User id is ', values[0].id);
-      currentUserId = values[0].id;
-      console.log('Dish id is ', values[1].id);
-      currentDishId = values[1].id;
+      // console.log(values);
+      console.log('User id is ', values[0].dataValues.id);
+      currentUserId = values[0].dataValues.id;
+      console.log('Dish id is ', values[1].dataValues.id);
+      currentDishId = values[1].dataValues.id;
 
       db.DishReview.findOrCreate({
         where: {
@@ -36,17 +38,18 @@ module.exports.postDishReviewData = (data) => {
           // If it is not in the DishReview table, set these defaults:
           userId: currentUserId,
           dishId: currentDishId,
-          review: data.review,
-          starRating: data.starRating,
-          imageUrl: data.imageUrl,
+          review: data.body.review,
+          starRating: data.body.starRating,
+          imageUrl: data.body.imageUrl,
           upvoteTotal: 0
         }
       })
       .then((dishReview) => {
+        console.log('dishReview object is ', dishReview);
         // Make organized data to send to front end
-        const {userId, dishId, review, starRating, imageUrl, upvoteTotal} = dishReview[0].dataValues;
+        // const {userId, dishId, review, starRating, imageUrl, upvoteTotal} = dishReview[0].dataValues;
   
-        const newReview = {userId, dishId, review, starRating, imageUrl, upvoteTotal};
+        // const newReview = {userId, dishId, review, starRating, imageUrl, upvoteTotal};
 
         // Do not forget to update a dish's avgRating!!!
 

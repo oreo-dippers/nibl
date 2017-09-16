@@ -97,7 +97,13 @@ class Restaurant extends Component {
               // var store_name = dashify(r.name)
               return (
               <li className="listStyle" key={r.foursquareId}>
-                  <MenuCard menu={r} />
+              <div className="ui container ">
+			<div className="ui centered cards">
+      <MenuCard menu={r} />
+		
+			</div>
+		</div>
+                 
               </li>
             )})
           }

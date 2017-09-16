@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
-import Rating from 'react-rating';
+import {
+	Button,
+	Header,
+	Image,
+	Modal,
+	Comment,
+	Feed,
+	Icon,
+	Rating,
+  } from 'semantic-ui-react';
 
 class MenuCard extends Component {
 	render() {
@@ -18,43 +27,15 @@ class MenuCard extends Component {
 					</div>
 
 					<div className="content">
-						<a className=" right floated meta ui label">{menu.price}</a>
+						<a className=" right floated meta ui label" placeholder="N/A">${menu.price}</a>
 
-						<div>{menu.name}</div>
-						<Rating
-							placeholderRate={4.5}
-							full={
-								<img
-									src="https://thumb.ibb.co/csPWoa/star_yellow.png"
-									alt="star_yellow"
-									alt="star_grey"
-									className="icon"
-									alt=""
-								/>
-							}
-							placeholder={
-								<img
-									src="https://thumb.ibb.co/csPWoa/star_yellow.png"
-									alt="star_yellow"
-									alt="star_grey"
-									className="icon"
-									alt=""
-								/>
-							}
-							empty={
-								<img
-									src="https://thumb.ibb.co/d6MUPF/star_grey.png"
-									alt="star_grey"
-									className="icon"
-									alt=""
-								/>
-							}
-						/>
+						<div  style={{ color: '#000000' }} >{menu.name}</div>
+						<Rating defaultRating={3} maxRating={5} disabled />
 					</div>
 
 					<div className="extra content">
 						<div className="ui large transparent left icon input">
-							<div className="meta"> {menu.description} </div>
+							<div className="meta" placeholder="N/A"> Description: {menu.description} </div>
 						</div>
 					</div>
                 </div>

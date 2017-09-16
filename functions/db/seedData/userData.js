@@ -1,4 +1,4 @@
-module.exports.restaurantData = [
+module.exports.userData = [
   {
     firebaseUuid: 'ExphzGM382Y6lVZDPi82gPXuhPu1'
   },

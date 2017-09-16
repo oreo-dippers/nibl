@@ -38,38 +38,11 @@ class CommentCard extends Component {
       xhr.responseType = 'blob';
       xhr.onload = function(event) {
         const blob = xhr.response;
-<<<<<<< HEAD
-    };
-
-    console.log(imagePreviewUrl); // send url to database for storage
-      this.setState({imagePreviewUrl})
-      // document.getElementById('incredibleimg').innerHTML =
-      //   '<img id="rcorners1" src=' + url + '/>';
-    })
-  }
-
-  aviarySubmit(e) {
-    console.log('e', e);
-    // e.target
-    console.log('e.target', e.target.files);
-    "return launchEditor('image1', 'http://images.aviary.com/imagesv5/feather_default.jpg');"
-
-
-    console.log('featherEditor', featherEditor);
-    return launchEditor('image1', this.state.imagePreviewUrl)
-  }
-
-  submitFilteredPhoto() {
-    let imagePreviewUrl = this.filtered
-    this.setState({ imagePreviewUrl });
-
-=======
       };
       console.log(url); // send url to database for storage
       document.getElementById('incredibleimg').innerHTML =
         '<img  id="thumbnail" src=' + url + '/>';
     });
->>>>>>> popup for photos, commentcard input field
   }
 
   render() {
@@ -77,41 +50,6 @@ class CommentCard extends Component {
     console.log('imagePreviewUrl', imagePreviewUrl);
     return (
       <div className="ui container">
-<<<<<<< HEAD
-        <CommentBox >This is a Test From Dishes Component </CommentBox>
-
-        <form>
-          <input
-            id="something"
-            type="file"
-            name="myImage"
-            accept=".png, .jpg"
-            placeholder="Select An Image"
-            className="inputClass"
-            onChange={this.handleSubmit}
-          />
-        </form>
-        <div id='injection_site'></div>
-
-          <img
-            id='image1'
-            src={this.state.imagePreviewUrl}
-            ref={(input) => this.filtered = input}
-          />
-
-
-          <p>
-            <input
-              type='image'
-              src='http://images.aviary.com/images/edit-photo.png'
-              value='Edit photo'
-              onClick={this.aviarySubmit}
-            />
-          </p>
-
-          <button onClick={this.handleSubmit}>Submit photo</button>
-
-=======
         {/* <CommentBox >This is a Test From Dishes Component </CommentBox>*/}
 
         <Feed>
@@ -163,7 +101,6 @@ class CommentCard extends Component {
             </Feed.Content>
           </Feed.Event>
         </Feed>
->>>>>>> popup for photos, commentcard input field
       </div>
     );
   }

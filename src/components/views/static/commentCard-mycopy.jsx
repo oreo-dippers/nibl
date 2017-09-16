@@ -2,7 +2,16 @@ import React, { Component } from 'react';
 import FileInput from 'react-file-input';
 import firebase, { storage, database } from '../../firebase';
 import CommentBox from './commentBox';
-
+import {
+  Button,
+  Header,
+  Image,
+  Modal,
+  Comment,
+  Feed,
+  Icon,
+  Rating,
+} from 'semantic-ui-react';
 
 const Aviary = window.Aviary
 

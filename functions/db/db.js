@@ -1,5 +1,5 @@
-const functions = require("firebase-functions");
-const Sequelize = require("sequelize");
+const functions = require('firebase-functions');
+const Sequelize = require('sequelize');
 
 console.log('This is the value', functions.config().postgres.postgres_url);
 
@@ -13,15 +13,15 @@ const db = new Sequelize(functions.config().postgres.postgres_url, {
 db
   .authenticate()
   .then(() => {
-    console.log("Postgres Database connection established successfully!");
+    console.log('Postgres Database connection established successfully!');
   })
   .catch(err => {
-    console.error("Postgres Database connection failed: ", err);
+    console.error('Postgres Database connection failed: ', err);
   });
 
 // Table 1: User (in DB will be: users)
 // This is the table of all our users.
-const User = db.define("user", {
+const User = db.define('user', {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -35,7 +35,7 @@ const User = db.define("user", {
 // retrieved from the Foursquare API.
 // To get avgRating, we calculate the avgRatings
 // of all the dishes a restaurant has.
-const Restaurant = db.define("restaurant", {
+const Restaurant = db.define('restaurant', {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -55,7 +55,7 @@ const Restaurant = db.define("restaurant", {
 // retrieved from the Foursquare API.
 // To get avgRating, we calculate the starRatings
 // from dishReviews.
-const Dish = db.define("dish", {
+const Dish = db.define('dish', {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -72,7 +72,7 @@ const Dish = db.define("dish", {
 // Table 4: DishReview (in DB will be: dishReviews)
 // This is the table of reviews for dishes.
 // A user can only leave one review per dish.
-const DishReview = db.define("dishReview", {
+const DishReview = db.define('dishReview', {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -86,7 +86,7 @@ const DishReview = db.define("dishReview", {
       len: {
         args: [1, 140],
         msg:
-          "The review must be at least 1 character and up to 140 characters long"
+          'The review must be at least 1 character and up to 140 characters long'
       }
     }
   },
@@ -98,7 +98,7 @@ const DishReview = db.define("dishReview", {
 // Table 5: DishReviewUpvote (in DB will be: dishReviewUpvotes)
 // This is the table of upvotes for reviews of dishes.
 // A user can only upvote once per dishReview.
-const DishReviewUpvote = db.define("dishReviewUpvote", {
+const DishReviewUpvote = db.define('dishReviewUpvote', {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -113,7 +113,7 @@ const DishReviewUpvote = db.define("dishReviewUpvote", {
 // This is necessary so that the table will be 'userDishes'
 // instead of 'UserDish' in DB.
 // This way we can refer to it like Tables 1-5.
-const UserDish = db.define("userDish", {});
+const UserDish = db.define('userDish', {});
 
 // Table 7: UserRestaurant (in DB will be: userRestaurants)
 // This is the table of all restaurants that a user saves
@@ -121,14 +121,14 @@ const UserDish = db.define("userDish", {});
 // This is necessary so that the table will be 'userRestaurants'
 // instead of 'UserRestaurant' in DB.
 // This way we can refer to it like Tables 1-5.
-const UserRestaurant = db.define("userRestaurant", {});
+const UserRestaurant = db.define('userRestaurant', {});
 
 // Table 8: SearchResult (in DB will be: searchResults)
 // This is the table of search queries that users make.
 // In the case that the Foursquare API goes down, we may
 // be able to give the user a response if their query
 // already exists in this table.
-const SearchResult = db.define("searchResult", {
+const SearchResult = db.define('searchResult', {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -159,9 +159,11 @@ SearchResult.belongsTo(User);
 User.hasMany(SearchResult);
 
 // Sync the database
-db.sync({
-  logging: console.log
-});
+db.sync(
+  {
+    // logging: console.log
+  }
+);
 
 module.exports = {
   db: db,

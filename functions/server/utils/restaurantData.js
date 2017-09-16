@@ -25,8 +25,8 @@ module.exports.getRestaurantData = function(data) {
         }
       })
       .then(function(restaurant) {
-        let {foursquareId, name, phone, address, imageUrl, avgRating} = restaurant[0].dataValues;
-        restaurantData.push({foursquareId, name, phone, address, imageUrl, avgRating});
+        let {foursquareId, name, phone, address, website, imageUrl, avgRating} = restaurant[0].dataValues;
+        restaurantData.push({foursquareId, name, phone, address, website, imageUrl, avgRating});
       });
     }); // forEach ends
 

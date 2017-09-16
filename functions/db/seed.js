@@ -18,7 +18,7 @@ connection.db.drop().then(() => {
     .then(() => {
       // Seed database with mock data
       // Start with restaurant table
-      restaurantData.forEach((element) => {
+      restaurantData.restaurantData.forEach(element => {
         console.log(element);
 
         connection.Restaurant
@@ -29,17 +29,25 @@ connection.db.drop().then(() => {
             address: element.address,
             website: element.website,
             imageUrl: element.imageUrl,
-            avgRating: element.avgRating
+            avgRating: 0
           })
           .then(() => {
-            console.log('!!! Running seed.js: Your element has been added to the database successfully!');
+            console.log(
+              '!!! Running seed.js: Your element has been added to the database successfully!'
+            );
           })
-          .catch((e) => {
-            console.error('!!! Running seed.js: There was an error adding the element to the database: ',  e);
+          .catch(e => {
+            console.error(
+              '!!! Running seed.js: There was an error adding the element to the database: ',
+              e
+            );
           });
       });
     })
-    .catch((e) => {
-      console.error('!!! Running seed.js: Database did not sync correctly. See error: ',  e);
+    .catch(e => {
+      console.error(
+        '!!! Running seed.js: Database did not sync correctly. See error: ',
+        e
+      );
     });
 });

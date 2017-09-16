@@ -35,6 +35,7 @@ module.exports.getRestaurants = function(req, res) {
 
 // Reached at localhost:3006/menu
 module.exports.getMenu = function(req, res) {
+  console.log('Request received has ', req.body);
   const url = 'https://api.foursquare.com/v2/venues/40a55d80f964a52020f31ee3/menu';
   // This is another url to play with to ensure code below works
   // const url = 'https://api.foursquare.com/v2/venues/47a1bddbf964a5207a4d1fe3/menu';

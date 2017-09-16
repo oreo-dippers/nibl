@@ -4,6 +4,10 @@ module.exports.postDishReviewData = (data) => {
   var currentUserId;
   var currentDishId;
 
+  Promise.all(
+    
+  ); // End of Promise.all()
+
   // Get the userId based on the firebase UUID
   db.User.findOne({
     where: { 
@@ -11,6 +15,7 @@ module.exports.postDishReviewData = (data) => {
     }
   })
   .then((user) => {
+    console.log('User id is ', user.id);
     currentUserId = user.id;
   });
   
@@ -21,6 +26,7 @@ module.exports.postDishReviewData = (data) => {
     }
   })
   .then((dish) => {
+    console.log('Dish id is ', dish.id);
     currentDishId = dish.id;
   });
 

@@ -5,9 +5,9 @@ import MenuCard from '../static/menuCard';
 class Restaurant extends Component {
   render() {
     const venue = this.props.location.state.venue;
-    const imageUrl = JSON.parse(venue.imageUrl)    
+    const imageUrl = JSON.parse(venue.imageUrl);
     const {prefix, suffix} = imageUrl;
-    const address = JSON.parse(venue.address).join(", ");
+    const address = JSON.parse(venue.address).join(', ');
     const img = `${prefix}500${suffix}`;
 
     if (!venue) {

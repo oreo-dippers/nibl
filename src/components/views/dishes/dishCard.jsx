@@ -1,7 +1,15 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import Rating from 'react-rating';
-
+import {
+  Button,
+  Header,
+  Image,
+  Modal,
+  Comment,
+  Feed,
+  Icon,
+  Rating,
+} from 'semantic-ui-react';
 // const dashify = (str) => {
 //   return str.toLowerCase().split(' ').join('-')
 // }
@@ -50,34 +58,8 @@ class DishCard extends Component {
                           @ Restaurant Name
                         </Link>
                       </a>
-											<br/>
-											<br/>
-											<Rating
-                      placeholderRate={3.25}
-                      full={
-                        <img
-                          src="https://thumb.ibb.co/fgib4F/star_full.png"
-                          className="icon"
-                          alt=""
-                        />
-                      }
-                      placeholder={
-                        <img
-                          src="https://thumb.ibb.co/fgib4F/star_full.png"
-                          className="icon"
-                          alt=""
-                        />
-                      }
-                      empty={
-                        <img
-                          src="https://thumb.ibb.co/ijDnBv/star_empty.png"
-                          className="icon"
-                          alt=""
-                        />
-                      }
-                    />
-
-	
+                      <br />
+                      <Rating defaultRating={3} maxRating={5} disabled />
                     </div>
 
                     <p style={{color: '#000000'}}> -- </p>

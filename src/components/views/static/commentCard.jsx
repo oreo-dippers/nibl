@@ -8,6 +8,7 @@ import {
   Comment,
   Feed,
   Icon,
+  Rating,
 } from 'semantic-ui-react';
 import firebase, {storage, database} from '../../firebase';
 import CommentBox from './commentBox';

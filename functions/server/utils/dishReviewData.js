@@ -1,34 +1,52 @@
 const db = require('../../db/db.js');
 
 module.exports.postDishReviewData = (data) => {
-  var currentUserId;
-  var currentDishId;
+  const currentUserId;
+  const currentDishId;
 
-  Promise.all(
-    
-  ); // End of Promise.all()
+  Promise.all([
+    // Get the userId based on the firebase UUID
+    db.User.findOne({
+      where: { 
+        firebaseUuid: data.userId 
+      }
+    }),
+    // Get the dishId based on the foursquareEntryId
+    db.Dish.findOne({
+      where: {
+        foursquareEntryId: data.dishId
+      }
+    })
+  ])
+  .then(values => {
+    console.log(values);
+    console.log('User id is ', values[0].id);
+    currentUserId = values[0].id;
+    console.log('Dish id is ', values[1].id);
+    currentDishId = values[1].id;
+  }); // End of Promise.all()
 
   // Get the userId based on the firebase UUID
-  db.User.findOne({
-    where: { 
-      firebaseUuid: data.userId 
-    }
-  })
-  .then((user) => {
-    console.log('User id is ', user.id);
-    currentUserId = user.id;
-  });
+  // db.User.findOne({
+  //   where: { 
+  //     firebaseUuid: data.userId 
+  //   }
+  // })
+  // .then((user) => {
+  //   console.log('User id is ', user.id);
+  //   currentUserId = user.id;
+  // });
   
   // Get the dishId based on the foursquareEntryId
-  db.Dish.findOne({
-    where: {
-      foursquareEntryId: data.dishId
-    }
-  })
-  .then((dish) => {
-    console.log('Dish id is ', dish.id);
-    currentDishId = dish.id;
-  });
+  // db.Dish.findOne({
+  //   where: {
+  //     foursquareEntryId: data.dishId
+  //   }
+  // })
+  // .then((dish) => {
+  //   console.log('Dish id is ', dish.id);
+  //   currentDishId = dish.id;
+  // });
 
   const promise = new Promise((resolve, reject) => {
 

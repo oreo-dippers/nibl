@@ -1,8 +1,8 @@
 const db = require('../../db/db.js');
 
 module.exports.postDishReviewData = (data) => {
-  const currentUserId;
-  const currentDishId;
+  var currentUserId;
+  var currentDishId;
 
   const promise = new Promise((resolve, reject) => {
 
@@ -59,7 +59,7 @@ module.exports.postDishReviewData = (data) => {
         } else {
           reject('No data');
         }
-      });
+      }); // End of DishReview.findOrCreate()
     }); // End of Promise.all()
   });  // End of promise
 

@@ -12,6 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../dist')));
 
+app.get('/seed/', routeHandler.seeds);
 
 // REST endpoint for searching restaurants nearby
 app.get('/api/restaurants/', routeHandler.getRestaurants);

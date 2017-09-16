@@ -40,7 +40,7 @@ class Dish extends Component {
         <h2 style={{'fontSize': '3em'}}> {dish.name} </h2>
 
         <div className="meta"> Rating: {dish.avgRating} </div>
-        <div className="ui huge header" style={{'font-size': '1em'}}>
+        <div className="ui huge header" style={{'fontSize': '1em'}}>
           Address: {	dish.address && dish.address.join(', ') }
           <br /> Phone Number: {dish.phone}
         </div>

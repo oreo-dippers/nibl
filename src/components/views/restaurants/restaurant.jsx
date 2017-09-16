@@ -14,8 +14,15 @@ class Restaurant extends Component {
 
   componentDidMount() {
     console.log('========restaurants==========');
-    const foursquareId = this.props.foursquareId;
-    const req = {params: {foursquareId}};
+    console.log('this.props', this.props);
+
+    const foursquareId = this.props.location.state.venue.foursquareId;
+    const req = {
+      params: {
+      foursquareId: foursquareId
+    }
+  };
+  console.log('req', req);
 
     axios
       .get(

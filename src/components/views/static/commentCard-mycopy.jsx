@@ -1,35 +1,3 @@
-//
-// class CommentCard extends Component {
-//
-//     // this.setState({
-//     //   file,
-//     //   imagePreviewUrl: reader.result
-//     // });
-//   }
-//   submitPhoto(e) {
-//     e.preventDefault();
-//     console.log('savePhoto Ran')
-//     let { file } = this.state
-//
-//   }
-//
-//   aviaryEditor(e) {
-//
-//     console.log('e', e);
-//     // e.target
-//     console.log('e.target', e.target.files);
-//     return launchEditor('image1', this.state.imagePreviewUrl)
-//   }
-//
-// }
-// export default CommentCard;
-//
-
-
-
-
-
-
 import React, { Component } from 'react';
 import FileInput from 'react-file-input';
 import firebase, { storage, database } from '../../firebase';
@@ -120,10 +88,12 @@ class CommentCard extends Component {
     let { imagePreviewUrl } = this.state
     console.log('imagePreviewUrl', imagePreviewUrl);
     return (
-      <div >
+      <div className="ui container">
         <CommentBox >This is a Test From Dishes Component </CommentBox>
+
         <form>
-          <FileInput
+          <input
+            id="something"
             type="file"
             name="myImage"
             accept=".png, .jpg"

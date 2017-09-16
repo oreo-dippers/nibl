@@ -1,46 +1,47 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
-	Button,
-	Header,
-	Image,
-	Modal,
-	Comment,
-	Feed,
-	Icon,
-	Rating,
-  } from 'semantic-ui-react';
+  Button,
+  Header,
+  Image,
+  Modal,
+  Comment,
+  Feed,
+  Popup,
+  Icon,
+  Card,
+  Rating,
+} from 'semantic-ui-react';
 
 class MenuCard extends Component {
-	render() {
-		const { menu } = this.props;
-		console.log(menu);
-		return (
+  render() {
+    const {menu} = this.props;
+    console.log(menu);
+    return (
+      <div>
+        <Card>
+          <Image
+            src="https://instagram.fsnc1-1.fna.fbcdn.net/t51.2885-15/e35/12751127_511734799019156_1460279120_n.jpg"
+            alt=""
+          />
 
-				<div className="ui card">
-
-					<div className="content">
-						<div className="right floated meta">14h</div>
-						<img className="ui avatar image" src="https://www.fillmurray.com/100/100" alt=""/> Bill Murray
-					</div>
-					<div className="image">
-						<img src="https://instagram.fsnc1-1.fna.fbcdn.net/t51.2885-15/e35/12751127_511734799019156_1460279120_n.jpg" alt=""/>
-					</div>
-
-					<div className="content">
-						<a className=" right floated meta ui label" placeholder="N/A">${menu.price}</a>
-
-						<div  style={{ color: '#000000' }} >{menu.name}</div>
-						<Rating defaultRating={3} maxRating={5} disabled />
-					</div>
-
-					<div className="extra content">
-						<div className="ui large transparent left icon input">
-							<div className="meta" placeholder="N/A"> Description: {menu.description} </div>
-						</div>
-					</div>
-                </div>
-		);
-	}
+          <Card.Content>
+            <Card.Header>{menu.name}</Card.Header>
+            <Rating defaultRating={3} maxRating={5} disabled />
+            <Popup
+              trigger={<Card.Description>{menu.description ? menu.description.slice(0, 30)+'...' : 'No description'} </Card.Description>}
+              content={menu.description}
+            />
+          </Card.Content>
+          <Card.Content extra>
+            <a>
+              <Icon name="dollar" />
+              {menu.price}
+            </a>
+          </Card.Content>
+        </Card>
+      </div>
+    );
+  }
 }
 
 export default MenuCard;

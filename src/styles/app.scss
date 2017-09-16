@@ -110,7 +110,26 @@ textarea{
 
 }
 
+.menulist{
+  display: flex;
+  flex-wrap: wrap;
+}
+.menuliststyle{
+  display: flex; 
+  padding: 0.5em;
+	width: 100%;
+}
 
+@media all and (min-width: 40em) {
+  .menuliststyle{
+    width: 50%;
+  }
+}
+@media all and (min-width: 60em) {
+  .menuliststyle{
+    width: 33.33%;
+  }
+}
 
 #something {
   display: inline-block;

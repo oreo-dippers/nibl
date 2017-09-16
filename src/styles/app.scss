@@ -88,13 +88,44 @@ textarea{
 .listStyle{
   color: white;
 }
-
+#rcorners2 {
+  border-radius: 10px;
+}
 
 #rcorners1 {
-  border-radius: 10px;
-  width:175px;
-  height:175px;
+  // border-radius: 10px;
+  width:30%;
+  // position: absolute;
+  // // left: 100px;
+  // clip: rect(0px,200px,200px,0px);
+  height:-30%;
+ 
 }
+
+#thumbnail {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+
+}
+
+
+
+#something {
+  display: inline-block;
+  width: 30px;
+  padding: 30px 0 0 0;
+  height: 30px;
+  overflow: hidden;
+  // -webkit-box-sizing: border-box;
+  // -moz-box-sizing: border-box;
+  // box-sizing: border-box;
+  background: url("https://image.flaticon.com/icons/png/512/61/61050.png") no-repeat;
+  border-radius: 2px;
+   background-size: 30px 30px;
+}
+
 .bg {
   /* The image used */
   background-image: url(https://static.pexels.com/photos/256318/pexels-photo-256318.jpeg);

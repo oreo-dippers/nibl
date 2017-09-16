@@ -31,7 +31,8 @@ class CommentCard extends Component {
       };
       console.log(url); // send url to database for storage
       document.getElementById('incredibleimg').innerHTML =
-        '<img id="rcorners1" src=' + url + '/>';
+        '<img id="thumbnail" src=' + url + '/>';
+        //   '<img id="rcorners1" src=' + url + '/>';
     });
   }
 
@@ -41,11 +42,12 @@ class CommentCard extends Component {
 	      <CommentBox >This is a Test From Dishes Component </CommentBox>
         <div id="incredibleimg" />
         <form>
-          <FileInput
+          <input
+            id="something"
             type="file"
             name="myImage"
             accept=".png, .jpg"
-            placeholder="Select An Image"
+            placeholder=""
             className="inputClass"
             onChange={this.handleSubmit}
           />

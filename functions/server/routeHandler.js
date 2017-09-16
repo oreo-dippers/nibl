@@ -5,6 +5,7 @@ const utils = require('./utils/util');
 const dishes = require('./route_handler/dishes');
 const restaurants = require('./route_handler/restaurants');
 const user = require('./route_handler/user');
+const db = require('./../db/db.js');
 
 // var credentials = {
 //   'v': '20170904'
@@ -21,6 +22,11 @@ const user = require('./route_handler/user');
 //   });
 
 // };
+
+module.exports.seeds = function(req, res) {
+  const db = require('./../db/seed.js');
+  res.send('Data Seeded');
+};
 
 module.exports.getMenu = restaurants.getMenu;
 

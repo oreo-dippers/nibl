@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Menu } from 'semantic-ui-react';
+import { Button, Header, Image, Modal, Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 import SearchBar from './searchBar'
 import { auth, googleAuthProvider } from '../firebase';
@@ -105,8 +105,21 @@ export default class Nav extends Component {
 								<img className="ui avatar image" src={currentUser.photoURL} />
 								</div>
 								<div className="item">
-
-								<h2 style={{ color: '#FFFFFF' }} >{currentUser.displayName}</h2>
+								<Modal trigger={	<h2 style={{ color: '#FFFFFF' }} >{currentUser.displayName}</h2>}>
+      <Modal.Header>Your Profile</Modal.Header>
+      <Modal.Content image>
+        <Image wrapped size='medium' src={currentUser.photoURL} />
+        <Modal.Description>
+          <h1>{currentUser.displayName}</h1>
+					<b>Email: </b> {currentUser.email}
+					<br/>
+					<b>User ID: </b> {currentUser.uid}
+					<br/>
+       
+        </Modal.Description>
+      </Modal.Content>
+    </Modal>
+							
 								</div>
 									<Menu.Item
 										style={{ color: '#FFFFFF' }}

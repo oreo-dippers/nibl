@@ -1,7 +1,7 @@
-const Sequelize = require("sequelize");
+const Sequelize = require('sequelize');
 
 // For local variable loading
-const dotenv = require("dotenv");
+const dotenv = require('dotenv');
 dotenv.load();
 
 // Make new Sequelize instance to PG DB linked

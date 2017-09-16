@@ -1,6 +1,8 @@
 const db = require('../../db/db.js');
 
-module.exports.getDishData = function(data) {
+module.exports.getDishData = function(data, foursquareId) {
+  console.log('!!!Received foursquareId: ', foursquareId);
+  // console.log('!!! getDish Data received this data object: ', data);
   var promise = new Promise(function(resolve, reject) {
 
     // Generate restaurantId
@@ -11,6 +13,7 @@ module.exports.getDishData = function(data) {
     // 3 B If id is not there, add it to the Restaurant table
     // This may require a call to the FourSquare API)
 
+    // Set where to start iterating over menus
     var menus = data.response.menu.menus.items;
     var dishData = [];
 

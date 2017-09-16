@@ -45,13 +45,15 @@ module.exports.postDishReviewData = (data) => {
         }
       })
       .then((dishReview) => {
-        console.log('dishReview object is ', dishReview);
+        console.log('dishReview object is ', dishReview[0].dataValues);
         // Make organized data to send to front end
-        // const {userId, dishId, review, starRating, imageUrl, upvoteTotal} = dishReview[0].dataValues;
+        const {userId, dishId, review, starRating, imageUrl, upvoteTotal} = dishReview[0].dataValues;
   
-        // const newReview = {userId, dishId, review, starRating, imageUrl, upvoteTotal};
+        const newReview = {userId, dishId, review, starRating, imageUrl, upvoteTotal};
 
         // Do not forget to update a dish's avgRating!!!
+
+        console.log('newReview is ', newReview);
 
         return newReview;
       })

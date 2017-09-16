@@ -45,8 +45,9 @@ module.exports.getMenu = function(req, res) {
   // const urlQuery = url+ '?' + qs;
   const urlQuery = url + foursquareId + '/menu' + '?' + qs;
   console.log('urlQuery is ', urlQuery);
+
   utils.apiCall(urlQuery, function(data) {
-    utils.getDishData(data)
+    utils.getDishData(data, foursquareId)
       .then(function(dishData) {
         console.log(dishData);
         console.log('dishData sent to front end');

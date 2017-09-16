@@ -1,30 +1,30 @@
 const db = require('../../db/db.js');
 
 module.exports.postDishReviewData = (data) => {
+  var currentUserId;
+  var currentDishId;
+
+  // Get the userId based on the firebase UUID
+  db.User.findOne({
+    where: { 
+      firebaseUuid: data.userId 
+    }
+  })
+  .then((user) => {
+    currentUserId = user.id;
+  });
+  
+  // Get the dishId based on the foursquareEntryId
+  db.Dish.findOne({
+    where: {
+      foursquareEntryId: data.dishId
+    }
+  })
+  .then((dish) => {
+    currentDishId = dish.id;
+  });
+
   const promise = new Promise((resolve, reject) => {
-
-    var currentUserId;
-    var currentDishId;
-
-    // Get the userId based on the firebase UUID
-    db.User.findOne({
-      where: { 
-        firebaseUuid: data.userId 
-      }
-    })
-    .then((user) => {
-      currentUserId = user.id;
-    });
-    
-    // Get the dishId based on the foursquareEntryId
-    db.Dish.findOne({
-      where: {
-        foursquareEntryId: data.dishId
-      }
-    })
-    .then((dish) => {
-      currentDishId = dish.id;
-    });
 
     db.DishReview.findOrCreate({
       where: {
@@ -56,4 +56,6 @@ module.exports.postDishReviewData = (data) => {
   });
 
   return promise;
+
+  // Do not forget to update a dish's avgRating!!!
 };

@@ -18,7 +18,7 @@ connection.db.drop().then(() => {
     .then(() => {
       // Seed database with mock data
       // Start with restaurant table
-      restaurantData.forEach(element => {
+      restaurantData.restaurantData.forEach(element => {
         console.log(element);
 
         connection.Restaurant
@@ -29,7 +29,7 @@ connection.db.drop().then(() => {
             address: element.address,
             website: element.website,
             imageUrl: element.imageUrl,
-            avgRating: element.avgRating
+            avgRating: 0
           })
           .then(() => {
             console.log(

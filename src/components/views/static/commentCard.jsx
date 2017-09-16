@@ -1,42 +1,21 @@
 import React, { Component } from 'react';
 import FileInput from 'react-file-input';
-import firebase, { storage, database } from '../../firebase';
+import {
+  Button,
+  Header,
+  Image,
+  Modal,
+  Comment,
+  Feed,
+  Icon,
+} from 'semantic-ui-react';
+import firebase, {storage, database} from '../../firebase';
 import CommentBox from './commentBox';
-
-
-const Aviary = window.Aviary
-
-
-var featherEditor = new Aviary.Feather({
-      apiKey: '_',
-      apiVersion: 3,
-      theme: 'dark', // Check out our new 'light' and 'dark' themes!
-      tools: 'all',
-      appendTo: '',
-      onSave: function(imageID, newURL) {
-          var img = document.getElementById(imageID);
-          img.src = newURL;
-      },
-      onError: function(errorObj) {
-          alert(errorObj.message);
-      }
-  });
-function launchEditor(id, src) {
-    featherEditor.launch({
-        image: id,
-        url: src
-    });
-   return false;
-}
 
 class CommentCard extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      uploadProgress: null,
-      file: null,
-      imagePreviewUrl: null,
-    };
+    this.state = {};
     // this.userRef = database.ref('users');
     this.handleSubmit = this.handleSubmit.bind(this);
     this.aviarySubmit = this.aviarySubmit.bind(this);
@@ -58,6 +37,7 @@ class CommentCard extends Component {
       xhr.responseType = 'blob';
       xhr.onload = function(event) {
         const blob = xhr.response;
+<<<<<<< HEAD
     };
 
     console.log(imagePreviewUrl); // send url to database for storage
@@ -82,6 +62,13 @@ class CommentCard extends Component {
     let imagePreviewUrl = this.filtered
     this.setState({ imagePreviewUrl });
 
+=======
+      };
+      console.log(url); // send url to database for storage
+      document.getElementById('incredibleimg').innerHTML =
+        '<img  id="thumbnail" src=' + url + '/>';
+    });
+>>>>>>> popup for photos, commentcard input field
   }
 
   render() {
@@ -89,6 +76,7 @@ class CommentCard extends Component {
     console.log('imagePreviewUrl', imagePreviewUrl);
     return (
       <div className="ui container">
+<<<<<<< HEAD
         <CommentBox >This is a Test From Dishes Component </CommentBox>
 
         <form>
@@ -122,6 +110,59 @@ class CommentCard extends Component {
 
           <button onClick={this.handleSubmit}>Submit photo</button>
 
+=======
+        {/* <CommentBox >This is a Test From Dishes Component </CommentBox>*/}
+
+        <Feed>
+          <Feed.Event>
+            <Feed.Label image="https://www.placecage.com/50/50" />
+            <Feed.Content>
+              <Feed.Summary>
+                <a>Helen Troy</a> added <a>2 new illustrations</a>
+                <Feed.Date>4 days ago</Feed.Date>
+              </Feed.Summary>
+              <Feed.Extra images>
+                <a>
+                  <img src="https://www.placecage.com/50/50" />
+                </a>
+
+                <input
+                  id="something"
+                  type="file"
+                  name="myImage"
+                  accept=".png, .jpg"
+                  placeholder=""
+                  className="inputClass"
+                  onChange={this.handleSubmit}
+                />
+
+                <Modal
+                  basic
+                  trigger={
+                    <a>
+                      {' '}
+                      <div id="incredibleimg" />{' '}
+                    </a>
+                   
+                  } closeIcon
+                >
+                  <Modal.Content>
+                    <center>
+                      <img src="https://www.placecage.com/500/500" />
+                    </center>
+                  </Modal.Content>
+                </Modal>
+              </Feed.Extra>
+              <Feed.Meta>
+                <Feed.Like>
+                  <Icon name="like" />
+                  1 Like
+                </Feed.Like>
+              </Feed.Meta>
+            </Feed.Content>
+          </Feed.Event>
+        </Feed>
+>>>>>>> popup for photos, commentcard input field
       </div>
     );
   }

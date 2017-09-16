@@ -5,7 +5,9 @@ import MenuCard from '../static/menuCard';
 class Restaurant extends Component {
   render() {
     const venue = this.props.location.state.venue;
-    const {prefix, suffix} = venue.imageUrl;
+    const imageUrl = JSON.parse(venue.imageUrl)    
+    const {prefix, suffix} = imageUrl;
+    const address = JSON.parse(venue.address).join(", ");
     const img = `${prefix}500${suffix}`;
 
     if (!venue) {
@@ -40,7 +42,7 @@ class Restaurant extends Component {
 
         <div className="meta"> Rating: {venue.avgRating} </div>
         <div className="ui huge header" style={{'font-size': '1em'}}>
-          Address: {venue.address.join()}
+          Address: {address}
           <br /> Phone Number: {venue.phone}
         </div>
         <h3>

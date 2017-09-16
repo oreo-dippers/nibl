@@ -7,10 +7,10 @@ class RestaurantCard extends Component {
 	render() {
 		// const restaurant = this.props.location.state.restaurant
 		console.log(this.props);
-    const venue = this.props.restaurant;
-
-		// const { venue } = restaurant;
-		const {prefix, suffix} = venue.imageUrl;
+		const venue = this.props.restaurant;
+	
+		const address = JSON.parse(venue.address).join(", ");
+		const {prefix, suffix} = JSON.parse(venue.imageUrl);   
 		const img = `${prefix}800x200${suffix}`
 
 		if (!venue) {
@@ -60,16 +60,8 @@ class RestaurantCard extends Component {
 					<div className="extra content">
 						<a>
 							<i className="map outline icon" />
-
-
-							{	typeof venue.address === 'string'
-              ? `*************
-                ERROR ADDRESS IS A STRING
-                ERROR ADDRESS IS A STRING
-                ERROR ADDRESS IS A STRING
-                ERROR ADDRESS IS A STRING
-                ERROR ADDRESS IS A STRING
-                ` : venue.address.join(', ')}
+								{address}
+						
 						</a>
 					</div>
 				</div>

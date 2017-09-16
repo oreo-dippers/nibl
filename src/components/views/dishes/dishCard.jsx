@@ -53,7 +53,7 @@ class DishCard extends Component {
 											<br/>
 											<br/>
 											<Rating
-                      placeholderRate={3.5}
+                      placeholderRate={3.25}
                       full={
                         <img
                           src="https://thumb.ibb.co/fgib4F/star_full.png"

@@ -21,9 +21,7 @@ const Home = () => (
 			<div className="ui centered cards">
 				{' '}
 				{/* per column*/}
-				<MenuCard />
-				<MenuCard />
-				<MenuCard />
+		
 			</div>
 		</div>
 

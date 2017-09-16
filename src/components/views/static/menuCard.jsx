@@ -3,6 +3,8 @@ import Rating from 'react-rating';
 
 class MenuCard extends Component {
 	render() {
+		const { menu } = this.props;
+		console.log(menu);
 		return (
 
 				<div className="ui card">
@@ -16,9 +18,9 @@ class MenuCard extends Component {
 					</div>
 
 					<div className="content">
-						<a className=" right floated meta ui label">$10.00</a>
+						<a className=" right floated meta ui label">{menu.price}</a>
 
-						<div>Black Garlic Tokatsu Ramen</div>
+						<div>{menu.name}</div>
 						<Rating
 							placeholderRate={4.5}
 							full={
@@ -52,7 +54,7 @@ class MenuCard extends Component {
 
 					<div className="extra content">
 						<div className="ui large transparent left icon input">
-							<div className="meta"> A warm big japanese hug in a bow... </div>
+							<div className="meta"> {menu.description} </div>
 						</div>
 					</div>
                 </div>

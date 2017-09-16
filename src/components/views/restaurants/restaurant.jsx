@@ -1,11 +1,42 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import MenuCard from '../static/menuCard';
+import axios from 'axios';
 
 class Restaurant extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      menuState: [],
+      foursquareId: null,
+    };
+  }
+
+  componentDidMount() {
+    console.log('========restaurants==========');
+    const foursquareId = this.props.foursquareId;
+    const req = {params: {foursquareId}};
+
+    axios
+      .get(
+        'http://localhost:5001/oreo-nibl/us-central1/app/api/restaurants/page',
+        req
+      )
+      .then(res => {
+        this.setState({foursquareId});
+        this.setState({menuState: res.data});
+        console.log(res.data);
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+  }
+
   render() {
     const venue = this.props.location.state.venue;
-    const {prefix, suffix} = venue.imageUrl;
+    const imageUrl = JSON.parse(venue.imageUrl);
+    const {prefix, suffix} = imageUrl;
+    const address = JSON.parse(venue.address).join(', ');
     const img = `${prefix}500${suffix}`;
 
     if (!venue) {
@@ -40,7 +71,7 @@ class Restaurant extends Component {
 
         <div className="meta"> Rating: {venue.avgRating} </div>
         <div className="ui huge header" style={{'font-size': '1em'}}>
-          Address: {venue.address.join()}
+          Address: {address}
           <br /> Phone Number: {venue.phone}
         </div>
         <h3>
@@ -63,9 +94,16 @@ class Restaurant extends Component {
         </center>
         <div className="ui container ">
           <div className="ui centered cards">
-            <MenuCard />
-            <MenuCard />
-            <MenuCard />
+            <ul className="menulist">
+              {this.state.menuState.map((r, i) => {
+                // var store_name = dashify(r.name)
+                return (
+                    <li className="menuliststyle" key={r.foursquareId}>
+                        <MenuCard menu={r} />
+                    </li>
+                );
+              })}
+            </ul>
           </div>
         </div>
         <h2>

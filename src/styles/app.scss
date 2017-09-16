@@ -65,10 +65,10 @@ body h1 {
 }
 
 
-textarea{
-  height: 20px !important;
-  width: 455px !important;
-  }
+// textarea{
+//   height: 20px !important;
+//   width: 455px !important;
+//   }
 
   
 
@@ -102,15 +102,34 @@ textarea{
  
 }
 
-#thumbnail {
+#image1 {
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 80px;
+  height: 80px;
   overflow: hidden;
 
 }
 
+.menulist{
+  display: flex;
+  flex-wrap: wrap;
+}
+.menuliststyle{
+  display: flex; 
+  padding: 0.5em;
+	width: 100%;
+}
 
+@media all and (min-width: 40em) {
+  .menuliststyle{
+    width: 50%;
+  }
+}
+@media all and (min-width: 60em) {
+  .menuliststyle{
+    width: 33.33%;
+  }
+}
 
 #something {
   display: inline-block;

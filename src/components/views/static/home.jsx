@@ -15,17 +15,10 @@ const Home = () => (
 			
 		</div>
 
-		<div className="ui container ">
-			{' '}
-			{/* each row*/}
-			<div className="ui centered cards">
-				{' '}
-				{/* per column*/}
-				<MenuCard />
-				<MenuCard />
-				<MenuCard />
-			</div>
-		</div>
+	<br />
+	<br />
+	<br />
+	<br />
 
 		<div style={{ background: '#242424' }}>
 			<br />

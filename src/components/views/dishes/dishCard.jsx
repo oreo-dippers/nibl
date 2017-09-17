@@ -45,21 +45,27 @@ class DishCard extends Component {
                 <div className="card">
                   <div className="content">
                     <div className="ui  huge header" style={{fontSize: '3em'}}>
-                      {dish.name}
+                      <Link
+                        to={{
+                          pathname: `/dishes/${dish.name}`,
+                          state: {dish},
+                        }}
+                      >
+                        {dish.name}
+                      </Link>
                     </div>
 
                     <div className="ui  huge header" style={{fontSize: '2em'}}>
-                      <a>
-                        <Link
-                          to={{
-                            pathname: `/dishes/${dish.name}`,
-                            state: {dish},
-                          }}
-                        >
-                          @ Restaurant Name
-                        </Link>
-                      </a>
-                      <br />
+                      <Link
+                        to={{
+                          pathname: `/restaurants/${dish.name}`,
+                          // state: {dish},
+                        }}
+                      >
+                        @ GO TO RESTAURANT *ADD NAME*
+                      </Link>
+                      <p style={{color:'black'}}>address: .......</p>
+
                       <Rating defaultRating={3} maxRating={5} disabled />
                     </div>
 

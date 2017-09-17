@@ -26,7 +26,7 @@ class Dish extends Component {
     return (
       <div className="ui container">
         <center>
-          <div className="ui huge header" style={{'fontSize': '5em'}}>
+          <div className="ui huge header" style={{'font-size': '5em'}}>
             DISH
           </div>
         </center>
@@ -47,7 +47,7 @@ class Dish extends Component {
           </div>
         </div>
 
-        <h2 style={{'fontSize': '3em'}}> {dish.name} </h2>
+        <h2 style={{'font-size': '3em'}}> {dish.name} </h2>
 
         <div className="meta">
           Rating: {dish.avgRating}
@@ -62,7 +62,7 @@ class Dish extends Component {
         </h3>
         <center>
 
-        <CommentCard />
+    
 
 
 
@@ -72,6 +72,7 @@ class Dish extends Component {
             Recommendations
           </div>
         </center>
+        <CommentCard />
         <div className="ui container ">
           <div className="ui centered cards">
             <MenuCard />

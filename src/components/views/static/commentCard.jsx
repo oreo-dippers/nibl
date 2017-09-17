@@ -17,6 +17,10 @@ import {
 } from 'semantic-ui-react';
 import launchEditor from './aviary';
 
+// when retrieving data from /api/dishes -> array of dish objects
+  // add restaurant address to each dish?
+  // add restaurant Name to each dish?
+
 // when do we send user information?
   // on sign up to create a user in the database
   // send user id

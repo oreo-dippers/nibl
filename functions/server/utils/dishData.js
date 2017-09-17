@@ -44,29 +44,32 @@ module.exports.getDishData = function(data, foursquareId) {
         });
       
         var fn = function(dish) {
-          db.Dish.findOrCreate({
-            where: {
-              foursquareEntryId: dish.entryId,
-            },
-            defaults: {
-              // If it is not in the Dish table, set these defaults:
-              restaurantId: restaurantId,
-              foursquareEntryId: dish.entryId,
-              name: dish.name,
-              imageUrl: '',
-              description: dish.description,
-              price: dish.price,
-              avgRating: 0
-            }
-          })
-          .then((currentDish) => {
-            // Make organized data to send to front end
-            var {foursquareEntryId, name, imageUrl, description, price, avgRating} = currentDish[0].dataValues;
+          return new Promise((resolve) => {
+            db.Dish.findOrCreate({
+              where: {
+                foursquareEntryId: dish.entryId,
+              },
+              defaults: {
+                // If it is not in the Dish table, set these defaults:
+                restaurantId: restaurantId,
+                foursquareEntryId: dish.entryId,
+                name: dish.name,
+                imageUrl: '',
+                description: dish.description,
+                price: dish.price,
+                avgRating: 0
+              }
+            })
+            .then((currentDish) => {
+              // Make organized data to send to front end
+              var {foursquareEntryId, name, imageUrl, description, price, avgRating} = currentDish[0].dataValues;
 
-            console.log('Dish Item added to db is ', {foursquareEntryId, name, imageUrl, description, price, avgRating});
+              console.log('Dish Item added to db is ', {foursquareEntryId, name, imageUrl, description, price, avgRating});
 
-            return currentDish;
-            // dishData.push({foursquareEntryId, name, imageUrl, description, price, avgRating});
+              // return currentDish;
+              resolve({foursquareEntryId, name, imageUrl, description, price, avgRating});
+              // dishData.push({foursquareEntryId, name, imageUrl, description, price, avgRating});
+            });
           });
         };
 
@@ -77,19 +80,19 @@ module.exports.getDishData = function(data, foursquareId) {
         results
           .then(dishArray => {
             console.log('!!! Returned correctly. dishArray is ', dishArray);
-            // return dishArray;
+            return dishArray;
             })
-          // .then((dishArray) => {
-          //   console.log('!!! dishData is: ', dishArray);
-          //   if(dishArray) {
-          //     console.log('Dish data resolves');
-          //     resolve(dishArray);
-          //   } 
-          //   else {
-          //     console.log('Dish data rejects/no data');
-          //     reject(dishArray);
-          //   }
-          // });
+          .then((dishArray) => {
+            console.log('!!! dishData is: ', dishArray);
+            if(dishArray) {
+              console.log('Dish data resolves');
+              resolve(dishArray);
+            } 
+            else {
+              console.log('Dish data rejects/no data');
+              reject(dishArray);
+            }
+          });
 
         // // Add each dish from response to database
         // menus.forEach((menu) => {

@@ -14,7 +14,7 @@ module.exports.getDishReviewData = data => {
       }
     })
     .then(values => {
-      console.log(values);
+      // console.log(values);
       console.log('Dish id is ', values[1].dataValues.id);
       currentDishId = values[1].dataValues.id;
 
@@ -25,8 +25,8 @@ module.exports.getDishReviewData = data => {
           }
         })
         .then(dishReviews => {
-          // console.log('dishReview object is ', dishReview);
-          // console.log('dishReview object is ', dishReview[0].dataValues);
+          console.log('dishReviews object is ', dishReviews);
+          // console.log('dishReviews[0] object is ', dishReviews[0].dataValues);
           // Make organized data to send to front end
 
           return dishReviews;

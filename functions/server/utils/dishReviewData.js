@@ -45,7 +45,7 @@ module.exports.postDishReviewData = data => {
           }
         })
         .then(dishReview => {
-          console.log('dishReview object is ', dishReview);
+          // console.log('dishReview object is ', dishReview);
           // console.log('dishReview object is ', dishReview[0].dataValues);
           // Make organized data to send to front end
           const {
@@ -94,7 +94,8 @@ module.exports.postDishReviewData = data => {
                   // Update dish's avgRating
                   db.Dish.update(
                     {
-                      avgRating: newAvg
+                      avgRating: newAvg,
+                      imageUrl: dishReview[0].dataValues.imageUrl
                     },
                     {
                       where: {

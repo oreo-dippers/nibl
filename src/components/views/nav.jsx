@@ -5,6 +5,8 @@ import SearchBar from './searchBar';
 import {database, auth, googleAuthProvider} from '../firebase';
 import pick from 'lodash/pick';
 import CheckBox from './checkBox';
+import axios from 'axios';
+
 
 export default class Nav extends Component {
   constructor(props) {
@@ -23,7 +25,30 @@ export default class Nav extends Component {
   componentDidMount() {
     auth.onAuthStateChanged(currentUser => {
 			// console.log('AUTH_CHANGE', currentUser);
+			console.log(currentUser);
 			if(currentUser){
+				
+				const theuserdata = {
+					user_photoURL: currentUser.photoURL,
+					user_displayName: currentUser.displayName,
+					user_email: currentUser.email,
+				}
+			
+				const userObj = {
+					params:{
+						userId: currentUser.uid,
+						userData: JSON.stringify(theuserdata),
+					}
+				}
+				
+				axios.post('http://localhost:5001/oreo-nibl/us-central1/app/api/user', userObj)
+				.then(function(res){
+					console.log(res.data)
+				})
+				.catch(function(err){
+					console.log(err)
+				})
+
 				this.setState({currentUser});
 				this.usersRef = database.ref('/users');
 				this.userRef = this.usersRef.child(currentUser.uid);
@@ -32,7 +57,7 @@ export default class Nav extends Component {
 					const userData = pick(currentUser, ['displayName', 'photoURL', 'email']);
 					this.userRef.set(userData);
 				});
-				this.usersRef.on('value', (snapshot) =>{
+			  	this.usersRef.on('value', (snapshot) =>{
 					this.setState({users: snapshot.val()});
 				})
 			}

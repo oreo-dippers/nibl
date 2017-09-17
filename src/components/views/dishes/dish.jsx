@@ -62,7 +62,7 @@ class Dish extends Component {
         </h3>
         <center>
 
-        <CommentCard />
+    
 
 
 
@@ -72,6 +72,7 @@ class Dish extends Component {
             Recommendations
           </div>
         </center>
+        <CommentCard />
         <div className="ui container ">
           <div className="ui centered cards">
             <MenuCard />

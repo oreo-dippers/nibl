@@ -31,9 +31,11 @@ class CommentBox extends Component {
               <Comment.Avatar src={data.userImage} />
               <Comment.Content>
                 <Comment.Author as="a">{data.username}</Comment.Author>
+                <Rating defaultRating={4.5} maxRating={5} disabled />
                 <Comment.Metadata>
                   <div>5 days ago</div>
                 </Comment.Metadata>
+                
                 <Comment.Text>{data.review}</Comment.Text>
                 <Feed.Extra images>
                   <Modal

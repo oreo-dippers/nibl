@@ -23,13 +23,29 @@ module.exports.getRestaurantData = (data) => {
               address: JSON.stringify(restaurant.venue.location.formattedAddress),
               website: restaurant.venue.url,
               imageUrl: JSON.stringify(restaurant.venue.featuredPhotos.items[0]),
-              avgRating: 0
+              avgRestRating: 0
             }
           })
           .then((currentRestaurant) => {
-            let {foursquareId, name, phone, address, website, imageUrl, avgRating} = currentRestaurant[0].dataValues;
+            let {
+              foursquareId, 
+              name, 
+              phone, 
+              address, 
+              website, 
+              imageUrl, 
+              avgRestRating
+            } = currentRestaurant[0].dataValues;
             
-            resolve({foursquareId, name, phone, address, website, imageUrl, avgRating});
+            resolve({
+              foursquareId, 
+              name, 
+              phone, 
+              address, 
+              website, 
+              imageUrl, 
+              avgRestRating
+            });
           });
         });
       };

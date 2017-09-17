@@ -17,3 +17,11 @@ module.exports.postDishReview = (req, res) => {
     res.status(201).send(data);
    });
 };
+
+module.exports.getDishReview = (req, res) => {
+  utils.getDishReviewData(req)
+  .then((data) => {
+    console.log('dishReview Data gotten successfully!');
+    res.status(200).send(data);
+   });
+};

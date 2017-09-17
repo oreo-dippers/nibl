@@ -53,14 +53,14 @@ module.exports.getDishData = function(data, foursquareId) {
                 imageUrl: '',
                 description: dish.description,
                 price: dish.price,
-                avgRating: 0
+                avgDishRating: 0
               }
             })
             .then((currentDish) => {
               // Make organized data to send to front end
-              let {foursquareEntryId, name, imageUrl, description, price, avgRating} = currentDish[0].dataValues;
+              let {foursquareEntryId, name, imageUrl, description, price, avgDishRating} = currentDish[0].dataValues;
 
-              resolve({foursquareEntryId, name, imageUrl, description, price, avgRating});
+              resolve({foursquareEntryId, name, imageUrl, description, price, avgDishRating});
             });
           });
         };

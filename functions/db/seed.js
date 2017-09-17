@@ -1,7 +1,8 @@
 const connection = require('./db.js');
 
 // Require mock data
-const restaurantData = require('./seedData/restaurantData.js');
+const restaurants = require('./seedData/restaurantData.js');
+const users = require('./seedData/userData.js');
 
 // To seed
 // 1 Drop the tables
@@ -17,9 +18,9 @@ connection.db.drop().then(() => {
     .sync()
     .then(() => {
       // Seed database with mock data
-      // Start with restaurant table
-      restaurantData.restaurantData.forEach(element => {
-        console.log(element);
+      // First restaurant table
+      restaurants.restaurantData.forEach(element => {
+        // console.log(element);
 
         connection.Restaurant
           .create({
@@ -33,16 +34,37 @@ connection.db.drop().then(() => {
           })
           .then(() => {
             console.log(
-              '!!! Running seed.js: Your element has been added to the database successfully!'
+              '!!! Running seed.js: Your restaurant element has been added to the database successfully!'
             );
           })
           .catch(e => {
             console.error(
-              '!!! Running seed.js: There was an error adding the element to the database: ',
+              '!!! Running seed.js: There was an error adding the restaurant element to the database: ',
               e
             );
           });
-      });
+      }); // End adding restaurantData
+    })
+    .then(() => {
+      // Then fill user table
+      users.userData.forEach(element => {
+        
+        connection.User
+          .create({
+            firebaseUuid: element.firebaseUuid
+          })
+          .then(() => {
+            console.log(
+              '!!! Running seed.js: Your user element has been added to the database successfully!'
+            );
+          })
+          .catch(e => {
+            console.error(
+              '!!! Running seed.js: There was an error adding the user element to the database: ',
+              e
+            );
+          });
+      }); // End adding userData
     })
     .catch(e => {
       console.error(

@@ -1,58 +1,92 @@
 const db = require('../../db/db.js');
 
-module.exports.getDishData = function(data) {
-  var promise = new Promise(function(resolve, reject) {
+module.exports.getDishData = function(data, foursquareId) {
+  
+  const promise = new Promise((resolve, reject) => {
+    // Query Restaurant database for restaurantId
+    db.Restaurant.findOne({
+      where: {
+        foursquareId: foursquareId
+      }
+    })
+    .then((restaurant) => {
+      // 1 If id is found, set it
+      const restaurantId = restaurant.dataValues.id;
 
-    // Generate restaurantId
-    // 1 Get foursquare API id, ie: 40a55d80f964a52020f31ee3
-    // 2 Query Restaurant database for it
-    // 3 A If id is found, set it
-    var restaurantId = 1;  // This is a hardcoded example that attaches to a seeded restaurant
-    // 3 B If id is not there, add it to the Restaurant table
-    // This may require a call to the FourSquare API)
+      // 2 If id is not there, add it to the Restaurant table
+      // This may require a call to the FourSquare API)
+      // TODO
 
-    var menus = data.response.menu.menus.items;
-    var dishData = [];
+      return restaurantId;
+    })
+    .then((restaurantId) => {
+      // Not all restaurants have menus
+      console.log('Menu count is ', data.response.menu.menus.count);
 
-    // Add each dish from response to database
-    menus.forEach(function(menu) {
-      menu.entries.items.forEach(function(section) {
-        section.entries.items.forEach(function(dish) {
+      // If there is a menu
+      if (data.response.menu.menus.count > 0){
+        // Set where to start iterating over menus
+        var menus = data.response.menu.menus.items;
+        var dishesToAddArray = [];
 
-          db.Dish.findOrCreate({
-            where: {
-              foursquareEntryId: dish.entryId,
-            },
-            defaults: {
-              // If it is not in the Dish table, set these defaults:
-              restaurantId: restaurantId,
-              foursquareEntryId: dish.entryId,
-              name: dish.name,
-              imageUrl: '',
-              description: dish.description,
-              price: dish.price,
-              avgRating: 0
-            }
-          })
-          .then(function(dish) {
-            // Make organized data to send to front end
-            let {foursquareEntryId, name, imageUrl, description, price, avgRating} = dish[0].dataValues;
-            dishData.push({foursquareEntryId, name, imageUrl, description, price, avgRating});
+        // Get all dishes from menu
+        menus.forEach((menu) => {
+          menu.entries.items.forEach((section) => {
+            section.entries.items.forEach((dish) => {
+              dishesToAddArray.push(dish);
+            });
           });
         });
-      });
+      
+        // Function to findOrCreate dishes in database
+        var addDishToDB = function(dish) {
+          return new Promise((resolve) => {
+            db.Dish.findOrCreate({
+              where: {
+                foursquareEntryId: dish.entryId,
+              },
+              defaults: {
+                // If it is not in the Dish table, set these defaults:
+                restaurantId: restaurantId,
+                foursquareEntryId: dish.entryId,
+                name: dish.name,
+                imageUrl: '',
+                description: dish.description,
+                price: dish.price,
+                avgRating: 0
+              }
+            })
+            .then((currentDish) => {
+              // Make organized data to send to front end
+              let {foursquareEntryId, name, imageUrl, description, price, avgRating} = currentDish[0].dataValues;
+
+              resolve({foursquareEntryId, name, imageUrl, description, price, avgRating});
+            });
+          });
+        };
+
+        // actions is to iterate through all dishes and addDishToDB
+        var actions = dishesToAddArray.map(addDishToDB);
+
+        // Promise all the actions
+        var results = Promise.all(actions);
+        
+        // Use the results of Promise.all
+        results
+          .then((dishArray) => {
+            console.log('!!! dishArray is: ', dishArray);
+            if(dishArray) {
+              console.log('Dish data resolves');
+              resolve(dishArray);
+            } 
+          });
+      } else {
+        console.log('Foursquare does not supply menu here');
+        reject('This restaurant does not have a menu');
+      }
     });
 
-    setTimeout(function() {
-      if(dishData.length > 0) {
-        console.log('Dish data resolves');
-        resolve(dishData);
-      } else {
-        reject('No data');
-      }
-    }, 1000);
-
-  });
+  }); // End of promise
 
   return promise;
 };

@@ -66,7 +66,7 @@ module.exports.postDishReviewData = data => {
             upvoteTotal
           };
 
-          // Update a dish's avgRating
+          // Update a dish's avgDishRating
           // Count number of dishReviews where dishId is currentDishId (this will be divisor)
           db.DishReview
             .count({
@@ -91,10 +91,10 @@ module.exports.postDishReviewData = data => {
                     2).toFixed(1);
                   console.log('new average dish rating is ', newAvg);
                   // Get dish entry in Dish table
-                  // Update dish's avgRating
+                  // Update dish's avgDishRating
                   db.Dish.update(
                     {
-                      avgRating: newAvg,
+                      avgDishRating: newAvg,
                       imageUrl: dishReview[0].dataValues.imageUrl
                     },
                     {

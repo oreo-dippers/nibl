@@ -16,7 +16,7 @@ import CommentCard from '../static/commentCard'
 class Dish extends Component {
 
   render() {
-    console.log('this.props',this.props)
+    console.log('DISHHHHHHHH this.props',this.props)
     const { dish } = this.props.location.state;
 
     if (!dish) {

@@ -45,7 +45,8 @@ module.exports.postDishReviewData = data => {
           }
         })
         .then(dishReview => {
-          console.log('dishReview object is ', dishReview[0].dataValues);
+          console.log('dishReview object is ', dishReview);
+          // console.log('dishReview object is ', dishReview[0].dataValues);
           // Make organized data to send to front end
           const {
             userId,
@@ -66,22 +67,24 @@ module.exports.postDishReviewData = data => {
           };
 
           // Update a dish's avgRating
-          // Count number of dishReviews where id is currentDishId (this will be divisor)
+          // Count number of dishReviews where dishId is currentDishId (this will be divisor)
           db.DishReview
             .count({
               where: {
-                id: currentDishId
+                dishId: currentDishId
               }
             })
             .then(numOfReviews => {
-              // Sum all of dishReviews starRatings where id is currentDishId (this will be total)
+              console.log('Number of reviews is ', numOfReviews);
+              // Sum all of dishReviews starRatings where dishId is currentDishId (this will be total)
               db.DishReview
                 .sum('starRating', {
                   where: {
-                    id: currentDishId
+                    dishId: currentDishId
                   }
                 })
                 .then(total => {
+                  console.log('total is ', total);
                   // Round result of average to nearest .5
                   // rating = (Math.round(rating * 2) / 2).toFixed(1)
                   const newAvg = (Math.round(total / numOfReviews * 2) /

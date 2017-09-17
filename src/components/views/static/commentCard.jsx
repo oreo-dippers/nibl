@@ -28,19 +28,30 @@ import launchEditor from './aviary';
   // send .........................
 
 
-// get request to /api/comments?
-  // given    -> ['userId', 'dishId', 'review', 'starRating', 'imageUrl']
-  // *change* -> starRating to avgStarRating for all users accumulative rating
-  // *add*    -> a users rating of the dish
-  // *add*    -> upvote rating for a single comment
-  // *add*    -> users username
-  // *add*    -> users image avatar (how to get user image for each user?)
-// post request to /api/comments
-const comments = [
+// foursquareEntryId when do we get sent, when do we send
+// foursquareId when do we get sent, when do we send
+
+// when do we get the avgDishRating?
+// when do we get the avgDishRating?
+// when do we get the avgRestRating?
+
+// get request to /api/dishes/review
+  // √ given    -> ['userId', 'dishId', 'review', 'starRating', 'imageUrl']
+  // √ *add*    -> a users rating of the dish
+  // √ *add*    -> upvote rating for a single comment
+  // √ *add*    -> users username
+  // √ *add*    -> users image avatar (how to get user image for each user?)
+// post request to /api/dishes/review
+const getDishesReviewAPI = [
   {
-    username: 'Nicolas Cage',
-    userImage: 'https://www.placecage.com/50/50',
+    userData: "{username: 'Nicolas Cage', userImage: 'https://www.placecage.com/50/50',}",
     review: 'Dude, this tastes so good!',
+    starRaring: 2,
+    upvoteTotal: 0,
+    createdAt: "",
+    updatedAt: "",
+    userId: "postgres key", // this is the firebase user id
+    dishId: "",
     imageUrl: 'http://usa.stockfood.com/Sites/StockFood/Documents/Homepage/News/en/14.jpg',
   },
   {

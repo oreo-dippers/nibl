@@ -32,20 +32,20 @@ class Restaurant extends Component {
   };
   console.log('req', req);
 
-    // axios
-    //   .get(
-    //     'http://localhost:5001/oreo-nibl/us-central1/app/api/restaurants/page',
-    //     req
-    //   )
-    //   .then(res => {
-    //     console.log('successful get to /restaurants/page')
-    //     this.setState({foursquareId});
-    //     this.setState({menuState: res.data});
-    //     console.log(res.data);
-    //   })
-    //   .catch(function(err) {
-    //     console.log(err);
-    //   });
+    axios
+      .get(
+        'http://localhost:5001/oreo-nibl/us-central1/app/api/restaurants/page',
+        req
+      )
+      .then(res => {
+        console.log('successful get to /restaurants/page')
+        this.setState({foursquareId});
+        this.setState({menuState: res.data});
+        console.log(res.data);
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
   }
 
   render() {
@@ -115,9 +115,9 @@ class Restaurant extends Component {
               {this.state.menuState.map((r, i) => {
                 // var store_name = dashify(r.name)
                 return (
-                    <li className="menuliststyle" key={r.foursquareId}>
+                    <div className="menuliststyle" key={r.foursquareId}>
                         <MenuCard menu={r} />
-                    </li>
+                    </div>
                 );
               })}
             </ul>

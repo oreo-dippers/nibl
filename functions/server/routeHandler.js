@@ -23,7 +23,7 @@ const db = require('./../db/db.js');
 
 // };
 
-module.exports.seeds = function(req, res) {
+module.exports.seeds = (req, res) => {
   const db = require('./../db/seed.js');
   res.send('Data Seeded');
 };
@@ -34,7 +34,9 @@ module.exports.getRestaurants = restaurants.getRestaurants;
 
 module.exports.postDishReview = dishes.postDishReview;
 
+module.exports.getDishReview = dishes.getDishReview;
 
-module.exports.getDummy = function(req, res) {
-  console.log('This dummy is working')
+module.exports.getDummy = (req, res) => {
+  console.log('This dummy is working');
+  res.send('Dummy working!');
 };

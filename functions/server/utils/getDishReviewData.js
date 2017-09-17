@@ -11,12 +11,13 @@ module.exports.getDishReviewData = data => {
     db.Dish.findOne({
       where: {
         foursquareEntryId: data.body.dishId
+        // foursquareEntryId: '21566013'
       }
     })
-    .then(values => {
-      // console.log(values);
-      console.log('Dish id is ', values[1].dataValues.id);
-      currentDishId = values[1].dataValues.id;
+    .then(dish => {
+      console.log(dish);
+      console.log('Dish id is ', dish.dataValues.id);
+      currentDishId = dish.dataValues.id;
 
       db.DishReview
         .findAll({
@@ -25,7 +26,7 @@ module.exports.getDishReviewData = data => {
           }
         })
         .then(dishReviews => {
-          console.log('dishReviews object is ', dishReviews);
+          console.log('dishReviews array is ', dishReviews);
           // console.log('dishReviews[0] object is ', dishReviews[0].dataValues);
           // Make organized data to send to front end
 

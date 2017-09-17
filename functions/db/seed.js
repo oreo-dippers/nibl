@@ -51,7 +51,7 @@ connection.db.drop().then(() => {
         
         connection.User
           .create({
-            firebaseUuid: element.firebaseUuid,
+            firebaseUuid: element.userId,
             userData: element.userData
           })
           .then(() => {

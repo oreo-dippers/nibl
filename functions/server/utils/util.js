@@ -11,3 +11,5 @@ module.exports.getRestaurantData = restaurant.getRestaurantData;
 module.exports.getDishData = dish.getDishData;
 
 module.exports.postDishReviewData = dishReview.postDishReviewData;
+
+module.exports.postDishReviewData = dishReview.getDishReviewData;

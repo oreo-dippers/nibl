@@ -52,6 +52,17 @@ module.exports.postDishReviewData = (data) => {
         const newReview = {userId, dishId, review, starRating, imageUrl, upvoteTotal};
 
         // Do not forget to update a dish's avgRating!!!
+        const dishToUpdate = dishReview[0].dataValues.dishId;
+        const dishRating = dishReview[0].dataValues.starRating;
+
+        // Count number of dishReviews where id is dishToUpdate (this will be number to divide by)
+        // Sum all of dishReviews starRating where id is dishToUpdate (this will be total)
+
+        // Round result of average to nearest .5
+        // rating = (Math.round(rating * 2) / 2).toFixed(1) 
+
+        // Get dish entry in Dish table
+        // Update dish's avgRating
 
         console.log('newReview is ', newReview);
 
@@ -70,25 +81,3 @@ module.exports.postDishReviewData = (data) => {
 
   return promise;
 };
-
-// Get the userId based on the firebase UUID
-// db.User.findOne({
-//   where: { 
-//     firebaseUuid: data.userId 
-//   }
-// })
-// .then((user) => {
-//   console.log('User id is ', user.id);
-//   currentUserId = user.id;
-// });
-
-// Get the dishId based on the foursquareEntryId
-// db.Dish.findOne({
-//   where: {
-//     foursquareEntryId: data.dishId
-//   }
-// })
-// .then((dish) => {
-//   console.log('Dish id is ', dish.id);
-//   currentDishId = dish.id;
-// });

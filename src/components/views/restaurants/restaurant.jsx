@@ -1,13 +1,21 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import MenuCard from '../static/menuCard';
+import MenuCard from './menuCard';
 import axios from 'axios';
 
+const sampleMenuItem = {
+  foursquareEntryId: "107410403",
+  name: "My Amazing Hardcoded Dish in Restaurnt.js",
+  imageUrl: "",
+  description: "With roasted farm beets, pickled red onions, Vermont Creamery goat cheese schmear, apple cider vinaigrette",
+  price: "11.00",
+  avgRating: 0
+}
 class Restaurant extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      menuState: [],
+      menuState: [sampleMenuItem],
       foursquareId: null,
     };
   }
@@ -24,23 +32,25 @@ class Restaurant extends Component {
   };
   console.log('req', req);
 
-    axios
-      .get(
-        'http://localhost:5001/oreo-nibl/us-central1/app/api/restaurants/page',
-        req
-      )
-      .then(res => {
-        this.setState({foursquareId});
-        this.setState({menuState: res.data});
-        console.log(res.data);
-      })
-      .catch(function(err) {
-        console.log(err);
-      });
+    // axios
+    //   .get(
+    //     'http://localhost:5001/oreo-nibl/us-central1/app/api/restaurants/page',
+    //     req
+    //   )
+    //   .then(res => {
+    //     console.log('successful get to /restaurants/page')
+    //     this.setState({foursquareId});
+    //     this.setState({menuState: res.data});
+    //     console.log(res.data);
+    //   })
+    //   .catch(function(err) {
+    //     console.log(err);
+    //   });
   }
 
   render() {
     const venue = this.props.location.state.venue;
+    console.log('venue', venue);
     const imageUrl = JSON.parse(venue.imageUrl);
     const {prefix, suffix} = imageUrl;
     const address = JSON.parse(venue.address).join(', ');
@@ -53,7 +63,7 @@ class Restaurant extends Component {
     return (
       <div className="ui container">
         <center>
-          <div className="ui huge header" style={{'font-size': '5em'}}>
+          <div className="ui huge header" style={{'fontSize': '5em'}}>
             RESTAURANT
           </div>
         </center>
@@ -74,10 +84,10 @@ class Restaurant extends Component {
           </div>
         </div>
 
-        <h2 style={{'font-size': '3em'}}> {venue.name} </h2>
+        <h2 style={{'fontSize': '3em'}}> {venue.name} </h2>
 
         <div className="meta"> Rating: {venue.avgRating} </div>
-        <div className="ui huge header" style={{'font-size': '1em'}}>
+        <div className="ui huge header" style={{'fontSize': '1em'}}>
           Address: {address}
           <br /> Phone Number: {venue.phone}
         </div>

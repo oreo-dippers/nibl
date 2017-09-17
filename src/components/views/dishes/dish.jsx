@@ -1,13 +1,23 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import MenuCard from '../static/menuCard';
+import MenuCard from './menuCard';
+import CommentCard from '../static/commentCard'
+
+// {
+//   foursquareEntryId: "107410403",
+//   name: "Arugula Salad",
+//   imageUrl: "",
+//   description: "With roasted farm beets, pickled red onions, Vermont Creamery goat cheese schmear, apple cider vinaigrette",
+//   price: "11.00",
+//   avgRating: 0
+// }
+
 
 class Dish extends Component {
 
   render() {
-    const dish = this.props.location.state.dish;
-    const {prefix, suffix} = dish.imageUrl;
-    const img = `${prefix}500${suffix}`;
+    console.log('this.props',this.props)
+    const { dish } = this.props.location.state;
 
     if (!dish) {
       return <div>Sorry, but the dish was not found</div>;
@@ -39,27 +49,27 @@ class Dish extends Component {
 
         <h2 style={{'fontSize': '3em'}}> {dish.name} </h2>
 
-        <div className="meta"> Rating: {dish.avgRating} </div>
+        <div className="meta">
+          Rating: {dish.avgRating}
+        </div>
         <div className="ui huge header" style={{'fontSize': '1em'}}>
           Address: {	dish.address && dish.address.join(', ') }
-          <br /> Phone Number: {dish.phone}
+          <br />
+          Phone Number: {dish.phone}
         </div>
         <h3>
-          Born in Japan, Jiron San has always dreamed of opening a resturaunt in
-          the United States of America. So after saving up his lunch money for a
-          year he decided to buy a plane ticket and fly to the greatest Nation
-          in the world to spread his culture and taste in food with the locals.
-          Being 10, he found it hard to sign up for the licenses necessary to
-          open a resturaunt so he forged a license and wore a fake beard and
-          eventually he grew into the beard and he no longer had to fake his
-          identity . He is a man that is full of wisdom and experience. Like he
-          always would say every morning “ありがとうございました”. We would always say back
-          “You are an inspriation to us all” He would then say “ あなたは日本語を話せません”.
-          what a wise man.
+          {dish.description}
         </h3>
         <center>
+
+        <CommentCard />
+
+
+
+
+
           <div className="ui huge header" style={{fontSize: '5em'}}>
-            MENU
+            Recommendations
           </div>
         </center>
         <div className="ui container ">

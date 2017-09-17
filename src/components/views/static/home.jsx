@@ -1,6 +1,6 @@
 import React from 'react';
 // import { Grid, Image, Segment } from 'semantic-ui-react';
-import MenuCard from './menuCard';
+import MenuCard from '../restaurants/menuCard';
 // style={{ background: 'url(https://thumb.ibb.co/cdP7jF/backdropfoods.png)' }}
 const Home = () => (
 	<div className="bg">
@@ -12,7 +12,7 @@ const Home = () => (
 			<h1 style={{ fontSize: '4em' }} className="ui left huge header">
 				It's all about the food
 			</h1>
-			
+
 		</div>
 
 	<br />

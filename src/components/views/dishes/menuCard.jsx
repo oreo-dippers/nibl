@@ -18,7 +18,9 @@ class MenuCard extends Component {
     console.log(menu);
     return (
       <div>
-        <Card>
+        <span style={{color:'black'}}>HI I AM A DISH MENUCARD</span>
+        {/* <Card>
+
           <Image
             src="https://instagram.fsnc1-1.fna.fbcdn.net/t51.2885-15/e35/12751127_511734799019156_1460279120_n.jpg"
             alt=""
@@ -38,7 +40,7 @@ class MenuCard extends Component {
               {menu.price}
             </a>
           </Card.Content>
-        </Card>
+        </Card> */}
       </div>
     );
   }

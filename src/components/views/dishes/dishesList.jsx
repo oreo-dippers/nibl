@@ -11,10 +11,12 @@ class DishesList extends Component {
   const { dishes } = this.props
     return (
       <ul>
+        <span style={{color:'black'}}>HI I AM A DISHESLIST</span>
         {
           dishes.map((dish, i) => {
             return (
             <li className="listStyle" key={dish.fourSquareId}>
+
                 <DishCard dish={dish} />
             </li>
           )})

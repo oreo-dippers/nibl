@@ -17,6 +17,50 @@ import {
 } from 'semantic-ui-react';
 import launchEditor from './aviary';
 
+// when do we send user information?
+  // on sign up to create a user in the database
+  // send user id
+  // send users photo
+  // send .........................
+
+
+// get request to /api/comments?
+  // given    -> ['userId', 'dishId', 'review', 'starRating', 'imageUrl']
+  // *change* -> starRating to avgStarRating for all users accumulative rating
+  // *add*    -> a users rating of the dish
+  // *add*    -> upvote rating for a single comment
+  // *add*    -> users username
+  // *add*    -> users image avatar (how to get user image for each user?)
+// post request to /api/comments
+const comments = [
+  {
+    username: 'Nicolas Cage',
+    userImage: 'https://www.placecage.com/50/50',
+    review: 'Dude, this tastes so good!',
+    imageUrl: 'http://usa.stockfood.com/Sites/StockFood/Documents/Homepage/News/en/14.jpg',
+  },
+  {
+    username: 'Kevin Su',
+    userImage: 'https://lh4.googleusercontent.com/-FL0yWop58rE/AAAAAAAAAAI/AAAAAAAALIA/HMGqR06X9Yw/photo.jpg',
+    review: 'Dude, this tastes so good!',
+    imageUrl: 'http://usa.stockfood.com/Sites/StockFood/Documents/Homepage/News/en/18.jpg',
+  },
+  {
+    username: 'Lisa Gee',
+    userImage: 'https://www.placecage.com/50/50',
+    review: 'Dude, this tastes so good!',
+    imageUrl: 'http://usa.stockfood.com/Sites/StockFood/Documents/Homepage/News/en/5.jpg',
+  },
+  {
+    username: 'David Kang',
+    userImage: 'https://www.placecage.com/50/50',
+    review: 'Dude, this tastes so good!',
+    imageUrl: 'http://usa.stockfood.com/Sites/StockFood/Documents/Homepage/News/en/9.jpg',
+  },
+
+]
+
+
 class CommentCard extends Component {
   constructor(props) {
     super(props);
@@ -24,11 +68,30 @@ class CommentCard extends Component {
       uploadProgress: null,
       file: null,
       imagePreviewUrl: null,
+      comments: [],
     };
     // this.userRef = database.ref('users');
     this.handleSubmit = this.handleSubmit.bind(this);
     this.aviarySubmit = this.aviarySubmit.bind(this);
     this.submitFilteredPhoto = this.submitFilteredPhoto.bind(this);
+    this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({comments})
+  }
+
+  handleCommentSubmit(e) {
+    e.preventDefault();
+    const comment = {
+      username: 'Anon',
+      userImage: 'https://www.placecage.com/50/50',
+      review: this._comment.value,
+      imageUrl: 'http://usa.stockfood.com/Sites/StockFood/Documents/Homepage/News/en/9.jpg',
+    }
+    const newComment = [comment, ...this.state.comments]
+    this.setState({comments: newComment})
+    console.log('comment', comment);
   }
 
   handleSubmit(e) {
@@ -50,8 +113,6 @@ class CommentCard extends Component {
 
       console.log(imagePreviewUrl); // send url to database for storage
       this.setState({imagePreviewUrl});
-      // document.getElementById('incredibleimg').innerHTML =
-      //   '<img id="rcorners1" src=' + url + '/>';
     });
   }
 
@@ -80,22 +141,21 @@ class CommentCard extends Component {
           <Grid.Column width={2}>
 
             <div id="injection_site" />
-            <input
-                id="something"
-                type="file"
-                name="myImage"
-                accept=".png, .jpg"
-                placeholder="Select An Image"
-                className="inputClass"
-                onChange={this.handleSubmit}
-              />
             <img
               id="image1"
               src={this.state.imagePreviewUrl}
               ref={input => (this.filtered = input)}
             />
-
-            <p>
+            <div>
+              <input
+                  id="something"
+                  type="file"
+                  name="myImage"
+                  accept=".png, .jpg"
+                  placeholder="Select An Image"
+                  className="inputClass"
+                  onChange={this.handleSubmit}
+              />
               <Button
                 primary
                 type="image"
@@ -103,15 +163,20 @@ class CommentCard extends Component {
                 value="Edit photo"
                 onClick={this.aviarySubmit}
               >
-                {' '}
-                Edit{' '}
+                {' '} Filter {' '}
               </Button>
-            </p>
+            </div>
+
           </Grid.Column>
           <Grid.Column width={9}>
             <Rating maxRating={5} clearable />
-            <Form reply>
-              <Form.TextArea />
+            <Form
+              onSubmit={this.handleCommentSubmit}
+              reply>
+              <input
+                ref={(i)=> this._comment = i}
+                placeholder="leave a comment..."
+              />
               <Button
                 content="Add Reply"
                 labelPosition="left"
@@ -121,58 +186,14 @@ class CommentCard extends Component {
             </Form>
           </Grid.Column>
         </Grid>
-
-        <Grid>
-          <Grid.Column width={2} />
-          <Grid.Column width={10}>
-            <Comment.Group>
-              <Comment>
-                <Comment.Avatar src="https://www.placecage.com/50/50" />
-                <Comment.Content>
-                  <Comment.Author as="a">Nicolas Cage</Comment.Author>
-                  <Comment.Metadata>
-                    <div>5 days ago</div>
-                  </Comment.Metadata>
-                  <Comment.Text>Dude, this tastes so good!</Comment.Text>
-                  <Feed.Extra images>
-                    <Modal
-                      basic
-                      size="mini"
-                      trigger={
-                        <a>
-                          <img src="https://www.placecage.com/50/50" />
-                        </a>
-                      }
-                    >
-                      <center>
-                        <Image
-                          wrapped
-                          size="medium"
-                          src="https://www.placecage.com/300/300"
-                        />
-                      </center>
-                    </Modal>
-                  </Feed.Extra>
-                  <Comment.Actions>
-                    <Feed.Meta>
-                      <Feed.Like>
-                        <Icon name="like" />
-                        1 Like
-                      </Feed.Like>
-                    </Feed.Meta>
-                  </Comment.Actions>
-                </Comment.Content>
-              </Comment>
-            </Comment.Group>
-          </Grid.Column>
-          <Grid.Column width={3}>
-            <Button icon>
-              <Icon name="chevron up" />
-            </Button>
-            <div> 23k </div>
-          </Grid.Column>
-        </Grid>
-
+        {console.log('this.state', this.state)}
+        {
+          this.state.comments.map((comment, i) => {
+            return (
+              <CommentBox data={comment} key={i}/>
+            )
+          })
+        }
         <br />
       </div>
     );

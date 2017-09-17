@@ -26,10 +26,11 @@ class DishCard extends Component {
     console.log('img', img);
 
     if (!dish) {
-      return <div>Sorry, but the restaurant was not found</div>;
+      return <div>Sorry, but the Dish was not found</div>;
     }
     return (
       <div className="ui container ">
+        <span style={{color:'black'}}>HI I AM A DISHCARD</span>
         <div className="ui equal width aligned padded grid">
           <div className="row">
             <div className="column">

@@ -52,18 +52,30 @@ module.exports.postDishReviewData = (data) => {
         const newReview = {userId, dishId, review, starRating, imageUrl, upvoteTotal};
 
         // Do not forget to update a dish's avgRating!!!
-        const dishToUpdate = dishReview[0].dataValues.dishId;
-        const dishRating = dishReview[0].dataValues.starRating;
-
-        // Count number of dishReviews where id is dishToUpdate (this will be number to divide by)
-        // Sum all of dishReviews starRating where id is dishToUpdate (this will be total)
-
-        // Round result of average to nearest .5
-        // rating = (Math.round(rating * 2) / 2).toFixed(1) 
-
-        // Get dish entry in Dish table
-        // Update dish's avgRating
-
+        // Count number of dishReviews where id is currentDishId (this will be number to divide by)
+        db.DishReview.count({
+          where: {
+            id: currentDishId
+          }
+        })
+        .then(numOfReviews => {
+          // Sum all of dishReviews starRating where id is dishToUpdate (this will be total)
+          db.DishReview.sum('starRating',
+          {
+            where: {
+              id: currentDishId          
+            }
+          })
+          .then(total => {
+            // Round result of average to nearest .5
+            // rating = (Math.round(rating * 2) / 2).toFixed(1) 
+            const newAvg = (Math.round(total / numOfReviews * 2) / 2).toFixed(1);
+            console.log('new average dish rating is ', newAvg);
+            // Get dish entry in Dish table
+            // Update dish's avgRating
+          });
+        });
+        
         console.log('newReview is ', newReview);
 
         return newReview;

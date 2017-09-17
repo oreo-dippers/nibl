@@ -2,6 +2,7 @@ const requestPromise = require('request-promise');
 const restaurant = require('./restaurantData.js');
 const dish = require('./dishData.js');
 const dishReview = require('./dishReviewData.js');
+const getDishReview = require('./getDishReviewData.js');
 const httpRequest = require('./foursquareApiCall.js');
 
 module.exports.apiCall = httpRequest.apiCall;
@@ -12,4 +13,4 @@ module.exports.getDishData = dish.getDishData;
 
 module.exports.postDishReviewData = dishReview.postDishReviewData;
 
-module.exports.getDishReviewData = dishReview.getDishReviewData;
+module.exports.getDishReviewData = getDishReview.getDishReviewData;

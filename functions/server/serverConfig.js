@@ -30,7 +30,7 @@ app.post('/api/dishes/review', routeHandler.postDishReview);
 app.get('/api/dishes/review', routeHandler.getDishReview);
 
 // REST endpoint for saving user profile
-app.post('/api/user', routeHandler.getDummy);
+app.post('/api/user', routeHandler.postUser);
 
 // REST endpoint for getting user saved Dish
 app.get('/api/user/fridge', routeHandler.getDummy);

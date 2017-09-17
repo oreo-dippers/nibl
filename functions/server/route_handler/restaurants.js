@@ -28,7 +28,7 @@ module.exports.getRestaurants = function(req, res) {
     utils.getRestaurantData(data)
       .then(function(restaurantData) {
         console.log('restaurantData sent to front end');
-        res.send(restaurantData);
+        res.status(200).send(restaurantData);
        });
   });
 };
@@ -51,7 +51,7 @@ module.exports.getMenu = function(req, res) {
       .then(function(dishData) {
         console.log(dishData);
         console.log('dishData sent to front end');
-        res.send(dishData);
+        res.status(200).send(dishData);
       });
   });
 };

@@ -15,30 +15,7 @@ import {
   Grid,
   Rating,
 } from 'semantic-ui-react';
-
-const Aviary = window.Aviary;
-
-var featherEditor = new Aviary.Feather({
-  apiKey: '_',
-  apiVersion: 3,
-  theme: 'dark', // Check out our new 'light' and 'dark' themes!
-  tools: 'all',
-  appendTo: '',
-  onSave: function(imageID, newURL) {
-    var img = document.getElementById(imageID);
-    img.src = newURL;
-  },
-  onError: function(errorObj) {
-    alert(errorObj.message);
-  },
-});
-function launchEditor(id, src) {
-  featherEditor.launch({
-    image: id,
-    url: src,
-  });
-  return false;
-}
+import launchEditor from './aviary';
 
 class CommentCard extends Component {
   constructor(props) {
@@ -79,12 +56,6 @@ class CommentCard extends Component {
   }
 
   aviarySubmit(e) {
-    console.log('e', e);
-    // e.target
-    console.log('e.target', e.target.files);
-    ("return launchEditor('image1', 'http://images.aviary.com/imagesv5/feather_default.jpg');");
-
-    console.log('featherEditor', featherEditor);
     return launchEditor('image1', this.state.imagePreviewUrl);
   }
 
@@ -104,10 +75,10 @@ class CommentCard extends Component {
 
         <Grid>
           <Grid.Column width={2} >
-        
+
             </Grid.Column>
           <Grid.Column width={2}>
-            
+
             <div id="injection_site" />
             <input
                 id="something"

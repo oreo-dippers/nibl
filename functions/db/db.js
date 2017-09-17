@@ -27,7 +27,8 @@ const User = db.define('user', {
     autoIncrement: true,
     primaryKey: true
   },
-  firebaseUuid: Sequelize.STRING
+  firebaseUuid: Sequelize.STRING,
+  userData: Sequelize.JSON
 });
 
 // Table 2: Restaurant (in DB will be: restaurants)
@@ -47,7 +48,7 @@ const Restaurant = db.define('restaurant', {
   address: Sequelize.JSON,
   website: Sequelize.STRING,
   imageUrl: Sequelize.JSON,
-  avgRating: Sequelize.FLOAT
+  avgRestRating: Sequelize.FLOAT
 });
 
 // Table 3: Dish (in DB will be: dishes)
@@ -66,7 +67,7 @@ const Dish = db.define('dish', {
   imageUrl: Sequelize.STRING,
   description: Sequelize.TEXT,
   price: Sequelize.STRING,
-  avgRating: Sequelize.FLOAT
+  avgDishRating: Sequelize.FLOAT
 });
 
 // Table 4: DishReview (in DB will be: dishReviews)

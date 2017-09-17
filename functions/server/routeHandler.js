@@ -23,20 +23,24 @@ const db = require('./../db/db.js');
 
 // };
 
+// Drop tables and seed 
 module.exports.seeds = (req, res) => {
   const db = require('./../db/seed.js');
-  res.send('Data Seeded');
+  res.status(201).send('Data Seeded');
 };
 
+// Restaurant
 module.exports.getMenu = restaurants.getMenu;
-
 module.exports.getRestaurants = restaurants.getRestaurants;
 
+// Dish Review
 module.exports.postDishReview = dishes.postDishReview;
-
 module.exports.getDishReview = dishes.getDishReview;
+
+// User 
+module.exports.postUser = user.postUser;
 
 module.exports.getDummy = (req, res) => {
   console.log('This dummy is working');
-  res.send('Dummy working!');
+  res.status(200).send('Dummy working!');
 };

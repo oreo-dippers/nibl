@@ -1,45 +1,58 @@
 const db = require('../../db/db.js');
-module.exports.getRestaurantData = function(data) {
-  var promise = new Promise(function(resolve, reject){
 
+module.exports.getRestaurantData = (data) => {
+
+  const promise = new Promise((resolve, reject) => {
     // Save data into Restaurant table
-    //data.response.groups.items is the array of restaurants received
-    var restaurantArray = data.response.groups[0].items;
-    var restaurantData = [];
+    // data.response.groups.items is the array of restaurants received
+    const restaurantArray = data.response.groups[0].items;
 
-    // Add each restaurant from response to database
-    restaurantArray.forEach(function (element) {
-      db.Restaurant.findOrCreate({
-        where: {
-          foursquareId: element.venue.id
-        },
-        defaults: {
-          // If it is not in the Restaurant table, set these defaults:
-          foursquareId: element.venue.id,
-          name: element.venue.name,
-          phone: element.venue.contact.formattedPhone,
-          address: JSON.stringify(element.venue.location.formattedAddress),
-          website: element.venue.url,
-          imageUrl: JSON.stringify(element.venue.featuredPhotos.items[0]),
-          avgRating: 0
-        }
-      })
-      .then(function(restaurant) {
-        let {foursquareId, name, phone, address, website, imageUrl, avgRating} = restaurant[0].dataValues;
-        restaurantData.push({foursquareId, name, phone, address, website, imageUrl, avgRating});
-      });
-    }); // forEach ends
+    if (restaurantArray.length > 0) {
+      // Function to findOrCreate restaurants in database
+      var addRestaurantToDB = (restaurant) => {
+        return new Promise((resolve) => {
+          db.Restaurant.findOrCreate({
+            where: {
+              foursquareId: restaurant.venue.id
+            },
+            defaults: {
+              // If it is not in the Restaurant table, set these defaults:
+              foursquareId: restaurant.venue.id,
+              name: restaurant.venue.name,
+              phone: restaurant.venue.contact.formattedPhone,
+              address: JSON.stringify(restaurant.venue.location.formattedAddress),
+              website: restaurant.venue.url,
+              imageUrl: JSON.stringify(restaurant.venue.featuredPhotos.items[0]),
+              avgRating: 0
+            }
+          })
+          .then((currentRestaurant) => {
+            let {foursquareId, name, phone, address, website, imageUrl, avgRating} = currentRestaurant[0].dataValues;
+            
+            resolve({foursquareId, name, phone, address, website, imageUrl, avgRating});
+          });
+        });
+      };
 
-    setTimeout(function(){
-      if(restaurantData.length > 0){
-        console.log('This thing is working')
-        resolve(restaurantData);
-      } else {
-        reject('No data');
-      }
-    }, 1000);
+      // actions is to iterate through all restaurants and addRestaurantToDB
+      const actions = restaurantArray.map(addRestaurantToDB);
+      
+      // Promise all the actions
+      const results = Promise.all(actions);
 
-  });
+      results
+        .then((resultArray) => {
+          if (resultArray) {
+            console.log('Restaurant data resolves');
+            resolve(resultArray);
+          }
+        });
+    } else {
+      console.log('Foursquare found no restaurant results');
+      reject('This search result did not return any restaurants');
+    }
+
+  }); // End of promise
 
   return promise;
 };

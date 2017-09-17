@@ -34,7 +34,7 @@ const User = db.define('user', {
 // Table 2: Restaurant (in DB will be: restaurants)
 // This is the table of restaurants that have been
 // retrieved from the Foursquare API.
-// To get avgRating, we calculate the avgRatings
+// To get avgRestRating, we calculate the avgDishRatings
 // of all the dishes a restaurant has.
 const Restaurant = db.define('restaurant', {
   id: {
@@ -54,7 +54,7 @@ const Restaurant = db.define('restaurant', {
 // Table 3: Dish (in DB will be: dishes)
 // This is the table of dishes (or menu items) that have been
 // retrieved from the Foursquare API.
-// To get avgRating, we calculate the starRatings
+// To get avgDishRating, we calculate the starRatings
 // from dishReviews.
 const Dish = db.define('dish', {
   id: {

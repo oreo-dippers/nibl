@@ -6,19 +6,20 @@ module.exports.postDishReviewData = data => {
 
   const promise = new Promise((resolve, reject) => {
     // View data to see what it is being sent
-    // console.log('Data received for postDishReviewData is: ', data.body);
+    // console.log('Data received for postDishReviewData is: ', data);
+    console.log('data.body received for postDishReviewData is: ', data.body);
 
     Promise.all([
       // Get the userId based on the firebase UUID
       db.User.findOne({
         where: {
-          firebaseUuid: data.body.userId
+          firebaseUuid: data.body.firebaseId
         }
       }),
       // Get the dishId based on the foursquareEntryId
       db.Dish.findOne({
         where: {
-          foursquareEntryId: data.body.dishId
+          foursquareEntryId: data.body.foursquareEntryId
         }
       })
     ]).then(values => {
@@ -91,7 +92,8 @@ module.exports.postDishReviewData = data => {
                     2).toFixed(1);
                   console.log('new average dish rating is ', newAvg);
                   // Get dish entry in Dish table
-                  // Update dish's avgDishRating
+                  // Update dish's avgDishRating and image
+                  
                   db.Dish.update(
                     {
                       avgDishRating: newAvg,

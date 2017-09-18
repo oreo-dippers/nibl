@@ -30,10 +30,11 @@ export function getDishes(reqData, dispatch) {
   dispatch(getDishesSuccess(dishesData));
   // return axios.get(`${FIREBASE}/api/dishes`, reqData)
   //   .then(res => {
+  //     console.log('get /api/dishes success!!')
   // const dishesData = res.data
   //     dispatch(getDishesSuccess(dishesData));
   //   })
   //   .catch(err => {
-  //     console.log(err);
+  //     console.log('get /api/dishes ERR!!', err);
   //   })
 }

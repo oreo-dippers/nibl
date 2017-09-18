@@ -12,9 +12,9 @@ module.exports.getDishReviewData = data => {
     db.Dish.findOne({
       where: {
         // foursquareEntryId: data.body.dishId
-        // foursquareEntryId: '6723406' // has no review
-        // foursquareEntryId: '18685324'  // has review
-        foursquareEntryId: '0000000'  // does not exist
+        foursquareEntryId: '6723406' // has review
+        // foursquareEntryId: '18685324'  // has no review
+        // foursquareEntryId: '0000000'  // does not exist
       }
     })
     .then(dish => {
@@ -36,6 +36,7 @@ module.exports.getDishReviewData = data => {
           }
         })
         .then(dishReviews => {
+          var simpleDishReviews = [];
           console.log('dishReviews array is ', dishReviews);
           // console.log('dishReviews[0] object is ', dishReviews[0].dataValues);
           // Make organized data to send to front end
@@ -45,20 +46,24 @@ module.exports.getDishReviewData = data => {
             reject('No reviews exist for this dish');
           } else {
             // Iterate through dishReview array
-            // Push only FIRST value to a simpleDishReviews
-            let simpleDishReviews = [];
-          }
+            // Push only dataValues of each element to simpleDishReviews
+            dishReviews.forEach(entry => {
+              simpleDishReviews.push(entry.dataValues);
+            });
 
-          return dishReviews;
-        })
-        .then(dishReviews => {
-          if (dishReviews) {
-            console.log('Dish Reviews were gotten');
-            resolve(dishReviews);
-          } else {
-            reject('No data');
+            console.log('Simple Dish Reviews are ', simpleDishReviews);
+            // Iterate over simpleDishReviews
+            // Get user data from User table
+            // Add user data as property userData to current element in simpleDishReviews
+
+            if (simpleDishReviews) {
+              console.log('Dish Reviews were gotten');
+              resolve(simpleDishReviews);
+            } else {
+              reject('No data');
+            }
           }
-      }); // End of DishReview.find()
+        }); // End of DishReview.find()
     });
   }); // End of promise
 

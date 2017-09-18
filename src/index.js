@@ -17,6 +17,9 @@ const history = createHistory();
 const middleware = routerMiddleware(history);
 export default history;
 
+
+console.log('process.env.NODE_ENV', process.env.NODE_ENV );
+console.log('process.env.NODE_ENV', process.env.HOST );
 const Router = () => (
   <Provider store={store}>
     <ConnectedRouter history={history}>

@@ -27,9 +27,9 @@ class Restaurant extends Component {
       foursquareId: foursquareId
     }
   };
+  console.log('process.env.HOST', process.env.HOST);
     axios
-      .get(
-        'http://localhost:5001/oreo-nibl/us-central1/app/api/restaurants/page',
+      .get(`${process.env.HOST}/api/restaurants/page`,
         req
       )
       .then(res => {

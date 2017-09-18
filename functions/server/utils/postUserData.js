@@ -3,7 +3,7 @@ const db = require('../../db/db.js');
 module.exports.postUserData = data => {
   
   const promise = new Promise((resolve, reject) => {
-    console.log(data.body);
+    // console.log(data.body);
 
     const currentFirebaseUuid = data.body.userId;
     const currentUserData = data.body.userData;
@@ -20,7 +20,7 @@ module.exports.postUserData = data => {
           userData: currentUserData
         }
       }).then(user => {
-        console.log('user object is ', user);
+        // console.log('user object is ', user);
         console.log('user object is ', user[0].dataValues);
 
         const userData = user[0].dataValues;

@@ -44,13 +44,13 @@ module.exports.getDishData = function(data) {
               imageUrl: '',
               description: dish.description,
               price: dish.price,
-              avgRating: 0
+              avgDishRating: 0
             }
           })
           .then(function(dish) {
             // Make organized data to send to front end
-            let {foursquareEntryId, name, imageUrl, description, price, avgRating} = dish[0].dataValues;
-            dishData.push({foursquareEntryId, name, imageUrl, description, price, avgRating});
+            let {foursquareEntryId, name, imageUrl, description, price, avgDishRating} = dish[0].dataValues;
+            dishData.push({foursquareEntryId, name, imageUrl, description, price, avgDishRating});
           });
         });
       });
@@ -92,12 +92,12 @@ module.exports.getRestaurantData = function(data) {
           address: JSON.stringify(element.venue.location.formattedAddress),
           website: element.venue.url,
           imageUrl: JSON.stringify(element.venue.featuredPhotos.items[0]),
-          avgRating: 0
+          avgRestRating: 0
         }
       })
       .then(function(restaurant) {
-        let {foursquareId, name, phone, address, imageUrl, avgRating} = restaurant[0].dataValues;
-        restaurantData.push({foursquareId, name, phone, address, imageUrl, avgRating});
+        let {foursquareId, name, phone, address, imageUrl, avgRestRating} = restaurant[0].dataValues;
+        restaurantData.push({foursquareId, name, phone, address, imageUrl, avgRestRating});
       });
     }); // forEach ends
 

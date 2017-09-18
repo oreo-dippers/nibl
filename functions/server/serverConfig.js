@@ -26,9 +26,11 @@ app.get('/api/dishes', routeHandler.getDummy);
 // REST endpoint for posting review of a dish
 app.post('/api/dishes/review', routeHandler.postDishReview);
 
+// REST endpoint for getting reviews of a dish
+app.get('/api/dishes/review', routeHandler.getDishReview);
 
 // REST endpoint for saving user profile
-app.post('/api/user', routeHandler.getDummy);
+app.post('/api/user', routeHandler.postUser);
 
 // REST endpoint for getting user saved Dish
 app.get('/api/user/fridge', routeHandler.getDummy);
@@ -42,10 +44,8 @@ app.get('/api/user/saved-restaurants', routeHandler.getDummy);
 // REST endpoint for saving restaurants user want to visit later.
 app.post('/api/user/saved-restaurants', routeHandler.getDummy);
 
-
 app.get('/*', (req, res) => {
   res.sendFile(path.join(process.env.PWD, 'dist', 'index.html'));
 });
-
 
 module.exports = app;

@@ -30,7 +30,7 @@ connection.db.drop().then(() => {
             address: element.address,
             website: element.website,
             imageUrl: element.imageUrl,
-            avgRating: 0
+            avgRestRating: 0
           })
           .then(() => {
             console.log(
@@ -51,7 +51,8 @@ connection.db.drop().then(() => {
         
         connection.User
           .create({
-            firebaseUuid: element.firebaseUuid
+            firebaseUuid: element.userId,
+            userData: element.userData
           })
           .then(() => {
             console.log(

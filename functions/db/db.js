@@ -27,13 +27,14 @@ const User = db.define('user', {
     autoIncrement: true,
     primaryKey: true
   },
-  firebaseUuid: Sequelize.STRING
+  firebaseUuid: Sequelize.STRING,
+  userData: Sequelize.JSON
 });
 
 // Table 2: Restaurant (in DB will be: restaurants)
 // This is the table of restaurants that have been
 // retrieved from the Foursquare API.
-// To get avgRating, we calculate the avgRatings
+// To get avgRestRating, we calculate the avgDishRatings
 // of all the dishes a restaurant has.
 const Restaurant = db.define('restaurant', {
   id: {
@@ -47,13 +48,13 @@ const Restaurant = db.define('restaurant', {
   address: Sequelize.JSON,
   website: Sequelize.STRING,
   imageUrl: Sequelize.JSON,
-  avgRating: Sequelize.FLOAT
+  avgRestRating: Sequelize.FLOAT
 });
 
 // Table 3: Dish (in DB will be: dishes)
 // This is the table of dishes (or menu items) that have been
 // retrieved from the Foursquare API.
-// To get avgRating, we calculate the starRatings
+// To get avgDishRating, we calculate the starRatings
 // from dishReviews.
 const Dish = db.define('dish', {
   id: {
@@ -66,7 +67,7 @@ const Dish = db.define('dish', {
   imageUrl: Sequelize.STRING,
   description: Sequelize.TEXT,
   price: Sequelize.STRING,
-  avgRating: Sequelize.FLOAT
+  avgDishRating: Sequelize.FLOAT
 });
 
 // Table 4: DishReview (in DB will be: dishReviews)
@@ -91,7 +92,7 @@ const DishReview = db.define('dishReview', {
     }
   },
   starRating: Sequelize.INTEGER,
-  imageUrl: Sequelize.JSON,
+  imageUrl: Sequelize.STRING,
   upvoteTotal: Sequelize.INTEGER
 });
 

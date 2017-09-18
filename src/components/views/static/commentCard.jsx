@@ -16,6 +16,7 @@ import {
   Rating,
 } from 'semantic-ui-react';
 import launchEditor from './aviary';
+import axios from 'axios';
 
 // when retrieving data from /api/dishes -> array of dish objects
   // add restaurant address to each dish?
@@ -42,37 +43,72 @@ import launchEditor from './aviary';
   // √ *add*    -> users username
   // √ *add*    -> users image avatar (how to get user image for each user?)
 // post request to /api/dishes/review
+
+// foursquareEntryID is a dish unique id
+// foursquareId is a restaurants unique id
+
+
+// {
+//   user_photoURL: "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
+//   user_displayName: "David Kang",
+//   user_email: "david.kang714@gmail.com"
+// }
+
+// {obj: "{"user_photoURL":"https://lh3.googleusercontent.co…vid Kang","user_email":"david.kang714@gmail.com"}"}
+
+// const userObj = {
+//   params:{
+//     userId: currentUser.uid,
+//     userData: JSON.stringify(theuserdata),
+//   }
+// }
+
 const getDishesReviewAPI = [
+
   {
-    userData: "{username: 'Nicolas Cage', userImage: 'https://www.placecage.com/50/50',}",
-    review: 'Dude, this tastes so good!',
-    starRaring: 2,
-    upvoteTotal: 0,
-    createdAt: "",
+    userData: '{"user_photoURL":"https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg","user_displayName":"David Kang","user_email":"david.kang714@gmail.com"}',
+    review: 'Dude Dude Dude Dude, this tastes so good!',
+    starRating: 5,
+    upvoteTotal: 9999,
+    createdAt: new Date().toLocaleTimeString(),
     updatedAt: "",
-    userId: "postgres key", // this is the firebase user id
+    userId: "postgres key",
     dishId: "",
     imageUrl: 'http://usa.stockfood.com/Sites/StockFood/Documents/Homepage/News/en/14.jpg',
   },
   {
-    username: 'Kevin Su',
-    userImage: 'https://lh4.googleusercontent.com/-FL0yWop58rE/AAAAAAAAAAI/AAAAAAAALIA/HMGqR06X9Yw/photo.jpg',
-    review: 'Dude, this tastes so good!',
+    userData: '{"user_photoURL":"https://lh4.googleusercontent.com/-FL0yWop58rE/AAAAAAAAAAI/AAAAAAAALIA/HMGqR06X9Yw/photo.jpg","user_displayName":"Kevin Su","user_email":"kevin.su@gmail.com"}',
+    review: 'Dude Dude Dude, this tastes so good!',
+    starRating: 4,
+    upvoteTotal: 8888,
+    createdAt: new Date().toLocaleTimeString(),
+    updatedAt: "",
+    userId: "postgres key",
+    dishId: "",
     imageUrl: 'http://usa.stockfood.com/Sites/StockFood/Documents/Homepage/News/en/18.jpg',
   },
   {
-    username: 'Lisa Gee',
-    userImage: 'https://www.placecage.com/50/50',
-    review: 'Dude, this tastes so good!',
+    userData: '{"user_photoURL":"https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg","user_displayName":"Lisa Gee","user_email":"lisa.gee@gmail.com"}',
+    review: 'Dude Dude, this tastes so good!',
+    starRating: 3,
+    upvoteTotal: 7777,
+    createdAt: new Date().toLocaleTimeString(),
+    updatedAt: "",
+    userId: "postgres key",
+    dishId: "",
     imageUrl: 'http://usa.stockfood.com/Sites/StockFood/Documents/Homepage/News/en/5.jpg',
   },
   {
-    username: 'David Kang',
-    userImage: 'https://www.placecage.com/50/50',
+    userData: '{"user_photoURL":"https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg","user_displayName":"Ankit","user_email":"ankit.kumar@gmail.com"}',
     review: 'Dude, this tastes so good!',
+    starRating: 2,
+    upvoteTotal: 5555,
+    createdAt: new Date().toLocaleTimeString(),
+    updatedAt: "",
+    userId: "postgres key",
+    dishId: "",
     imageUrl: 'http://usa.stockfood.com/Sites/StockFood/Documents/Homepage/News/en/9.jpg',
-  },
-
+  }
 ]
 
 
@@ -83,6 +119,8 @@ class CommentCard extends Component {
       uploadProgress: null,
       file: null,
       imagePreviewUrl: null,
+      rating: 0,
+      maxRating: 5,
       comments: [],
     };
     // this.userRef = database.ref('users');
@@ -90,23 +128,50 @@ class CommentCard extends Component {
     this.aviarySubmit = this.aviarySubmit.bind(this);
     this.submitFilteredPhoto = this.submitFilteredPhoto.bind(this);
     this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
+    this.handleRate = this.handleRate.bind(this);
   }
 
   componentDidMount() {
-    this.setState({comments})
+    this.setState({comments: getDishesReviewAPI})
+  }
+
+  handleRate(e, { rating, maxRating }) {
+    console.log('rating, maxRating', rating, maxRating)
+    this.setState({ rating, maxRating })
   }
 
   handleCommentSubmit(e) {
     e.preventDefault();
+    console.log('handleCommentSubmit this.props', this.props);
+    console.log('this.filtered.src', this.filtered.src);
+    const { foursquareEntryId } = this.props.location.state.dish
+    // let imagePreviewUrl = this.filtered.src
+    // console.log('imagePreviewUrl', imagePreviewUrl);
+    // this.setState({imagePreviewUrl});
+
+    // do we need to keep track of a person comments?
+    const UserData = localStorage.getItem('UserData')
+    const UserId = localStorage.getItem('UserId')
     const comment = {
-      username: 'Anon',
-      userImage: 'https://www.placecage.com/50/50',
+      userData: UserData, // db doesnt need  but can send
+      firebaseId: UserId,  // database needs this id
       review: this._comment.value,
-      imageUrl: 'http://usa.stockfood.com/Sites/StockFood/Documents/Homepage/News/en/9.jpg',
+      starRating: this.state.rating,
+      upvoteTotal: 0, // defaults on database
+      createdAt: new Date().toLocaleTimeString(), //generated by db X
+      // updatedAt: "", X
+      // userId: "postgres key", X
+      foursquareEntryId: foursquareEntryId, // foursquareEntryId NEEDED
+      imageUrl: this.filtered.src,
     }
+    console.log('comment', comment);
+
+    axios.post('http://localhost:5001/oreo-nibl/us-central1/app/api/dishes/review', comment)
+    .then(res => console.log('res.data', res.data))
+    .catch(err => console.log(err))
+
     const newComment = [comment, ...this.state.comments]
     this.setState({comments: newComment})
-    console.log('comment', comment);
   }
 
   handleSubmit(e) {
@@ -142,7 +207,6 @@ class CommentCard extends Component {
 
   render() {
     let {imagePreviewUrl} = this.state;
-    console.log('imagePreviewUrl', imagePreviewUrl);
     return (
       <div className="ui container">
         <div className="ui centered huge header" style={{fontSize: '5em'}}>
@@ -184,7 +248,12 @@ class CommentCard extends Component {
 
           </Grid.Column>
           <Grid.Column width={9}>
-            <Rating maxRating={5} clearable />
+            <Rating
+              onRate={this.handleRate}
+              maxRating={5}
+              clearable
+              defaultRating={0}
+            />
             <Form
               onSubmit={this.handleCommentSubmit}
               reply>
@@ -201,7 +270,6 @@ class CommentCard extends Component {
             </Form>
           </Grid.Column>
         </Grid>
-        {console.log('this.state', this.state)}
         {
           this.state.comments.map((comment, i) => {
             return (

@@ -13,37 +13,58 @@ import {
   Rating,
 } from 'semantic-ui-react';
 
+
+// {
+//   userData: '{"user_photoURL":"https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg","user_displayName":"Ankit","user_email":"ankit.kumar@gmail.com"}',
+//   review: 'Dude, this tastes so good!',
+//   starRating: 2,
+//   upvoteTotal: 5555,
+//   createdAt: new Date().toLocaleTimeString(),
+//   updatedAt: "",
+//   userId: "postgres key",
+//   dishId: "",
+//   imageUrl: 'http://usa.stockfood.com/Sites/StockFood/Documents/Homepage/News/en/9.jpg',
+// }
+
+
 class CommentBox extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
+      // upvoteTotal: this.props.upvoteTotal,
+      upvote: false,
     }
   }
 
   render() {
-    const { data } = this.props
+    const { userData, starRating, upvoteTotal, createdAt, imageUrl, review } = this.props.data;
+    let upvotes = upvoteTotal
+    const user = JSON.parse(userData);
+    const { user_photoURL, user_displayName  } = user
     return (
       <Grid>
         <Grid.Column width={2} />
         <Grid.Column width={10}>
           <Comment.Group>
             <Comment>
-              <Comment.Avatar src={data.userImage} />
+              <Comment.Avatar src={user_photoURL} />
               <Comment.Content>
-                <Comment.Author as="a">{data.username}</Comment.Author>
-                <Rating defaultRating={4.5} maxRating={5} disabled />
+                <Comment.Author as="a">{user_displayName}</Comment.Author>
+                <Rating
+                  rating={starRating}
+                  maxRating={5} disabled />
                 <Comment.Metadata>
-                  <div>5 days ago</div>
+                  <div>{ createdAt }</div>
                 </Comment.Metadata>
-                
-                <Comment.Text>{data.review}</Comment.Text>
+
+                <Comment.Text>{review}</Comment.Text>
                 <Feed.Extra images>
                   <Modal
                     basic
                     size="mini"
                     trigger={
                       <a>
-                        <img src={data.imageUrl} />
+                        <img src={ imageUrl } />
                       </a>
                     }
                   >
@@ -51,7 +72,7 @@ class CommentBox extends Component {
                       <Image
                         wrapped
                         size="medium"
-                        src={data.imageUrl}
+                        src={imageUrl}
                       />
                     </center>
                   </Modal>
@@ -69,10 +90,21 @@ class CommentBox extends Component {
           </Comment.Group>
         </Grid.Column>
         <Grid.Column width={3}>
-          <Button icon>
+          <Button
+            onClick={()=>this.setState({upvote: !this.state.upvote})}
+            icon
+            active={!this.state.upvote}
+            className={!this.state.upvote ? "null" : "grey"}
+            >
             <Icon name="chevron up" />
           </Button>
-          <div> 23k </div>
+          <div>
+            {
+              !this.state.upvote
+                ? <div style={{color:''}}>{upvotes}</div>
+                : <div style={{color:''}}>{upvotes + 1}</div>
+            }
+          </div>
         </Grid.Column>
       </Grid>
     )

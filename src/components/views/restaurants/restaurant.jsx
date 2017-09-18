@@ -115,9 +115,9 @@ class Restaurant extends Component {
               {this.state.menuState.map((r, i) => {
                 // var store_name = dashify(r.name)
                 return (
-                    <div className="menuliststyle" key={r.foursquareId}>
+                    <li className="menuliststyle" key={r.foursquareId}>
                         <MenuCard menu={r} />
-                    </div>
+                    </li>
                 );
               })}
             </ul>

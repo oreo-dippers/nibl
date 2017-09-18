@@ -17,7 +17,7 @@ class SearchBar extends Component {
     const request = {
       params: {
         query: restaurantQuery,
-        near: 'Los Angeles, CA, United States',
+        near: 'San Francisco, CA, United States',
         radius: '5000'
       }
     };

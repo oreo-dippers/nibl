@@ -16,7 +16,6 @@ import CommentCard from '../static/commentCard'
 class Dish extends Component {
 
   render() {
-    console.log('DISHHHHHHHH this.props',this.props)
     const { dish } = this.props.location.state;
 
     if (!dish) {
@@ -26,7 +25,7 @@ class Dish extends Component {
     return (
       <div className="ui container">
         <center>
-          <div className="ui huge header" style={{'font-size': '5em'}}>
+          <div className="ui huge header" style={{'fontSize': '5em'}}>
             DISH
           </div>
         </center>
@@ -47,10 +46,10 @@ class Dish extends Component {
           </div>
         </div>
 
-        <h2 style={{'font-size': '3em'}}> {dish.name} </h2>
+        <h2 style={{'fontSize': '3em'}}> {dish.name} </h2>
 
         <div className="meta">
-          Rating: {dish.avgRating}
+          Rating: {dish.avgDishRating}
         </div>
         <div className="ui huge header" style={{'fontSize': '1em'}}>
           Address: {	dish.address && dish.address.join(', ') }

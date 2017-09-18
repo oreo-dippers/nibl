@@ -18,13 +18,9 @@ import {
 class DishCard extends Component {
   render() {
     // const restaurant = this.props.location.state.restaurant
-    console.log('this.props', this.props);
-
     const {dish} = this.props;
     const {prefix, suffix} = dish.imageUrl;
     const img = `${prefix}800x200${suffix}`;
-    console.log('img', img);
-
     if (!dish) {
       return <div>Sorry, but the Dish was not found</div>;
     }

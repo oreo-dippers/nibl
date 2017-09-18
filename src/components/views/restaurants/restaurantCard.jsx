@@ -15,7 +15,6 @@ import {
 class RestaurantCard extends Component {
   render() {
     // const restaurant = this.props.location.state.restaurant
-    console.log(this.props);
     const venue = this.props.restaurant;
 
     const address = JSON.parse(venue.address).join(', ');
@@ -32,16 +31,17 @@ class RestaurantCard extends Component {
             {venue.imageUrl && <img id="restimg" src={img} alt="bill" />}
           </div>
           <div className="content">
-            <a className="header">
-              <Link
-                to={{
-                  pathname: `/restaurants/${venue.name}`,
-                  state: {venue},
-                }}
-              >
-                restaurauntCard link : <h1>{venue.name}</h1>
-              </Link>
-            </a>
+
+            <Link
+              className="header"
+              to={{
+                pathname: `/restaurants/${venue.name}`,
+                state: {venue},
+              }}
+            >
+              restaurauntCard link : <h1>{venue.name}</h1>
+            </Link>
+
             <div className="meta">
               <Rating defaultRating={3} maxRating={5} disabled />
               <span className="date">342 Ratings</span>

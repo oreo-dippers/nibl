@@ -17,7 +17,6 @@ class MenuCard extends Component {
   render() {
     const {menu} = this.props;
     const dish = menu
-    console.log(menu);
     return (
       <div>
         <Card>

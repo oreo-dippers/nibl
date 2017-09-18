@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import Main from '../components/routes/main'
 
 const mapStateToProps = function mapStateToProps(store) {
-  console.log('store', store)
   return {
     restaurants: store.restaurantsState.restaurants,
     dishes: store.restaurantsState.dishes,

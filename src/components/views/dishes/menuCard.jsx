@@ -15,7 +15,6 @@ import {
 class MenuCard extends Component {
   render() {
     const {menu} = this.props;
-    console.log(menu);
     return (
       <div>
         <span style={{color:'black'}}>HI I AM A DISH MENUCARD</span>

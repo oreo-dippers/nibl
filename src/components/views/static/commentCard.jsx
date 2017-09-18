@@ -18,6 +18,10 @@ import {
 import launchEditor from './aviary';
 import axios from 'axios';
 
+
+
+// avgRating -> avgDishRating -> avgRestRating
+
 // when retrieving data from /api/dishes -> array of dish objects
   // add restaurant address to each dish?
   // add restaurant Name to each dish?
@@ -33,8 +37,7 @@ import axios from 'axios';
 // foursquareId when do we get sent, when do we send
 
 // when do we get the avgDishRating?
-// when do we get the avgDishRating?
-// when do we get the avgRestRating?
+
 
 // get request to /api/dishes/review
   // √ given    -> ['userId', 'dishId', 'review', 'starRating', 'imageUrl']
@@ -136,17 +139,13 @@ class CommentCard extends Component {
   }
 
   handleRate(e, { rating, maxRating }) {
-    console.log('rating, maxRating', rating, maxRating)
     this.setState({ rating, maxRating })
   }
 
   handleCommentSubmit(e) {
     e.preventDefault();
-    console.log('handleCommentSubmit this.props', this.props);
-    console.log('this.filtered.src', this.filtered.src);
     const { foursquareEntryId } = this.props.location.state.dish
     // let imagePreviewUrl = this.filtered.src
-    // console.log('imagePreviewUrl', imagePreviewUrl);
     // this.setState({imagePreviewUrl});
 
     // do we need to keep track of a person comments?
@@ -164,11 +163,14 @@ class CommentCard extends Component {
       foursquareEntryId: foursquareEntryId, // foursquareEntryId NEEDED
       imageUrl: this.filtered.src,
     }
-    console.log('comment', comment);
 
     axios.post('http://localhost:5001/oreo-nibl/us-central1/app/api/dishes/review', comment)
-    .then(res => console.log('res.data', res.data))
-    .catch(err => console.log(err))
+    .then(res => {
+      console.log('%c api/dishes/review POST SUCCESS!!', 'color: green')
+    })
+    .catch(err => {
+      console.log('%c api/dishes/review POST FAIL!!', 'color: red', err)
+    })
 
     const newComment = [comment, ...this.state.comments]
     this.setState({comments: newComment})
@@ -190,8 +192,6 @@ class CommentCard extends Component {
       xhr.onload = function(event) {
         const blob = xhr.response;
       };
-
-      console.log(imagePreviewUrl); // send url to database for storage
       this.setState({imagePreviewUrl});
     });
   }

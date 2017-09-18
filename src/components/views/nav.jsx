@@ -42,7 +42,7 @@ export default class Nav extends Component {
         // window.UserData = userObj.params
         localStorage.setItem('UserData', userObj.userData)
         localStorage.setItem('UserId', userObj.userId)
-				axios.post('http://localhost:5001/oreo-nibl/us-central1/app/api/user', userObj)
+				axios.post(`${process.env.HOST}/api/user`, userObj)
 				.then(function(res) {
           console.log('%c /api/user POST SUCCESS!!', 'color: green')
 				})

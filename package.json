@@ -5,10 +5,10 @@
   "main": "index.js",
   "repository": "https://github.com/oreo-dippers/nibl",
   "scripts": {
-    "dev": "NODE_ENV=development webpack-dev-server",
+    "dev": "webpack-dev-server",
     "prod": "NODE_ENV=production webpack -p",
     "clean": "rimraf ./dist/*",
-    "serve": "NODE_ENV=development firebase serve --only functions,hosting",
+    "serve": "firebase serve --only functions,hosting",
     "express": "nodemon server/server.js",
     "postinstall": "cd functions && npm install",
     "deploy": "NODE_ENV=production npm run prod && firebase deploy"

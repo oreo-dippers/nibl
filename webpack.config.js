@@ -7,9 +7,9 @@ const FIREBASE = `http://localhost:5001/oreo-nibl/us-central1/app`;
 const DEPLOY = `https://us-central1-oreo-nibl.cloudfunctions.net/app`;
 
 console.log('process.env.NODE_ENV', process.env.NODE_ENV );
-
-const HOST = process.env.NODE_ENV === 'development' ? FIREBASE : DEPLOY
-
+console.log('hii')
+const HOST = process.env.NODE_ENV === 'production' ? DEPLOY : FIREBASE
+console.log('HOST', HOST);
 const isProd = process.env.NODE_ENV === 'production';
 const cssDev = ['style-loader', 'css-loader', 'sass-loader'];
 const cssProd = ExtractTextPlugin.extract({

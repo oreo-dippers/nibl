@@ -6,7 +6,7 @@ module.exports.postUserData = data => {
     if (data) {
       resolve(data);
     } else {
-      reject(data);
+      reject('Post User Data Promise rejected', data);
     }
   }); // End of promise
 

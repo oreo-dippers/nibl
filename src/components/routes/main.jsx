@@ -9,7 +9,6 @@ import Nav from '../views/nav'
 
 const Main = (props) => (
   <div>
-    {console.log('props', props)}
     <Nav {...props} />
     <Switch>
       <Route exact path='/' component={() => <Home />}/>

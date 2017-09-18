@@ -21,36 +21,30 @@ class Restaurant extends Component {
   }
 
   componentDidMount() {
-    console.log('========restaurants==========');
-    console.log('this.props', this.props);
-
     const foursquareId = this.props.location.state.venue.foursquareId;
     const req = {
       params: {
       foursquareId: foursquareId
     }
   };
-  console.log('req', req);
-
     axios
       .get(
         'http://localhost:5001/oreo-nibl/us-central1/app/api/restaurants/page',
         req
       )
       .then(res => {
-        console.log('successful get to /restaurants/page')
+        console.log('%c /api/restaurants/page GET SUCCESS!!', 'color: green')
         this.setState({foursquareId});
         this.setState({menuState: res.data});
-        console.log(res.data);
       })
       .catch(function(err) {
+        console.log('%c /api/restaurants/page GET FAIL!!', 'color: red')
         console.log(err);
       });
   }
 
   render() {
     const venue = this.props.location.state.venue;
-    console.log('venue', venue);
     const imageUrl = JSON.parse(venue.imageUrl);
     const {prefix, suffix} = imageUrl;
     const address = JSON.parse(venue.address).join(', ');
@@ -115,7 +109,7 @@ class Restaurant extends Component {
               {this.state.menuState.map((r, i) => {
                 // var store_name = dashify(r.name)
                 return (
-                    <li className="menuliststyle" key={r.foursquareId}>
+                    <li className="menuliststyle" key={i}>
                         <MenuCard menu={r} />
                     </li>
                 );

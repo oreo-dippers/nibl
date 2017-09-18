@@ -16,7 +16,7 @@ class RestaurantsList extends Component {
           this.props.restaurants.map((r, i) => {
             var store_name = dashify(r.name)
             return (
-            <li className="listStyle" key={r.fourSquareId}>
+            <li className="listStyle" key={i}>
                 <RestaurantCard restaurant={r} />
             </li>
           )})

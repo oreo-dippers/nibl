@@ -5,9 +5,7 @@ import DishCard from './dishCard'
 // a link to their profile page.
 
 class DishesList extends Component {
-
   render() {
-  console.log('this.props', this.props);
   const { dishes } = this.props
     return (
       <ul>
@@ -15,8 +13,7 @@ class DishesList extends Component {
         {
           dishes.map((dish, i) => {
             return (
-            <li className="listStyle" key={dish.fourSquareId}>
-
+            <li className="listStyle" key={i}>
                 <DishCard dish={dish} />
             </li>
           )})

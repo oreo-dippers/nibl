@@ -14,26 +14,25 @@ export function getRestaurants(reqData, dispatch) {
 
   return axios.get(`${FIREBASE}/api/restaurants`, reqData)
     .then(res => {
-      console.log('successful getRestaurants!');
-      console.log('res.data', res.data);
+      console.log('%c /api/restaurants GET SUCCESS!!', 'color: green')
       const restaurantData = res.data
       dispatch(getRestaurantsSuccess(restaurantData));
     })
     .catch(err => {
-      console.log(err);
+    console.log('%c /api/restaurants GET FAIL!!', 'color: red')
     });
 }
 
 
 export function getDishes(reqData, dispatch) {
-  console.log('dishesData', dishesData)
   dispatch(getDishesSuccess(dishesData));
   // return axios.get(`${FIREBASE}/api/dishes`, reqData)
   //   .then(res => {
+  //     console.log('%c get /api/dishes SUCCESS!!', 'color: green')
   // const dishesData = res.data
   //     dispatch(getDishesSuccess(dishesData));
   //   })
   //   .catch(err => {
-  //     console.log(err);
+  //     console.log('%c get /api/dishes FAIL!!', 'color: red', err)
   //   })
 }

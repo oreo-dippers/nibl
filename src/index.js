@@ -1,6 +1,5 @@
 import React from 'react'
 import { render } from 'react-dom'
-// import { BrowserRouter } from 'react-router-dom'
 
 // redux
 import { Provider } from 'react-redux';
@@ -23,7 +22,6 @@ const Router = () => (
     <ConnectedRouter history={history}>
       <div>
         <MainContainer />
-        {console.log('history', history)}
       </div>
     </ConnectedRouter>
   </Provider>

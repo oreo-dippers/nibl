@@ -25,8 +25,6 @@ export default class Nav extends Component {
 
   componentDidMount() {
     auth.onAuthStateChanged(currentUser => {
-			// console.log('AUTH_CHANGE', currentUser);
-			console.log(currentUser);
 			if(currentUser){
 
 				const theuserdata = {
@@ -45,11 +43,11 @@ export default class Nav extends Component {
         localStorage.setItem('UserData', userObj.userData)
         localStorage.setItem('UserId', userObj.userId)
 				axios.post('http://localhost:5001/oreo-nibl/us-central1/app/api/user', userObj)
-				.then(function(res){
-					console.log(res.data)
+				.then(function(res) {
+          console.log('%c /api/user POST SUCCESS!!', 'color: green')
 				})
-				.catch(function(err){
-					console.log(err)
+				.catch(function(err) {
+          console.log('%c /api/user POST FAIL!!', 'color: red', err)
 				})
 
 				this.setState({currentUser});

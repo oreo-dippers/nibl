@@ -17,6 +17,7 @@ export default class Nav extends Component {
 			searchBy: 'dishes',
 			currentUser: null,
 			users:{},
+      userData: null,
     };
 
     this.setNavState = this.setNavState.bind(this);
@@ -27,20 +28,22 @@ export default class Nav extends Component {
 			// console.log('AUTH_CHANGE', currentUser);
 			console.log(currentUser);
 			if(currentUser){
-				
+
 				const theuserdata = {
 					user_photoURL: currentUser.photoURL,
 					user_displayName: currentUser.displayName,
 					user_email: currentUser.email,
 				}
-			
-				const userObj = {
-					params:{
-						userId: currentUser.uid,
-						userData: JSON.stringify(theuserdata),
-					}
-				}
-				
+
+
+        const userObj = {
+          userId: currentUser.uid,
+          userData: JSON.stringify(theuserdata),
+        }
+				this.setState({userData: userObj.params})
+        // window.UserData = userObj.params
+        localStorage.setItem('UserData', userObj.userData)
+        localStorage.setItem('UserId', userObj.userId)
 				axios.post('http://localhost:5001/oreo-nibl/us-central1/app/api/user', userObj)
 				.then(function(res){
 					console.log(res.data)

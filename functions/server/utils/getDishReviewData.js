@@ -52,17 +52,52 @@ module.exports.getDishReviewData = data => {
             });
 
             console.log('Simple Dish Reviews are ', simpleDishReviews);
+
+            // Function find user in database
+            var findUser = (userId) => {
+              return new Promise(resolve => {
+                db.User.findOne({
+                  where: {
+                    id: userId
+                  }
+                })
+                .then(user => {
+                  console.log(user);
+
+                  resolve(user);
+                });
+              });
+            }
+
             // Iterate over simpleDishReviews
             // Get user data from User table
             // Add user data as property userData to current element in simpleDishReviews
 
-            if (simpleDishReviews) {
-              console.log('Dish Reviews were gotten');
-              resolve(simpleDishReviews);
-            } else {
-              reject('No data');
-            }
-          }
+            const actions = simpleDishReviews.map(findUser);
+
+            // Promise all the actions
+            const results = Promise.all(actions);
+
+            results
+              .then(resultArray => {
+                // For loop over simpleDishReviews
+                // Add userData from resultArray as property in simpleDishReviews array
+                // simpleDishReviews[i].userData = resultArray[i]
+                for (var i = 0; i < simpleDishReviews.length; i++) {
+                  
+                }
+
+                return simpleDishReviews;
+              })
+              .then(simpleDishReviews => {
+                if (simpleDishReviews) {
+                  console.log('Dish Reviews were gotten');
+                  resolve(simpleDishReviews);
+                } else {
+                  reject('No data');
+                }
+              });
+          } // End of else
         }); // End of DishReview.find()
     });
   }); // End of promise

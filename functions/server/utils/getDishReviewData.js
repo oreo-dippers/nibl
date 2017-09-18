@@ -5,20 +5,20 @@ module.exports.getDishReviewData = data => {
 
   const promise = new Promise((resolve, reject) => {
     // View data to see what it is being sent
-    // console.log('Data received for getDishReviewData is: ', data.body);
+    console.log('Data received for getDishReviewData is: ', data.body);
     // May need to have foursquareEntryId sent down separately like with dishData.js
 
     // Get the dishId based on the foursquareEntryId
     db.Dish.findOne({
       where: {
-        // foursquareEntryId: data.body.dishId
-        foursquareEntryId: '6723406' // has review
+        foursquareEntryId: data.body.dishId // may be foursquareEntryId instead
+        // foursquareEntryId: '6723406' // has review
         // foursquareEntryId: '18685324'  // has no review
         // foursquareEntryId: '0000000'  // does not exist
       }
     })
     .then(dish => {
-      console.log(dish);
+      // console.log(dish);
 
       // If no dish is found
       if (!dish) {
@@ -41,7 +41,7 @@ module.exports.getDishReviewData = data => {
           // console.log('dishReviews[0] object is ', dishReviews[0].dataValues);
           // Make organized data to send to front end
 
-          if (dishReviews.length === 0) {
+          if (!dishReviews.length) {
             console.log('There are no reviews for this dish');
             reject('No reviews exist for this dish');
           } else {
@@ -54,24 +54,21 @@ module.exports.getDishReviewData = data => {
             console.log('Simple Dish Reviews are ', simpleDishReviews);
 
             // Function find user in database
-            var findUser = (userId) => {
+            const findUser = (review) => {
+              console.log('Review you are finding user for is: ', review);
               return new Promise(resolve => {
                 db.User.findOne({
                   where: {
-                    id: userId
+                    id: review.userId
                   }
                 })
                 .then(user => {
-                  console.log(user);
+                  console.log('user is ', user);
 
                   resolve(user);
                 });
               });
-            }
-
-            // Iterate over simpleDishReviews
-            // Get user data from User table
-            // Add user data as property userData to current element in simpleDishReviews
+            };
 
             const actions = simpleDishReviews.map(findUser);
 
@@ -81,18 +78,17 @@ module.exports.getDishReviewData = data => {
             results
               .then(resultArray => {
                 // For loop over simpleDishReviews
-                // Add userData from resultArray as property in simpleDishReviews array
-                // simpleDishReviews[i].userData = resultArray[i]
-                for (var i = 0; i < simpleDishReviews.length; i++) {
-                  
+                for (let i = 0; i < simpleDishReviews.length; i++) {
+                  // Add userData from resultArray as property in simpleDishReviews array
+                  simpleDishReviews[i].userData = JSON.parse(resultArray[i].userData);
                 }
 
                 return simpleDishReviews;
               })
-              .then(simpleDishReviews => {
-                if (simpleDishReviews) {
+              .then(dishReviewData => {
+                if (dishReviewData) {
                   console.log('Dish Reviews were gotten');
-                  resolve(simpleDishReviews);
+                  resolve(dishReviewData);
                 } else {
                   reject('No data');
                 }

@@ -3,6 +3,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 
+const FIREBASE = `http://localhost:5001/oreo-nibl/us-central1/app`;
+const DEPLOY = `https://us-central1-oreo-nibl.cloudfunctions.net/app`;
+
+console.log('process.env.NODE_ENV', process.env.NODE_ENV );
+
+const HOST = process.env.NODE_ENV === 'development' ? FIREBASE : DEPLOY
+
 const isProd = process.env.NODE_ENV === 'production';
 const cssDev = ['style-loader', 'css-loader', 'sass-loader'];
 const cssProd = ExtractTextPlugin.extract({
@@ -80,6 +87,12 @@ module.exports = {
       allChunks: true
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin()
+    new webpack.NamedModulesPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+        'HOST': JSON.stringify(HOST)
+      }
+    })
   ]
 }

@@ -33,7 +33,7 @@ app.get('/api/dishes/review', routeHandler.getDishReview);
 app.post('/api/user', routeHandler.postUser);
 
 // REST endpoint for getting user saved Dish
-app.get('/api/user/fridge', routeHandler.getDummy);
+app.get('/api/user/fridge', routeHandler.getFridge);
 
 // REST endpoint for saving dish user want to eat later.
 app.post('/api/user/fridge', routeHandler.getDummy);

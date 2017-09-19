@@ -5,6 +5,7 @@ const postDishReview = require('./postDishReviewData.js');
 const getDishReview = require('./getDishReviewData.js');
 const postUser = require('./postUserData.js');
 const getFridge = require('./getFridgeData.js');
+const postFridge = require('./postFridgeData.js');
 const httpRequest = require('./foursquareApiCall.js');
 
 module.exports.apiCall = httpRequest.apiCall;
@@ -20,3 +21,4 @@ module.exports.getDishReviewData = getDishReview.getDishReviewData;
 // User
 module.exports.postUserData =  postUser.postUserData;
 module.exports.getFridgeData = getFridge.getFridgeData;
+module.exports.postFridgeData = postFridge.postFridgeData;

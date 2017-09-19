@@ -29,7 +29,7 @@ module.exports.postUserData = data => {
         if (userData) {
           resolve(userData);
         } else {
-          reject('Post User Data Promise rejected', userData);
+          reject(userData);
         }
       });
 

@@ -22,7 +22,7 @@ module.exports.getFridgeData = (data) => {
         db.UserDish
           .findAll({
             where: {
-              userId: user[0].dataValues.id;
+              userId: user[0].dataValues.id
             }
           })
           .then(userSavedDishes => {
@@ -33,6 +33,7 @@ module.exports.getFridgeData = (data) => {
               reject('This user had no saved dishes');
             }
 
+            // Function to find Dishes and get their info
             const findDishInfo = (userSavedDish) => {
               console.log('userSavedDish is ', userSavedDish);
 
@@ -44,12 +45,13 @@ module.exports.getFridgeData = (data) => {
                       id: userSavedDish[0].dataValues.dishId
                     }
                   })
-                  .then(dishInfo => {
+                  .then(currentDish => {
                     console.log('dishInfo is ', dishInfo);
 
-                    // clean up dishInfo
+                    // Make organized data to send to front end
+                    let {foursquareEntryId, name, imageUrl, description, price, avgDishRating} = currentDish[0].dataValues;
 
-                    resolve(dishInfo);
+                    resolve({foursquareEntryId, name, imageUrl, description, price, avgDishRating});
                   }); // End of db.Dish.findOne()
               }); // End of findDishInfo promise
             };
@@ -61,10 +63,10 @@ module.exports.getFridgeData = (data) => {
             const results = Promise.all(actions);
 
             results
-              .then(resultArray => {
-                if (resultArray) {
-                  console.log('Users saved dishes or fridge resolves');
-                  resolve(resultArray);
+              .then(dishArray => {
+                if (dishArray) {
+                  console.log('Users saved dishes aka fridge resolves');
+                  resolve(dishArray);
                 }
               });
           }); // End of db.UserDish.findAll()

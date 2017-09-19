@@ -16,11 +16,57 @@ module.exports.getFridgeData = (data) => {
       .then(user => {
         console.log('user is ', user);
         console.log('user[0].dataValues is ', user[0].dataValues);
+        console.log('user[0].dataValues id is ', user[0].dataValues.id);
 
         // Find all user's saved dishes
         db.UserDish
           .findAll({
+            where: {
+              userId: user[0].dataValues.id;
+            }
+          })
+          .then(userSavedDishes => {
+            // userSavedDishes is an array of userIds, dishIds
+            console.log('UserSavedDishes are.. ', userSavedDishes);
 
+            if (!userSavedDishes) {
+              reject('This user had no saved dishes');
+            }
+
+            const findDishInfo = (userSavedDish) => {
+              console.log('userSavedDish is ', userSavedDish);
+
+              return new Promise(resolve => {
+              
+                db.Dish
+                  .findOne({
+                    where: {
+                      id: userSavedDish[0].dataValues.dishId
+                    }
+                  })
+                  .then(dishInfo => {
+                    console.log('dishInfo is ', dishInfo);
+
+                    // clean up dishInfo
+
+                    resolve(dishInfo);
+                  }); // End of db.Dish.findOne()
+              }); // End of findDishInfo promise
+            };
+
+            // Actions is to iterate through all dishes and findDishInfo
+            const actions = userSavedDishes.map(findDishInfo);
+
+            // Promise all the actions
+            const results = Promise.all(actions);
+
+            results
+              .then(resultArray => {
+                if (resultArray) {
+                  console.log('Users saved dishes or fridge resolves');
+                  resolve(resultArray);
+                }
+              });
           }); // End of db.UserDish.findAll()
       }); // End of db.User.findOne()
     
@@ -28,24 +74,3 @@ module.exports.getFridgeData = (data) => {
 
   return promise;
 };
-
-
-
-//   db.UserDish.findAll()
-//     Where userId
-//     .then(userSavedDishes)
-//     This is similar to restaurantData.js
-//     userSavedDishes is an array of userIds, dishIds
-//     const actions = userSavedDishes.map(findDishInfo);
-//     Const findDishInfo = (userSavedDish) =>{}
-//       Return promise
-//       db.Dish.findOne()
-//       Where dishId is savedDishes’ Id
-//       .then(dishInfo)
-//       Get clean data from dishInfo
-//       This should include all dish info
-//     Const results = Promise.all(actions)
-//     Results.then()
-//       Resolve
-//       Reject 
-//     Include scenario if user saved no foods

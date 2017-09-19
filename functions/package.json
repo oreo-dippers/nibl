@@ -9,7 +9,7 @@
     "firebase-functions": "^0.6.3",
     "morgan": "^1.8.2",
     "path": "^0.12.7",
-    "pg": "^7.3.0",
+    "pg": "^6.4.2",
     "pg-hstore": "^2.3.2",
     "request": "^2.81.0",
     "request-promise": "^4.2.1",

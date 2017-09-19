@@ -6,7 +6,7 @@
   "repository": "https://github.com/oreo-dippers/nibl",
   "scripts": {
     "dev": "webpack-dev-server",
-    "prod": "NODE_ENV=production webpack -p",
+    "prod": "webpack -p",
     "clean": "rimraf ./dist/*",
     "serve": "firebase serve --only functions,hosting",
     "express": "nodemon server/server.js",
@@ -41,7 +41,7 @@
     "redux": "^3.7.2",
     "request": "^2.81.0",
     "request-promise": "^4.2.1",
-    "semantic-ui-react": "^0.72.0",
+    "semantic-ui-react": "^0.72.0"
   },
   "devDependencies": {
     "babel": "^6.23.0",

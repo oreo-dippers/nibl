@@ -4,6 +4,7 @@ import Home from '../views/static/home'
 import RoutesForRestaurants from './routesForRestaurants'
 import RoutesForDishes from './routesForDishes'
 import CommentCard from '../views/static/commentCard'
+import Fridge from '../views/dishes/fridge'
 import Nav from '../views/nav'
 
 
@@ -25,6 +26,7 @@ const Main = (props) => (
           />}
         />
       <Route path='/addphoto' component={CommentCard}/>
+      <Route path='/fridge' component={Fridge}/>
     </Switch>
   </div>
 )

@@ -1,25 +1,18 @@
 const db = require('../../db/db.js');
 
 module.exports.getDishReviewData = data => {
-  var currentDishId;
 
   const promise = new Promise((resolve, reject) => {
-    // View data to see what it is being sent
-    console.log('Data received for getDishReviewData is: ', data);
-    // console.log('data.: ', data.query);
     console.log('foursquareEntryId sent is : ', data.query.foursquareEntryId);
 
     // Get the dishId based on the foursquareEntryId
     db.Dish.findOne({
       where: {
-        foursquareEntryId: data.query.foursquareEntryId // may be foursquareEntryId instead
-        // foursquareEntryId: '6723406' // has review
-        // foursquareEntryId: '18685324'  // has no review
-        // foursquareEntryId: '0000000'  // does not exist
+        foursquareEntryId: data.query.foursquareEntryId
       }
     })
     .then(dish => {
-      console.log(dish);
+      // console.log(dish);
 
       // If no dish is found
       if (!dish) {
@@ -28,19 +21,16 @@ module.exports.getDishReviewData = data => {
       }
 
       console.log('Dish id is ', dish.dataValues.id);
-      currentDishId = dish.dataValues.id;
 
       db.DishReview
         .findAll({
           where: {
-            dishId: currentDishId
+            dishId: dish.dataValues.id
           }
         })
         .then(dishReviews => {
           var simpleDishReviews = [];
-          console.log('dishReviews array is ', dishReviews);
-          // console.log('dishReviews[0] object is ', dishReviews[0].dataValues);
-          // Make organized data to send to front end
+          // console.log('dishReviews array is ', dishReviews);
 
           if (!dishReviews.length) {
             console.log('There are no reviews for this dish');
@@ -64,7 +54,7 @@ module.exports.getDishReviewData = data => {
                   }
                 })
                 .then(user => {
-                  console.log('user is ', user);
+                  // console.log('user is ', user);
 
                   resolve(user);
                 });
@@ -76,6 +66,7 @@ module.exports.getDishReviewData = data => {
             // Promise all the actions
             const results = Promise.all(actions);
 
+            // Make organized data to send to front end
             results
               .then(resultArray => {
                 // For loop over simpleDishReviews
@@ -88,7 +79,7 @@ module.exports.getDishReviewData = data => {
               })
               .then(dishReviewData => {
                 if (dishReviewData) {
-                  console.log('Dish Reviews were gotten');
+                  console.log('Dish Reviews were gotten: ', dishReviewData);
                   resolve(dishReviewData);
                 } else {
                   reject('No data');

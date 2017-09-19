@@ -2,15 +2,27 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import MenuCard from './menuCard';
 import axios from 'axios';
+import {
+  Button,
+  Header,
+  Image,
+  Modal,
+  Comment,
+  Feed,
+  Icon,
+  Card,
+  Rating,
+} from 'semantic-ui-react';
 
 const sampleMenuItem = {
-  foursquareEntryId: "107410403",
-  name: "My Amazing Hardcoded Dish in Restaurnt.js",
-  imageUrl: "",
-  description: "With roasted farm beets, pickled red onions, Vermont Creamery goat cheese schmear, apple cider vinaigrette",
-  price: "11.00",
-  avgRating: 0
-}
+  foursquareEntryId: '107410403',
+  name: 'My Amazing Hardcoded Dish in Restaurnt.js',
+  imageUrl: '',
+  description:
+    'With roasted farm beets, pickled red onions, Vermont Creamery goat cheese schmear, apple cider vinaigrette',
+  price: '11.00',
+  avgRating: 0,
+};
 class Restaurant extends Component {
   constructor(props) {
     super(props);
@@ -24,14 +36,12 @@ class Restaurant extends Component {
     const foursquareId = this.props.location.state.venue.foursquareId;
     const req = {
       params: {
-      foursquareId: foursquareId
-    }
-  };
-  console.log('process.env.HOST', process.env.HOST);
+        foursquareId: foursquareId,
+      },
+    };
+    console.log('process.env.HOST', process.env.HOST);
     axios
-      .get(`${process.env.HOST}/api/restaurants/page`,
-        req
-      )
+      .get(`${process.env.HOST}/api/restaurants/page`, req)
       .then(res => {
         console.log('%c <Restaurant /> /api/restaurants/page INITIAL GET SUCCESS!!', 'color: green')
         this.setState({foursquareId});
@@ -46,9 +56,10 @@ class Restaurant extends Component {
   render() {
     const venue = this.props.location.state.venue;
     const imageUrl = JSON.parse(venue.imageUrl);
+    console.log(venue);
     const {prefix, suffix} = imageUrl;
     const address = JSON.parse(venue.address).join(', ');
-    const img = `${prefix}500${suffix}`;
+    const img = `${prefix}800x400${suffix}`;
 
     if (!venue) {
       return <div>Sorry, but the restaurant was not found</div>;
@@ -56,62 +67,63 @@ class Restaurant extends Component {
 
     return (
       <div className="ui container">
+        <br />
+        <br />
         <center>
-          <div className="ui huge header" style={{'fontSize': '5em'}}>
-            RESTAURANT
-          </div>
+        <Header style={{fontSize: '4em'}}>
+          <Icon size="small" name="address card outline" />
+          <Header.Content>RESTAURANT</Header.Content>
+        </Header>
         </center>
-        <div className="ui container">
-          <div className="ui card fluid">
-            <div className="ui slide masked reveal image">
-              <img
-                src="https://placekitten.com/900/400"
-                className="visible content"
-                alt="food"
-              />
-              <img
-                src="http://www.fillmurray.com/900/400"
-                className="hidden content"
-                alt="food"
-              />
-            </div>
-          </div>
-        </div>
 
-        <h2 style={{'fontSize': '3em'}}> {venue.name} </h2>
+        <Card fluid centered>
+          <Image src={img} />
 
-        <div className="meta"> Rating: {venue.avgRating} </div>
-        <div className="ui huge header" style={{'fontSize': '1em'}}>
-          Address: {address}
-          <br /> Phone Number: {venue.phone}
-        </div>
-        <h3>
-          Born in Japan, Jiron San has always dreamed of opening a resturaunt in
-          the United States of America. So after saving up his lunch money for a
-          year he decided to buy a plane ticket and fly to the greatest Nation
-          in the world to spread his culture and taste in food with the locals.
-          Being 10, he found it hard to sign up for the licenses necessary to
-          open a resturaunt so he forged a license and wore a fake beard and
-          eventually he grew into the beard and he no longer had to fake his
-          identity . He is a man that is full of wisdom and experience. Like he
-          always would say every morning “ありがとうございました”. We would always say back
-          “You are an inspriation to us all” He would then say “ あなたは日本語を話せません”.
-          what a wise man.
-        </h3>
+          <Card.Content>
+            <h2 style={{fontSize: '3em'}}> {venue.name} </h2>
+          </Card.Content>
+
+          <Card.Content extra>
+            <Icon name="map" />
+            Address: {address}
+          </Card.Content>
+
+          <Card.Content extra>
+            <Icon name="phone" />
+            Phone: {venue.phone}
+          </Card.Content>
+
+          <Card.Content extra>
+            <Icon name="world" />
+            Website: {venue.website}
+          </Card.Content>
+
+          <Card.Content extra>
+            <Icon name="thumbs outline up" />
+            Rating: {venue.avgRating}
+          </Card.Content>
+        </Card>
+
+        <br/>
+        <br/>
         <center>
-          <div className="ui huge header" style={{fontSize: '5em'}}>
-            MENU
-          </div>
+        <Header style={{fontSize: '4em'}}>
+          <Icon size="small" name="food" />
+          <Header.Content>MENU</Header.Content>
+        </Header>
         </center>
+        <br/>
+        <br/>
+        
         <div className="ui container ">
           <div className="ui centered cards">
             <ul className="menulist">
               {this.state.menuState.map((r, i) => {
                 // var store_name = dashify(r.name)
                 return (
-                    <li className="menuliststyle" key={i}>
-                        <MenuCard menu={r} />
-                    </li>
+                  <li className="menuliststyle" key={i}>
+                    <MenuCard menu={r} />
+                  </li>
                 );
               })}
             </ul>

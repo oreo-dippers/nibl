@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, Header, Image, Modal, Menu} from 'semantic-ui-react';
+import {Button, Header, Image, Modal, Menu, Icon} from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import SearchBar from './searchBar';
 import {database, auth, googleAuthProvider} from '../firebase';
@@ -122,7 +122,15 @@ export default class Nav extends Component {
 							</Link>
 						</div> */}
 
+          
+
             <div className="right menu">
+
+            <div className="item">
+             <Link to="/fridge">
+                <Icon name='heart' size='big' color="red"/>
+             </Link>
+            </div>
               {!currentUser && (
                 <Menu.Menu position="right">
                   <Menu.Item
@@ -176,7 +184,6 @@ export default class Nav extends Component {
             </div>
           </div>
         </div>
-        <br />
       </div>
     );
   }

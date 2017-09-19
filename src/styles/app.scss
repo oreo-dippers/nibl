@@ -147,8 +147,8 @@ body h1 {
 
 .bg {
   /* The image used */
-  background-image: url(https://static.pexels.com/photos/256318/pexels-photo-256318.jpeg);
-
+  // background-image: url(https://static.pexels.com/photos/256318/pexels-photo-256318.jpeg);
+  background-color:#FFFFFF;
   /* Full height */
   height: 100%;
 
@@ -159,7 +159,19 @@ body h1 {
 }
 
 body {
-  background-color:#f1f2f6;
+  background-color:rgb(237, 237, 237);
+}
+.Site {
+  display: flex;
+  min-height: 50vh;
+  flex-direction: column;
+}
+
+.Site-content {
+  flex: 1;
+}
+li{
+  list-style-type: none;
 }
 
 // .nav li {

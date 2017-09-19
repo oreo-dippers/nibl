@@ -26,7 +26,7 @@ class DishCard extends Component {
     }
     return (
       <div className="ui container ">
-        <span style={{color:'black'}}>HI I AM A DISHCARD</span>
+        <span style={{color: 'black'}}>HI I AM A DISHCARD</span>
         <div className="ui equal width aligned padded grid">
           <div className="row">
             <div className="column">
@@ -60,7 +60,7 @@ class DishCard extends Component {
                       >
                         @ GO TO RESTAURANT *ADD NAME*
                       </Link>
-                      <p style={{color:'black'}}>address: .......</p>
+                      <p style={{color: 'black'}}>address: .......</p>
 
                       <Rating defaultRating={3} maxRating={5} disabled />
                     </div>
@@ -108,14 +108,10 @@ class DishCard extends Component {
                           </div>
 
                           <div className="column">
-                            <div className="ui labeled button">
-                              <div className="ui red button">
-                                <i className="heart icon" /> Like
-                              </div>
-                              <a className="ui basic red left pointing label">
-                                1,048
-                              </a>
-                            </div>
+                            <Button className="ui active button" color="red">
+                              <Icon className="heart" />
+                              Like
+                            </Button>
                           </div>
                         </div>
                       </div>

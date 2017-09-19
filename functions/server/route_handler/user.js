@@ -12,9 +12,13 @@ const qs = querystring.stringify(credentials);
 
 module.exports.postUser = (req, res) => {
   utils.postUserData(req)
-  .then((data) => {
-    console.log('user Data posted successfully!');
+  .then(data => {
+    console.log('User Data posted successfully!');
     res.status(201).send(data);
+   })
+   .catch(err => {
+     console.error('User Data NOT posted!');
+     res.status(400).send(err);
    });
 };
 
@@ -25,7 +29,7 @@ module.exports.getFridge = (req, res) => {
     res.status(200).send(data);
    })
    .catch(err => {
-    console.error('No fridge data! Err: ', err);
-    res.status(200).send(err);
+    console.error('No fridge data!');
+    res.status(400).send(err);
    });
 };

@@ -1,7 +1,36 @@
-// Get firebaseId from data.query
-//   db.User.findOne()
-//   Where userId is firebaseId
-//   .then(user)
+const db = require('../../db/db.js');
+
+module.exports.getFridgeData = (data) => {
+
+  const promise = new Promise((resolve, reject) => {
+    // Get firebaseId from data.query
+    console.log('firebaseId is ', data.query.firebaseId);
+
+    // Get user
+    db.User
+      .findOne({
+        where: {
+          firebaseUuid: data.query.firebaseId
+        }
+      })
+      .then(user => {
+        console.log('user is ', user);
+        console.log('user[0].dataValues is ', user[0].dataValues);
+
+        // Find all user's saved dishes
+        db.UserDish
+          .findAll({
+
+          }); // End of db.UserDish.findAll()
+      }); // End of db.User.findOne()
+    
+  }); // End of promise
+
+  return promise;
+};
+
+
+
 //   db.UserDish.findAll()
 //     Where userId
 //     .then(userSavedDishes)

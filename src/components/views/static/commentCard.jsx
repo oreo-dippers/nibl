@@ -66,53 +66,100 @@ import axios from 'axios';
 //   }
 // }
 
-const getDishesReviewAPI = [
+// const actual = [
+//   {
+//     "id": 2,
+//     "review": "hello",
+//     "starRating": 0,
+//     "imageUrl": "",
+//     "upvoteTotal": 0,
+//     "createdAt": "2017-09-19T20:17:14.895Z",
+//     "updatedAt": "2017-09-19T20:17:14.895Z",
+//     "userId": 1,
+//     "dishId": 108,
+//     "userData": {
+//       "user_displayName": "David Kang",
+//       "user_photoURL": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
+//       "user_email": "david.kang714@gmail.com"
+//     }
+//   },
+//   {
+//     id: 0,
+//     review: 'Dude Dude Dude Dude, this tastes so good!',
+//     starRating: 5,
+//     imageUrl: 'http://usa.stockfood.com/Sites/StockFood/Documents/Homepage/News/en/14.jpg',
+//     upvoteTotal: 9999,
+//     createdAt: new Date().toLocaleTimeString(),
+//     updatedAt: "",
+//     userId: "postgres key",
+//     dishId: "",
+//     userData: '{"user_photoURL":"https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg","user_displayName":"David Kang","user_email":"david.kang714@gmail.com"}'
+//   }
+// ]
 
-  {
-    userData: '{"user_photoURL":"https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg","user_displayName":"David Kang","user_email":"david.kang714@gmail.com"}',
-    review: 'Dude Dude Dude Dude, this tastes so good!',
-    starRating: 5,
-    upvoteTotal: 9999,
-    createdAt: new Date().toLocaleTimeString(),
-    updatedAt: "",
-    userId: "postgres key",
-    dishId: "",
-    imageUrl: 'http://usa.stockfood.com/Sites/StockFood/Documents/Homepage/News/en/14.jpg',
-  },
-  {
-    userData: '{"user_photoURL":"https://lh4.googleusercontent.com/-FL0yWop58rE/AAAAAAAAAAI/AAAAAAAALIA/HMGqR06X9Yw/photo.jpg","user_displayName":"Kevin Su","user_email":"kevin.su@gmail.com"}',
-    review: 'Dude Dude Dude, this tastes so good!',
-    starRating: 4,
-    upvoteTotal: 8888,
-    createdAt: new Date().toLocaleTimeString(),
-    updatedAt: "",
-    userId: "postgres key",
-    dishId: "",
-    imageUrl: 'http://usa.stockfood.com/Sites/StockFood/Documents/Homepage/News/en/18.jpg',
-  },
-  {
-    userData: '{"user_photoURL":"https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg","user_displayName":"Lisa Gee","user_email":"lisa.gee@gmail.com"}',
-    review: 'Dude Dude, this tastes so good!',
-    starRating: 3,
-    upvoteTotal: 7777,
-    createdAt: new Date().toLocaleTimeString(),
-    updatedAt: "",
-    userId: "postgres key",
-    dishId: "",
-    imageUrl: 'http://usa.stockfood.com/Sites/StockFood/Documents/Homepage/News/en/5.jpg',
-  },
-  {
-    userData: '{"user_photoURL":"https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg","user_displayName":"Ankit","user_email":"ankit.kumar@gmail.com"}',
-    review: 'Dude, this tastes so good!',
-    starRating: 2,
-    upvoteTotal: 5555,
-    createdAt: new Date().toLocaleTimeString(),
-    updatedAt: "",
-    userId: "postgres key",
-    dishId: "",
-    imageUrl: 'http://usa.stockfood.com/Sites/StockFood/Documents/Homepage/News/en/9.jpg',
-  }
-]
+
+// const getDishesReviewAPI = [
+//   {
+//     "id": 2,
+//     "review": "hello",
+//     "starRating": 0,
+//     "imageUrl": "",
+//     "upvoteTotal": 0,
+//     "createdAt": "2017-09-19T20:17:14.895Z",
+//     "updatedAt": "2017-09-19T20:17:14.895Z",
+//     "userId": 1,
+//     "dishId": 108,
+//     "userData": {
+//       "user_displayName": "David Kang",
+//       "user_photoURL": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg",
+//       "user_email": "david.kang714@gmail.com"
+//     }
+//   },
+//   {
+//     userData: '{"user_photoURL":"https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg","user_displayName":"David Kang","user_email":"david.kang714@gmail.com"}',
+//     review: 'Dude Dude Dude Dude, this tastes so good!',
+//     starRating: 5,
+//     upvoteTotal: 9999,
+//     createdAt: new Date().toLocaleTimeString(),
+//     updatedAt: "",
+//     userId: "postgres key",
+//     dishId: "",
+//     imageUrl: 'http://usa.stockfood.com/Sites/StockFood/Documents/Homepage/News/en/14.jpg',
+//   },
+//   {
+//     userData: '{"user_photoURL":"https://lh4.googleusercontent.com/-FL0yWop58rE/AAAAAAAAAAI/AAAAAAAALIA/HMGqR06X9Yw/photo.jpg","user_displayName":"Kevin Su","user_email":"kevin.su@gmail.com"}',
+//     review: 'Dude Dude Dude, this tastes so good!',
+//     starRating: 4,
+//     upvoteTotal: 8888,
+//     createdAt: new Date().toLocaleTimeString(),
+//     updatedAt: "",
+//     userId: "postgres key",
+//     dishId: "",
+//     imageUrl: 'http://usa.stockfood.com/Sites/StockFood/Documents/Homepage/News/en/18.jpg',
+//   },
+//   {
+//     userData: '{"user_photoURL":"https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg","user_displayName":"Lisa Gee","user_email":"lisa.gee@gmail.com"}',
+//     review: 'Dude Dude, this tastes so good!',
+//     starRating: 3,
+//     upvoteTotal: 7777,
+//     createdAt: new Date().toLocaleTimeString(),
+//     updatedAt: "",
+//     userId: "postgres key",
+//     dishId: "",
+//     imageUrl: 'http://usa.stockfood.com/Sites/StockFood/Documents/Homepage/News/en/5.jpg',
+//   },
+//   {
+//     userData: '{"user_photoURL":"https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg","user_displayName":"Ankit","user_email":"ankit.kumar@gmail.com"}',
+//     review: 'Dude, this tastes so good!',
+//     starRating: 2,
+//     upvoteTotal: 5555,
+//     createdAt: new Date().toLocaleTimeString(),
+//     updatedAt: "",
+//     userId: "postgres key",
+//     dishId: "",
+//     imageUrl: 'http://usa.stockfood.com/Sites/StockFood/Documents/Homepage/News/en/9.jpg',
+//   }
+// ]
 
 
 class CommentCard extends Component {
@@ -124,8 +171,7 @@ class CommentCard extends Component {
       imagePreviewUrl: null,
       rating: 0,
       maxRating: 5,
-      comments: [],
-      foursquareEntryId: props.location.state.foursquareEntryId
+      foursquareEntryId: props.location.state.foursquareEntryId,
     };
     // this.userRef = database.ref('users');
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -136,15 +182,15 @@ class CommentCard extends Component {
   }
 
   componentDidMount() {
-    this.setState({comments: getDishesReviewAPI})
-    axios.get(`${process.env.HOST}/api/dishes/review`, {params: {foursquareEntryId: this.state.foursquareEntryId}})
-      .then(res => {
-        console.log('%c api/dishes/review POST->>> GET SUCCESS!!', 'color: green')
-        console.log('res.data', res.data)
-      })
-      .catch(err => {
-        console.log('%c api/dishes/review POST->>> GET FAIL!!', 'color: red', err)
-      })
+    // this.setState({comments: getDishesReviewAPI})
+    // axios.get(`${process.env.HOST}/api/dishes/review`, {params: {foursquareEntryId: this.state.foursquareEntryId}})
+    //   .then(res => {
+    //     console.log('%c api/dishes/review POST->>> GET SUCCESS!!', 'color: green')
+    //     console.log('res.data', res.data)
+    //   })
+    //   .catch(err => {
+    //     console.log('%c api/dishes/review POST->>> GET FAIL!!', 'color: red', err)
+    //   })
   }
 
   handleRate(e, { rating, maxRating }) {
@@ -153,7 +199,6 @@ class CommentCard extends Component {
 
   handleCommentSubmit(e) {
     e.preventDefault();
-    console.log('this', this)
     const pathToState = this.props.location.state
     const foursquareEntryId = pathToState && pathToState.dish && pathToState.dish.foursquareEntryId
     // let imagePreviewUrl = this.filtered.src
@@ -174,21 +219,24 @@ class CommentCard extends Component {
       foursquareEntryId, // foursquareEntryId NEEDED
       imageUrl: this.filtered.src,
     }
-    console.log('comment', JSON.stringify(comment, null, 2));
+    // console.log('comment', JSON.stringify(comment, null, 2));
     axios.post(`${process.env.HOST}/api/dishes/review`, comment)
     .then(res => {
       console.log('%c api/dishes/review POST SUCCESS!!', 'color: green')
+      console.log('<CommentCard /> res.data', res.data);
       axios.get(`${process.env.HOST}/api/dishes/review`, {params: {foursquareEntryId}})
         .then(res => {
-          console.log('%c api/dishes/review POST->>> GET SUCCESS!!', 'color: green')
-          console.log('res.data', res.data)
+          console.log('%c <CommentCard /> api/dishes/review *post-> GET* SUCCESS!!', 'color: green')
+          console.log('<CommentCard /> res.data', res.data)
+          console.log('this', this);
+          this.props.setDishState({comments: res.data})
         })
         .catch(err => {
-          console.log('%c api/dishes/review POST->>> GET FAIL!!', 'color: red', err)
+          console.log('%c <CommentCard /> api/dishes/review *post-> GET* FAIL!!', 'color: red', err)
         })
     })
     .catch(err => {
-      console.log('%c api/dishes/review POST FAIL!!', 'color: red', err)
+      console.log('%c <CommentCard /> api/dishes/review POST FAIL!!', 'color: red', err)
     })
 
     const newComment = [comment, ...this.state.comments]
@@ -225,7 +273,7 @@ class CommentCard extends Component {
   }
 
   render() {
-    let {imagePreviewUrl} = this.state;
+    let { imagePreviewUrl } = this.state;
     return (
       <div className="ui container">
         <div className="ui centered huge header" style={{fontSize: '5em'}}>
@@ -289,8 +337,10 @@ class CommentCard extends Component {
             </Form>
           </Grid.Column>
         </Grid>
+        { console.log('<CommentCard /> this.props.comments', this.props) }
+        { `<CommentCard /> this.props.comments -> ${this.props.comments}` }
         {
-          this.state.comments.map((comment, i) => {
+          this.props.comments.map((comment, i) => {
             return (
               <CommentBox data={comment} key={i}/>
             )

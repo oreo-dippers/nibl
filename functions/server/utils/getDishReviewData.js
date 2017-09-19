@@ -1,26 +1,25 @@
 const db = require('../../db/db.js');
 
-module.exports.getDishReviewData = (data, foursquareEntryId) => {
+module.exports.getDishReviewData = data => {
   var currentDishId;
 
   const promise = new Promise((resolve, reject) => {
     // View data to see what it is being sent
     console.log('Data received for getDishReviewData is: ', data);
-    // See if you get the foursquareEntryId inside the data ^^^^
-    // May need to have foursquareEntryId sent down separately like with dishData.js
-    console.log('foursquareEntryId sent is : ', data.params);
+    // console.log('data.: ', data.query);
+    console.log('foursquareEntryId sent is : ', data.query.foursquareEntryId);
 
     // Get the dishId based on the foursquareEntryId
     db.Dish.findOne({
       where: {
-        foursquareEntryId: foursquareEntryId // may be foursquareEntryId instead
+        foursquareEntryId: data.query.foursquareEntryId // may be foursquareEntryId instead
         // foursquareEntryId: '6723406' // has review
         // foursquareEntryId: '18685324'  // has no review
         // foursquareEntryId: '0000000'  // does not exist
       }
     })
     .then(dish => {
-      // console.log(dish);
+      console.log(dish);
 
       // If no dish is found
       if (!dish) {

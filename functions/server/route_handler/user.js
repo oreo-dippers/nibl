@@ -17,3 +17,11 @@ module.exports.postUser = (req, res) => {
     res.status(201).send(data);
    });
 };
+
+module.exports.getFridge = (req, res) => {
+  utils.getFridgeData(req)
+  .then((data) => {
+    console.log('Fridge Data gotten successfully!');
+    res.status(200).send(data);
+   });
+};

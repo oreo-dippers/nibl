@@ -39,6 +39,7 @@ module.exports.getDishReview = dishes.getDishReview;
 
 // User 
 module.exports.postUser = user.postUser;
+module.exports.getFridge = user.getFridge;
 
 module.exports.getDummy = (req, res) => {
   console.log('This dummy is working');

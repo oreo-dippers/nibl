@@ -2,7 +2,7 @@ const db = require('../../db/db.js');
 
 module.exports.postFridgeData = data => {
 
-  const promise = new Promise((resolve, reject) {
+  const promise = new Promise((resolve, reject) => {
     // Get firebaseId and foursquareId from data.body
     console.log('data.body received is ', data.body);
     console.log('data.body.firebaseId received is ', data.body.firebaseId);

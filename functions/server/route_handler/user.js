@@ -20,8 +20,11 @@ module.exports.postUser = (req, res) => {
 
 module.exports.getFridge = (req, res) => {
   utils.getFridgeData(req)
-  .then((data) => {
+  .then(data => {
     console.log('Fridge Data gotten successfully!');
     res.status(200).send(data);
+   })
+   .catch(err => {
+    console.error('No fridge data! Err: ', err);
    });
 };

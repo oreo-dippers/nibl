@@ -26,5 +26,6 @@ module.exports.getFridge = (req, res) => {
    })
    .catch(err => {
     console.error('No fridge data! Err: ', err);
+    res.status(200).send(err);
    });
 };

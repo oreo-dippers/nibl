@@ -29,7 +29,7 @@ module.exports.postUserData = data => {
         if (userData) {
           resolve(userData);
         } else {
-          reject('Post User Data Promise rejected', userData);
+          reject('No user was found or created due to unexpected data received');
         }
       });
 

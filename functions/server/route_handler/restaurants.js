@@ -22,14 +22,17 @@ module.exports.getRestaurants = function(req, res) {
   parameterObj.near = myQuery.near;
   parameterObj.radius = myQuery.radius;
   const parameter = querystring.stringify(parameterObj);
-  const urlQuery = url+ '?' + parameter + '&' + qs;
+  const urlQuery = url + '?' + parameter + '&' + qs;
 
   utils.apiCall(urlQuery, function(data) {
     utils.getRestaurantData(data)
-      .then(function(restaurantData) {
-        console.log('restaurantData sent to front end');
+      .then(restaurantData => {
+        console.log('Restaurant Data sent to front end');
         res.status(200).send(restaurantData);
-       });
+      })
+      .catch(err => {
+        res.status(400).send(err);
+      });
   });
 };
 
@@ -38,20 +41,17 @@ module.exports.getMenu = function(req, res) {
   console.log('FoursquareId received is ', req.query.foursquareId);
   const url = 'https://api.foursquare.com/v2/venues/';
   const foursquareId = req.query.foursquareId;
-
-  // const url = 'https://api.foursquare.com/v2/venues/40a55d80f964a52020f31ee3/menu';
-  // This is another url to play with to ensure code below works
-  // const url = 'https://api.foursquare.com/v2/venues/47a1bddbf964a5207a4d1fe3/menu';
-  // const urlQuery = url+ '?' + qs;
   const urlQuery = url + foursquareId + '/menu' + '?' + qs;
   console.log('urlQuery is ', urlQuery);
 
   utils.apiCall(urlQuery, function(data) {
     utils.getDishData(data, foursquareId)
-      .then(function(dishData) {
-        console.log(dishData);
+      .then(dishData => {
         console.log('dishData sent to front end');
         res.status(200).send(dishData);
+      })
+      .catch(err => {
+        res.status(400).send(err);
       });
   });
 };

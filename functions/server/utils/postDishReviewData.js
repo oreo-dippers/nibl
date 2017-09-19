@@ -117,7 +117,7 @@ module.exports.postDishReviewData = data => {
             console.log('Dish Review was added to database!');
             resolve(newReview);
           } else {
-            reject('No data');
+            reject('Dish Review was not added to database');
           }
         }); // End of DishReview.findOrCreate()
     }); // End of Promise.all()

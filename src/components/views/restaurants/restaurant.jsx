@@ -33,12 +33,12 @@ class Restaurant extends Component {
         req
       )
       .then(res => {
-        console.log('%c /api/restaurants/page GET SUCCESS!!', 'color: green')
+        console.log('%c <Restaurant /> /api/restaurants/page INITIAL GET SUCCESS!!', 'color: green')
         this.setState({foursquareId});
         this.setState({menuState: res.data});
       })
       .catch(function(err) {
-        console.log('%c /api/restaurants/page GET FAIL!!', 'color: red')
+        console.log('%c <Restaurant /> /api/restaurants/page INITIAL GET FAIL!!', 'color: red')
         console.log(err);
       });
   }

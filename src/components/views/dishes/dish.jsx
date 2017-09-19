@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import MenuCard from './menuCard';
-import CommentCard from '../static/commentCard'
+import CommentCard from '../static/commentCard';
+import axios from 'axios';
 
 // {
 //   foursquareEntryId: "107410403",
@@ -14,10 +15,34 @@ import CommentCard from '../static/commentCard'
 
 
 class Dish extends Component {
+  constructor() {
+    super();
+    this.state = {
+      comments: [],
+    }
+    this.setDishState = this.setDishState.bind(this);
+  }
+
+  componentDidMount() {
+    const { foursquareEntryId } = this.props.location.state.dish
+    const request = {params: {foursquareEntryId}}
+    axios.get(`${process.env.HOST}/api/dishes/review`, request)
+      .then(res => {
+        console.log('%c <Dish /> api/dishes/review INITIAL GET SUCCESS!!', 'color: green')
+        console.log('<Dish /> res.data', JSON.stringify(res.data, null, 2));
+        this.setState({comments: res.data});
+      })
+      .catch(err => {
+        console.log('%c <Dish /> api/dishes/review INITIAL GET FAIL!!', 'color: red', err)
+      })
+  }
+
+  setDishState(stateObj) {
+    this.setState(stateObj);
+  }
 
   render() {
     const { dish } = this.props.location.state;
-
     if (!dish) {
       return <div>Sorry, but the dish was not found</div>;
     }
@@ -71,7 +96,7 @@ class Dish extends Component {
             Recommendations
           </div>
         </center>
-        <CommentCard {...this.props}/>
+        <CommentCard {...this.props} {...this.state} setDishState={this.setDishState}/>
         <div className="ui container ">
           <div className="ui centered cards">
             <MenuCard />

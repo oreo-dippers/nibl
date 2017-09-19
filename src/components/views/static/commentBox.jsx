@@ -38,8 +38,9 @@ class CommentBox extends Component {
 
   render() {
     const { userData, starRating, upvoteTotal, createdAt, imageUrl, review } = this.props.data;
-    let upvotes = upvoteTotal
-    const user = JSON.parse(userData);
+    let upvotes = upvoteTotal;
+    let user = typeof userData === 'string' ? JSON.parse(userData) : userData;
+
     const { user_photoURL, user_displayName  } = user
     return (
       <Grid>

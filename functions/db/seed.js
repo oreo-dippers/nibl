@@ -1,7 +1,7 @@
 const connection = require('./db.js');
 
 // Require mock data
-const restaurants = require('./seedData/restaurantData.js');
+const restaurants = require('./seedData/restaurantDataSF.js');
 const users = require('./seedData/userData.js');
 
 // To seed

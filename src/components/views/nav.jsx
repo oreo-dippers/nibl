@@ -128,7 +128,7 @@ export default class Nav extends Component {
 
             <div className="item">
              <Link to="/fridge">
-                <Icon name='heart' size='big' color="red"/>
+                <Icon name='heart' size='big' inverted/>
              </Link>
             </div>
               {!currentUser && (

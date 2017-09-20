@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import MenuCard from './menuCard';
 import CommentCard from '../static/commentCard';
 import axios from 'axios';
-
+import {Button,Header,Image,Modal,Comment,Feed,Icon,Card,Rating } from 'semantic-ui-react';
 // {
 //   foursquareEntryId: "107410403",
 //   name: "Arugula Salad",
@@ -24,7 +24,9 @@ class Dish extends Component {
   }
 
   componentDidMount() {
-    const { foursquareEntryId } = this.props.location.state.dish
+    const { foursquareEntryId } = this.props.location.state.dish;
+    // const theDish = this.props.location.state.dish;
+    console.log('aaaaaaaa: ' ,this.props.location.state.dish)
     const request = {params: {foursquareEntryId}}
     axios.get(`${process.env.HOST}/api/dishes/review`, request)
       .then(res => {
@@ -41,6 +43,9 @@ class Dish extends Component {
     this.setState(stateObj);
   }
 
+  // const {prefix, suffix} = imageUrl;
+  // const img = `${prefix}800x400${suffix}`;
+
   render() {
     const { dish } = this.props.location.state;
     if (!dish) {
@@ -49,51 +54,39 @@ class Dish extends Component {
 
     return (
       <div className="ui container">
+     
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        
+          <Card fluid centered>
+
+          <Card.Content>
+          {/*<Image src={img} />*/}
+            <h2 style={{fontSize: '3em'}}> {this.props.location.state.dish.name} </h2>
+          </Card.Content>
+
+          <Card.Content extra>
+            <Icon name="dollar" />
+            Price: {this.props.location.state.dish.price}
+          </Card.Content>
+
+
+          <Card.Content extra>
+            <Icon name="thumbs outline up" />
+            Rating:  <Rating defaultRating={this.props.location.state.dish.avgDishRating} maxRating={5} disabled />
+          </Card.Content>
+        </Card>
+          
+    
+  
+
+    
         <center>
-          <div className="ui huge header" style={{'fontSize': '5em'}}>
-            DISH
-          </div>
-        </center>
-        <div className="ui container">
-          <div className="ui card fluid">
-            <div className="ui slide masked reveal image">
-              <img
-                src="https://placekitten.com/900/400"
-                className="visible content"
-                alt="food"
-              />
-              <img
-                src="http://www.fillmurray.com/900/400"
-                className="hidden content"
-                alt="food"
-              />
-            </div>
-          </div>
-        </div>
-
-        <h2 style={{'fontSize': '3em'}}> {dish.name} </h2>
-
-        <div className="meta">
-          Rating: {dish.avgDishRating}
-        </div>
-        <div className="ui huge header" style={{'fontSize': '1em'}}>
-          Address: {	dish.address && dish.address.join(', ') }
-          <br />
-          Phone Number: {dish.phone}
-        </div>
-        <h3>
-          {dish.description}
-        </h3>
-        <center>
-
-
-
-
-
-
 
           <div className="ui huge header" style={{fontSize: '5em'}}>
-            Recommendations
+           recommendations
           </div>
         </center>
         <CommentCard {...this.props} {...this.state} setDishState={this.setDishState}/>

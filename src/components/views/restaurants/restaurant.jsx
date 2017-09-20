@@ -69,13 +69,17 @@ class Restaurant extends Component {
       <div className="ui container">
         <br />
         <br />
+        <br />
+        <br />
         <center>
         <Header style={{fontSize: '4em'}}>
           <Icon size="small" name="address card outline" />
           <Header.Content>RESTAURANT</Header.Content>
         </Header>
-        </center>
 
+        </center>
+  <br />
+        <br />
         <Card fluid centered>
           <Image src={img} />
 

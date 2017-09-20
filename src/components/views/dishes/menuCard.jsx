@@ -1,16 +1,5 @@
 import React, {Component} from 'react';
-import {
-  Button,
-  Header,
-  Image,
-  Modal,
-  Comment,
-  Feed,
-  Popup,
-  Icon,
-  Card,
-  Rating,
-} from 'semantic-ui-react';
+import {Button,Header,Image,Modal,Popup, Comment,Feed,Icon,Card,Rating } from 'semantic-ui-react';
 
 class MenuCard extends Component {
   render() {

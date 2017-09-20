@@ -1,15 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {
-  Button,
-  Header,
-  Image,
-  Modal,
-  Comment,
-  Feed,
-  Icon,
-  Rating,
-} from 'semantic-ui-react';
+import {Button,Header,Image,Modal,Comment,Feed,Icon,Card,Rating } from 'semantic-ui-react';
 // const dashify = (str) => {
 //   return str.toLowerCase().split(' ').join('-')
 // }
@@ -21,6 +12,7 @@ class DishCard extends Component {
     const {dish} = this.props;
     const {prefix, suffix} = dish.imageUrl;
     const img = `${prefix}800x200${suffix}`;
+    console.log(this.props);
     if (!dish) {
       return <div>Sorry, but the Dish was not found</div>;
     }

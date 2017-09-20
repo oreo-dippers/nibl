@@ -1,16 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {
-  Button,
-  Header,
-  Image,
-  Modal,
-  Comment,
-  Feed,
-  Icon,
-  Rating,
-} from 'semantic-ui-react';
-// var Rating = require('react-rating');
+import {Button,Header,Image,Modal,Comment,Feed,Icon,Card,Rating } from 'semantic-ui-react';
+
 
 class RestaurantCard extends Component {
   render() {

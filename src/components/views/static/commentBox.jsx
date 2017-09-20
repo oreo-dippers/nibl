@@ -1,17 +1,5 @@
 import React, { Component } from 'react';
-import {
-  Button,
-  Header,
-  Image,
-  Modal,
-  Comment,
-  Feed,
-  Segment,
-  Form,
-  Icon,
-  Grid,
-  Rating,
-} from 'semantic-ui-react';
+import {Button,Header,Image,Modal,Comment,Feed,Segment,Form,Icon,Grid,Rating,} from 'semantic-ui-react';
 
 
 // {

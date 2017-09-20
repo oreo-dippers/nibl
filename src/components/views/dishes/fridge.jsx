@@ -1,16 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {
-  Button,
-  Header,
-  Image,
-  Modal,
-  Comment,
-  Feed,
-  Icon,
-  Card,
-  Rating,
-} from 'semantic-ui-react';
+import {Button,Header,Image,Modal,Comment,Feed,Icon,Card,Rating } from 'semantic-ui-react';
 
 class Fridge extends Component {
   render() {

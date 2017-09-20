@@ -2,19 +2,7 @@ import React, {Component} from 'react';
 import FileInput from 'react-file-input';
 import firebase, {storage, database} from '../../firebase';
 import CommentBox from './commentBox';
-import {
-  Button,
-  Header,
-  Image,
-  Modal,
-  Comment,
-  Feed,
-  Segment,
-  Form,
-  Icon,
-  Grid,
-  Rating,
-} from 'semantic-ui-react';
+import {Button,Header,Image,Modal,Comment,Feed,Segment,Form,Icon,Grid,Rating,} from 'semantic-ui-react';
 import launchEditor from './aviary';
 import axios from 'axios';
 

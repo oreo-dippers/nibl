@@ -3,6 +3,7 @@ const connection = require('./db.js');
 // Require mock data
 const restaurants = require('./seedData/restaurantDataSF.js');
 const users = require('./seedData/userData.js');
+const dishes = require('./seedData/dishDataSFTin.js');
 
 // To seed
 // 1 Drop the tables
@@ -19,17 +20,17 @@ connection.db.drop().then(() => {
     .then(() => {
       // Seed database with mock data
       // First restaurant table
-      restaurants.restaurantData.forEach(element => {
-        // console.log(element);
+      restaurants.restaurantData.forEach(restaurant => {
+        // console.log(restaurant);
 
         connection.Restaurant
           .create({
-            foursquareId: element.foursquareId,
-            name: element.name,
-            phone: element.phone,
-            address: element.address,
-            website: element.website,
-            imageUrl: element.imageUrl,
+            foursquareId: restaurant.foursquareId,
+            name: restaurant.name,
+            phone: restaurant.phone,
+            address: restaurant.address,
+            website: restaurant.website,
+            imageUrl: restaurant.imageUrl,
             avgRestRating: 0
           })
           .then(() => {
@@ -47,12 +48,12 @@ connection.db.drop().then(() => {
     })
     .then(() => {
       // Then fill user table
-      users.userData.forEach(element => {
+      users.userData.forEach(user => {
         
         connection.User
           .create({
-            firebaseUuid: element.userId,
-            userData: element.userData
+            firebaseUuid: user.userId,
+            userData: user.userData
           })
           .then(() => {
             console.log(
@@ -66,6 +67,31 @@ connection.db.drop().then(() => {
             );
           });
       }); // End adding userData
+    })
+    .then(() => {
+      // Then fill a restaurant's menu (dish table)
+      dishes.dishDataSFTin.forEach(dish => {
+
+        connection.Dish
+          .create({
+            foursquareEntryId: dish.foursquareEntryId,
+            name: dish.name,
+            imageUrl: dish.imageUrl,
+            description: dish.description,
+            price: dish.price
+          })
+          .then(() => {
+            console.log(
+              '!!! Running seed.js: Your dish element has been added to the database successfully!'
+            );
+          })
+          .catch(e => {
+            console.error(
+              '!!! Running seed.js: There was an error adding the dish element to the database: ',
+              e
+            );
+          });
+      }); // End of adding dishData
     })
     .catch(e => {
       console.error(

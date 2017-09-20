@@ -278,7 +278,7 @@ class CommentCard extends Component {
             </Grid.Column>
           <Grid.Column width={2}>
           <Grid verticalAlign="middle">
-         
+
             <Grid.Row color="">
             <div id="injection_site" />
             <img
@@ -287,8 +287,8 @@ class CommentCard extends Component {
               ref={input => (this.filtered = input)}
             />
             </Grid.Row>
-            
-           
+
+
             <Grid.Row color="">
               <Grid.Column color=" " width={5}>
 
@@ -301,12 +301,12 @@ class CommentCard extends Component {
               className="inputClass"
               onChange={this.handleSubmit}
           />
-           
+
 
             </Grid.Column>
-            
+
             <Grid.Column color=" " width={5}>
-            
+
             <Button
             primary
             type="image"
@@ -316,15 +316,15 @@ class CommentCard extends Component {
           >
             {' '} Edit {' '}
           </Button>
-           
+
               </Grid.Column>
             </Grid.Row>
-        
+
         </Grid>
 
 
-            
-           
+
+
 
           </Grid.Column>
           <Grid.Column width={9}>
@@ -338,12 +338,12 @@ class CommentCard extends Component {
             <Form
               onSubmit={this.handleCommentSubmit}
               reply>
-              <Form.TextArea
+              <input
                 ref={(i)=> this._comment = i}
                 placeholder="leave a comment..."
               />
               <br/>
-           
+
               <Button
                 content="Add Reply"
                 labelPosition="left"

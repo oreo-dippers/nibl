@@ -170,6 +170,10 @@ class CommentCard extends Component {
   }
 
   componentDidMount() {
+    // console.log('bbbbb: ', this.props)
+    // localStorage.setItem('UserData', userObj.userData)
+    // console.log('ccccc: ', UserData);
+
     // this.setState({comments: getDishesReviewAPI})
     // axios.get(`${process.env.HOST}/api/dishes/review`, {params: {foursquareEntryId: this.state.foursquareEntryId}})
     //   .then(res => {
@@ -273,36 +277,58 @@ class CommentCard extends Component {
 
             </Grid.Column>
           <Grid.Column width={2}>
-
+          <Grid verticalAlign="middle">
+         
+            <Grid.Row color="">
             <div id="injection_site" />
             <img
               id="image1"
               src={this.state.imagePreviewUrl}
               ref={input => (this.filtered = input)}
             />
-            <div>
+            </Grid.Row>
+            
+           
+            <Grid.Row color="">
+              <Grid.Column color=" " width={5}>
+
               <input
-                  id="something"
-                  type="file"
-                  name="myImage"
-                  accept=".png, .jpg"
-                  placeholder="Select An Image"
-                  className="inputClass"
-                  onChange={this.handleSubmit}
-              />
-              <Button
-                primary
-                type="image"
-                src="http://images.aviary.com/images/edit-photo.png"
-                value="Edit photo"
-                onClick={this.aviarySubmit}
-              >
-                {' '} Filter {' '}
-              </Button>
-            </div>
+              id="something"
+              type="file"
+              name="myImage"
+              accept=".png, .jpg"
+              placeholder="Select An Image"
+              className="inputClass"
+              onChange={this.handleSubmit}
+          />
+           
+
+            </Grid.Column>
+            
+            <Grid.Column color=" " width={5}>
+            
+            <Button
+            primary
+            type="image"
+            src="http://images.aviary.com/images/edit-photo.png"
+            value="Edit photo"
+            onClick={this.aviarySubmit}
+          >
+            {' '} Edit {' '}
+          </Button>
+           
+              </Grid.Column>
+            </Grid.Row>
+        
+        </Grid>
+
+
+            
+           
 
           </Grid.Column>
           <Grid.Column width={9}>
+          Name Here
             <Rating
               onRate={this.handleRate}
               maxRating={5}
@@ -312,10 +338,12 @@ class CommentCard extends Component {
             <Form
               onSubmit={this.handleCommentSubmit}
               reply>
-              <input
+              <Form.TextArea
                 ref={(i)=> this._comment = i}
                 placeholder="leave a comment..."
               />
+              <br/>
+           
               <Button
                 content="Add Reply"
                 labelPosition="left"

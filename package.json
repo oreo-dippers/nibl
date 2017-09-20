@@ -11,7 +11,8 @@
     "serve": "firebase serve --only functions,hosting",
     "express": "nodemon server/server.js",
     "postinstall": "cd functions && npm install",
-    "deploy": "NODE_ENV=production npm run prod && firebase deploy"
+    "deploy": "NODE_ENV=production npm run prod && firebase deploy",
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -26,6 +27,7 @@
     "firebase-admin": "~5.2.1",
     "firebase-functions": "^0.6.3",
     "history": "^4.7.2",
+    "jest": "^21.1.0",
     "jquery": "^3.2.1",
     "lodash": "^4.17.4",
     "lodash-es": "^4.17.4",

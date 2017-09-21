@@ -29,7 +29,6 @@ class CommentCard extends Component {
       maxRating: 5,
       foursquareEntryId: props.location.state.foursquareEntryId,
     };
-    // this.userRef = database.ref('users');
     this.handleSubmit = this.handleSubmit.bind(this);
     this.aviarySubmit = this.aviarySubmit.bind(this);
     this.submitFilteredPhoto = this.submitFilteredPhoto.bind(this);
@@ -136,7 +135,7 @@ class CommentCard extends Component {
             <Grid.Row color="">
               <Grid.Column color=" " width={5}>
 
-              <input
+            <input
               id="something"
               type="file"
               name="myImage"
@@ -178,7 +177,7 @@ class CommentCard extends Component {
             <Form
               onSubmit={this.handleCommentSubmit}
               reply>
-              <Form.TextArea
+              <input
                 ref={(i)=> this._comment = i}
                 placeholder="leave a comment..."
               />
@@ -193,8 +192,6 @@ class CommentCard extends Component {
             </Form>
           </Grid.Column>
         </Grid>
-        { console.log('<CommentCard /> this.props.comments', this.props) }
-        { `<CommentCard /> this.props.comments -> ${this.props.comments}` }
         {
           this.props.comments.map((comment, i) => {
             return (

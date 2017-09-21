@@ -4,6 +4,7 @@ import firebase, { storage, database } from '../../firebase';
 import FileInput from 'react-file-input';
 import launchEditor from './aviary';
 import CommentBox from './commentBox';
+import Footer from './footerhome';
 import { Button,
   Header,
   Image,
@@ -24,7 +25,7 @@ class CommentCard extends Component {
     this.state = {
       uploadProgress: null,
       file: null,
-      imagePreviewUrl: 'http://wfarm3.dataknet.com/static/resources/icons/set112/69e0d01c.png',
+      imagePreviewUrl: 'http://www.artsalamandre.com/wp-content/uploads/2016/03/placeholder.png',
       rating: 0,
       maxRating: 5,
       foursquareEntryId: props.location.state.foursquareEntryId,
@@ -45,7 +46,6 @@ class CommentCard extends Component {
     e.preventDefault();
     const pathToState = this.props.location.state
     const foursquareEntryId = pathToState && pathToState.dish && pathToState.dish.foursquareEntryId;
-    // let UserData = localStorage.getItem('UserData');
     const UserId = localStorage.getItem('UserId');
     const comment = {
       userData: this.state.UserData,
@@ -111,6 +111,7 @@ class CommentCard extends Component {
     let { imagePreviewUrl } = this.state;
     const { user_displayName } = JSON.parse(this.state.UserData);
     return (
+     
       <div className="ui container">
      
         <Image src ="https://firebasestorage.googleapis.com/v0/b/oreo-nibl.appspot.com/o/comments.png?alt=media&token=3fb83f44-47e1-4727-bc35-2010f7761b57"/>
@@ -201,8 +202,9 @@ class CommentCard extends Component {
             )
           })
         }
-        <br />
+       
       </div>
+   
     );
   }
 }

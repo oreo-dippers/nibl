@@ -65,14 +65,6 @@ class CommentBox extends Component {
                     </center>
                   </Modal>
                 </Feed.Extra>
-                <Comment.Actions>
-                  <Feed.Meta>
-                    {/* <Feed.Like>
-                      <Icon name="like" />
-                      1 Like
-                    </Feed.Like> */}
-                  </Feed.Meta>
-                </Comment.Actions>
               </Comment.Content>
             </Comment>
           </Comment.Group>

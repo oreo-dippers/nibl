@@ -4,6 +4,7 @@ const connection = require('./db.js');
 const restaurants = require('./seedData/restaurantDataSF.js');
 const users = require('./seedData/userData.js');
 const dishes = require('./seedData/dishDataSFTin.js');
+const dishReviews = require('./seedData/dishReviewDataSFTin.js');
 
 // To seed
 // 1 Drop the tables
@@ -88,6 +89,32 @@ connection.db.drop().then(() => {
           .catch(e => {
             console.error(
               '!!! Running seed.js: There was an error adding the dish element to the database: ',
+              e
+            );
+          });
+      }); // End of adding dishData
+    })
+    .then(() => {
+      // Then fill the restaurant dish's reviews:
+      dishReviews.dishReviewDataSFTin.forEach(review => {
+
+        connection.Dish
+          .create({
+            userId: review.userId,
+            dishId: review.dishId,
+            review: review.review,
+            starRating: review.starRating,
+            imageUrl: review.imageUrl,
+            upvoteTotal: 0
+          })
+          .then(() => {
+            console.log(
+              '!!! Running seed.js: Your dish review element has been added to the database successfully!'
+            );
+          })
+          .catch(e => {
+            console.error(
+              '!!! Running seed.js: There was an error adding the dish review element to the database: ',
               e
             );
           });

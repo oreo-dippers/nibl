@@ -51,15 +51,15 @@ module.exports.getFridgeData = (data) => {
                   db.Dish
                     .findOne({
                       where: {
-                        id: userSavedDish[0].dataValues.dishId
+                        id: userSavedDish.dataValues.dishId
                       }
                     })
                     .then(currentDish => {
-                      console.log('currentDishInfo is ', currentDish);
-                      console.log('currentDishInfo[0] is ', currentDish[0]);
+                      console.log('currentDish is ', currentDish);
+                      console.log('currentDish.dataValues is ', currentDish.dataValues);
 
                       // Make organized data to send to front end
-                      let {foursquareEntryId, name, imageUrl, description, price, avgDishRating} = currentDish[0].dataValues;
+                      let {foursquareEntryId, name, imageUrl, description, price, avgDishRating} = currentDish.dataValues;
 
                       resolve({foursquareEntryId, name, imageUrl, description, price, avgDishRating});
                     }); // End of db.Dish.findOne()

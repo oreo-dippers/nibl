@@ -7,9 +7,14 @@ const admin = require('firebase-admin');
 //import all environment variable for testing
 const firebaseAppConfig = require('./firebaseApp').appConfig;
 
+//Initialize firebase admin
+admin.initializeApp = jest.fn();
 
-// Mock the Firebase configuration
+//Initialize firebase functions with configvariables.
+functions.config = jest.fn(() => (firebaseAppConfig));
 
+// Mock the Firebase application
+const myApp = require('../index');
 
 
 

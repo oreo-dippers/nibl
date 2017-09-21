@@ -16,7 +16,6 @@ module.exports.getDishReviewData = data => {
 
       // If no dish is found
       if (!dish) {
-        console.error('This foursquareEntryId (dishId) is invalid');
         reject('This foursquareEntryId (dishId) is invalid');
       }
 
@@ -33,7 +32,6 @@ module.exports.getDishReviewData = data => {
           // console.log('dishReviews array is ', dishReviews);
 
           if (!dishReviews.length) {
-            console.log('There are no reviews for this dish');
             reject('No reviews exist for this dish');
           } else {
             // Iterate through dishReview array

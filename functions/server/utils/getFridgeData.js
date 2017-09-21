@@ -51,14 +51,15 @@ module.exports.getFridgeData = (data) => {
                   db.Dish
                     .findOne({
                       where: {
-                        id: userSavedDish[0].dataValues.dishId
+                        id: userSavedDish.dataValues.dishId
                       }
                     })
                     .then(currentDish => {
-                      console.log('dishInfo is ', dishInfo);
+                      console.log('currentDish is ', currentDish);
+                      console.log('currentDish.dataValues is ', currentDish.dataValues);
 
                       // Make organized data to send to front end
-                      let {foursquareEntryId, name, imageUrl, description, price, avgDishRating} = currentDish[0].dataValues;
+                      let {foursquareEntryId, name, imageUrl, description, price, avgDishRating} = currentDish.dataValues;
 
                       resolve({foursquareEntryId, name, imageUrl, description, price, avgDishRating});
                     }); // End of db.Dish.findOne()
@@ -78,8 +79,7 @@ module.exports.getFridgeData = (data) => {
                     console.log('Users saved dishes aka fridge resolves');
                     resolve(dishArray);
                   } else {
-                    console.error('User has no saved dishes');
-                    reject([]);
+                    reject('User has no saved dishes');
                   }
                 });
             }); // End of db.UserDish.findAll()

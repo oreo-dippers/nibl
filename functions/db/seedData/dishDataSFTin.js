@@ -368,70 +368,70 @@ module.exports.dishDataSFTin = [
   },
   {
     foursquareEntryId: '64080321',
-    name: 'Vinho Verde / Raza '12, Portugal',
+    name: 'Vinho Verde / Raza \'12, Portugal',
     imageUrl: '',
     description: null,
     price: '7.00'
   },
   {
     foursquareEntryId: '64080322',
-    name: 'Sauvignon Blanc / Longboard '13, Sonoma, California',
+    name: 'Sauvignon Blanc / Longboard \'13, Sonoma, California',
     imageUrl: '',
     description: null,
     price: '9.00'
   },
   {
     foursquareEntryId: '64080323',
-    name: 'Chardonnay / Domaine Du Tariquet '12, Cotes De Gascogne, France',
+    name: 'Chardonnay / Domaine Du Tariquet \'12, Cotes De Gascogne, France',
     imageUrl: '',
     description: null,
     price: '8.00'
   },
   {
     foursquareEntryId: '64080324',
-    name: 'Gruner Veltliner / Pratsch Organic '13, Austria',
+    name: 'Gruner Veltliner / Pratsch Organic \'13, Austria',
     imageUrl: '',
     description: null,
     price: '8.00'
   },
   {
     foursquareEntryId: '64080325',
-    name: 'Old Vine Rose / Villa Des Anges '13, Provence, France',
+    name: 'Old Vine Rose / Villa Des Anges \'13, Provence, France',
     imageUrl: '',
     description: null,
     price: '7.00'
   },
   {
     foursquareEntryId: '64080326',
-    name: 'Pinot Noir / Vinum '13, Monterrey, California',
+    name: 'Pinot Noir / Vinum \'13, Monterrey, California',
     imageUrl: '',
     description: null,
     price: '8.00'
   },
   {
     foursquareEntryId: '64080327',
-    name: 'Malbec / Santa Julia '11, Mendoza, Argentina',
+    name: 'Malbec / Santa Julia \'11, Mendoza, Argentina',
     imageUrl: '',
     description: null,
     price: '7.00'
   },
   {
     foursquareEntryId: '64080328',
-    name: 'Barbera / Tiamo Organic '10, Lombardy, Italy',
+    name: 'Barbera / Tiamo Organic \'10, Lombardy, Italy',
     imageUrl: '',
     description: null,
     price: '7.00'
   },
   {
     foursquareEntryId: '64080329',
-    name: 'Bordeaux Blend / Exem, '11, Bordeaux, France',
+    name: 'Bordeaux Blend / Exem, \'11, Bordeaux, France',
     imageUrl: '',
     description: null,
     price: '8.00'
   },
   {
     foursquareEntryId: '64080330',
-    name: 'Grenache Syrah / Mas De Guiot '11, Rhone, France',
+    name: 'Grenache Syrah / Mas De Guiot \'11, Rhone, France',
     imageUrl: '',
     description: null,
     price: '7.00'

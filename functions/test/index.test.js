@@ -1,33 +1,18 @@
-// const functions = require("firebase-functions");
-// const admin = require('firebase-admin');
+// The Cloud Functions for Firebase SDK to create Cloud Functions and setup triggers.
+const functions = require("firebase-functions");
 
-// // Mock the Firebase configuration
-//   require('firebase-functions').config = jest.fn(() => {
-//     console.log('Jest firebase functions.config being called');
-//     return {
-//       "postgres": {
-//         "postgres_url": "postgres://nibl:4oreodippers@138.197.194.81:5432/postgres"
-//       },
-//       "foursquare": {
-//         "client_id": "IWJ5O1AHM4PVYTVHXLUCP2PAG5K4DBOA4VICLHDDBWQ3Q3WQ",
-//         "client_secret": "5S4JBCD511Y1AWH3311BGFT4CKGOWIPKBAJS4ONLLJTES0PZ"
-//       }
-//     };
-//   });
+// The Firebase Admin SDK to access the Firebase Realtime Database.
+const admin = require('firebase-admin');
+
+//import all environment variable for testing
+const firebaseAppConfig = require('./firebaseApp').appConfig;
+
+
+// Mock the Firebase configuration
 
 
 
-// beforeEach(() => {
-
-
-// });
 
 // console.log('Line is 22 is running: ');
 // var app = require('../index');
-
-// afterEach(() => {
-
-// });
-
-
 

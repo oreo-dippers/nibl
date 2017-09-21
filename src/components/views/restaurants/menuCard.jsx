@@ -17,13 +17,12 @@ import { dashify } from '../../../helpers';
 class MenuCard extends Component {
   render() {
     const {menu} = this.props;
-    console.log('menu', menu)
     const dish = menu
     return (
       <div>
         <Card>
           <Image
-            src="https://instagram.fsnc1-1.fna.fbcdn.net/t51.2885-15/e35/12751127_511734799019156_1460279120_n.jpg"
+            src={menu.imageUrl}
             alt=""
           />
 

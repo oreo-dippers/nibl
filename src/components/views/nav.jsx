@@ -98,32 +98,6 @@ export default class Nav extends Component {
               />
             </div>
 
-            <div className="item">
-              <Link to="/addphoto">
-                <div
-                  className="ui medium header"
-                  style={{color: '#FFFFFF'}}
-                  onClick={this.handleItemClick}
-                >
-                  Add Photo
-                </div>
-              </Link>
-            </div>
-
-            {/* <div className="item">
-							<Link to="/dishes">
-								<div
-									className="ui medium header"
-									style={{ color: '#FFFFFF' }}
-									onClick={this.handleItemClick}
-								>
-									Reviews
-								</div>
-							</Link>
-						</div> */}
-
-          
-
             <div className="right menu">
 
             <div className="item">

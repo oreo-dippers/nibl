@@ -12,7 +12,7 @@ import {
   Card,
   Rating
 } from 'semantic-ui-react';
-
+import Footer from './footerhome';
 
 const Home = () => (
   <div>
@@ -171,22 +171,8 @@ const Home = () => (
       </div>
       <Image src="https://firebasestorage.googleapis.com/v0/b/oreo-nibl.appspot.com/o/BANNNNER.jpg?alt=media&token=66f253b0-1ffa-4611-b9e8-e92d21ab8c29" />
       <Image src="https://firebasestorage.googleapis.com/v0/b/oreo-nibl.appspot.com/o/banner3.jpg?alt=media&token=fbd3ed50-e3aa-48bd-ba74-cf36f8887ad8" />
-      <footer style={{background: '#66DFB7'}}>
-        <br /> <br /> <br /> <br /> <br /> <br /> <br />
-        <div>
-          <center>
-            <i className="inverted large twitter icon" />
-            <i className="inverted large facebook icon" />{' '}
-            <i className="inverted large github alternate icon" />{' '}
-            <i className="inverted large linkedin icon" />{' '}
-          </center>
-        </div>
-        <br />
-        <div style={{color: '#FFFFFF'}}>
-          <center> © 2017 Nibl. All Rights Reserved</center>
-        </div>
-        <br />
-      </footer>
+     
+	 <Footer />
     </div>
   </div>
 );

@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import {
   Button,
-  Header,
   Image,
   Modal,
   Comment,
   Feed,
-  Segment,
-  Form,
   Icon,
   Grid,
   Rating
@@ -30,8 +27,8 @@ class CommentBox extends Component {
     const { user_photoURL, user_displayName  } = user;
     return (
       <Grid>
-        <Grid.Column width={2} />
-        <Grid.Column width={10}>
+        <Grid.Column width={1} />
+        <Grid.Column width={13}>
           <Comment.Group>
             <Comment>
               <Comment.Avatar src={user_photoURL} />
@@ -51,32 +48,25 @@ class CommentBox extends Component {
                     size="mini"
                     trigger={
                       <a>
-                        <img src={ imageUrl } />
+                        <img  id="thecommentphoto" src={ imageUrl } alt=""/>
                       </a>
                     }
                   >
                     <center>
                       <Image
                         wrapped
+                       
                         size="medium"
                         src={imageUrl}
                       />
                     </center>
                   </Modal>
                 </Feed.Extra>
-                <Comment.Actions>
-                  <Feed.Meta>
-                    {/* <Feed.Like>
-                      <Icon name="like" />
-                      1 Like
-                    </Feed.Like> */}
-                  </Feed.Meta>
-                </Comment.Actions>
               </Comment.Content>
             </Comment>
           </Comment.Group>
         </Grid.Column>
-        <Grid.Column width={3}>
+        <Grid.Column width={1}>
           <Button
             onClick={()=>this.setState({upvote: !this.state.upvote})}
             icon
@@ -94,6 +84,8 @@ class CommentBox extends Component {
           </div>
         </Grid.Column>
       </Grid>
+  
+    
     )
   }
 

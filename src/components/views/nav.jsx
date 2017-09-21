@@ -14,7 +14,7 @@ export default class Nav extends Component {
 		this.usersRef = null;
 		this.userRef = null;
     this.state = {
-			searchBy: 'dishes',
+			searchBy: 'restaurants',
 			currentUser: null,
 			users:{},
       userData: null,
@@ -74,7 +74,7 @@ export default class Nav extends Component {
     return (
       <div>
         <div style={{background: '#F8F8F8'}} className="ui fluid container">
-          <div style={{background: '#26CDA7'}} className="ui menu">
+          <div style={{background: '#66DFB7'}} className="ui menu">
             <div className="item">
               <Link to="/">
                 <div
@@ -117,12 +117,12 @@ export default class Nav extends Component {
 
               {currentUser && (
                 <Menu.Menu position="right">
-                  <div className="item">
+                  {/*<div className="item">
                     <img
                       className="ui avatar image"
                       src={currentUser.photoURL}
                     />
-                  </div>
+                  </div>*/}
                   <div className="item">
                     <Modal
                       trigger={

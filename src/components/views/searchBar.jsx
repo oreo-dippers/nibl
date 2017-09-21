@@ -44,10 +44,11 @@ class SearchBar extends Component {
 
 				<Form
           onSubmit={this.searchByRestaurant}
-          placeholder="search here"
+         
         >
           <div className="ui icon input">
 						<input
+              placeholder="search..."
               type="text"
               ref={d => (this._restaurants = d)}
             />

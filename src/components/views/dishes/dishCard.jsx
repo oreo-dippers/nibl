@@ -14,13 +14,12 @@ class DishCard extends Component {
     }
     return (
       <div className="ui container ">
-        <span style={{color: 'black'}}>HI I AM A DISHCARD</span>
         <div className="ui equal width aligned padded grid">
           <div className="row">
-            <div className="column">
+            <div className="seven wide column" > 
               <img
                 id="murray"
-                src="https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/c0.131.1080.1080/20214594_1390905300958312_8218964827691810816_n.jpg"
+                src={dish.imageUrl}
                 alt=""
               />
             </div>
@@ -39,7 +38,9 @@ class DishCard extends Component {
                       </Link>
                     </div>
 
+{/*
                     <div className="ui  huge header" style={{fontSize: '2em'}}>
+
                       <Link
                         to={{
                           pathname: `/restaurants/${dish.name}`,
@@ -48,10 +49,13 @@ class DishCard extends Component {
                       >
                         @ GO TO RESTAURANT *ADD NAME*
                       </Link>
+
                       <p style={{color: 'black'}}>address: .......</p>
 
-                      <Rating defaultRating={3} maxRating={5} disabled />
-                    </div>
+                      
+                    </div> */}
+
+                    <Rating defaultRating={3} maxRating={5} disabled />
 
                     <p style={{color: '#000000'}}> -- </p>
                     <div style={{color: '#000000'}}>

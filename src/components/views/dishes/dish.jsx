@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 // import MenuCard from './menuCard';
 import CommentCard from '../static/commentCard';
-
+import Footer from '../static/footerhome';
 import {
   Button,
   Header,
@@ -14,6 +14,7 @@ import {
   Icon,
   Card,
   Rating } from 'semantic-ui-react';
+
 // {
 //   foursquareEntryId: "107410403",
 //   name: "Arugula Salad",
@@ -59,18 +60,19 @@ class Dish extends Component {
     }
 
     return (
+      <div>
       <div className="ui container">
 
         <br/>
         <br/>
         <br/>
         <br/>
-
+         <Image src={this.props.location.state.dish.imageUrl} />
+        
           <Card fluid centered>
 
           <Card.Content>
-          <Image src={dish.imageUrl} />
-            <h2 style={{fontSize: '3em'}}> {dish.name} </h2>
+            <h2 style={{fontSize: '3em'}}> {this.props.location.state.dish.name} </h2>
           </Card.Content>
 
           <Card.Content extra>
@@ -84,12 +86,18 @@ class Dish extends Component {
             Rating:  <Rating defaultRating={dish.avgDishRating} maxRating={5} disabled />
           </Card.Content>
         </Card>
-
         <CommentCard {...this.props} {...this.state} setDishState={this.setDishState}/>
 
         <h2>
           <Link to="/dishes">Back</Link>
         </h2>
+      
+      </div>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <Footer />
       </div>
     );
   }

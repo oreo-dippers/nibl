@@ -2,17 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import MenuCard from './menuCard';
 import axios from 'axios';
-import {
-  Button,
-  Header,
-  Image,
-  Modal,
-  Comment,
-  Feed,
-  Icon,
-  Card,
-  Rating,
-} from 'semantic-ui-react';
+import {Button,Header,Image,Modal,Comment,Feed,Icon,Card,Rating } from 'semantic-ui-react';
 
 class Restaurant extends Component {
   constructor(props) {
@@ -55,18 +45,14 @@ class Restaurant extends Component {
     }
 
     return (
+      <div>
       <div className="ui container">
         <br />
         <br />
         <br />
         <br />
-        <center>
-        <Header style={{fontSize: '4em'}}>
-          <Icon size="small" name="address card outline" />
-          <Header.Content>RESTAURANT</Header.Content>
-        </Header>
-
-        </center>
+        <Image src="https://firebasestorage.googleapis.com/v0/b/oreo-nibl.appspot.com/o/rest.png?alt=media&token=fc8a34d7-533c-4c4d-ba7d-b147a73900e3"/>
+        
   <br />
         <br />
         <Card fluid centered>
@@ -99,12 +85,8 @@ class Restaurant extends Component {
 
         <br/>
         <br/>
-        <center>
-        <Header style={{fontSize: '4em'}}>
-          <Icon size="small" name="food" />
-          <Header.Content>MENU</Header.Content>
-        </Header>
-        </center>
+        <Image src ="https://firebasestorage.googleapis.com/v0/b/oreo-nibl.appspot.com/o/menu.png?alt=media&token=1d3454e3-3ae7-4baf-ac62-3e8284d00999"/>
+        
         <br/>
         <br/>
 
@@ -124,6 +106,30 @@ class Restaurant extends Component {
         <h2>
           <Link to="/restaurants">Back</Link>
         </h2>
+
+
+     
+
+      </div>
+
+         <br /> <br /> <br /> <br />  
+      <footer style={{background: '#66DFB7'}}>
+        <br /> <br /> <br /> <br /> 
+        <div>
+          <center>
+            <i className="inverted large twitter icon" />
+            <i className="inverted large facebook icon" />{' '}
+            <i className="inverted large github alternate icon" />{' '}
+            <i className="inverted large linkedin icon" />{' '}
+          </center>
+        </div>
+        <br />
+        <div style={{color: '#FFFFFF'}}>
+          <center> © 2017 Nibl. All Rights Reserved</center>
+        </div>
+        <br />
+      </footer>
+
       </div>
     );
   }

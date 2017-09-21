@@ -37,18 +37,16 @@ class MenuCard extends Component {
   }
 
   render() {
-    const {menu} = this.props;
+    const { menu } = this.props;
     const dish = menu
     return (
       <div>
         <Card>
           <Image
-            fluid
-            label={{ as: 'a', corner: 'left', icon: 'heart' }}
-            src={menu.imageUrl}
+            src={menu.imageUrl || 'http://www.technodoze.com/wp-content/uploads/2016/03/default-placeholder.png'}
             alt=""
           />
-          <button onClick={this.addToFridge}>Add to Fridge: </button>
+         
           <Card.Content>
             <Card.Header>
               <Link to={
@@ -73,6 +71,7 @@ class MenuCard extends Component {
               {menu.price}
             </a>
           </Card.Content>
+          <Button onClick={this.addToFridge}>Save</Button>
         </Card>
       </div>
     );

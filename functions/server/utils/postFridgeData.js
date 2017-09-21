@@ -24,6 +24,10 @@ module.exports.postFridgeData = data => {
     ])
     .then(values => {
       // console.log(values);
+      if (values.length !== 2) {
+        reject('Either no user or dish or both were found or created due to unexpected data received');
+      }
+
       console.log('User id is ', values[0].dataValues.id);
       const currentUserId = values[0].dataValues.id;
       console.log('Dish id is ', values[1].dataValues.id);

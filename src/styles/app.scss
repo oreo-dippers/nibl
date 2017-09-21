@@ -25,9 +25,6 @@ body h1 {
   display: flex;
   align-items: center;
   width: 100%;
-  // background: #FFFFFF;
-  // padding: 20px;
-
   list-style-type: none;
   background-color: #333;
   text-decoration: none;
@@ -38,8 +35,6 @@ body h1 {
 }
 
 #shell {
-  /* width:500px; */
-  /* height:300px; */
   background:#CFFCED; 
   border-radius: 10px 10px 10px 10px;
   overflow:hidden;
@@ -47,9 +42,6 @@ body h1 {
 
 
 .footer {
-  // display: flex;
-  // align-items: baseline;
-  // justify-content: space-around;
   position: fixed;
   left: 0px;
   bottom: 25px;
@@ -93,23 +85,14 @@ width: 10%;
 
 #restimg{
   height: 320px;
-  // -webkit-filter: blur(10px);
-  // -webkit-filter: blur(2px);
 }
 
-// .listStyle{
-//   color: white;
-// }
 #rcorners2 {
   border-radius: 10px;
 }
 
 #rcorners1 {
-  // border-radius: 10px;
   width:30%;
-  // position: absolute;
-  // // left: 100px;
-  // clip: rect(0px,200px,200px,0px);
   height:-30%;
 
 }
@@ -149,22 +132,14 @@ width: 10%;
   padding: 30px 0 0 0;
   height: 30px;
   overflow: hidden;
-  // -webkit-box-sizing: border-box;
-  // -moz-box-sizing: border-box;
-  // box-sizing: border-box;
   background: url("https://image.flaticon.com/icons/png/512/61/61050.png") no-repeat;
   border-radius: 2px;
    background-size: 30px 30px;
 }
 
 .bg {
-  /* The image used */
-  // background-image: url(https://static.pexels.com/photos/256318/pexels-photo-256318.jpeg);
   background-color:#FFFFFF;
-  /* Full height */
   height: 100%;
-
-  /* Center and scale the image nicely */
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
@@ -185,44 +160,3 @@ body {
 li{
   list-style-type: none;
 }
-
-// .nav li {
-//   color: white;
-//   float:left;
-//   padding: 5px 10px;
-//   // margin: 10px;
-// }
-//
-// .signin {
-//   float: right;
-// }
-
-/*
-display: flex;
-
-
-The frogs need to get in the same order as their lilypads using flex-direction. This CSS property defines the direction items are placed in the container, and accepts the following values:
-flex-direction
-  row: Items are placed the same as the text direction.
-  row-reverse: Items are placed opposite to the text direction.
-  column: Items are placed top to bottom.
-  column-reverse: Items are placed bottom to top.
-
-justify-content
-  flex-start
-  flex-end
-  center
-  space-around
-  space-between
-
-
-align-items to get to the bottom.
-This CSS property aligns items vertically and accepts the following values:
-
-align-items
-  flex-start: Items align to the top of the container.
-  flex-end: Items align to the bottom of the container.
-  center: Items align at the vertical center of the container.
-  baseline: Items display at the baseline of the container.
-  stretch: Items are stretched to fit the container.
-*/

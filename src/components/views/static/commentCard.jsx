@@ -112,9 +112,8 @@ class CommentCard extends Component {
     const { user_displayName } = JSON.parse(this.state.UserData);
     return (
       <div className="ui container">
-        <div className="ui centered huge header" style={{fontSize: '5em'}}>
-          Comments
-        </div>
+     
+        <Image src ="https://firebasestorage.googleapis.com/v0/b/oreo-nibl.appspot.com/o/comments.png?alt=media&token=3fb83f44-47e1-4727-bc35-2010f7761b57"/>
 
         <Grid>
           <Grid.Column width={2} >

@@ -61,7 +61,9 @@ class DishCard extends Component {
                       #ramen #mushrooms #veggies #vegetables #noodles #nissin
                     </div>
                   </div>
-                  <div className="ui horizontal divider">Comments</div>
+                  <Image src ="import {Button,Header,Image,Modal,Comment,Feed,Icon,Card,Rating } from 'semantic-ui-react';
+"/>
+                
                   <div className="extra content" style={{color: '#000000'}}>
                     <b> Bill Murray </b>
                     Tastes better than cardboard an Tapatillo..

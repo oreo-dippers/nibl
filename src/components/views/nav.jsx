@@ -74,7 +74,7 @@ export default class Nav extends Component {
     return (
       <div>
         <div style={{background: '#F8F8F8'}} className="ui fluid container">
-          <div style={{background: '#26CDA7'}} className="ui menu">
+          <div style={{background: '#66DFB7'}} className="ui menu">
             <div className="item">
               <Link to="/">
                 <div

@@ -7,7 +7,7 @@ module.exports.dishReviewDataSFTin = [
     imageUrl: 'https://oreo-nibl.appspot.com/new_folder/springroll.jpg'
   },
   {
-    userId: '2',
+    userId: '3',
     dishId: '2',
     review: 'Pretty tasty and not too oily! Recommend!',
     starRating: '5',
@@ -16,8 +16,8 @@ module.exports.dishReviewDataSFTin = [
   {
     userId: '5',
     dishId: '3',
-    review: 'Pretty tasty and not too oily! Recommend!',
+    review: 'This is so good! You have to try these rolls!',
     starRating: '5',
-    imageUrl: 'https://oreo-nibl.appspot.com/new_folder/chagio.jpg'
+    imageUrl: 'https://oreo-nibl.appspot.com/new_folder/huerolls.jpg'
   }
 ];

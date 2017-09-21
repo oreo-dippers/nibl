@@ -79,8 +79,7 @@ module.exports.getFridgeData = (data) => {
                     console.log('Users saved dishes aka fridge resolves');
                     resolve(dishArray);
                   } else {
-                    console.error('User has no saved dishes');
-                    reject([]);
+                    reject('User has no saved dishes');
                   }
                 });
             }); // End of db.UserDish.findAll()

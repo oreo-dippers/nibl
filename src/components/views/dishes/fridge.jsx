@@ -9,62 +9,12 @@ import {
 } from 'semantic-ui-react';
 import Footer from '../static/footerhome';
 
-const sampleFav = [
-  {
-    avgDishRating: 4,
-    description: 'this fresh mozz is from italy',
-    foursquarEntryId: '17270633',
-    imageUrl: 'https://www.placecage.com/g/300/300',
-    name: 'fresh-stretched mozz',
-    price: '8.25'
-  },
-  {
-    avgDishRating: 3,
-    description: 'this dish is from',
-    foursquarEntryId: '17270633',
-    imageUrl: 'https://www.placecage.com/g/300/300',
-    name: 'fresh-stretched mozz',
-    price: '2.25'
-  },
-  {
-    avgDishRating: 1,
-    description: 'this is a dish',
-    foursquarEntryId: '17270633',
-    imageUrl: 'https://www.placecage.com/g/300/300',
-    name: 'fresh-stretched mozz',
-    price: '5.25'
-  },
-  {
-    avgDishRating: 2.5,
-    description: 'great great great',
-    foursquarEntryId: '17270633',
-    imageUrl: 'https://www.placecage.com/g/300/300',
-    name: 'fresh-stretched mozz',
-    price: '1.25'
-  },
-  {
-    avgDishRating: 3.2,
-    description: 'great great great',
-    foursquarEntryId: '17270633',
-    imageUrl: 'https://www.placecage.com/g/300/300',
-    name: 'fresh-stretched mozz',
-    price: '2.25'
-  },
-  {
-    avgDishRating: 4,
-    description: 'great great great',
-    foursquarEntryId: '17270633',
-    imageUrl: 'https://www.placecage.com/g/300/300',
-    name: 'fresh-stretched mozz',
-    price: '8.00'
-  },
-]
 
 class Fridge extends Component {
   constructor() {
     super();
     this.state = {
-      favorites: sampleFav,
+      favorites: [],
     }
 
   }
@@ -95,11 +45,15 @@ class Fridge extends Component {
 
         <Card.Group itemsPerRow={4}>
           {this.state.favorites.map((r, i) => {
+            console.log('rrrr', r)
             return (
-               <Modal trigger={       <li className="menuliststyle" key={i}>
-                <Card color="teal" image={r.imageUrl} />
-
-              </li>             }>
+               <Modal  key={i} trigger={       
+                 
+                <li className="menuliststyle">
+                  <Card color="teal" image={r.imageUrl} />
+                </li>             
+                
+                }>
 
     <Modal.Content image>
       <Image wrapped size='medium' src={r.imageUrl} />
@@ -114,14 +68,6 @@ class Fridge extends Component {
             );
           })}
         </Card.Group>
-
-
-
-
-
-    
-
-
       </div>
       <br /> <br /> <br /> <br />  
       <Footer />

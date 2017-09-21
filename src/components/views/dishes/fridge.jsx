@@ -1,18 +1,12 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import {
-  Button,
   Header,
   Image,
   Modal,
-  Comment,
-  Feed,
-  Icon,
   Card,
   Rating
 } from 'semantic-ui-react';
-import MenuCard from '../restaurants/menuCard';
 import Footer from '../static/footerhome';
 
 const sampleFav = [

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 // import MenuCard from './menuCard';
 import CommentCard from '../static/commentCard';
-
+import Footer from '../static/footerhome';
 import {
   Button,
   Header,
@@ -14,6 +14,7 @@ import {
   Icon,
   Card,
   Rating } from 'semantic-ui-react';
+
 // {
 //   foursquareEntryId: "107410403",
 //   name: "Arugula Salad",
@@ -59,6 +60,7 @@ class Dish extends Component {
     }
 
     return (
+      <div>
       <div className="ui container">
 
         <br/>
@@ -89,6 +91,13 @@ class Dish extends Component {
         <h2>
           <Link to="/dishes">Back</Link>
         </h2>
+      
+      </div>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <Footer />
       </div>
     );
   }

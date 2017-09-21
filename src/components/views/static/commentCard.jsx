@@ -168,7 +168,7 @@ class CommentCard extends Component {
 
           </Grid.Column>
           <Grid.Column width={9}>
-          {user_displayName}
+          <h3>{user_displayName}</h3>
             <Rating
               onRate={this.handleRate}
               maxRating={5}
@@ -182,11 +182,10 @@ class CommentCard extends Component {
                 ref={(i)=> this._comment = i}
                 placeholder="leave a comment..."
               />
-              <br/>
+              
 
               <Button
                 content="Add Reply"
-                labelPosition="left"
                 icon="edit"
                 primary
               />

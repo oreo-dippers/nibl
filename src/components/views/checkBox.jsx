@@ -15,27 +15,27 @@ export default class CheckBox extends Component {
   render() {
     return (
       <Form>
-
-        <Form.Field>
+      <Form.Field>
           <Checkbox
             radio
-            label='search by dishes'
-            name='checkbox'
-            value='dishes'
-            checked={this.props.searchBy === 'dishes'}
-            onChange={this.handleChange}
-          />
-        </Form.Field>
-        <Form.Field>
-          <Checkbox
-            radio
-            label='search by restaurants'
+            label='Restaurants'
             name='checkbox'
             value='restaurants'
             checked={this.props.searchBy === 'restaurants'}
             onChange={this.handleChange}
           />
         </Form.Field>
+        <Form.Field>
+          <Checkbox
+            radio
+            label='Dishes'
+            name='checkbox'
+            value='dishes'
+            checked={this.props.searchBy === 'dishes'}
+            onChange={this.handleChange}
+          />
+        </Form.Field>
+      
         {/* Selected: <b>{this.props.searchBy}</b> */}
       </Form>
     )

@@ -43,10 +43,10 @@ class MenuCard extends Component {
       <div>
         <Card>
           <Image
-            src={menu.imageUrl}
+            src={menu.imageUrl || 'http://www.technodoze.com/wp-content/uploads/2016/03/default-placeholder.png'}
             alt=""
           />
-          <button onClick={this.addToFridge}>Add to Fridge: </button>
+         
           <Card.Content>
             <Card.Header>
               <Link to={
@@ -71,6 +71,7 @@ class MenuCard extends Component {
               {menu.price}
             </a>
           </Card.Content>
+          <Button onClick={this.addToFridge}>Save</Button>
         </Card>
       </div>
     );

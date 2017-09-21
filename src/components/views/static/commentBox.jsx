@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import {
   Button,
-  Header,
   Image,
   Modal,
   Comment,
   Feed,
-  Segment,
-  Form,
   Icon,
   Grid,
   Rating
@@ -51,7 +48,7 @@ class CommentBox extends Component {
                     size="mini"
                     trigger={
                       <a>
-                        <img  id="thecommentphoto" src={ imageUrl } />
+                        <img  id="thecommentphoto" src={ imageUrl } alt=""/>
                       </a>
                     }
                   >

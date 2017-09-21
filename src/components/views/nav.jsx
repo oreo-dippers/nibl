@@ -14,7 +14,7 @@ export default class Nav extends Component {
 		this.usersRef = null;
 		this.userRef = null;
     this.state = {
-			searchBy: 'dishes',
+			searchBy: 'restaurants',
 			currentUser: null,
 			users:{},
       userData: null,
@@ -117,12 +117,12 @@ export default class Nav extends Component {
 
               {currentUser && (
                 <Menu.Menu position="right">
-                  <div className="item">
+                  {/*<div className="item">
                     <img
                       className="ui avatar image"
                       src={currentUser.photoURL}
                     />
-                  </div>
+                  </div>*/}
                   <div className="item">
                     <Modal
                       trigger={

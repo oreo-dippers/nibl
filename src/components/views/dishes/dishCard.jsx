@@ -1,11 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {Button,Header,Image,Modal,Comment,Feed,Icon,Card,Rating } from 'semantic-ui-react';
-
-const dashify = (str) => {
-  return str.toLowerCase().split(' ').join('-')
-}
-// var store_name = dashify(dish.name)
+import { dashify } from '../../../helpers';
 
 class DishCard extends Component {
   render() {

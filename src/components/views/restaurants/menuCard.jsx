@@ -1,6 +1,18 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
-import {Button,Header,Image,Modal,Popup,Comment,Feed,Icon,Card,Rating } from 'semantic-ui-react';
+import {
+  Button,
+  Header,
+  Image,
+  Modal,
+  Popup,
+  Comment,
+  Feed,
+  Icon,
+  Card,
+  Rating
+} from 'semantic-ui-react';
+import { dashify } from '../../../helpers';
 
 class MenuCard extends Component {
   render() {
@@ -20,7 +32,7 @@ class MenuCard extends Component {
             <Card.Header>
               <Link to={
                   {
-                    pathname: `/dishes/${menu.name}`,
+                    pathname: `/dishes/${dashify(menu.name)}`,
                     state: { dish }
                   }
                 }>

@@ -1,9 +1,19 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
-import MenuCard from './menuCard';
-import CommentCard from '../static/commentCard';
+import React, { Component } from 'react';
 import axios from 'axios';
-import {Button,Header,Image,Modal,Comment,Feed,Icon,Card,Rating } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+// import MenuCard from './menuCard';
+import CommentCard from '../static/commentCard';
+
+import {
+  Button,
+  Header,
+  Image,
+  Modal,
+  Comment,
+  Feed,
+  Icon,
+  Card,
+  Rating } from 'semantic-ui-react';
 // {
 //   foursquareEntryId: "107410403",
 //   name: "Arugula Salad",
@@ -74,24 +84,8 @@ class Dish extends Component {
           </Card.Content>
         </Card>
 
-
-
-
-
-        <center>
-
-          <div className="ui huge header" style={{fontSize: '5em'}}>
-           recommendations
-          </div>
-        </center>
         <CommentCard {...this.props} {...this.state} setDishState={this.setDishState}/>
-        <div className="ui container ">
-          <div className="ui centered cards">
-            <MenuCard />
-            <MenuCard />
-            <MenuCard />
-          </div>
-        </div>
+
         <h2>
           <Link to="/dishes">Back</Link>
         </h2>

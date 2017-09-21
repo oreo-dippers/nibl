@@ -39,7 +39,6 @@ class Restaurant extends Component {
         foursquareId: foursquareId,
       },
     };
-    console.log('process.env.HOST', process.env.HOST);
     axios
       .get(`${process.env.HOST}/api/restaurants/page`, req)
       .then(res => {
@@ -118,12 +117,11 @@ class Restaurant extends Component {
         </center>
         <br/>
         <br/>
-        
+
         <div className="ui container ">
           <div className="ui centered cards">
             <ul className="menulist">
               {this.state.menuState.map((r, i) => {
-                // var store_name = dashify(r.name)
                 return (
                   <li className="menuliststyle" key={i}>
                     <MenuCard menu={r} />

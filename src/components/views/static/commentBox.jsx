@@ -30,8 +30,8 @@ class CommentBox extends Component {
     const { user_photoURL, user_displayName  } = user;
     return (
       <Grid>
-        <Grid.Column width={2} />
-        <Grid.Column width={10}>
+        <Grid.Column width={1} />
+        <Grid.Column width={13}>
           <Comment.Group>
             <Comment>
               <Comment.Avatar src={user_photoURL} />
@@ -51,13 +51,14 @@ class CommentBox extends Component {
                     size="mini"
                     trigger={
                       <a>
-                        <img src={ imageUrl } />
+                        <img  id="thecommentphoto" src={ imageUrl } />
                       </a>
                     }
                   >
                     <center>
                       <Image
                         wrapped
+                       
                         size="medium"
                         src={imageUrl}
                       />
@@ -76,7 +77,7 @@ class CommentBox extends Component {
             </Comment>
           </Comment.Group>
         </Grid.Column>
-        <Grid.Column width={3}>
+        <Grid.Column width={1}>
           <Button
             onClick={()=>this.setState({upvote: !this.state.upvote})}
             icon
@@ -94,6 +95,8 @@ class CommentBox extends Component {
           </div>
         </Grid.Column>
       </Grid>
+  
+    
     )
   }
 

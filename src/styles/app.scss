@@ -37,6 +37,15 @@ body h1 {
   align-self: center;
 }
 
+#shell {
+  /* width:500px; */
+  /* height:300px; */
+  background:#CFFCED; 
+  border-radius: 10px 10px 10px 10px;
+  overflow:hidden;
+ }
+
+
 .footer {
   // display: flex;
   // align-items: baseline;
@@ -70,6 +79,10 @@ textarea{
   width: 600px !important;
   }
 
+#thecommentphoto{
+height: 10%;
+width: 10%;
+}
 
 #ourstory{
   font-family: "courier";

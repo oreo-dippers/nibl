@@ -196,7 +196,9 @@ class CommentCard extends Component {
         {
           this.props.comments.map((comment, i) => {
             return (
+            
               <CommentBox data={comment} key={i}/>
+         
             )
           })
         }

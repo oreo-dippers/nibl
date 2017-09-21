@@ -2,17 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import MenuCard from './menuCard';
 import axios from 'axios';
-import {
-  Button,
-  Header,
-  Image,
-  Modal,
-  Comment,
-  Feed,
-  Icon,
-  Card,
-  Rating,
-} from 'semantic-ui-react';
+import {Button,Header,Image,Modal,Comment,Feed,Icon,Card,Rating } from 'semantic-ui-react';
 
 class Restaurant extends Component {
   constructor(props) {

@@ -65,12 +65,12 @@ class Dish extends Component {
         <br/>
         <br/>
         <br/>
-
+         <Image src={this.props.location.state.dish.imageUrl} />
+        
           <Card fluid centered>
 
           <Card.Content>
-          <Image src={dish.imageUrl} />
-            <h2 style={{fontSize: '3em'}}> {dish.name} </h2>
+            <h2 style={{fontSize: '3em'}}> {this.props.location.state.dish.name} </h2>
           </Card.Content>
 
           <Card.Content extra>
@@ -84,7 +84,6 @@ class Dish extends Component {
             Rating:  <Rating defaultRating={dish.avgDishRating} maxRating={5} disabled />
           </Card.Content>
         </Card>
-
         <CommentCard {...this.props} {...this.state} setDishState={this.setDishState}/>
 
         <h2>

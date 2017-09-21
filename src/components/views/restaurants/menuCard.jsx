@@ -37,14 +37,12 @@ class MenuCard extends Component {
   }
 
   render() {
-    const {menu} = this.props;
+    const { menu } = this.props;
     const dish = menu
     return (
       <div>
         <Card>
           <Image
-            fluid
-            label={{ as: 'a', corner: 'left', icon: 'heart' }}
             src={menu.imageUrl}
             alt=""
           />

@@ -53,6 +53,7 @@ class Dish extends Component {
 
   render() {
     const { dish } = this.props.location.state;
+    console.log('dish', dish);
     if (!dish) {
       return <div>Sorry, but the dish was not found</div>;
     }
@@ -68,19 +69,19 @@ class Dish extends Component {
           <Card fluid centered>
 
           <Card.Content>
-          {/*<Image src={img} />*/}
-            <h2 style={{fontSize: '3em'}}> {this.props.location.state.dish.name} </h2>
+          <Image src={dish.imageUrl} />
+            <h2 style={{fontSize: '3em'}}> {dish.name} </h2>
           </Card.Content>
 
           <Card.Content extra>
             <Icon name="dollar" />
-            Price: {this.props.location.state.dish.price}
+            Price: {dish.price}
           </Card.Content>
 
 
           <Card.Content extra>
             <Icon name="thumbs outline up" />
-            Rating:  <Rating defaultRating={this.props.location.state.dish.avgDishRating} maxRating={5} disabled />
+            Rating:  <Rating defaultRating={dish.avgDishRating} maxRating={5} disabled />
           </Card.Content>
         </Card>
 

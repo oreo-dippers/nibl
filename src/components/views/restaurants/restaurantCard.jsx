@@ -5,7 +5,6 @@ import { dashify } from '../../../helpers';
 
 class RestaurantCard extends Component {
   render() {
-    // const restaurant = this.props.location.state.restaurant
     const venue = this.props.restaurant;
 
     const address = JSON.parse(venue.address).join(', ');
@@ -30,13 +29,13 @@ class RestaurantCard extends Component {
                 state: {venue},
               }}
             >
-              restaurauntCard link : <h1>{venue.name}</h1>
+              <h1>{venue.name}</h1>
             </Link>
 
-            <div className="meta">
+            {/* <div className="meta">
               <Rating defaultRating={3} maxRating={5} disabled />
               <span className="date">342 Ratings</span>
-            </div>
+            </div> */}
             <div className="description">
               We serve an obsene amount of Ramen, at any point and any time. We
               serve asian inspired Ramen made with Indian Ingredients. It is the

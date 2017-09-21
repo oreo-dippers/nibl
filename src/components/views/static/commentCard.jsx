@@ -24,10 +24,11 @@ class CommentCard extends Component {
     this.state = {
       uploadProgress: null,
       file: null,
-      imagePreviewUrl: null,
+      imagePreviewUrl: 'http://wfarm3.dataknet.com/static/resources/icons/set112/69e0d01c.png',
       rating: 0,
       maxRating: 5,
       foursquareEntryId: props.location.state.foursquareEntryId,
+      UserData: localStorage.getItem('UserData'),
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.aviarySubmit = this.aviarySubmit.bind(this);
@@ -43,18 +44,17 @@ class CommentCard extends Component {
   handleCommentSubmit(e) {
     e.preventDefault();
     const pathToState = this.props.location.state
-    const foursquareEntryId = pathToState && pathToState.dish && pathToState.dish.foursquareEntryId
-
-    const UserData = localStorage.getItem('UserData')
-    const UserId = localStorage.getItem('UserId')
+    const foursquareEntryId = pathToState && pathToState.dish && pathToState.dish.foursquareEntryId;
+    // let UserData = localStorage.getItem('UserData');
+    const UserId = localStorage.getItem('UserId');
     const comment = {
-      userData: UserData,
+      userData: this.state.UserData,
       firebaseId: UserId,
       review: this._comment.value,
       starRating: this.state.rating,
       foursquareEntryId,
       imageUrl: this.filtered.src,
-    }
+    };
     axios.post(`${process.env.HOST}/api/dishes/review`, comment)
     .then(res => {
       console.log('%c api/dishes/review POST SUCCESS!!', 'color: green')
@@ -109,6 +109,7 @@ class CommentCard extends Component {
 
   render() {
     let { imagePreviewUrl } = this.state;
+    const { user_displayName } = JSON.parse(this.state.UserData);
     return (
       <div className="ui container">
         <div className="ui centered huge header" style={{fontSize: '5em'}}>
@@ -167,7 +168,7 @@ class CommentCard extends Component {
 
           </Grid.Column>
           <Grid.Column width={9}>
-          Name Here
+          {user_displayName}
             <Rating
               onRate={this.handleRate}
               maxRating={5}

@@ -21,7 +21,7 @@ connection.db.drop().then(() => {
     .then(() => {
       // Seed database with mock data
       // First restaurant table
-      restaurants.restaurantData.forEach(restaurant => {
+      restaurants.restaurantDataSF.forEach(restaurant => {
         // console.log(restaurant);
 
         connection.Restaurant
@@ -71,15 +71,17 @@ connection.db.drop().then(() => {
     })
     .then(() => {
       // Then fill a restaurant's menu (dish table)
-      dishes.dishDataSFTin.forEach(dish => {
+      dishes.dishDataSFTin.forEach(item => {
 
         connection.Dish
           .create({
-            foursquareEntryId: dish.foursquareEntryId,
-            name: dish.name,
-            imageUrl: dish.imageUrl,
-            description: dish.description,
-            price: dish.price
+            foursquareEntryId: item.foursquareEntryId,
+            name: item.name,
+            imageUrl: item.imageUrl,
+            description: item.description,
+            price: item.price,
+            avgDishRating: 0,
+            restaurantId: 1 // in this case-- update as needed
           })
           .then(() => {
             console.log(

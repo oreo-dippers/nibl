@@ -25,9 +25,7 @@ class Dish extends Component {
 
   componentDidMount() {
     const { foursquareEntryId } = this.props.location.state.dish;
-    // const theDish = this.props.location.state.dish;
-    console.log('aaaaaaaa: ' ,this.props.location.state.dish)
-    const request = {params: {foursquareEntryId}}
+    const request = {params: { foursquareEntryId }}
     axios.get(`${process.env.HOST}/api/dishes/review`, request)
       .then(res => {
         console.log('%c <Dish /> api/dishes/review INITIAL GET SUCCESS!!', 'color: green')
@@ -43,9 +41,6 @@ class Dish extends Component {
     this.setState(stateObj);
   }
 
-  // const {prefix, suffix} = imageUrl;
-  // const img = `${prefix}800x400${suffix}`;
-
   render() {
     const { dish } = this.props.location.state;
     if (!dish) {
@@ -54,12 +49,12 @@ class Dish extends Component {
 
     return (
       <div className="ui container">
-     
+
         <br/>
         <br/>
         <br/>
         <br/>
-        
+
           <Card fluid centered>
 
           <Card.Content>
@@ -78,11 +73,11 @@ class Dish extends Component {
             Rating:  <Rating defaultRating={this.props.location.state.dish.avgDishRating} maxRating={5} disabled />
           </Card.Content>
         </Card>
-          
-    
-  
 
-    
+
+
+
+
         <center>
 
           <div className="ui huge header" style={{fontSize: '5em'}}>

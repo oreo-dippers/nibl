@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {Button,Header,Image,Modal,Comment,Feed,Icon,Card,Rating } from 'semantic-ui-react';
-// const dashify = (str) => {
-//   return str.toLowerCase().split(' ').join('-')
-// }
+
+const dashify = (str) => {
+  return str.toLowerCase().split(' ').join('-')
+}
 // var store_name = dashify(dish.name)
 
 class DishCard extends Component {
   render() {
-    // const restaurant = this.props.location.state.restaurant
     const {dish} = this.props;
     const {prefix, suffix} = dish.imageUrl;
     const img = `${prefix}800x200${suffix}`;
@@ -35,7 +35,7 @@ class DishCard extends Component {
                     <div className="ui  huge header" style={{fontSize: '3em'}}>
                       <Link
                         to={{
-                          pathname: `/dishes/${dish.name}`,
+                          pathname: `/dishes/${dashify(dish.name)}`,
                           state: {dish},
                         }}
                       >

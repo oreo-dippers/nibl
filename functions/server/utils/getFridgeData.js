@@ -55,7 +55,8 @@ module.exports.getFridgeData = (data) => {
                       }
                     })
                     .then(currentDish => {
-                      console.log('dishInfo is ', dishInfo);
+                      console.log('currentDishInfo is ', currentDish);
+                      console.log('currentDishInfo[0] is ', currentDish[0]);
 
                       // Make organized data to send to front end
                       let {foursquareEntryId, name, imageUrl, description, price, avgDishRating} = currentDish[0].dataValues;

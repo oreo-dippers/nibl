@@ -98,7 +98,7 @@ connection.db.drop().then(() => {
       // Then fill the restaurant dish's reviews:
       dishReviews.dishReviewDataSFTin.forEach(review => {
 
-        connection.Dish
+        connection.DishReview
           .create({
             userId: review.userId,
             dishId: review.dishId,
@@ -118,7 +118,7 @@ connection.db.drop().then(() => {
               e
             );
           });
-      }); // End of adding dishData
+      }); // End of adding dishReviewData
     })
     .catch(e => {
       console.error(

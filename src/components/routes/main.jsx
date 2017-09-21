@@ -25,7 +25,6 @@ const Main = (props) => (
           <RoutesForDishes dishes={props.dishes}
           />}
         />
-      <Route path='/addphoto' component={CommentCard}/>
       <Route path='/fridge' component={Fridge}/>
     </Switch>
   </div>

@@ -1,26 +1,59 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
-import {Button,Header,Image,Modal,Popup,Comment,Feed,Icon,Card,Rating } from 'semantic-ui-react';
+import {
+  Button,
+  Header,
+  Image,
+  Modal,
+  Popup,
+  Comment,
+  Feed,
+  Icon,
+  Card,
+  Rating
+} from 'semantic-ui-react';
+import { dashify } from '../../../helpers';
 
 class MenuCard extends Component {
+  constructor(props) {
+    super(props);
+    this.addToFridge = this.addToFridge.bind(this);
+  }
+  addToFridge() {
+    console.log('this.props', this.props);
+    // firebaseID
+    // foursquarID
+    const firebaseId = String(localStorage.getItem('UserId'));
+    console.log('firebaseId', firebaseId);
+    const reqBody = {
+      firebaseId,
+      foursquareEntryId: this.props.menu.foursquareEntryId
+    }
+    console.log('reqBody', reqBody);
+    axios.post(`${process.env.HOST}/api/user/fridge`, reqBody)
+      .then(req => console.log('post favorited! success', req.data))
+      .catch(err => console.log('post favorited! fail', err))
+  }
+
   render() {
-    console.log('hi from menucard')
     const {menu} = this.props;
     const dish = menu
     return (
       <div>
-        {'this is menucard'}
         <Card>
           <Image
-            src="https://instagram.fsnc1-1.fna.fbcdn.net/t51.2885-15/e35/12751127_511734799019156_1460279120_n.jpg"
+            fluid
+            label={{ as: 'a', corner: 'left', icon: 'heart' }}
+            src={menu.imageUrl}
             alt=""
           />
-
+          <button onClick={this.addToFridge}>Add to Fridge: </button>
           <Card.Content>
             <Card.Header>
               <Link to={
                   {
-                    pathname: `/dishes/${menu.name}`,
+                    pathname: `/dishes/${dashify(menu.name)}`,
                     state: { dish }
                   }
                 }>
@@ -28,7 +61,7 @@ class MenuCard extends Component {
               </Link>
             </Card.Header>
 
-            <Rating defaultRating={3} maxRating={5} disabled />
+            <Rating defaultRating={menu.avgDishRating} maxRating={5} disabled />
             <Popup
               trigger={<Card.Description>{menu.description ? menu.description.slice(0, 30)+'...' : 'No description'} </Card.Description>}
               content={menu.description}

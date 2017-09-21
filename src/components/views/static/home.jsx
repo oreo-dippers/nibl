@@ -1,6 +1,17 @@
 import React from 'react';
 import MenuCard from '../restaurants/menuCard';
-import {Button,Header, Image,Modal,Input,Comment,Feed,Icon,Card,Rating} from 'semantic-ui-react';
+import {
+  Button,
+  Header,
+  Image,
+  Modal,
+  Input,
+  Comment,
+  Feed,
+  Icon,
+  Card,
+  Rating
+} from 'semantic-ui-react';
 
 
 const Home = () => (
@@ -66,7 +77,7 @@ const Home = () => (
       </Card.Group>
       <br />
       <br />
-      <br /> 
+      <br />
 	  <br />
       <br />
       <br />

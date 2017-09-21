@@ -14,20 +14,11 @@ import {
   Rating,
 } from 'semantic-ui-react';
 
-const sampleMenuItem = {
-  foursquareEntryId: '107410403',
-  name: 'My Amazing Hardcoded Dish in Restaurnt.js',
-  imageUrl: '',
-  description:
-    'With roasted farm beets, pickled red onions, Vermont Creamery goat cheese schmear, apple cider vinaigrette',
-  price: '11.00',
-  avgRating: 0,
-};
 class Restaurant extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      menuState: [sampleMenuItem],
+      menuState: [],
       foursquareId: null,
     };
   }
@@ -39,13 +30,12 @@ class Restaurant extends Component {
         foursquareId: foursquareId,
       },
     };
-    console.log('process.env.HOST', process.env.HOST);
     axios
       .get(`${process.env.HOST}/api/restaurants/page`, req)
       .then(res => {
         console.log('%c <Restaurant /> /api/restaurants/page INITIAL GET SUCCESS!!', 'color: green')
-        this.setState({foursquareId});
-        this.setState({menuState: res.data});
+        this.setState({ foursquareId });
+        this.setState({ menuState: res.data });
       })
       .catch(function(err) {
         console.log('%c <Restaurant /> /api/restaurants/page INITIAL GET FAIL!!', 'color: red')
@@ -56,7 +46,6 @@ class Restaurant extends Component {
   render() {
     const venue = this.props.location.state.venue;
     const imageUrl = JSON.parse(venue.imageUrl);
-    console.log(venue);
     const {prefix, suffix} = imageUrl;
     const address = JSON.parse(venue.address).join(', ');
     const img = `${prefix}800x400${suffix}`;
@@ -101,11 +90,11 @@ class Restaurant extends Component {
             <Icon name="world" />
             Website: {venue.website}
           </Card.Content>
-
-          <Card.Content extra>
+          {/* restuarnt rating */}
+          {/* <Card.Content extra>
             <Icon name="thumbs outline up" />
             Rating: {venue.avgRating}
-          </Card.Content>
+          </Card.Content> */}
         </Card>
 
         <br/>
@@ -118,12 +107,11 @@ class Restaurant extends Component {
         </center>
         <br/>
         <br/>
-        
+
         <div className="ui container ">
           <div className="ui centered cards">
             <ul className="menulist">
               {this.state.menuState.map((r, i) => {
-                // var store_name = dashify(r.name)
                 return (
                   <li className="menuliststyle" key={i}>
                     <MenuCard menu={r} />

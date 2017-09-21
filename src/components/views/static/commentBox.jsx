@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
-import {Button,Header,Image,Modal,Comment,Feed,Segment,Form,Icon,Grid,Rating,} from 'semantic-ui-react';
+import {
+  Button,
+  Header,
+  Image,
+  Modal,
+  Comment,
+  Feed,
+  Segment,
+  Form,
+  Icon,
+  Grid,
+  Rating
+} from 'semantic-ui-react';
 
-
-// {
-//   userData: '{"user_photoURL":"https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg","user_displayName":"Ankit","user_email":"ankit.kumar@gmail.com"}',
-//   review: 'Dude, this tastes so good!',
-//   starRating: 2,
-//   upvoteTotal: 5555,
-//   createdAt: new Date().toLocaleTimeString(),
-//   updatedAt: "",
-//   userId: "postgres key",
-//   dishId: "",
-//   imageUrl: 'http://usa.stockfood.com/Sites/StockFood/Documents/Homepage/News/en/9.jpg',
-// }
-
-
+import moment from 'moment';
 class CommentBox extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // upvoteTotal: this.props.upvoteTotal,
       upvote: false,
     }
   }
@@ -29,7 +27,7 @@ class CommentBox extends Component {
     let upvotes = upvoteTotal;
     let user = typeof userData === 'string' ? JSON.parse(userData) : userData;
 
-    const { user_photoURL, user_displayName  } = user
+    const { user_photoURL, user_displayName  } = user;
     return (
       <Grid>
         <Grid.Column width={2} />
@@ -43,7 +41,7 @@ class CommentBox extends Component {
                   rating={starRating}
                   maxRating={5} disabled />
                 <Comment.Metadata>
-                  <div>{ createdAt }</div>
+                  <div>{ moment(createdAt).fromNow() }</div>
                 </Comment.Metadata>
 
                 <Comment.Text>{review}</Comment.Text>
@@ -68,10 +66,10 @@ class CommentBox extends Component {
                 </Feed.Extra>
                 <Comment.Actions>
                   <Feed.Meta>
-                    <Feed.Like>
+                    {/* <Feed.Like>
                       <Icon name="like" />
                       1 Like
-                    </Feed.Like>
+                    </Feed.Like> */}
                   </Feed.Meta>
                 </Comment.Actions>
               </Comment.Content>

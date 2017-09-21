@@ -17,7 +17,9 @@ functions.config = jest.fn(() => (firebaseAppConfig));
 const myApp = require('../index');
 
 
-
-// console.log('Line is 22 is running: ');
-// var app = require('../index');
+//Add sum to application and test it
+const sum = require('./../sum');
+test('adds 1 + 2 to equal 3', () => {
+  expect(sum(1, 2)).toBe(3);
+});
 

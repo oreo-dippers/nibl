@@ -1,6 +1,5 @@
 const querystring = require('querystring');
 const foursquare = require('./../api-config/foursquare-config.js');
-const bodyParser = require('body-parser');
 const utils = require('./../utils/util');
 
 var credentials = {
@@ -10,8 +9,7 @@ credentials.client_id = foursquare.CLIENT_ID;
 credentials.client_secret = foursquare.CLIENT_SECRET;
 const qs = querystring.stringify(credentials);
 
-
-module.exports.getRestaurants = function(req, res) {
+module.exports.getRestaurants = (req, res) => {
   const url = 'https://api.foursquare.com/v2/venues/explore';
   var myQuery = req.query;
   var parameterObj = {
@@ -31,13 +29,13 @@ module.exports.getRestaurants = function(req, res) {
         res.status(200).send(restaurantData);
       })
       .catch(err => {
-        res.status(400).send(err);
+        res.status(200).send(err);
       });
   });
 };
 
 // Reached at localhost:3006/menu
-module.exports.getMenu = function(req, res) {
+module.exports.getMenu = (req, res) => {
   console.log('FoursquareId received is ', req.query.foursquareId);
   const url = 'https://api.foursquare.com/v2/venues/';
   const foursquareId = req.query.foursquareId;
@@ -51,7 +49,7 @@ module.exports.getMenu = function(req, res) {
         res.status(200).send(dishData);
       })
       .catch(err => {
-        res.status(400).send(err);
+        res.status(200).send(err);
       });
   });
 };

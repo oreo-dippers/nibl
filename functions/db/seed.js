@@ -5,6 +5,7 @@ const restaurants = require('./seedData/restaurantDataSF.js');
 const users = require('./seedData/userData.js');
 const dishes = require('./seedData/dishDataSFTin.js');
 const dishReviews = require('./seedData/dishReviewDataSFTin.js');
+const savedDishes = require('./seedData/userDishData.js');
 
 // To seed
 // 1 Drop the tables
@@ -20,9 +21,8 @@ connection.db.drop().then(() => {
     .sync()
     .then(() => {
       // Seed database with mock data
-      // First restaurant table
+      // 1 First restaurant table
       restaurants.restaurantDataSF.forEach(restaurant => {
-        // console.log(restaurant);
 
         connection.Restaurant
           .create({
@@ -48,7 +48,7 @@ connection.db.drop().then(() => {
       }); // End adding restaurantData
     })
     .then(() => {
-      // Then fill user table
+      // 2 Fill user table
       users.userData.forEach(user => {
         
         connection.User
@@ -70,7 +70,7 @@ connection.db.drop().then(() => {
       }); // End adding userData
     })
     .then(() => {
-      // Then fill a restaurant's menu (dish table)
+      // 3 Fill a restaurant's menu (dish table)
       dishes.dishDataSFTin.forEach(item => {
 
         connection.Dish
@@ -97,7 +97,7 @@ connection.db.drop().then(() => {
       }); // End of adding dishData
     })
     .then(() => {
-      // Then fill the restaurant dish's reviews:
+      // 4 Fill the restaurant dish's reviews:
       dishReviews.dishReviewDataSFTin.forEach(review => {
 
         connection.DishReview
@@ -121,6 +121,28 @@ connection.db.drop().then(() => {
             );
           });
       }); // End of adding dishReviewData
+    })
+    .then(() => {
+      // 5 Fill the user's saved dishes (fridge):
+      savedDishes.userDishData.forEach(entry => {
+
+        connection.UserDish
+          .create({
+            userId: entry.userId,
+            dishId: entry.dishId,
+          })
+          .then(() => {
+            console.log(
+              '!!! Running seed.js: Your saved dish (userDish) element has been added to the database successfully!'
+            );
+          })
+          .catch(e => {
+            console.error(
+              '!!! Running seed.js: There was an error adding the saved dish (userDish) review element to the database: ',
+              e
+            );
+          });
+      }); // End of adding userDishData
     })
     .catch(e => {
       console.error(

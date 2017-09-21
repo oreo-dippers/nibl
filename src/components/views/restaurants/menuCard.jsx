@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import {
   Button,
@@ -15,6 +16,26 @@ import {
 import { dashify } from '../../../helpers';
 
 class MenuCard extends Component {
+  constructor(props) {
+    super(props);
+    this.addToFridge = this.addToFridge.bind(this);
+  }
+  addToFridge() {
+    console.log('this.props', this.props);
+    // firebaseID
+    // foursquarID
+    const firebaseId = String(localStorage.getItem('UserId'));
+    console.log('firebaseId', firebaseId);
+    const reqBody = {
+      firebaseId,
+      foursquareEntryId: this.props.menu.foursquareEntryId
+    }
+    console.log('reqBody', reqBody);
+    axios.post(`${process.env.HOST}/api/user/fridge`, reqBody)
+      .then(req => console.log('post favorited! success', req.data))
+      .catch(err => console.log('post favorited! fail', err))
+  }
+
   render() {
     const {menu} = this.props;
     const dish = menu
@@ -22,10 +43,12 @@ class MenuCard extends Component {
       <div>
         <Card>
           <Image
+            fluid
+            label={{ as: 'a', corner: 'left', icon: 'heart' }}
             src={menu.imageUrl}
             alt=""
           />
-
+          <button onClick={this.addToFridge}>Add to Fridge: </button>
           <Card.Content>
             <Card.Header>
               <Link to={

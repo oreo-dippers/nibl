@@ -36,7 +36,6 @@ class Restaurant extends Component {
         console.log('%c <Restaurant /> /api/restaurants/page INITIAL GET SUCCESS!!', 'color: green')
         this.setState({ foursquareId });
         this.setState({ menuState: res.data });
-        console.log('this.state.menuState', this.state.menuState)
       })
       .catch(function(err) {
         console.log('%c <Restaurant /> /api/restaurants/page INITIAL GET FAIL!!', 'color: red')

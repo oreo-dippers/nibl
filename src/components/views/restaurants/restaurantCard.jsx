@@ -6,7 +6,8 @@ import { dashify } from '../../../helpers';
 class RestaurantCard extends Component {
   render() {
     const venue = this.props.restaurant;
-
+    console.log('venue', venue);
+    
     const address = JSON.parse(venue.address).join(', ');
     const {prefix, suffix} = JSON.parse(venue.imageUrl);
     const img = `${prefix}800x200${suffix}`;

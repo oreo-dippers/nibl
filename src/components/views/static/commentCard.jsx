@@ -18,7 +18,7 @@ import { Button,
   Rating
 } from 'semantic-ui-react';
 
-const stockPhoto = 'http://www.artsalamandre.com/wp-content/uploads/2016/03/placeholder.png'
+const stockPhoto = 'https://firebasestorage.googleapis.com/v0/b/oreo-nibl.appspot.com/o/placeholder.png?alt=media&token=dacfc0b5-aad9-4862-89f8-234db596e02d'
 
 class CommentCard extends Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class CommentCard extends Component {
     this.state = {
       uploadProgress: null,
       file: null,
-      imagePreviewUrl: '',
+      imagePreviewUrl: stockPhoto,
       rating: 0,
       maxRating: 5,
       foursquareEntryId: props.location.state.foursquareEntryId,
@@ -65,7 +65,11 @@ class CommentCard extends Component {
           console.log('%c <CommentCard /> api/dishes/review *post-> GET* SUCCESS!!', 'color: green')
           console.log('<CommentCard /> res.data', res.data)
           console.log('this', this);
-          this.props.setDishState({comments: res.data})
+
+          if(Array.isArray(res.data)) {
+            this.props.setDishState({comments: res.data})
+          }
+
         })
         .catch(err => {
           console.log('%c <CommentCard /> api/dishes/review *post-> GET* FAIL!!', 'color: red', err)

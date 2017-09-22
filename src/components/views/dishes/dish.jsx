@@ -41,7 +41,11 @@ class Dish extends Component {
       .then(res => {
         console.log('%c <Dish /> api/dishes/review INITIAL GET SUCCESS!!', 'color: green')
         console.log('<Dish /> res.data', JSON.stringify(res.data, null, 2));
-        this.setState({comments: res.data});
+
+        if(Array.isArray(res.data)) {
+          this.setState({comments: res.data});
+        }
+        
       })
       .catch(err => {
         console.log('%c <Dish /> api/dishes/review INITIAL GET FAIL!!', 'color: red', err)

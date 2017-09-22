@@ -2,7 +2,19 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import MenuCard from './menuCard';
 import axios from 'axios';
-import {Button,Header,Image,Modal,Comment,Feed,Icon,Card,Rating } from 'semantic-ui-react';
+import {
+  Button,
+  Header,
+  Image,
+  Modal,
+  Comment,
+  Feed,
+  Icon,
+  Card,
+  Rating,
+  Loader,
+  Message,
+} from 'semantic-ui-react';
 
 class Restaurant extends Component {
   constructor(props) {
@@ -10,6 +22,7 @@ class Restaurant extends Component {
     this.state = {
       menuState: [],
       foursquareId: null,
+      hasLoaded: false,
     };
   }
 
@@ -24,10 +37,24 @@ class Restaurant extends Component {
       .get(`${process.env.HOST}/api/restaurants/page`, req)
       .then(res => {
         console.log('%c <Restaurant /> /api/restaurants/page INITIAL GET SUCCESS!!', 'color: green')
-        this.setState({ foursquareId });
-        this.setState({ menuState: res.data });
+        console.log('i ran')
+        console.log('res.data', res.data);
+        if (Array.isArray(res.data)) {
+          this.setState({
+            foursquareId,
+            menuState: res.data,
+            hasLoaded: true,
+          });
+        } else {
+          this.setState({
+            foursquareId,
+            hasLoaded: null,
+          });
+        }
+        console.log('this.state', this.state)
+
       })
-      .catch(function(err) {
+      .catch((err) => {
         console.log('%c <Restaurant /> /api/restaurants/page INITIAL GET FAIL!!', 'color: red')
         console.log(err);
       });
@@ -52,7 +79,7 @@ class Restaurant extends Component {
         <br />
         <br />
         <Image src="https://firebasestorage.googleapis.com/v0/b/oreo-nibl.appspot.com/o/rest.png?alt=media&token=fc8a34d7-533c-4c4d-ba7d-b147a73900e3"/>
-        
+
   <br />
         <br />
         <Card fluid centered>
@@ -86,35 +113,46 @@ class Restaurant extends Component {
         <br/>
         <br/>
         <Image src ="https://firebasestorage.googleapis.com/v0/b/oreo-nibl.appspot.com/o/menu.png?alt=media&token=1d3454e3-3ae7-4baf-ac62-3e8284d00999"/>
-        
-        <br/>
-        <br/>
 
-        <div className="ui container ">
-          <div className="ui centered cards">
-            <ul className="menulist">
-              {this.state.menuState.map((r, i) => {
-                return (
-                  <li className="menuliststyle" key={i}>
-                    <MenuCard menu={r} />
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        </div>
+        <br/>
+        <br/>
+        {
+          this.state.hasLoaded === false
+            ? <Loader active inline='centered' />
+            : this.state.hasLoaded === null
+            ?  <Message visible>
+                Sorry, no Menu items at the moment! <br/>
+                We are hard at work to get more dishes. <br/>
+                Thank you for your patience!
+              </Message>
+            : <div className="ui container ">
+                <div className="ui centered cards">
+                  <ul className="menulist">
+                    {this.state.menuState.map((r, i) => {
+                      return (
+                        <li className="menuliststyle" key={i}>
+                          <MenuCard menu={r} />
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              </div>
+        }
+
+
         <h2>
           <Link to="/restaurants">Back</Link>
         </h2>
 
 
-     
+
 
       </div>
 
-         <br /> <br /> <br /> <br />  
+         <br /> <br /> <br /> <br />
       <footer style={{background: '#66DFB7'}}>
-        <br /> <br /> <br /> <br /> 
+        <br /> <br /> <br /> <br />
         <div>
           <center>
             <i className="inverted large twitter icon" />
@@ -131,7 +169,7 @@ class Restaurant extends Component {
       </footer>
 
       </div>
-    );
+    )
   }
 }
 

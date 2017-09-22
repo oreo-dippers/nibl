@@ -28,6 +28,18 @@ describe('Test the test path', () => {
     test('It should response the GET method', (done) => {
         request(myApp.app)
           .get('/test')
+          .then((response) => {
+            expect(response.statusCode).toBe(200);
+            done();
+        });
+    });
+});
+
+
+describe('Test the restaurant path', () => {
+    test('It should response the GET method for /api/restaurants/', (done) => {
+        request(myApp.app)
+          .get('/api/restaurants/')
           .query({
             query: 'taco',
             near: 'San Francisco, CA, United States',
@@ -41,14 +53,12 @@ describe('Test the test path', () => {
 });
 
 
-describe('Test the restaurant path', () => {
-    test('It should response the GET method', (done) => {
+describe('Test the restaurant menu path', () => {
+    test('It should response the GET method for /api/restaurants/page path', (done) => {
         request(myApp.app)
-          .get('/api/restaurants/')
+          .get('/api/restaurants/page')
           .query({
-            query: 'taco',
-            near: 'San Francisco, CA, United States',
-            radius: '5000'
+            foursquareId: '5600850a498edff486fdfe89',
           })
           .then((response) => {
             expect(response.statusCode).toBe(200);

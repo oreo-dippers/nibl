@@ -13,7 +13,8 @@ import {
   Feed,
   Icon,
   Card,
-  Rating } from 'semantic-ui-react';
+  Rating,
+} from 'semantic-ui-react';
 
 // {
 //   foursquareEntryId: "107410403",
@@ -45,7 +46,7 @@ class Dish extends Component {
         if(Array.isArray(res.data)) {
           this.setState({comments: res.data});
         }
-        
+
       })
       .catch(err => {
         console.log('%c <Dish /> api/dishes/review INITIAL GET FAIL!!', 'color: red', err)
@@ -72,7 +73,7 @@ class Dish extends Component {
         <br/>
         <br/>
          <Image src={this.props.location.state.dish.imageUrl} />
-        
+
           <Card fluid centered>
 
           <Card.Content>
@@ -90,12 +91,13 @@ class Dish extends Component {
             Rating:  <Rating defaultRating={dish.avgDishRating} maxRating={5} disabled />
           </Card.Content>
         </Card>
+
         <CommentCard {...this.props} {...this.state} setDishState={this.setDishState}/>
 
         <h2>
           <Link to="/dishes">Back</Link>
         </h2>
-      
+
       </div>
       <br/>
       <br/>

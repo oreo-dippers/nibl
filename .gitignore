@@ -39,5 +39,6 @@ dist
 ###Secrets###
 .env
 firebase.js
+firebaseConfig.js
 api-config/foursquare-config.js
 functions/.runtimeconfig.json

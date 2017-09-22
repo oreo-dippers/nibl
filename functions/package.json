@@ -19,5 +19,8 @@
     "request-promise": "^4.2.1",
     "sequelize": "^4.8.3"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "supertest": "^3.0.0"
+  }
 }

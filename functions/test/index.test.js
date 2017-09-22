@@ -26,7 +26,31 @@ test('adds 1 + 2 to equal 3', () => {
 
 describe('Test the test path', () => {
     test('It should response the GET method', (done) => {
-        request(myApp.app).get('/test').then((response) => {
+        request(myApp.app)
+          .get('/test')
+          .query({
+            query: 'taco',
+            near: 'San Francisco, CA, United States',
+            radius: '5000'
+          })
+          .then((response) => {
+            expect(response.statusCode).toBe(200);
+            done();
+        });
+    });
+});
+
+
+describe('Test the restaurant path', () => {
+    test('It should response the GET method', (done) => {
+        request(myApp.app)
+          .get('/api/restaurants/')
+          .query({
+            query: 'taco',
+            near: 'San Francisco, CA, United States',
+            radius: '5000'
+          })
+          .then((response) => {
             expect(response.statusCode).toBe(200);
             done();
         });

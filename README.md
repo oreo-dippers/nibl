@@ -2,7 +2,7 @@
 # Getting Started and Installing Dependencies
 
 
-To get the app running locally, first cd in the the directory, then you want to do a 
+To get the app running locally, first cd in the the directory, then you want to do a
 
 ```javascript
 npm install
@@ -50,7 +50,7 @@ export const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 You can get this file from inside of the Firebase Console if you click on Web SetUp
 
 
-## FourSquare API 
+## FourSquare API
 
 
 In the functions folder inside server make a folder called api-config. Inside the folder make a file called "foursquare-config.js". Sign up for an account at FourSquare to get the API Key. This is what that file would look like
@@ -64,7 +64,7 @@ module.exports.CLIENT_SECRET = functions.config().foursquare.client_secret;
 ```
 
 
-The API keys are inside a file in the root of functions as a file called ".runtimeconfig.json" This is what the file looks like 
+The API keys are inside a file in the root of functions as a file called ".runtimeconfig.json" This is what the file looks like
 
 
 
@@ -88,7 +88,7 @@ firebase functions:config:get > .runtimeconfig.json
 ```
 
 
-To check it you can run this command 
+To check it you can run this command
 
 ```javascript
 firebase functions:config:get
@@ -96,19 +96,32 @@ firebase functions:config:get
 ## PostgreSQL
 
 
-Other from the postgres stuff above, you also need a ".env" file in the root of your application. It will have the POSTGRES_URL inside of it. It would look like 
+Other from the postgres stuff above, you also need a ".env" file in the root of your application. It will have the POSTGRES_URL inside of it. It would look like
 
 ```javascript
 POSTGRES_URL=postgres:"asdf//0000:0000000@000.0000.00.0000:00000/postgres"
 ```
 
 
+## Testing
 
+You will need a file inside functions/test/ named firebaseConfig.js which would help mock config variable for testing, along with this you will need .runtimeconfig.json which you have already completed during FourSquare API.
 
+firebaseConfig.js would look like this
+```
+module.exports.config = {
+  apiKey: 'xxxxxx_xx_xxxxxxxxxxxx_xxxxxx',
+  authDomain: 'oreoxxxx.firebasexxx.com',
+  databaseURL: 'https://oreo-xxxx.xxxx.com',
+  projectId: 'oreo-nibl',
+  storageBucket: 'oreo-nibl.xxxxt.com',
+  messagingSenderId: 'xxxxxxxxxxx'
+};
+```
 
 
 # Development Environment
-We are running MACOSX and Windows. We use Visual Studio Code. Some of the packages we have for VSCode is ESLINT and Prettier.  For reading tables inside of Postgres you can use Postico on the Mac or PgAdmin on Windows. 
+We are running MACOSX and Windows. We use Visual Studio Code. Some of the packages we have for VSCode is ESLINT and Prettier.  For reading tables inside of Postgres you can use Postico on the Mac or PgAdmin on Windows.
 
 
 

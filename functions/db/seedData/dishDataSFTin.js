@@ -24,6 +24,27 @@ module.exports.dishDataSFTin = [
     price: '9.00'
   },
   {
+    foursquareEntryId: '22817523',
+    name: 'Pho Ga',
+    imageUrl: '',
+    description: 'Poached chicken with rice noodles in ginger-chicken broth',
+    price: '9.00'
+  },
+  {
+    foursquareEntryId: '22817529',
+    name: 'Pho Bo',
+    imageUrl: '',
+    description: 'Rare beef & brisket with rice noodles in beef broth',
+    price: '9.00'
+  },
+  {
+    foursquareEntryId: '22817538',
+    name: 'Vegetarian Pho*',
+    imageUrl: '',
+    description: 'Tofu, mushrooms, vegetables in vegetable broth',
+    price: '9.00'
+  },
+  {
     foursquareEntryId: '64080308',
     name: 'Lotus Root Salad',
     imageUrl: '',
@@ -103,27 +124,6 @@ module.exports.dishDataSFTin = [
     imageUrl: '',
     description: null,
     price: '6.50'
-  },
-  {
-    foursquareEntryId: '22817523',
-    name: 'Pho Ga',
-    imageUrl: '',
-    description: 'Poached chicken with rice noodles in ginger-chicken broth',
-    price: '9.00'
-  },
-  {
-    foursquareEntryId: '22817529',
-    name: 'Pho Bo',
-    imageUrl: '',
-    description: 'Rare beef & brisket with rice noodles in beef broth',
-    price: '9.00'
-  },
-  {
-    foursquareEntryId: '22817538',
-    name: 'Vegetarian Pho*',
-    imageUrl: '',
-    description: 'Tofu, mushrooms, vegetables in vegetable broth',
-    price: '9.00'
   },
   {
     foursquareEntryId: '22817549',

@@ -7,7 +7,7 @@ module.exports.userData = [
   {
     userId: 'Wzi9EQaXcbgnbyjwWYtVBTvOeN33',
     userData: 
-      '{"user_displayName":"Kevin Su","user_photoURL":"https://lh4.googleusercontent.com/-novUuuOm-vY/AAAAAAAAAAI/AAAAAAAAAFQ/r8Jdpbe6PhI/photo.jpg","user_email":"ksu@ucdavis.edu"}'
+      '{"user_displayName":"John Smith","user_photoURL":"https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg","user_email":"john_smith@gmail.com"}'
   },
   {
     userId: 'drlnGKwWknYALR1rA45apQlF6y13',
@@ -17,11 +17,11 @@ module.exports.userData = [
   {
     userId: 'z8GjWJYn9TdY5rKEI4cpsQb9Sdq2',
     userData: 
-      '{"user_displayName":"Chieng Green","user_photoURL":"https://lh3.googleusercontent.com/-tS-NeNOyKaQ/AAAAAAAAAAI/AAAAAAAAABQ/gxLVeDHxaJQ/photo.jpg","user_email":"thund3rkev@gmail.com"}'
+      '{"user_displayName":"Ankit Kumar","user_photoURL":"https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg","user_email":"ankit09osr@gmail.com"}'
   },
   {
     userId: 'w2ljLy2P9gNbdh6xF0tVgtTf49u1',
     userData: 
-      '{"user_displayName":"Lisa G","user_photoURL":"https://lh5.googleusercontent.com/-9NlZmIzUa0U/AAAAAAAAAAI/AAAAAAAAcs4/LhZt3jcoYJk/photo.jpg","user_email":"zhusufeng@gmail.com"}'
+      '{"user_displayName":"Lisa Gee","user_photoURL":"https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg","user_email":"lisa_s_gee@yahoo.com"}'
   }
 ]

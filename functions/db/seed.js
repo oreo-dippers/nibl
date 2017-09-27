@@ -96,32 +96,32 @@ connection.db.drop().then(() => {
           });
       }); // End of adding dishData
     })
-    .then(() => {
-      // 4 Fill the restaurant dish's reviews:
-      dishReviews.dishReviewDataSFTin.forEach(review => {
+    // .then(() => {
+    //   // 4 Fill the restaurant dish's reviews:
+    //   dishReviews.dishReviewDataSFTin.forEach(review => {
 
-        connection.DishReview
-          .create({
-            userId: review.userId,
-            dishId: review.dishId,
-            review: review.review,
-            starRating: review.starRating,
-            imageUrl: review.imageUrl,
-            upvoteTotal: 0
-          })
-          .then(() => {
-            console.log(
-              '!!! Running seed.js: Your dish review element has been added to the database successfully!'
-            );
-          })
-          .catch(e => {
-            console.error(
-              '!!! Running seed.js: There was an error adding the dish review element to the database: ',
-              e
-            );
-          });
-      }); // End of adding dishReviewData
-    })
+    //     connection.DishReview
+    //       .create({
+    //         userId: review.userId,
+    //         dishId: review.dishId,
+    //         review: review.review,
+    //         starRating: review.starRating,
+    //         imageUrl: review.imageUrl,
+    //         upvoteTotal: 0
+    //       })
+    //       .then(() => {
+    //         console.log(
+    //           '!!! Running seed.js: Your dish review element has been added to the database successfully!'
+    //         );
+    //       })
+    //       .catch(e => {
+    //         console.error(
+    //           '!!! Running seed.js: There was an error adding the dish review element to the database: ',
+    //           e
+    //         );
+    //       });
+    //   }); // End of adding dishReviewData
+    // })
     .then(() => {
       // 5 Fill the user's saved dishes (fridge):
       savedDishes.userDishData.forEach(entry => {

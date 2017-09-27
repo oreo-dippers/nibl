@@ -1,4 +1,9 @@
 # Nibl
+
+[Youtube](https://youtu.be/chVphXzSXzI)
+
+[Deployed Link](https://oreo-nibl.firebaseapp.com)
+
 # Getting Started and Installing Dependencies
 
 
@@ -71,7 +76,7 @@ The API keys are inside a file in the root of functions as a file called ".runti
 ```javascript
 {
     "postgres": {
-      "postgres_url": "postgres://0000:0000000@000.0000.00.0000:00000/postgres"
+      "postgres_url": "postgres://username:password@ip_address:port_number/database_name"
     },
     "foursquare": {
       "client_id": "IASOWEHFAOSQWELIKJOIJDPOFJASPDOFJQPPSD",
@@ -93,15 +98,6 @@ To check it you can run this command
 ```javascript
 firebase functions:config:get
 ```
-## PostgreSQL
-
-
-Other from the postgres stuff above, you also need a ".env" file in the root of your application. It will have the POSTGRES_URL inside of it. It would look like
-
-```javascript
-POSTGRES_URL=postgres:"asdf//0000:0000000@000.0000.00.0000:00000/postgres"
-```
-
 
 ## Testing
 
@@ -119,6 +115,12 @@ module.exports.config = {
 };
 ```
 
+## Seeding the Database
+
+You can seed the database by going in your browser to:
+```
+https://your_URL/seed/ 
+```
 
 # Development Environment
 We are running MACOSX and Windows. We use Visual Studio Code. Some of the packages we have for VSCode is ESLINT and Prettier.  For reading tables inside of Postgres you can use Postico on the Mac or PgAdmin on Windows.

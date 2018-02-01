@@ -21,16 +21,11 @@ class MenuCard extends Component {
     this.addToFridge = this.addToFridge.bind(this);
   }
   addToFridge() {
-    console.log('this.props', this.props);
-    // firebaseID
-    // foursquarID
     const firebaseId = String(localStorage.getItem('UserId'));
-    console.log('firebaseId', firebaseId);
     const reqBody = {
       firebaseId,
       foursquareEntryId: this.props.menu.foursquareEntryId
-    }
-    console.log('reqBody', reqBody);
+    };
     axios.post(`${process.env.HOST}/api/user/fridge`, reqBody)
       .then(req => console.log('post favorited! success', req.data))
       .catch(err => console.log('post favorited! fail', err))
@@ -38,7 +33,7 @@ class MenuCard extends Component {
 
   render() {
     const { menu } = this.props;
-    const dish = menu
+    const dish = menu;
     return (
       <div>
         <Card>
@@ -46,7 +41,6 @@ class MenuCard extends Component {
             src={menu.imageUrl || 'http://www.technodoze.com/wp-content/uploads/2016/03/default-placeholder.png'}
             alt=""
           />
-         
           <Card.Content>
             <Card.Header>
               <Link to={
@@ -58,7 +52,6 @@ class MenuCard extends Component {
                 {menu.name}
               </Link>
             </Card.Header>
-
             <Rating defaultRating={menu.avgDishRating} maxRating={5} disabled />
             <Popup
               trigger={<Card.Description>{menu.description ? menu.description.slice(0, 30)+'...' : 'No description'} </Card.Description>}

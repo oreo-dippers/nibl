@@ -1,4 +1,4 @@
-const Aviary = window.Aviary
+const Aviary = window.Aviary;
 
 const featherEditor = new Aviary.Feather({
   apiKey: '_',

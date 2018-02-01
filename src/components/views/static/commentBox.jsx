@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 import {
   Button,
   Image,
@@ -10,7 +11,7 @@ import {
   Rating
 } from 'semantic-ui-react';
 
-import moment from 'moment';
+
 class CommentBox extends Component {
   constructor(props) {
     super(props);
@@ -55,7 +56,7 @@ class CommentBox extends Component {
                     <center>
                       <Image
                         wrapped
-                       
+
                         size="medium"
                         src={imageUrl}
                       />
@@ -84,11 +85,7 @@ class CommentBox extends Component {
           </div>
         </Grid.Column>
       </Grid>
-  
-    
     )
   }
-
-
 }
 export default CommentBox;

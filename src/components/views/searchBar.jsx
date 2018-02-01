@@ -4,8 +4,8 @@ import * as api from '../../api/api';
 import history from '../../index'
 
 class SearchBar extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.searchByRestaurant = this.searchByRestaurant.bind(this)
   }
 
@@ -44,7 +44,7 @@ class SearchBar extends Component {
 
 				<Form
           onSubmit={this.searchByRestaurant}
-         
+
         >
           <div className="ui icon input">
 						<input

@@ -73,101 +73,81 @@ class Restaurant extends Component {
 
     return (
       <div>
-      <div className="ui container">
-        <br />
-        <br />
-        <br />
-        <br />
-        <Image src="https://firebasestorage.googleapis.com/v0/b/oreo-nibl.appspot.com/o/rest.png?alt=media&token=fc8a34d7-533c-4c4d-ba7d-b147a73900e3"/>
-
-  <br />
-        <br />
-        <Card fluid centered>
-          <Image src={img} />
-
-          <Card.Content>
-            <h2 style={{fontSize: '3em'}}> {venue.name} </h2>
-          </Card.Content>
-
-          <Card.Content extra>
-            <Icon name="map" />
-            Address: {address}
-          </Card.Content>
-
-          <Card.Content extra>
-            <Icon name="phone" />
-            Phone: {venue.phone}
-          </Card.Content>
-
-          <Card.Content extra>
-            <Icon name="world" />
-            Website: {venue.website}
-          </Card.Content>
-          {/* restuarnt rating */}
-          {/* <Card.Content extra>
-            <Icon name="thumbs outline up" />
-            Rating: {venue.avgRating}
-          </Card.Content> */}
-        </Card>
-
-        <br/>
-        <br/>
-        <Image src ="https://firebasestorage.googleapis.com/v0/b/oreo-nibl.appspot.com/o/menu.png?alt=media&token=1d3454e3-3ae7-4baf-ac62-3e8284d00999"/>
-
-        <br/>
-        <br/>
-        {
-          this.state.hasLoaded === false
-            ? <Loader active inline='centered' />
-            : this.state.hasLoaded === null
-            ?  <Message visible>
-                Sorry, no Menu items at the moment! <br/>
-                We are hard at work to get more dishes. <br/>
-                Thank you for your patience!
-              </Message>
-            : <div className="ui container ">
-                <div className="ui centered cards">
-                  <ul className="menulist">
-                    {this.state.menuState.map((r, i) => {
-                      return (
-                        <li className="menuliststyle" key={i}>
-                          <MenuCard menu={r} />
-                        </li>
-                      );
-                    })}
-                  </ul>
+        <div className="ui container">
+          <br />
+          <br />
+          <br />
+          <br />
+          <Image src="https://firebasestorage.googleapis.com/v0/b/oreo-nibl.appspot.com/o/rest.png?alt=media&token=fc8a34d7-533c-4c4d-ba7d-b147a73900e3"/>
+          <br />
+          <br />
+          <Card fluid centered>
+            <Image src={img} />
+            <Card.Content>
+              <h2 style={{fontSize: '3em'}}> {venue.name} </h2>
+            </Card.Content>
+            <Card.Content extra>
+              <Icon name="map" />
+              Address: {address}
+            </Card.Content>
+            <Card.Content extra>
+              <Icon name="phone" />
+              Phone: {venue.phone}
+            </Card.Content>
+            <Card.Content extra>
+              <Icon name="world" />
+              Website: {venue.website}
+            </Card.Content>
+          </Card>
+          <br/>
+          <br/>
+          <Image src ="https://firebasestorage.googleapis.com/v0/b/oreo-nibl.appspot.com/o/menu.png?alt=media&token=1d3454e3-3ae7-4baf-ac62-3e8284d00999"/>
+          <br/>
+          <br/>
+          {
+            this.state.hasLoaded === false
+              ? <Loader active inline='centered' />
+              : this.state.hasLoaded === null
+              ?  <Message visible>
+                  Sorry, no Menu items at the moment! <br/>
+                  We are hard at work to get more dishes. <br/>
+                  Thank you for your patience!
+                </Message>
+              : <div className="ui container ">
+                  <div className="ui centered cards">
+                    <ul className="menulist">
+                      {this.state.menuState.map((r, i) => {
+                        return (
+                          <li className="menuliststyle" key={i}>
+                            <MenuCard menu={r} />
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
                 </div>
-              </div>
-        }
-
-
-        <h2>
-          <Link to="/restaurants">Back</Link>
-        </h2>
-
-
-
-
-      </div>
-
-         <br /> <br /> <br /> <br />
-      <footer style={{background: '#66DFB7'}}>
-        <br /> <br /> <br /> <br />
-        <div>
-          <center>
-            <i className="inverted large twitter icon" />
-            <i className="inverted large facebook icon" />{' '}
-            <i className="inverted large github alternate icon" />{' '}
-            <i className="inverted large linkedin icon" />{' '}
-          </center>
+          }
+          <h2>
+            <Link to="/restaurants">Back</Link>
+          </h2>
         </div>
-        <br />
-        <div style={{color: '#FFFFFF'}}>
-          <center> © 2017 Nibl. All Rights Reserved</center>
-        </div>
-        <br />
-      </footer>
-
+           <br /> <br /> <br /> <br />
+        <footer style={{background: '#66DFB7'}}>
+          <br /> <br /> <br /> <br />
+          <div>
+            <center>
+              <i className="inverted large twitter icon" />
+              <i className="inverted large facebook icon" />{' '}
+              <i className="inverted large github alternate icon" />{' '}
+              <i className="inverted large linkedin icon" />{' '}
+            </center>
+          </div>
+          <br />
+          <div style={{color: '#FFFFFF'}}>
+            <center> © 2017 Nibl. All Rights Reserved</center>
+          </div>
+          <br />
+        </footer>
       </div>
     )
   }

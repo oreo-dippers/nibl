@@ -1,12 +1,19 @@
 import React, {Component} from 'react';
-import {Button, Header, Image, Modal, Menu, Icon} from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
-import SearchBar from './searchBar';
-import {database, auth, googleAuthProvider} from '../firebase';
-import pick from 'lodash/pick';
-import CheckBox from './checkBox';
 import axios from 'axios';
 
+import SearchBar from './searchBar';
+import { database, auth, googleAuthProvider } from '../firebase';
+import pick from 'lodash/pick';
+import CheckBox from './checkBox';
+import {
+  Button,
+  Header,
+  Image,
+  Modal,
+  Menu,
+  Icon
+} from 'semantic-ui-react';
 
 export default class Nav extends Component {
   constructor(props) {

@@ -5,10 +5,9 @@ import { dashify } from '../../../helpers';
 
 class DishCard extends Component {
   render() {
-    const {dish} = this.props;
-    const {prefix, suffix} = dish.imageUrl;
+    const { dish } = this.props;
+    const { prefix, suffix } = dish.imageUrl;
     const img = `${prefix}800x200${suffix}`;
-    console.log(this.props);
     if (!dish) {
       return <div>Sorry, but the Dish was not found</div>;
     }
@@ -16,7 +15,7 @@ class DishCard extends Component {
       <div className="ui container ">
         <div className="ui equal width aligned padded grid">
           <div className="row">
-            <div className="seven wide column" > 
+            <div className="seven wide column" >
               <img
                 id="murray"
                 src={dish.imageUrl}
@@ -37,26 +36,7 @@ class DishCard extends Component {
                         {dish.name}
                       </Link>
                     </div>
-
-{/*
-                    <div className="ui  huge header" style={{fontSize: '2em'}}>
-
-                      <Link
-                        to={{
-                          pathname: `/restaurants/${dish.name}`,
-                          // state: {dish},
-                        }}
-                      >
-                        @ GO TO RESTAURANT *ADD NAME*
-                      </Link>
-
-                      <p style={{color: 'black'}}>address: .......</p>
-
-                      
-                    </div> */}
-
                     <Rating defaultRating={3} maxRating={5} disabled />
-
                     <p style={{color: '#000000'}}> -- </p>
                     <div style={{color: '#000000'}}>
                       originaltopramenWe love adding veggies to our Nissin Top

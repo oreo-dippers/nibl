@@ -5,8 +5,6 @@ import {
   getDishesSuccess,
  } from '../actions/restaurantSearch-action';
 
-
-console.log('process.env.HOST', process.env.HOST);
 export function getRestaurants(reqData, dispatch) {
 
   return axios.get(`${process.env.HOST}/api/restaurants`, reqData)
@@ -19,7 +17,6 @@ export function getRestaurants(reqData, dispatch) {
     console.log('%c /api/restaurants GET FAIL!!', 'color: red')
     });
 }
-
 
 export function getDishes(reqData, dispatch) {
   dispatch(getDishesSuccess(dishesData));

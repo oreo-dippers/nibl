@@ -1,5 +1,3 @@
-// A simple data API that will be used to get the data for our
-// components.
 const RestaurantsAPI = {
 	restaurants: [
 		{ store_id: 1, name: 'Awesome_Tacos', location: 'LA' },

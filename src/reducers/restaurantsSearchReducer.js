@@ -1,11 +1,9 @@
 import * as types from '../actions/action-types';
-import _ from 'lodash';
 
 const initialState = {
   restaurants: [],
   dishes: [],
 };
-
 
 const restaurantsSearchReducer = function(state=initialState, action) {
   switch(action.type) {
@@ -16,10 +14,6 @@ const restaurantsSearchReducer = function(state=initialState, action) {
       return Object.assign({}, state, {dishes: action.dishes});
     default: return state;
   }
-
 };
-
-
-
 
 export default restaurantsSearchReducer;

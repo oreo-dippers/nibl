@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Form, Checkbox } from 'semantic-ui-react'
+import React, { Component } from 'react';
+import { Form, Checkbox } from 'semantic-ui-react';
 
 export default class CheckBox extends Component {
   constructor(props) {
@@ -35,7 +35,7 @@ export default class CheckBox extends Component {
             onChange={this.handleChange}
           />
         </Form.Field>
-      
+
         {/* Selected: <b>{this.props.searchBy}</b> */}
       </Form>
     )

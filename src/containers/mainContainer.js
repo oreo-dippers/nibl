@@ -1,5 +1,3 @@
-// import React, { Component } from 'react';
-// import store from '../store';
 import { connect } from 'react-redux';
 import Main from '../components/routes/main'
 

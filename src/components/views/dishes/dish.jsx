@@ -16,15 +16,6 @@ import {
   Rating,
 } from 'semantic-ui-react';
 
-// {
-//   foursquareEntryId: "107410403",
-//   name: "Arugula Salad",
-//   imageUrl: "",
-//   description: "With roasted farm beets, pickled red onions, Vermont Creamery goat cheese schmear, apple cider vinaigrette",
-//   price: "11.00",
-//   avgRating: 0
-// }
-
 
 class Dish extends Component {
   constructor() {
@@ -42,11 +33,9 @@ class Dish extends Component {
       .then(res => {
         console.log('%c <Dish /> api/dishes/review INITIAL GET SUCCESS!!', 'color: green')
         console.log('<Dish /> res.data', JSON.stringify(res.data, null, 2));
-
         if(Array.isArray(res.data)) {
           this.setState({comments: res.data});
         }
-
       })
       .catch(err => {
         console.log('%c <Dish /> api/dishes/review INITIAL GET FAIL!!', 'color: red', err)
@@ -66,44 +55,29 @@ class Dish extends Component {
 
     return (
       <div>
-      <div className="ui container">
-
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-         <Image src={this.props.location.state.dish.imageUrl} />
-
-          <Card fluid centered>
-
-          <Card.Content>
-            <h2 style={{fontSize: '3em'}}> {this.props.location.state.dish.name} </h2>
-          </Card.Content>
-
-          <Card.Content extra>
-            <Icon name="dollar" />
-            Price: {dish.price}
-          </Card.Content>
-
-
-          <Card.Content extra>
-            <Icon name="thumbs outline up" />
-            Rating:  <Rating defaultRating={dish.avgDishRating} maxRating={5} disabled />
-          </Card.Content>
-        </Card>
-
-        <CommentCard {...this.props} {...this.state} setDishState={this.setDishState}/>
-
-        <h2>
-          <Link to="/dishes">Back</Link>
-        </h2>
-
-      </div>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <Footer />
+        <div className="ui container">
+          <br/><br/><br/><br/>
+           <Image src={this.props.location.state.dish.imageUrl} />
+            <Card fluid centered>
+            <Card.Content>
+              <h2 style={{fontSize: '3em'}}> {this.props.location.state.dish.name} </h2>
+            </Card.Content>
+            <Card.Content extra>
+              <Icon name="dollar" />
+              Price: {dish.price}
+            </Card.Content>
+            <Card.Content extra>
+              <Icon name="thumbs outline up" />
+              Rating:  <Rating defaultRating={dish.avgDishRating} maxRating={5} disabled />
+            </Card.Content>
+          </Card>
+          <CommentCard {...this.props} {...this.state} setDishState={this.setDishState}/>
+          <h2>
+            <Link to="/dishes">Back</Link>
+          </h2>
+        </div>
+        <br/><br/><br/><br/>
+        <Footer />
       </div>
     );
   }

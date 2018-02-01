@@ -7,7 +7,7 @@ class RestaurantCard extends Component {
   render() {
     const venue = this.props.restaurant;
     console.log('venue', venue);
-    
+
     const address = JSON.parse(venue.address).join(', ');
     const {prefix, suffix} = JSON.parse(venue.imageUrl);
     const img = `${prefix}800x200${suffix}`;
@@ -32,11 +32,6 @@ class RestaurantCard extends Component {
             >
               <h1>{venue.name}</h1>
             </Link>
-
-            {/* <div className="meta">
-              <Rating defaultRating={3} maxRating={5} disabled />
-              <span className="date">342 Ratings</span>
-            </div> */}
             <div className="description">
               We serve an obsene amount of Ramen, at any point and any time. We
               serve asian inspired Ramen made with Indian Ingredients. It is the

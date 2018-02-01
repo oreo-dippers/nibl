@@ -85,10 +85,9 @@ class CommentCard extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // This function handles the image and sends it to firebase
     let file = e.target.files[0];
     this.setState({file});
-    const storageRef = firebase.storage().ref('new_folder/' + file.name); // replace with user UID as folder name / photos
+    const storageRef = firebase.storage().ref('new_folder/' + file.name);
     storageRef.put(file).then(() => {
       console.log('Image was Uploaded to Firebase!');
     });
@@ -116,18 +115,15 @@ class CommentCard extends Component {
     let { imagePreviewUrl } = this.state;
     const { user_displayName } = JSON.parse(this.state.UserData);
     return (
-     
-      <div className="ui container">
-     
-        <Image src ="https://firebasestorage.googleapis.com/v0/b/oreo-nibl.appspot.com/o/comments.png?alt=media&token=3fb83f44-47e1-4727-bc35-2010f7761b57"/>
 
+      <div className="ui container">
+
+        <Image src ="https://firebasestorage.googleapis.com/v0/b/oreo-nibl.appspot.com/o/comments.png?alt=media&token=3fb83f44-47e1-4727-bc35-2010f7761b57"/>
         <Grid>
           <Grid.Column width={2} >
-
             </Grid.Column>
           <Grid.Column width={2}>
           <Grid verticalAlign="middle">
-
             <Grid.Row color="">
             <div id="injection_site" />
             <img
@@ -136,11 +132,8 @@ class CommentCard extends Component {
               ref={input => (this.filtered = input)}
             />
             </Grid.Row>
-
-
             <Grid.Row color="">
               <Grid.Column color=" " width={5}>
-
             <input
               id="something"
               type="file"
@@ -150,12 +143,8 @@ class CommentCard extends Component {
               className="inputClass"
               onChange={this.handleSubmit}
           />
-
-
             </Grid.Column>
-
             <Grid.Column color=" " width={5}>
-
             <Button
             primary
             type="image"
@@ -165,12 +154,9 @@ class CommentCard extends Component {
           >
             {' '} Edit {' '}
           </Button>
-
               </Grid.Column>
             </Grid.Row>
-
         </Grid>
-
           </Grid.Column>
           <Grid.Column width={9}>
           <h3>{user_displayName}</h3>
@@ -187,8 +173,6 @@ class CommentCard extends Component {
                 ref={(i)=> this._comment = i}
                 placeholder="leave a comment..."
               />
-              
-
               <Button
                 content="Add Reply"
                 icon="edit"
@@ -200,15 +184,11 @@ class CommentCard extends Component {
         {
           this.props.comments.map((comment, i) => {
             return (
-            
               <CommentBox data={comment} key={i}/>
-         
             )
           })
         }
-       
       </div>
-   
     );
   }
 }

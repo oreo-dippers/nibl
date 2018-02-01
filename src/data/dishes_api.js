@@ -1,5 +1,3 @@
-// A simple data API that will be used to get the data for our
-// Dishes components.
 const DishesAPI = [
   {
     foursquareEntryId: "107410403",

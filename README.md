@@ -1,8 +1,8 @@
 # Nibl
 
-[Youtube](https://youtu.be/chVphXzSXzI)
+Check out our app demo presented by the team members here! >>> [Youtube](https://youtu.be/chVphXzSXzI)
 
-[Deployed Link](https://oreo-nibl.firebaseapp.com)
+You can also find a deployed app here! >>> [Deployed Link](https://oreo-nibl.firebaseapp.com)
 
 # Getting Started and Installing Dependencies
 
@@ -119,30 +119,8 @@ module.exports.config = {
 
 You can seed the database by going in your browser to:
 ```
-https://your_URL/seed/ 
+https://your_URL/seed/
 ```
 
 # Development Environment
 We are running MACOSX and Windows. We use Visual Studio Code. Some of the packages we have for VSCode is ESLINT and Prettier.  For reading tables inside of Postgres you can use Postico on the Mac or PgAdmin on Windows.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

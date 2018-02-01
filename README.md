@@ -1,8 +1,8 @@
 # Nibl
 
-Check out our app demo presented by the team members here! >>> [Youtube](https://youtu.be/chVphXzSXzI)
+Check out our app demo presented by the team members here! >>> [Nibl Presentation](https://youtu.be/chVphXzSXzI)
 
-You can also find a deployed app here! >>> [Deployed Link](https://oreo-nibl.firebaseapp.com)
+You can also find a deployed app here! >>> [Link to Nibl Website](https://oreo-nibl.firebaseapp.com)
 
 # Getting Started and Installing Dependencies
 

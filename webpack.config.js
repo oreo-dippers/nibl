@@ -6,8 +6,6 @@ const webpack = require('webpack');
 const FIREBASE = `http://localhost:5001/oreo-nibl/us-central1/app`;
 const DEPLOY = `https://us-central1-oreo-nibl.cloudfunctions.net/app`;
 
-console.log('process.env.NODE_ENV', process.env.NODE_ENV );
-console.log('hii')
 const HOST = process.env.NODE_ENV === 'production' ? DEPLOY : FIREBASE
 console.log('HOST', HOST);
 const isProd = process.env.NODE_ENV === 'production';
@@ -53,7 +51,9 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        use: {
+          loader: 'babel-loader'
+        }
       },
       {
         use: ExtractTextPlugin.extract({

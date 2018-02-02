@@ -11,7 +11,6 @@ import {
   Rating
 } from 'semantic-ui-react';
 
-
 class CommentBox extends Component {
   constructor(props) {
     super(props);
@@ -21,7 +20,14 @@ class CommentBox extends Component {
   }
 
   render() {
-    const { userData, starRating, upvoteTotal, createdAt, imageUrl, review } = this.props.data;
+    const {
+      userData,
+      starRating,
+      upvoteTotal,
+      createdAt,
+      imageUrl,
+      review
+    } = this.props.data;
     let upvotes = upvoteTotal;
     let user = typeof userData === 'string' ? JSON.parse(userData) : userData;
 

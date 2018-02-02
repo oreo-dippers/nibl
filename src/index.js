@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from 'react-dom'
+import ReactDOM from 'react-dom'
 
 import { Provider } from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
@@ -13,14 +13,21 @@ const history = createHistory();
 const middleware = routerMiddleware(history);
 export default history;
 
-const Router = () => (
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <div>
-        <MainContainer />
-      </div>
-    </ConnectedRouter>
-  </Provider>
-)
+const render = Component => {
+  ReactDOM.render(
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <Component />
+      </ConnectedRouter>
+    </Provider>,
+    document.getElementById('root'));
+};
 
-render(<Router />, document.getElementById('root'));
+render(MainContainer);
+
+if (module.hot) {
+  module.hot.accept('./containers/mainContainer', () => {
+    const NextComponent = require('./containers/mainContainer').default;
+    render(NextComponent);
+  })
+}

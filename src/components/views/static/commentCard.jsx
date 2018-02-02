@@ -5,7 +5,8 @@ import FileInput from 'react-file-input';
 import launchEditor from './aviary';
 import CommentBox from './commentBox';
 import Footer from './footerhome';
-import { Button,
+import {
+  Button,
   Header,
   Image,
   Modal,
@@ -63,13 +64,9 @@ class CommentCard extends Component {
       axios.get(`${process.env.HOST}/api/dishes/review`, {params: {foursquareEntryId}})
         .then(res => {
           console.log('%c <CommentCard /> api/dishes/review *post-> GET* SUCCESS!!', 'color: green')
-          console.log('<CommentCard /> res.data', res.data)
-          console.log('this', this);
-
           if(Array.isArray(res.data)) {
             this.props.setDishState({comments: res.data})
           }
-
         })
         .catch(err => {
           console.log('%c <CommentCard /> api/dishes/review *post-> GET* FAIL!!', 'color: red', err)
@@ -89,16 +86,14 @@ class CommentCard extends Component {
     this.setState({file});
     const storageRef = firebase.storage().ref('new_folder/' + file.name);
     storageRef.put(file).then(() => {
-      console.log('Image was Uploaded to Firebase!');
-    });
-
-    storageRef.getDownloadURL().then(imagePreviewUrl => {
-      const xhr = new XMLHttpRequest();
-      xhr.responseType = 'blob';
-      xhr.onload = function(event) {
-        const blob = xhr.response;
-      };
-      this.setState({ imagePreviewUrl });
+      storageRef.getDownloadURL().then(imagePreviewUrl => {
+        const xhr = new XMLHttpRequest();
+        xhr.responseType = 'blob';
+        xhr.onload = function(event) {
+          const blob = xhr.response;
+        };
+        this.setState({ imagePreviewUrl });
+      });
     });
   }
 
@@ -124,7 +119,7 @@ class CommentCard extends Component {
             </Grid.Column>
           <Grid.Column width={2}>
           <Grid verticalAlign="middle">
-            <Grid.Row color="">
+            <Grid.Row>
             <div id="injection_site" />
             <img
               id="image1"
@@ -132,8 +127,8 @@ class CommentCard extends Component {
               ref={input => (this.filtered = input)}
             />
             </Grid.Row>
-            <Grid.Row color="">
-              <Grid.Column color=" " width={5}>
+            <Grid.Row>
+              <Grid.Column width={5}>
             <input
               id="something"
               type="file"
@@ -144,7 +139,7 @@ class CommentCard extends Component {
               onChange={this.handleSubmit}
           />
             </Grid.Column>
-            <Grid.Column color=" " width={5}>
+            <Grid.Column width={5}>
             <Button
             primary
             type="image"
